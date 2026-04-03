@@ -1,0 +1,16 @@
+{
+  "name": "Surge",
+  "colors": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "accent": "#000000"
+  },
+  "typography": {
+    "heading": "sans-serif",
+    "body": "sans-serif"
+  },
+  "voice": {
+    "tone": "professional",
+    "keywords": []
+  }
+}

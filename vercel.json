@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "installCommand": "echo skip",
+  "buildCommand": "bash build.sh",
+  "routes": [
+    { "src": "/accuenviro", "dest": "/clients/accuenviro/index.html" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "handle": "filesystem" }
+  ]
+}

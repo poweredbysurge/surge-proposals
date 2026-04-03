@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AccuEnviro × Surge: Proposal</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="AccuEnviro × Surge — Proposal" />
+  <meta property="og:description" content="A complete digital buildout: website redesign, SEO infrastructure, and Google presence for Accurate Environmental Services, Inc." />
+  <meta property="og:image" content="../../brand/SurgeProposalOG.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../brand/SurgeProposalOG.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" />
+  <link rel="icon" href="https://thesurgeagency.com/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://thesurgeagency.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://thesurgeagency.com/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="https://thesurgeagency.com/apple-touch-icon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --accent:       #dee535;
+      --accent-hover: #b8be2a;
+      --bg:           #080808;
+      --surface:      #111111;
+      --surface2:     #0d0d0d;
+      --border:       rgba(255,255,255,0.06);
+      --muted:        #9ca3af;
+      --faint:        #4b5563;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Typography ─────────────────────────────────────────────── */
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 0.93;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Accent line ────────────────────────────────────────────── */
+    .accent-line {
+      width: 36px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── Entrance animations ────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+    .d6 { transition-delay: 0.60s; }
+
+    /* ── Nav ────────────────────────────────────────────────────── */
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ── Hero grid overlay ──────────────────────────────────────── */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(222,229,53,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(222,229,53,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    /* ── Cards ──────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .scope-item {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    /* ── Timeline ───────────────────────────────────────────────── */
+    .t-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .t-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .t-step::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1.4rem;
+      width: 2px;
+      height: calc(100% + 1.5rem);
+      background: rgba(222,229,53,0.15);
+    }
+    .t-step:last-child::after { display: none; }
+
+    /* ── Tier cards ─────────────────────────────────────────────── */
+    .tier {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tier:hover {
+      border-color: rgba(222,229,53,0.25);
+      transform: translateY(-2px);
+    }
+    .tier.featured {
+      border-color: var(--accent);
+      background: #0f1300;
+      position: relative;
+    }
+
+    /* ── Proof cards ────────────────────────────────────────────── */
+    .proof {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    /* ── Buttons ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.06em;
+      color: #080808;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+    }
+    .btn:hover  { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    /* ── Form ───────────────────────────────────────────────────── */
+    .field {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 0.875rem 1rem;
+      width: 100%;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+    }
+    .field:focus        { border-color: var(--accent); }
+    .field::placeholder { color: #374151; }
+    select.field        { cursor: pointer; }
+
+    /* ── Tier grid responsive ───────────────────────────────────── */
+    .tier-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .tier-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* ── Scrollbar ──────────────────────────────────────────────── */
+    ::-webkit-scrollbar          { width: 4px; }
+    ::-webkit-scrollbar-track    { background: var(--bg); }
+    ::-webkit-scrollbar-thumb    { background: #222; border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- ─────────────────────────────────────────────────────────────────
+     NAV
+──────────────────────────────────────────────────────────────────── -->
+<nav id="site-nav">
+  <img src="../../brand/SRG%20JR.svg" alt="Surge" style="height:38px;width:auto;padding-left:0.75rem;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.6875rem;font-weight:500;color:var(--faint);letter-spacing:0.1em;text-transform:uppercase;">Confidential · April 2026</span>
+</nav>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     01  HERO
+──────────────────────────────────────────────────────────────────── -->
+<section class="hero-grid" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 1.5rem 4.5rem;position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:-15%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(222,229,53,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(222,229,53,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+  <div style="max-width:860px;position:relative;">
+    <div class="section-label fade-up" style="margin-bottom:1.5rem;">Proposal · Accurate Environmental Services, Inc.</div>
+
+    <h1 class="font-display fade-up d1" style="font-size:clamp(3.5rem,11vw,8rem);line-height:0.9;margin-bottom:1.75rem;">
+      OWN ORANGE COUNTY<br/>
+      <span style="color:var(--accent);">SOURCE TESTING</span><br/>
+      ONLINE.
+    </h1>
+
+    <p class="fade-up d2" style="font-size:1.0625rem;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:2.75rem;">
+      A complete digital buildout: website redesign, SEO infrastructure, and Google presence. Engineered to make AccuEnviro the most visible environmental testing company in Southern California.
+    </p>
+
+    <div class="fade-up d3" style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-size:0.8125rem;">
+      <span style="color:var(--faint);">Prepared for <span style="color:#fff;font-weight:500;">Khalid Elashi</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">Prepared by <span style="color:var(--accent);font-weight:600;">Surge</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">April 2026</span>
+    </div>
+  </div>
+
+  <div class="fade-up d4" style="position:absolute;bottom:2.25rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+    <span style="font-size:0.625rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);">Scroll</span>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);"></div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     02  THE OPPORTUNITY
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">02 · The Opportunity</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">
+      44 CLIENTS A MONTH.<br/><span style="color:var(--accent);">ZERO FROM GOOGLE.</span>
+    </h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="card fade-up d1" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Your entire business runs through one channel.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">AccuEnviro's 44 monthly clients come exclusively through the AQMD vendor marketplace, a single point of failure you don't control. A website and local search presence creates a second lead channel that runs 24/7, belongs entirely to you, and scales without raising a hand.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d2" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Google thinks you're permanently closed.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Your Google Business Profile currently displays "PERMANENTLY CLOSED" to every facility manager in Orange County searching for stack testing or emissions compliance. Before a single SEO dollar is invested, this needs to be appealed, reclaimed, and corrected. It will be, in Week 1.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d3" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">The window is open. It won't stay that way.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Digital competition for source testing in Orange County is remarkably thin right now. Meanwhile, large VC-backed environmental companies are buying up smaller firms and building their digital footprints. The first credible, well-optimized presence in this market wins disproportionately and holds it. AccuEnviro has 20+ years of operational credibility and zero digital footprint. That's a rare advantage. Let's use it before someone else does.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     03  SEO OPPORTUNITY
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 · Your SEO Opportunity</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">THE SEARCHES<br/><span style="color:var(--accent);">ALREADY HAPPENING.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3.5rem;">Before writing this proposal, we ran preliminary keyword research on the source testing space in California and Orange County. The competitive gap in organic search is significant. Facility managers and compliance officers are actively searching for vendors like AccuEnviro right now, and almost no one is showing up to meet them.</p>
+
+    <!-- Keyword group cards -->
+    <div style="display:grid;gap:1.5rem;margin-bottom:2.5rem;">
+
+      <!-- Group 1: High Intent -->
+      <div class="card fade-up d1" style="padding:2rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.5rem;">
+          <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.05em;color:#fff;">High Intent / Transactional</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.125rem;">People ready to hire a vendor right now</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">source testing company Orange County</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">stack testing California</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">AQMD source testing contractor</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">SCAQMD LAP approved testing company</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">industrial emissions testing Orange County</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">stack emissions testing near me</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">air quality compliance testing California</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">Title V compliance testing Orange County</span>
+        </div>
+      </div>
+
+      <!-- Group 2: Educational -->
+      <div class="card fade-up d2" style="padding:2rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.5rem;">
+          <div style="width:8px;height:8px;background:#6b7280;border-radius:50%;flex-shrink:0;"></div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.05em;color:#fff;">Educational / Content Opportunity</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.125rem;">Researchers and future buyers — these drive the blog strategy</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">what is source testing</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">AQMD compliance requirements for manufacturers</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">how to pass SCAQMD source test</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">NOx emissions testing requirements California</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">ammonia emissions testing industrial</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">formaldehyde source testing CARB methods</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">stack testing vs continuous emissions monitoring</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">how often is source testing required California</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">Title V permit compliance testing</span>
+          <span style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:#d1d5db;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">SCAQMD Rule 1146 testing requirements</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Competitive gap callout -->
+    <div class="fade-up d3" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin:0;">The companies currently ranking for these terms — Erthwrks, Energy Environmental Solutions, Air Hygiene — have minimal blog content and outdated websites. AccuEnviro has a real opportunity to outrank them with consistent content.</p>
+    </div>
+
+    <p class="fade-up d4" style="color:var(--muted);font-size:0.875rem;line-height:1.65;">These keywords will be embedded throughout the website pages and form the foundation of the 10 blog posts included in the project.</p>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     04  SCOPE OF WORK
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--bg);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 · Scope of Work</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">WHAT WE'RE BUILDING.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:480px;line-height:1.65;margin-bottom:3rem;">Everything below is included in the flat project fee. One number. No surprises.</p>
+
+    <div style="display:grid;gap:2.25rem;">
+
+      <div class="scope-item fade-up">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">01</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Full Website Redesign</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">A ground-up redesign built mobile-first and optimized for conversion: modern, animated, immersive. Pages covering every service AccuEnviro performs: ammonia, multi-metals, formaldehyde and aldehydes, NOx, CO, and stack testing. You own the code. No platform lock-in. Domain migration to your preferred URL handled if needed.</p>
+      </div>
+
+      <div class="scope-item fade-up d1">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">02</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">All Copywriting + Visual Sourcing</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Every word on every page written for you, positioned for human readers and structured for search. Imagery sourced and licensed to reflect the precision AccuEnviro's work demands. No generic stock photos of people in hard hats.</p>
+      </div>
+
+      <div class="scope-item fade-up d2">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">03</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">On-Page SEO Optimization</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Every page structured to rank for the searches that matter: ammonia source testing, stack testing Orange County, formaldehyde aldehyde testing, NOx compliance testing, CO source testing, AQMD compliance, with sub-region and zip code geo-targeting across Orange County and surrounding service areas.</p>
+      </div>
+
+      <div class="scope-item fade-up d3">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">04</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Google Business Profile Reclamation</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">We file the appeal to remove "Permanently Closed," reclaim the listing, and fully optimize it: services, service areas, photos, description, categories, and Q&amp;A. AccuEnviro will show up correctly in the local pack the moment someone nearby searches for source testing.</p>
+      </div>
+
+      <div class="scope-item fade-up d4">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">05</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Local Directory Submissions</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Submissions to Yelp, Google, and key industry citations to establish consistent NAP (name, address, phone) across the web, a foundational trust signal for local search authority.</p>
+      </div>
+
+      <div class="scope-item fade-up d5">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">06</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">10 SEO Blog Posts</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Ten articles targeting long-tail source testing keywords and Orange County geography, written to rank, drive qualified traffic, and position AccuEnviro as the authoritative resource in the field. Delivered at launch, ready to index from day one.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     04  TIMELINE
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">05 · Timeline</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">4 TO 6 WEEKS TO LAUNCH.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:480px;line-height:1.65;margin-bottom:3.25rem;">Our target is four weeks. Six is the ceiling.</p>
+
+    <div style="display:grid;gap:2.75rem;">
+
+      <div class="t-step fade-up">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.25rem;letter-spacing:0.04em;">WEEKS 1–2: Discovery, Architecture + Development</div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-top:0.375rem;">Kickoff call with Khalid. Site map and page structure finalized. GBP reclamation appeal filed. Keyword research completed across all services and Orange County sub-regions. Domain migration plan confirmed if needed. Development environment set up and full site build underway in parallel, with on-page SEO framework implemented from the start.</p>
+      </div>
+
+      <div class="t-step fade-up d1">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.25rem;letter-spacing:0.04em;">WEEKS 2–3: Design + Copywriting</div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-top:0.375rem;">Full visual system designed. Homepage and all service pages (ammonia, multi-metals, formaldehyde, NOx, CO, stack testing) designed and written. Review and approval checkpoint with Khalid.</p>
+      </div>
+
+      <div class="t-step fade-up d2">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.25rem;letter-spacing:0.04em;">WEEKS 3–4: Content + Citations</div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-top:0.375rem;">All 10 blog posts drafted, edited, and loaded into the site. Citation submissions completed. GBP listing updated once the appeal is approved. Directory submissions submitted. Final content review with Khalid.</p>
+      </div>
+
+      <div class="t-step fade-up d3">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.25rem;letter-spacing:0.04em;">WEEK 4 (TARGET): QA + Launch</div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-top:0.375rem;">Full QA pass on mobile and desktop. Final sign-off from Khalid. Site goes live. Domain migration executed. Google Search Console and Analytics configured and verified. Handoff call to walk through everything.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     05  INVESTMENT
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">06 · Investment</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">TRANSPARENT PRICING.</h2>
+
+    <!-- One-time fee block -->
+    <div class="fade-up d3" style="background:var(--surface);border:1px solid rgba(222,229,53,0.22);border-radius:16px;padding:2rem;margin-bottom:2.75rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem;">
+      <div>
+        <div class="section-label" style="margin-bottom:0.5rem;">One-Time Project Fee</div>
+        <h3 class="font-display" style="font-size:2rem;line-height:1.1;">Everything in Scope of Work</h3>
+        <p style="color:var(--muted);font-size:0.875rem;margin-top:0.375rem;">Website · Copy · SEO · GBP Reclamation · Directories · 10 Blog Posts</p>
+      </div>
+      <div style="text-align:right;flex-shrink:0;">
+        <div class="font-display" style="font-size:4rem;color:var(--accent);line-height:1;">$5,000</div>
+        <div style="font-size:0.8125rem;color:var(--faint);">Flat rate. No surprises.</div>
+      </div>
+    </div>
+
+    <!-- SEO tiers -->
+    <div class="fade-up d4">
+      <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;">Ongoing SEO Retainer, Starts After Launch</p>
+
+      <div class="tier-grid">
+
+        <!-- Foundation -->
+        <div class="tier">
+          <div style="margin-bottom:1.25rem;">
+            <div class="font-display" style="font-size:1.625rem;letter-spacing:0.03em;">Foundation</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Maintain &amp; grow</div>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">$750</span>
+            <span style="font-size:0.8125rem;color:var(--faint);margin-left:0.25rem;">/month</span>
+          </div>
+          <ul style="display:grid;gap:0.625rem;">
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>2 SEO blog posts/month</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>GBP management</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Rank tracking + monthly report</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Citation building</li>
+          </ul>
+        </div>
+
+        <!-- Growth (featured) -->
+        <div class="tier featured">
+          <div style="position:absolute;top:-1px;right:1.25rem;background:var(--accent);color:#080808;font-family:'Bebas Neue',sans-serif;font-size:0.8125rem;letter-spacing:0.08em;padding:0.2rem 0.875rem;border-radius:0 0 8px 8px;">RECOMMENDED</div>
+          <div style="margin-bottom:1.25rem;margin-top:0.625rem;">
+            <div class="font-display" style="font-size:1.625rem;letter-spacing:0.03em;color:var(--accent);">Growth</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Where real traction starts</div>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">$1,500</span>
+            <span style="font-size:0.8125rem;color:var(--faint);margin-left:0.25rem;">/month</span>
+          </div>
+          <ul style="display:grid;gap:0.625rem;">
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:#d1d5db;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>4 SEO blog posts/month</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:#d1d5db;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Backlink outreach campaign</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:#d1d5db;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Quarterly SEO audit</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:#d1d5db;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Competitor gap analysis</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:#d1d5db;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Monthly strategy call</li>
+          </ul>
+        </div>
+
+        <!-- Domination -->
+        <div class="tier">
+          <div style="margin-bottom:1.25rem;">
+            <div class="font-display" style="font-size:1.625rem;letter-spacing:0.03em;">Domination</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Total market ownership</div>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">$2,500</span>
+            <span style="font-size:0.8125rem;color:var(--faint);margin-left:0.25rem;">/month</span>
+          </div>
+          <ul style="display:grid;gap:0.625rem;">
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>6–8 SEO blog posts/month</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Full link building campaign</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Location + service landing pages</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Schema markup</li>
+            <li style="display:flex;gap:0.625rem;font-size:0.9rem;color:var(--muted);align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Everything in Growth</li>
+          </ul>
+        </div>
+
+      </div><!-- /.tier-grid -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     06  WHY SURGE
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">07 · Why Surge</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">THREE REASONS.<br/>NO FLUFF.</h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="proof fade-up d1">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">01</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We build for visibility, not just aesthetics.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Most agencies design a beautiful site and hand you an invoice. We build sites where SEO is architecture: page structure, URL logic, internal linking, Core Web Vitals, schema markup. AccuEnviro will have a site that looks the part and gets found when the people who need you go looking.</p>
+      </div>
+
+      <div class="proof fade-up d2">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">02</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">One team. Zero handoffs.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Design, copy, development, and SEO, all under one roof. You won't get a beautifully designed site with mediocre copy, or technically solid SEO on a site that looks like 2011. Everything is built together, by the same team, with the same goal.</p>
+      </div>
+
+      <div class="proof fade-up d3">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">03</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We recognize a wide-open market when we see one.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Low search competition. Real commercial intent. A family business with two decades of operational credibility and zero digital footprint. We've mapped the keywords. The volume is real, the competition is thin, and the window is open. The first player to show up here with a credible digital presence wins disproportionately. AccuEnviro is that player right now.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     07  NEXT STEPS
+──────────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 · Next Steps</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">LET'S GO.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Sign below to approve this proposal. Once signed and payment is received, Surge will schedule the kickoff call and lock in a Week 1 start date.</p>
+
+    <!-- Signature form -->
+    <form id="proposal-form" class="card fade-up d4" style="padding:2rem;margin-bottom:2rem;transition:opacity 0.4s ease,transform 0.4s ease;" onsubmit="handleSubmit(event)">
+      <h3 style="font-weight:600;font-size:1rem;color:#d1d5db;margin-bottom:1.5rem;">Approve Proposal</h3>
+
+      <div style="display:grid;gap:1rem;margin-bottom:1.25rem;">
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-name">Full Name</label>
+          <input class="field" type="text" id="f-name" name="name" placeholder="Khalid Elashi" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-company">Company</label>
+          <input class="field" type="text" id="f-company" name="company" placeholder="Accurate Environmental Services, Inc." />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
+          <input class="field" type="date" id="f-date" name="date" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-retainer">
+            SEO Retainer Selection
+            <span style="color:var(--faint);font-weight:400;">, optional</span>
+          </label>
+          <select class="field" id="f-retainer" name="retainer">
+            <option value="" style="background:#111;">-- Select a tier or decide later --</option>
+            <option value="Foundation: $750/mo" style="background:#111;">Foundation: $750/mo</option>
+            <option value="Growth: $1,500/mo" style="background:#111;">Growth: $1,500/mo (Recommended)</option>
+            <option value="Domination: $2,500/mo" style="background:#111;">Domination: $2,500/mo</option>
+            <option value="Decide after launch" style="background:#111;">I'll decide after launch</option>
+          </select>
+        </div>
+
+      </div>
+
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, you approve the scope and investment outlined in this proposal and authorize Surge to begin work upon receipt of payment.</p>
+
+      <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.25rem;padding:1.125rem 2rem;">
+        SIGN &amp; APPROVE PROPOSAL
+      </button>
+    </form>
+
+    <!-- Signed confirmation — hidden until form submitted -->
+    <div id="signed-confirmation" style="display:none;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;">
+      <div style="background:#0a1200;border:1px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.75rem;">
+          <div style="width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:var(--accent);">Proposal Approved</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Sam has been notified. You're all set.</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:0.75rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Signed by</span>
+            <span id="conf-name" style="color:#fff;font-weight:600;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Company</span>
+            <span id="conf-company" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Date</span>
+            <span id="conf-date" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">SEO Retainer</span>
+            <span id="conf-retainer" style="color:var(--accent);font-weight:500;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Project Fee</span>
+            <span style="color:#fff;font-weight:600;">$5,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment CTA — subdued until form signed, then becomes the hero -->
+    <div id="payment-cta" style="text-align:center;opacity:0.35;transition:opacity 0.5s ease,transform 0.5s ease;">
+      <p id="payment-label" style="font-size:0.875rem;color:var(--faint);margin-bottom:1.125rem;">Sign the proposal above to unlock payment.</p>
+      <a id="payment-btn" href="https://invoice.stripe.com/i/acct_1Q7PzhCsRrvmli7r/live_YWNjdF8xUTdQemhDc1Jydm1saTdyLF9VR25odVJrOGQzY09JZ0VXYXF0dVAyOFYzeVRMNW1rLDE2NTc5NTcyOQ0200JplbP7zZ?s=ap" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.25rem;padding:1.375rem 2.5rem;pointer-events:none;width:100%;justify-content:center;">
+        PAY $5,000: START THE BUILD
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p style="font-size:0.75rem;color:var(--faint);margin-top:0.875rem;">Secure payment via Stripe. Work begins within 48 hours of payment confirmation.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     FOOTER
+──────────────────────────────────────────────────────────────────── -->
+<footer style="padding:1.75rem 1.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+  <img src="../../brand/SRG%20JR.svg" alt="Surge" style="height:24px;width:auto;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.75rem;color:var(--faint);">Prepared for Accurate Environmental Services, Inc. · April 2026 · Confidential</span>
+</footer>
+
+
+<!-- ─────────────────────────────────────────────────────────────────
+     SCRIPTS
+──────────────────────────────────────────────────────────────────── -->
+<script>
+  // Entrance animations via Intersection Observer
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Pre-fill today's date
+  const dateInput = document.getElementById('f-date');
+  if (dateInput) {
+    const t  = new Date();
+    const mm = String(t.getMonth() + 1).padStart(2, '0');
+    const dd = String(t.getDate()).padStart(2, '0');
+    dateInput.value = `${t.getFullYear()}-${mm}-${dd}`;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fd       = new FormData(e.target);
+    const name     = fd.get('name')     || '';
+    const company  = fd.get('company')  || '';
+    const date     = fd.get('date')     || '';
+    const retainer = fd.get('retainer') || 'Not selected';
+
+    // Format date for display
+    const dateDisplay = date
+      ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+      : date;
+
+    // 1. Fire notification silently in the background — no new tab, no disruption
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        company,
+        date: dateDisplay,
+        retainer,
+        proposal: 'AccuEnviro Website Redesign + Digital Build',
+        fee: '$5,000',
+      }),
+    }).catch(() => {}); // fail silently — UI should not block on this
+
+    // 2. Fade out the form
+    const form = document.getElementById('proposal-form');
+    form.style.opacity   = '0';
+    form.style.transform = 'translateY(-12px)';
+    setTimeout(() => { form.style.display = 'none'; }, 420);
+
+    // 3. Populate and reveal the signed confirmation card
+    document.getElementById('conf-name').textContent     = name;
+    document.getElementById('conf-company').textContent  = company || 'N/A';
+    document.getElementById('conf-date').textContent     = dateDisplay;
+    document.getElementById('conf-retainer').textContent = retainer || 'Decide after launch';
+
+    const conf = document.getElementById('signed-confirmation');
+    conf.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      conf.style.opacity   = '1';
+      conf.style.transform = 'translateY(0)';
+    }));
+
+    // 4. Unlock and elevate the payment CTA
+    const payBtn   = document.getElementById('payment-btn');
+    const payLabel = document.getElementById('payment-label');
+    const cta      = document.getElementById('payment-cta');
+    setTimeout(() => {
+      cta.style.opacity          = '1';
+      payBtn.style.pointerEvents = 'auto';
+      payLabel.textContent       = "You're approved. One step left — lock in your start date.";
+      payLabel.style.color       = '#d1d5db';
+      payLabel.style.fontWeight  = '500';
+    }, 600);
+  }
+</script>
+
+</body>
+</html>

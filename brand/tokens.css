@@ -1,0 +1,15 @@
+:root {
+  /* Colors */
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-accent: #000000;
+
+  /* Typography */
+  --font-heading: sans-serif;
+  --font-body: sans-serif;
+
+  /* Spacing */
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+}
