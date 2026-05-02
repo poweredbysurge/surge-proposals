@@ -1,0 +1,2855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Report — PDI</title>
+<style>
+:root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --card: #1e293b;
+    --card-border: #334155;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.3);
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --radius: 12px;
+}
+[data-theme="light"] {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --card-border: #e2e8f0;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --accent-glow: rgba(99, 102, 241, 0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Header ── */
+.header {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+    padding: 40px 0 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at center, rgba(99,102,241,0.15) 0%, transparent 70%);
+    animation: hpulse 4s ease-in-out infinite;
+}
+@keyframes hpulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+.header h1 { font-size: 1.85rem; font-weight: 700; color: white; position: relative; }
+.header .subtitle { font-size: 0.9rem; color: #a5b4fc; margin-top: 6px; position: relative; }
+
+/* ── Theme toggle ── */
+.theme-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 100;
+    background: var(--surface); border: 1px solid var(--card-border);
+    border-radius: 50%; width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.2rem; transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.theme-toggle:hover { transform: scale(1.1); }
+
+/* ── Tab nav ── */
+.tab-nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.tab-btn {
+    padding: 14px 26px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.tab-btn:hover { color: var(--text); background: rgba(99,102,241,0.05); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Tab panels ── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadein 0.25s ease; }
+@keyframes fadein { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── Layout ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 36px 24px; }
+
+/* ── Markdown content ── */
+.md-content h1 {
+    font-size: 1.75rem; font-weight: 700; margin: 36px 0 16px;
+    color: var(--text);
+}
+.md-content h2 {
+    font-size: 1.35rem; font-weight: 600; margin: 32px 0 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--card-border);
+    color: var(--text);
+}
+.md-content h3 {
+    font-size: 1.1rem; font-weight: 600; margin: 22px 0 8px;
+    color: var(--accent);
+}
+.md-content h4 {
+    font-size: 1rem; font-weight: 600; margin: 18px 0 6px;
+    color: var(--text-muted);
+}
+.md-content h5, .md-content h6 {
+    font-size: 0.9rem; font-weight: 600; margin: 14px 0 6px;
+    color: var(--text-muted);
+}
+.md-content p { margin: 10px 0; }
+.md-content strong { font-weight: 700; }
+.md-content em { font-style: italic; }
+.md-content code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.85em;
+    background: rgba(99,102,241,0.12);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.md-content pre {
+    background: #0d1117;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+.md-content pre code {
+    background: none; color: #c9d1d9;
+    padding: 0; font-size: 0.875rem; line-height: 1.6;
+}
+.md-content blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 8px 16px;
+    margin: 12px 0;
+    background: rgba(99,102,241,0.07);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+.md-content ul, .md-content ol { padding-left: 24px; margin: 8px 0; }
+.md-content li { margin: 4px 0; }
+.md-content hr {
+    border: none;
+    border-top: 1px solid var(--card-border);
+    margin: 28px 0;
+}
+
+/* ── Tables ── */
+.md-content .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+}
+.md-content table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.md-content th {
+    text-align: left; padding: 10px 14px;
+    background: rgba(99,102,241,0.08);
+    border-bottom: 2px solid var(--card-border);
+    color: var(--text-muted);
+    font-weight: 600; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+.md-content td { padding: 10px 14px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
+.md-content tr:last-child td { border-bottom: none; }
+.md-content tr:hover td { background: rgba(99,102,241,0.03); }
+
+/* ── Badges inline in md (e.g. ✅ ❌ patterns) ── */
+.md-content .missing-file {
+    background: rgba(239,68,68,0.1); border: 1px solid var(--red);
+    border-radius: 8px; padding: 12px 16px; margin: 16px 0;
+    color: var(--text-muted); font-style: italic;
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center; padding: 28px 0;
+    color: var(--text-muted); font-size: 0.8rem;
+    border-top: 1px solid var(--card-border); margin-top: 32px;
+}
+
+@media (max-width: 768px) {
+    .header h1 { font-size: 1.3rem; }
+    .container { padding: 20px 16px; }
+}
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</div>
+
+<div class="header">
+  <div class="container">
+    <h1>SEO Report — PDI</h1>
+    <div class="subtitle">Generated: May 01, 2026</div>
+  </div>
+</div>
+
+<div class="tab-nav">
+<button class="tab-btn active" onclick="switchTab('audit')" id="tab-audit">📊 Full Site Audit</button>
+<button class="tab-btn" onclick="switchTab('action')" id="tab-action">⚡ Action Plan</button>
+<button class="tab-btn" onclick="switchTab('keywords')" id="tab-keywords">🎯 Keyword Analysis</button>
+</div>
+
+<div class="tab-panel active" id="panel-audit"><div class="container"><div class="md-content"><h1 id="pdi-pdistack-com-full-seo-audit-report">PDi (pdistack.com) — Full SEO Audit Report</h1>
+<p><strong>Date:</strong> 2026-05-01</p>
+<p><strong>Auditor:</strong> Surge SEO Pipeline</p>
+<p><strong>Scope:</strong> Full-site audit — technical + content + on-page + schema + performance + AI readiness</p>
+<p><strong>CMS:</strong> Webflow (confirmed via <code>data-wf-domain</code> attribute and <code>website-files.com</code> CDN)</p>
+<p><strong>Last Webflow Publish:</strong> March 12, 2026</p>
+
+<hr>
+
+<h2 id="a-audit-summary">A) Audit Summary</h2>
+
+<ul>
+<li><strong>Overall SEO Health Score:</strong> 28/100 — <strong>Poor</strong></li>
+<li><strong>Business type detected:</strong> B2B SaaS / Meta-DSP / Programmatic AdTech Platform</li>
+<li><strong>Pages audited:</strong> 12 (homepage, 6 product pages, blog index, 3 blog posts, contact)</li>
+<li><strong>Pages returning 404:</strong> /pricing, /features, /aitd, /product, /solutions, /about, /platform</li>
+</ul>
+
+<h3 id="top-3-critical-issues">Top 3 Critical Issues</h3>
+
+<ol>
+<li><strong>Zero meta descriptions on 11 of 12 pages</strong> — Every product page and all blog posts are missing meta descriptions entirely; only the homepage has one. Google is writing its own snippets for 92% of the site.</li>
+<li><strong>Zero canonical tags sitewide</strong> — Not a single <code>&lt;link rel=&quot;canonical&quot;&gt;</code> tag exists on any page. Duplicate-content risk is unmitigated, especially for the blog.</li>
+<li><strong>Zero JSON-LD / structured data sitewide</strong> — No schema markup of any type exists on any page (no Organization, SoftwareApplication, Article, BreadcrumbList, or FAQPage).</li>
+</ol>
+
+<h3 id="top-3-opportunities">Top 3 Opportunities</h3>
+
+<ol>
+<li><strong>Blog exists but is severely under-optimized</strong> — 3 posts with real topical depth (DSP/SSP explainer: ~3,090 words; AI in programmatic: ~2,214 words; AiTD explainer: ~1,280 words), but all have generic title tags (&quot;PDI Website&quot;), no meta descriptions, no schema, and no author attribution.</li>
+<li><strong>Homepage H1 misused</strong> — &quot;Our Services&quot; is the sole H1; the actual brand hero text (&quot;The only platform that merges deep-planning intelligence with an AI-powered programmatic trading desk&quot;) lives in H2 tags and an animated marquee.</li>
+<li><strong>Analytics infrastructure confirmed</strong> — GA4 (<code>G-S8XSK6TJFB</code>) and Floodlight (<code>DC-13585536</code>) are both installed and firing on all pages; fixing the above issues will produce measurable organic gains.</li>
+</ol>
+
+<hr>
+
+<h2 id="b-findings-table">B) Findings Table</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Area</th>
+<th>Severity</th>
+<th>Confidence</th>
+<th>Finding</th>
+<th>Evidence</th>
+<th>Fix</th>
+</tr></thead><tbody>
+<tr>
+<td>On-Page</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>Meta descriptions missing on 11/12 pages</td>
+<td>No <code>&lt;meta name=&quot;description&quot;&gt;</code> in head on any product, blog, or contact page</td>
+<td>Add 140–160 char meta descriptions in Webflow page settings for every page</td>
+</tr>
+<tr>
+<td>On-Page</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>Homepage H1 is &quot;Our Services&quot; — not a brand/product descriptor</td>
+<td><code>&lt;h1&gt;Our Services&lt;/h1&gt;</code> appears mid-page; hero text is in H2 and marquee divs</td>
+<td>Promote hero tagline to H1; demote &quot;Our Services&quot; to H2</td>
+</tr>
+<tr>
+<td>Technical</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>Zero canonical tags across all 12 pages</td>
+<td>No <code>&lt;link rel=&quot;canonical&quot;&gt;</code> in any page head</td>
+<td>Enable canonical tags in Webflow project SEO settings</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>No structured data (JSON-LD) on any page</td>
+<td>Zero <code>&lt;script type=&quot;application/ld+json&quot;&gt;</code> blocks found sitewide</td>
+<td>Add Organization, SoftwareApplication, Article, and BreadcrumbList schema via Webflow embed</td>
+</tr>
+<tr>
+<td>Trust</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>Privacy Policy and Terms of Service are placeholder <code>#</code> links — pages do not exist</td>
+<td><code>href=&quot;#&quot;</code> on all three footer legal links; <code>/privacy-policy</code> and <code>/terms</code> return 404</td>
+<td>Create real Privacy Policy and Terms pages immediately</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>100% of 226 images have empty alt text (<code>alt=&quot;&quot;</code>)</td>
+<td>Every image across all 9 pages has an empty alt attribute in Webflow</td>
+<td>Add descriptive alt text to all images in Webflow CMS asset manager</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>All 3 blog post title tags are &quot;PDI Website&quot; (CMS default)</td>
+<td><code>&lt;title&gt;PDI Website&lt;/title&gt;</code> on <code>/blog/understanding-aitd</code>, <code>/blog/demystifying-dsps-and-ssps-in-programmatic-advertising</code>, <code>/blog/how-ai-is-reshaping-programmatic-advertising</code></td>
+<td>Configure Webflow blog CMS template to use post title in <code>&lt;title&gt;</code> field</td>
+</tr>
+<tr>
+<td>On-Page</td>
+<td>Critical</td>
+<td>Confirmed</td>
+<td>Homepage heading order inverted: H2 before H1</td>
+<td>H2(&quot;Harness&quot;) → H2(&quot;the Power&quot;) → H2(&quot;of AI-Driven Programmatic Advertising&quot;) → then H1(&quot;Our Services&quot;)</td>
+<td>Fix heading order: one H1 at top of hero, H2s for sections below</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>About Us has placeholder team names (John Doe, Jane Smith, Emily Johnson) on live production</td>
+<td><code>/about-us</code> page live on production with fake CEO/CTO/CMO bios</td>
+<td>Replace with real leadership names, titles, and bios</td>
+</tr>
+<tr>
+<td>Technical</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>Sitemap has no <code>&lt;lastmod&gt;</code>, <code>&lt;priority&gt;</code>, or <code>&lt;changefreq&gt;</code></td>
+<td>Raw XML has only bare <code>&lt;loc&gt;</code> entries for all 12 URLs</td>
+<td>Confirm Webflow sitemap auto-populates lastmod on publish; add in sitemap settings</td>
+</tr>
+<tr>
+<td>On-Page</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>All non-homepage title tags are bare stubs (4–16 chars)</td>
+<td>&quot;Blog&quot; (4), &quot;Contact&quot; (7), &quot;About Us&quot; (8), &quot;Primer&quot; (6), &quot;Primer AiTD&quot; (11)</td>
+<td>Rewrite all titles: `[Page Topic: keyword-rich phrase]</td>
+<td>PDi`</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>Core product pages are thin (239–587 words after removing nav/footer)</td>
+<td>primer-reporting: ~239 words, primer-aitd: ~272 words, about-us: ~275 words</td>
+<td>Expand each product page to 600–1,000 words with keyword-rich, use-case-specific copy</td>
+</tr>
+<tr>
+<td>Technical</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>Robots.txt has no User-agent rules — only a Sitemap declaration</td>
+<td>File content: <code>Sitemap: https://pdistack.com/sitemap.xml</code> only</td>
+<td>Add explicit <code>User-agent: * / Allow: /</code>; consider Disallow for any staging/private paths</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>High</td>
+<td>Likely</td>
+<td>Webflow JS payload + dual GTM scripts on every page</td>
+<td>4 Webflow JS chunks + jQuery 3.5.1 (CloudFront) + 2 Google tag scripts = 8 external scripts per page</td>
+<td>Run PageSpeed Insights; assess script defer, remove jQuery if unused</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>PNG-dominant image format (113 PNG vs. 3 WebP on homepage)</td>
+<td>Source HTML format count: PNG=113, WebP=3, JPG=1 on homepage</td>
+<td>Convert all images to WebP in Webflow asset manager</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>High</td>
+<td>Confirmed</td>
+<td>Testimonials anonymized — no company names or real attributions</td>
+<td>Quotes credited to &quot;Agency CEO&quot; and &quot;Agency Account Director&quot; with an anonymization disclaimer</td>
+<td>Add at least some named/attributed case studies or a named client logo section with permission</td>
+</tr>
+<tr>
+<td>Technical</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>OG tags missing on all product pages and blog posts</td>
+<td>Homepage has full OG set; all other pages have 0–1 OG tag</td>
+<td>Set page-level OG title/description/image in Webflow for every page</td>
+</tr>
+<tr>
+<td>On-Page</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>Typo in Primer AiTD H1: &quot;Programatic&quot; (missing &#x27;m&#x27;)</td>
+<td><code>&lt;h1&gt;Moving The Needle In the Programatic Advertising Industry.&lt;/h1&gt;</code></td>
+<td>Fix to &quot;Programmatic&quot;</td>
+</tr>
+<tr>
+<td>On-Page</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>Typo in Understanding AiTD blog post H2: &quot;adverting&quot; (not &quot;advertising&quot;)</td>
+<td><code>&lt;h2&gt;Understanding Primer&#x27;s AiTD: the next evolution in digital adverting&lt;/h2&gt;</code></td>
+<td>Fix to &quot;advertising&quot;</td>
+</tr>
+<tr>
+<td>AI Search</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>&quot;Meta-DSP&quot; defined only in one blog post — absent from all product pages</td>
+<td><code>/blog/understanding-aitd</code> defines meta-DSP; homepage and primer-aitd do not use or define the term</td>
+<td>Add a &quot;What is a Meta-DSP?&quot; definition block to the Primer or AiTD product page</td>
+</tr>
+<tr>
+<td>AI Search</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>No FAQ sections on any page</td>
+<td>No FAQ content found across all 12 pages</td>
+<td>Add FAQ sections to AiTD, Primer, and blog posts; add FAQPage JSON-LD schema</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>Blog has only 3 posts — no publishing cadence evidence</td>
+<td>Sitemap lists 3 blog posts; no dates visible on blog index; Webflow last-publish: March 12, 2026</td>
+<td>Establish monthly content cadence targeting programmatic advertising keyword clusters</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Medium</td>
+<td>Confirmed</td>
+<td>No named authors on blog posts</td>
+<td>Zero author attribution in any blog post HTML</td>
+<td>Add author bylines with author schema markup to all blog posts</td>
+</tr>
+<tr>
+<td>Trust</td>
+<td>Low</td>
+<td>Confirmed</td>
+<td>Only LinkedIn social link in footer</td>
+<td>Single external link to <code>linkedin.com/company/18638821</code>; no Twitter/X, YouTube, or other channels</td>
+<td>Add all active social profiles to footer</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Low</td>
+<td>Hypothesis</td>
+<td>Floodlight DC pixel fires on all pages — adds third-party latency for non-conversion pages</td>
+<td><code>gtag/js?id=DC-13585536</code> loads on every page load</td>
+<td>Assess if Floodlight fires only on conversion pages or all pages; restrict if possible</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2 id="c-category-scores">C) Category Scores</h2>
+
+<h3 id="technical-seo-weight-25">Technical SEO (Weight: 25%)</h3>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals (confirmed):</p>
+<ol>
+<li>Sitemap.xml exists at <code>/sitemap.xml</code> and is declared in robots.txt — crawler can discover all 12 URLs</li>
+<li>Robots.txt exists and has no blocking <code>Disallow</code> rules — all pages are crawlable</li>
+<li>GA4 (<code>G-S8XSK6TJFB</code>) confirmed installed and firing on all audited pages</li>
+<li>No <code>noindex</code> meta tags found on any page — all pages are indexable</li>
+<li>HTTPS confirmed on all pages; static assets served via <code>cdn.prod.website-files.com</code> CDN</li>
+</ol>
+
+<p>Deficit signals (confirmed):</p>
+<ol>
+<li>Zero canonical tags on all 12 pages — duplicate content risk unmitigated</li>
+<li>Sitemap has no <code>&lt;lastmod&gt;</code>, <code>&lt;priority&gt;</code>, or <code>&lt;changefreq&gt;</code> — freshness signals missing</li>
+<li>Robots.txt has no explicit <code>User-agent</code> rules — technically valid but minimal</li>
+<li>Blog post title tags are &quot;PDI Website&quot; — pages are indexable but with wrong titles Google will override</li>
+<li>No hreflang despite multi-city presence (Toronto, Miami, Austin, Vancouver) — minor but worth noting</li>
+</ol>
+
+<p>Penalties applied:</p>
+<ul>
+<li>CRITICAL: Zero canonical tags sitewide (−15 pts)</li>
+<li>WARNING: Blog post title tags are generic CMS defaults (−5 pts)</li>
+</ul>
+
+<p>base_score = (5 positives / 10 total signals) × 100 = 50</p>
+<p>After penalties: 50 − 15 − 5 = <strong>30/100</strong></p>
+
+<p><strong>Justification:</strong> The site has basic technical hygiene (sitemap, robots.txt, GA4, HTTPS, no noindex) but is critically exposed on canonical tags and the blog post title tag misconfiguration — both of which directly impair Google&#x27;s ability to correctly index and rank site content.</p>
+
+<p><strong>Score: 30/100</strong></p>
+
+<hr>
+
+<h3 id="content-quality-weight-20">Content Quality (Weight: 20%)</h3>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals (confirmed):</p>
+<ol>
+<li>Two blog posts have substantive length and real technical depth: DSP/SSP explainer (~3,090 words), AI in programmatic (~2,214 words), AiTD explainer (~1,280 words)</li>
+<li>Homepage includes two real customer testimonials with specific, industry-relevant quotes (even if anonymized)</li>
+<li>Performance claims with specifics: 3X faster, 40% more efficient, 14+ DSPs, 98% on-target delivery, Nielsen cited as measurement source</li>
+<li>Physical address confirmed in footer (Toronto HQ + Miami, Austin, Vancouver offices)</li>
+<li>Contact email <code>info@primedatalytics.com</code> consistent across pages; Google Maps link present</li>
+</ol>
+
+<p>Deficit signals (confirmed):</p>
+<ol>
+<li>About Us page shows placeholder team names (John Doe, Jane Smith, Emily Johnson) on live production — zero named expertise</li>
+<li>All product pages are thin (239–587 words) — insufficient for competitive B2B SaaS keyword ranking</li>
+<li>No named authors on any blog post — all content is unattributed</li>
+<li>No case studies with named clients, attributed results, or verifiable outcomes</li>
+<li>Testimonials anonymized with an active disclaimer noting anonymization — reduces trust signal</li>
+</ol>
+
+<p>Penalties applied:</p>
+<ul>
+<li>CRITICAL: Placeholder leadership names on live production About Us page (−15 pts)</li>
+<li>WARNING: Zero named authorship across blog and product pages (−5 pts)</li>
+</ul>
+
+<p>base_score = (5 / 10) × 100 = 50</p>
+<p>After penalties: 50 − 15 − 5 = <strong>30/100</strong></p>
+
+<p><strong>Justification:</strong> The blog has genuinely useful technical content that could perform for programmatic advertising informational queries, but the About Us page undermines every E-E-A-T signal by presenting fake team members, and the absence of authorship, attributed case studies, and thin product pages prevents competitive ranking for high-intent B2B buyer queries.</p>
+
+<p><strong>Score: 30/100</strong></p>
+
+<hr>
+
+<h3 id="on-page-seo-weight-15">On-Page SEO (Weight: 15%)</h3>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals (confirmed):</p>
+<ol>
+<li>Homepage has a meta description set (103 chars) — only page, but at least one exists</li>
+<li>OG tags fully configured on homepage (og:title, og:description, og:image, og:type)</li>
+<li>Twitter card (<code>summary_large_image</code>) present on homepage</li>
+<li>H1 count is exactly 1 on all product pages (correct quantity even if homepage H1 content is wrong)</li>
+<li>Blog post H1s match the post titles (correct pattern for blog CMS pages)</li>
+</ol>
+
+<p>Deficit signals (confirmed):</p>
+<ol>
+<li>11 of 12 pages have no meta description — Google writes its own snippets for 92% of the site</li>
+<li>All non-homepage title tags are bare stubs (4–16 chars) with no keyword targeting</li>
+<li>Homepage H1 is &quot;Our Services&quot; — the value prop hero text is in H2 tags and an animated div (heading hierarchy inverted)</li>
+<li>Homepage H2 is split across 3 separate tags: &quot;Harness&quot; / &quot;the Power&quot; / &quot;of AI-Driven Programmatic Advertising&quot; — fragments the keyword phrase</li>
+<li>Two confirmed typos in heading tags: &quot;Programatic&quot; (AiTD H1) and &quot;adverting&quot; (blog H2)</li>
+</ol>
+
+<p>Penalties applied:</p>
+<ul>
+<li>CRITICAL: 11/12 pages missing meta description (−15 pts)</li>
+<li>WARNING: Homepage heading hierarchy structurally inverted (−5 pts)</li>
+</ul>
+
+<p>base_score = (5 / 10) × 100 = 50</p>
+<p>After penalties: 50 − 15 − 5 = <strong>30/100</strong></p>
+
+<p><strong>Justification:</strong> Only the homepage has meaningful on-page configuration; every other page is effectively unoptimized, with bare title tags, absent meta descriptions, structural heading inversions, and typos in H1 tags — all of which suppress keyword relevance signals and click-through rates.</p>
+
+<p><strong>Score: 30/100</strong></p>
+
+<hr>
+
+<h3 id="schema-structured-data-weight-15">Schema / Structured Data (Weight: 15%)</h3>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals:</p>
+<ol>
+<li>OG <code>type=&quot;website&quot;</code> present on homepage — basic social graph signal</li>
+<li>Twitter card <code>summary_large_image</code> on homepage — minimal social sharing structure</li>
+</ol>
+
+<p>Deficit signals (confirmed):</p>
+<ol>
+<li>Zero JSON-LD schema blocks found on any of the 12 pages</li>
+<li>No Organization schema — Google cannot confirm brand identity, address, or social profiles via structured data</li>
+<li>No SoftwareApplication schema — Primer/AiTD is not described as software to search engines</li>
+<li>No Article/BlogPosting schema on any blog post — posts ineligible for rich results</li>
+<li>No BreadcrumbList, FAQPage, or any other schema type anywhere on the site</li>
+</ol>
+
+<p>Penalties applied:</p>
+<ul>
+<li>CRITICAL: Complete absence of all schema markup across entire site (−15 pts)</li>
+</ul>
+
+<p>base_score = (2 / 7) × 100 = 29</p>
+<p>After penalties: 29 − 15 = 14 → floored at <strong>15/100</strong></p>
+
+<p><strong>Justification:</strong> This is a zero baseline for structured data — no schema of any kind exists on the site; this prevents rich results for blog posts, removes the Organization knowledge graph signal, and ensures the site cannot be cited by AI systems with structured product definitions.</p>
+
+<p><strong>Score: 15/100</strong></p>
+
+<hr>
+
+<h3 id="performance-core-web-vitals-weight-10">Performance / Core Web Vitals (Weight: 10%)</h3>
+
+<p><strong>Note: Signal-based assessment only — no Lighthouse or PageSpeed Insights run was performed. PageSpeed Insights run is required to confirm actual CWV scores.</strong></p>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals:</p>
+<ol>
+<li>Lazy loading implemented on most images (confirmed: 15/36 on homepage, 46/60 on Primer page)</li>
+<li>Single bundled CSS stylesheet per page — Webflow compiles to one CSS file</li>
+<li>Webflow CDN (<code>cdn.prod.website-files.com</code>) handles asset delivery — global CDN coverage</li>
+<li>Some WebP format images confirmed (3 on homepage) — partial optimization present</li>
+</ol>
+
+<p>Deficit signals:</p>
+<ol>
+<li>4 Webflow JS chunk files load on every page — render-blocking potential for LCP</li>
+<li>jQuery 3.5.1 loaded from CloudFront external dependency on every page</li>
+<li>2 Google tag scripts (GA4 + Floodlight DC) fire on every page load — third-party latency</li>
+<li>PNG-dominant image format (113 PNG vs. 3 WebP on homepage) — significant file size overhead</li>
+<li>Homepage HTML payload is 72KB; Primer page is 53KB — Webflow runtime adds additional weight</li>
+</ol>
+
+<p><strong>Assessment: Hypothesis — CWV likely needs work.</strong> Webflow JS-heavy architecture + PNG image dominance + dual analytics pixels = high probability of LCP issues (target: &lt;2.5s) and potential INP issues with Webflow&#x27;s interaction model.</p>
+
+<p>base_score = (4 / 9) × 100 = 44</p>
+<p>Adjusted for uncertainty (cannot penalize without confirmed data): <strong>40/100</strong></p>
+
+<p><strong>Justification:</strong> Lazy loading and CDN delivery are genuine positives, but the Webflow JS runtime, PNG image dominance, jQuery, and dual analytics pixels represent a high-probability CWV risk — a PageSpeed Insights run on the homepage, /primer, and /primer-aitd is required before any score above 40 can be justified.</p>
+
+<p><strong>Score: 40/100</strong></p>
+
+<hr>
+
+<h3 id="images-weight-10">Images (Weight: 10%)</h3>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals:</p>
+<ol>
+<li>All 226 images have an <code>alt</code> attribute present (Webflow inserts <code>alt=&quot;&quot;</code> by default — attribute exists, just empty)</li>
+<li>Images served from CDN (<code>cdn.prod.website-files.com</code>) — delivery is optimized</li>
+<li>Lazy loading implemented on a majority of images across pages</li>
+<li>Some WebP format usage confirmed (partial Webflow image optimization active)</li>
+</ol>
+
+<p>Deficit signals (confirmed):</p>
+<ol>
+<li>226 of 226 images (100%) have <code>alt=&quot;&quot;</code> — empty, not descriptive; zero keyword signal, fails accessibility (WCAG 2.1)</li>
+<li>PNG format dominates (113 PNG on homepage) — significant file size vs. WebP</li>
+<li>Webflow CDN image filenames are often UUID hashes — no keyword signal in file names</li>
+<li>60 images on the Primer page alone — the highest concentration of empty-alt images</li>
+<li>No evidence of explicit <code>width</code>/<code>height</code> attributes to prevent Cumulative Layout Shift (CLS)</li>
+</ol>
+
+<p>Penalties applied:</p>
+<ul>
+<li>CRITICAL: 100% of images have empty alt text (−15 pts)</li>
+</ul>
+
+<p>base_score = (4 / 9) × 100 = 44</p>
+<p>After penalties: 44 − 15 = <strong>29/100</strong></p>
+
+<p><strong>Justification:</strong> Every single image on the site fails at the most basic SEO and accessibility requirement — descriptive alt text — despite the alt attribute being present; this is a systematic Webflow configuration issue requiring a bulk-update across all assets in the media library.</p>
+
+<p><strong>Score: 29/100</strong></p>
+
+<hr>
+
+<h3 id="ai-search-readiness-geo-weight-5">AI Search Readiness / GEO (Weight: 5%)</h3>
+
+<p><strong>Chain-of-thought scoring:</strong></p>
+
+<p>Positive signals (confirmed):</p>
+<ol>
+<li>&quot;Meta-DSP&quot; is clearly defined in the AiTD blog post with enough context for LLM citation: <em>&quot;Primer&#x27;s AiTD...leveraging custom A.I./machine learning to deploy campaigns through our unique meta-DSP software&quot;</em> and a dedicated &quot;What is a meta-DSP?&quot; section</li>
+<li>AiTD blog post has substantive technical depth an AI can excerpt for product explainer queries</li>
+<li>Physical address, email, and company name are consistently present in all pages&#x27; footers — anchor signals for local/brand AI queries</li>
+<li>Performance statistics (3X faster, 40% more efficient, 14+ DSPs, 98% on-target) are stated plainly on homepage — quotable claims for AI overviews</li>
+<li>&quot;AiTD Powered Meta DSP&quot; appears in the global footer CTA on all pages — increases term repetition sitewide</li>
+</ol>
+
+<p>Deficit signals (confirmed):</p>
+<ol>
+<li>No FAQ sections on any page — FAQ format is the highest-yield structure for AI Overview and featured snippet capture</li>
+<li>&quot;Meta-DSP&quot; is not defined on any product or homepage — the definition only lives in a blog post, making it harder for AI to associate the term with the brand homepage</li>
+<li>No Organization or SoftwareApplication schema — no structured data anchor for AI knowledge graph</li>
+<li>No answer-first paragraph format on product pages — all lead with marketing taglines, not informational definitions</li>
+<li>&quot;NoraAI&quot; not mentioned anywhere on the site — if this is a product differentiator referenced in the ICP, it has zero web presence</li>
+</ol>
+
+<p>Penalties applied:</p>
+<ul>
+<li>WARNING: Primary category term (&quot;meta-DSP&quot;) absent from homepage and product pages (−5 pts)</li>
+</ul>
+
+<p>base_score = (5 / 10) × 100 = 50</p>
+<p>After penalties: 50 − 5 = <strong>45/100</strong></p>
+
+<p><strong>Justification:</strong> The AiTD explainer blog post is the site&#x27;s best AI-readiness asset, but the absence of FAQ sections, answer-first product page copy, and any structured data means the site is not structured to be cited by AI systems for its primary category queries — a significant gap for a product marketing itself as an AI platform.</p>
+
+<p><strong>Score: 45/100</strong></p>
+
+<hr>
+
+<h2 id="d-overall-score-calculation">D) Overall Score Calculation</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Category</th>
+<th>Weight</th>
+<th>Raw Score</th>
+<th>Weighted Score</th>
+</tr></thead><tbody>
+<tr>
+<td>Technical SEO</td>
+<td>25%</td>
+<td>30/100</td>
+<td>7.50</td>
+</tr>
+<tr>
+<td>Content Quality</td>
+<td>20%</td>
+<td>30/100</td>
+<td>6.00</td>
+</tr>
+<tr>
+<td>On-Page SEO</td>
+<td>15%</td>
+<td>30/100</td>
+<td>4.50</td>
+</tr>
+<tr>
+<td>Schema / Structured Data</td>
+<td>15%</td>
+<td>15/100</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td>Performance / CWV</td>
+<td>10%</td>
+<td>40/100</td>
+<td>4.00</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>10%</td>
+<td>29/100</td>
+<td>2.90</td>
+</tr>
+<tr>
+<td>AI Search Readiness</td>
+<td>5%</td>
+<td>45/100</td>
+<td>2.25</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>100%</strong></td>
+<td>—</td>
+<td><strong>29.4 / 100</strong></td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Overall SEO Health Score: 28/100 — Poor</strong></p>
+
+<p>Score bands: 0–30 = Poor | 31–55 = Fair | 56–75 = Good | 76–100 = Strong</p>
+
+<hr>
+
+<h2 id="e-detailed-page-by-page-findings">E) Detailed Page-by-Page Findings</h2>
+
+<h3 id="page-1-homepage-https-pdistack-com">Page 1: Homepage — https://pdistack.com</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td>`PDi \</td>
+<td>AI Adtech like you&#x27;ve never seen` (45 chars)</td>
+<td>Acceptable length; &quot;AI Adtech&quot; is vague — missing category keywords (&quot;programmatic,&quot; &quot;meta-DSP,&quot; &quot;trading desk&quot;)</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td><code>PDi is the expert in AI driven AdTech. Click here to see how our AI can beat your goals by 30% or more!</code> (103 chars)</td>
+<td>Only page with a meta desc; &quot;Click here&quot; is a weak CTA; missing buyer-intent keywords</td>
+</tr>
+<tr>
+<td>Canonical</td>
+<td>NOT FOUND</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Our Services&quot;</td>
+<td>Wrong — section label, not brand/product descriptor</td>
+</tr>
+<tr>
+<td>Hero text (not H1)</td>
+<td>&quot;The only platform that merges deep-planning intelligence with an AI-powered programmatic trading desk&quot;</td>
+<td>This value prop lives in a marquee animation div, not a heading</td>
+</tr>
+<tr>
+<td>H2 (split)</td>
+<td>&quot;Harness&quot; / &quot;the Power&quot; / &quot;of AI-Driven Programmatic Advertising&quot; (3 separate H2s)</td>
+<td>Fragmented — entire phrase should be one heading at minimum</td>
+</tr>
+<tr>
+<td>H2 (duplicate)</td>
+<td>&quot;harness the power of A.I Driven Programmatic Advertising&quot;</td>
+<td>Near-duplicate H2 of the above; inconsistent capitalization and spelling</td>
+</tr>
+<tr>
+<td>JSON-LD</td>
+<td>NONE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>OG Tags</td>
+<td>Full set: og:title, og:description, og:image, og:type</td>
+<td>Only page with complete OG configuration</td>
+</tr>
+<tr>
+<td>Twitter Card</td>
+<td>summary_large_image</td>
+<td>Present</td>
+</tr>
+<tr>
+<td>GA4</td>
+<td>G-S8XSK6TJFB confirmed</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>36 total, 36 empty alt</td>
+<td>100% failure</td>
+</tr>
+<tr>
+<td>Social links</td>
+<td>LinkedIn only</td>
+<td>Single external social link</td>
+</tr>
+<tr>
+<td>Legal links</td>
+<td>Privacy Policy → <code>#</code>, Terms → <code>#</code>, Cookies → <code>#</code></td>
+<td>Placeholders — no real pages</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-2-about-us-https-pdistack-com-about-us">Page 2: About Us — https://pdistack.com/about-us</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>About Us</code> (8 chars)</td>
+<td>Non-descriptive, no keywords</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Your Engine for Smarter Advertising&quot;</td>
+<td>Creative but no category keywords</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>&quot;Our team&quot; / &quot;Stuck in Siloes: The Challenges of an Outdated Industry&quot; / &quot;Unlock Your Advertising Potential&quot;</td>
+<td>Middle H2 has genuine pain-point SEO value</td>
+</tr>
+<tr>
+<td>Team section</td>
+<td>CEO: John Doe, CTO: Jane Smith, CMO: Emily Johnson</td>
+<td>CRITICAL: Placeholder names on live production</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>~275 words</td>
+<td>Thin</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>19, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-3-primer-platform-overview-https-pdistack-com-primer">Page 3: Primer (Platform Overview) — https://pdistack.com/primer</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Primer</code> (6 chars)</td>
+<td>Non-descriptive</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Automate, Optimize &amp; Scale&quot;</td>
+<td>Vague; no product/category keywords</td>
+</tr>
+<tr>
+<td>Content depth</td>
+<td>~558 words</td>
+<td>Thin for primary product page</td>
+</tr>
+<tr>
+<td>Notable content</td>
+<td>&quot;18+ data providers,&quot; &quot;end-to-end media partner,&quot; &quot;Data Lake + Planner + AiTD + Reporting&quot;</td>
+<td>Good feature descriptions; not structured for SEO</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>60, all empty alt</td>
+<td>Highest image count of any page</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-4-primer-aitd-https-pdistack-com-primer-aitd">Page 4: Primer AiTD — https://pdistack.com/primer-aitd</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Primer AiTD</code> (11 chars)</td>
+<td>Non-descriptive; &quot;AiTD&quot; is brand jargon, not a search term</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Moving The Needle In the <strong>Programatic</strong> Advertising Industry.&quot;</td>
+<td>TYPO: &quot;Programatic&quot; should be &quot;Programmatic&quot;</td>
+</tr>
+<tr>
+<td>Content depth</td>
+<td>~272 words</td>
+<td>Very thin for the primary revenue product page</td>
+</tr>
+<tr>
+<td>DSP integrations</td>
+<td>Not named individually</td>
+<td>Opportunity: naming The Trade Desk, DV360, etc. adds keyword surface area</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>19, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-5-primer-data-lake-https-pdistack-com-primer-data-lake">Page 5: Primer Data Lake — https://pdistack.com/primer-data-lake</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Primer Data Lake</code> (16 chars)</td>
+<td>Acceptable length; missing brand keyword</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Make a splash with smarter data.&quot;</td>
+<td>Creative; no keywords</td>
+</tr>
+<tr>
+<td>H2s</td>
+<td>&quot;Cookieless Insights,&quot; &quot;Unified &amp; Scalable Data Infrastructure,&quot; &quot;Future-Proofing for the Next Era&quot;</td>
+<td>Strong topic signals — &quot;cookieless,&quot; &quot;first party data&quot; are searchable</td>
+</tr>
+<tr>
+<td>Content depth</td>
+<td>~408 words</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>18, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-6-primer-planning-https-pdistack-com-primer-planning">Page 6: Primer Planning — https://pdistack.com/primer-planning</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Primer Planning</code> (15 chars)</td>
+<td>Acceptable length; missing keywords</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Craft data-driven strategies&quot;</td>
+<td>No category keywords</td>
+</tr>
+<tr>
+<td>Content depth</td>
+<td>~310 words</td>
+<td>Thin</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>22, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-7-primer-reporting-https-pdistack-com-primer-reporting">Page 7: Primer Reporting — https://pdistack.com/primer-reporting</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Primer Reporting</code> (16 chars)</td>
+<td>Acceptable length</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Unlock Real-Time Insights with Precision Reporting&quot;</td>
+<td>Better than other pages — contains relevant keywords</td>
+</tr>
+<tr>
+<td>Content depth</td>
+<td>~239 words</td>
+<td>Thinnest product page on the site</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>17, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-8-blog-index-https-pdistack-com-blog">Page 8: Blog Index — https://pdistack.com/blog</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Blog</code> (4 chars)</td>
+<td>Completely non-descriptive</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Insights on Programmatic Advertising&quot;</td>
+<td>Good — keyword-relevant, correct usage</td>
+</tr>
+<tr>
+<td>Posts visible</td>
+<td>3 posts</td>
+<td>Very thin content library</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>16, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="blog-post-1-understanding-aitd-https-pdistack-com-blog-understanding-aitd">Blog Post 1: Understanding AiTD — https://pdistack.com/blog/understanding-aitd</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>PDI Website</code> (11 chars)</td>
+<td>CRITICAL: Generic CMS default — not the post title</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Understanding Primer&#x27;s AiTD: the next evolution in digital advertising&quot;</td>
+<td>Good — should become the <code>&lt;title&gt;</code> tag</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>&quot;Understanding Primer&#x27;s AiTD: the next evolution in digital <strong>adverting</strong>&quot;</td>
+<td>TYPO: &quot;adverting&quot; should be &quot;advertising&quot;</td>
+</tr>
+<tr>
+<td>Word count</td>
+<td>~1,280 words</td>
+<td>Adequate branded explainer</td>
+</tr>
+<tr>
+<td>Meta-DSP</td>
+<td>Defined: &quot;What is a meta-DSP?&quot; section present</td>
+<td>Best content asset on site for category definition</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>NONE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>5, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="blog-post-2-demystifying-dsps-and-ssps-https-pdistack-com-blog-demystifying-dsps-and-ssps-in-programmatic-advertising">Blog Post 2: Demystifying DSPs and SSPs — https://pdistack.com/blog/demystifying-dsps-and-ssps-in-programmatic-advertising</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>PDI Website</code> (11 chars)</td>
+<td>CRITICAL: Generic CMS default</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Demystifying DSPs and SSPs in Programmatic Advertising&quot;</td>
+<td>Strong — exact-match search query; should be title tag</td>
+</tr>
+<tr>
+<td>Word count</td>
+<td>~3,090 words</td>
+<td>Strongest content on the site</td>
+</tr>
+<tr>
+<td>References</td>
+<td>The Trade Desk mentioned by name</td>
+<td>Adds topical authority signal</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>NONE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>5, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="blog-post-3-how-ai-is-reshaping-programmatic-https-pdistack-com-blog-how-ai-is-reshaping-programmatic-advertising">Blog Post 3: How AI is Reshaping Programmatic — https://pdistack.com/blog/how-ai-is-reshaping-programmatic-advertising</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>PDI Website</code> (11 chars)</td>
+<td>CRITICAL: Generic CMS default</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;How AI is Reshaping Programmatic Advertising&quot;</td>
+<td>Strong keyword-rich H1</td>
+</tr>
+<tr>
+<td>Word count</td>
+<td>~2,214 words</td>
+<td>Good length</td>
+</tr>
+<tr>
+<td>External citations</td>
+<td>adgully.com, digiday.com, redresscompliance.com</td>
+<td>Positive E-E-A-T signal</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>NONE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>5, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3 id="page-9-contact-https-pdistack-com-contact">Page 9: Contact — https://pdistack.com/contact</h3>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Element</th>
+<th>Value</th>
+<th>Assessment</th>
+</tr></thead><tbody>
+<tr>
+<td>Title</td>
+<td><code>Contact</code> (7 chars)</td>
+<td>Non-descriptive</td>
+</tr>
+<tr>
+<td>Meta Description</td>
+<td>MISSING</td>
+<td>—</td>
+</tr>
+<tr>
+<td>H1</td>
+<td>&quot;Get in Touch&quot;</td>
+<td>Generic</td>
+</tr>
+<tr>
+<td>Form</td>
+<td>Full contact form with Company Type dropdown (Agency, Brand, Reseller, Partner)</td>
+<td>Good ICP qualification signal</td>
+</tr>
+<tr>
+<td>Address consistency</td>
+<td>70 University Ave., Suite 1200, Toronto, Ontario M5J 2M4</td>
+<td>Matches homepage footer</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>19, all empty alt</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2 id="f-crawlability-indexability-summary">F) Crawlability &amp; Indexability Summary</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Check</th>
+<th>Status</th>
+<th>Detail</th>
+</tr></thead><tbody>
+<tr>
+<td>robots.txt</td>
+<td>EXISTS — minimal</td>
+<td>Only <code>Sitemap: https://pdistack.com/sitemap.xml</code>; no User-agent rules</td>
+</tr>
+<tr>
+<td>sitemap.xml</td>
+<td>EXISTS — 12 URLs</td>
+<td>No <code>&lt;lastmod&gt;</code>, <code>&lt;priority&gt;</code>, or <code>&lt;changefreq&gt;</code>; all live pages appear included</td>
+</tr>
+<tr>
+<td>sitemap_index.xml</td>
+<td>404</td>
+<td>Not present; single sitemap is appropriate at this scale</td>
+</tr>
+<tr>
+<td>Canonical tags</td>
+<td>NONE</td>
+<td>Zero <code>&lt;link rel=&quot;canonical&quot;&gt;</code> on any of 12 pages</td>
+</tr>
+<tr>
+<td>noindex tags</td>
+<td>NONE</td>
+<td>All pages are indexable</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>Confirmed</td>
+<td>All pages serve over HTTPS</td>
+</tr>
+<tr>
+<td>Gated pages / login wall</td>
+<td>NONE DETECTED</td>
+<td>No login-gated product portal found in HTML or navigation</td>
+</tr>
+<tr>
+<td>Privacy Policy page</td>
+<td>404</td>
+<td>Footer link is <code>href=&quot;#&quot;</code> placeholder</td>
+</tr>
+<tr>
+<td>Terms of Service page</td>
+<td>404</td>
+<td>Footer link is <code>href=&quot;#&quot;</code> placeholder</td>
+</tr>
+<tr>
+<td>Cookie Settings</td>
+<td>404 / placeholder</td>
+<td>Footer link is <code>href=&quot;#&quot;</code></td>
+</tr>
+<tr>
+<td>404 pages</td>
+<td>/pricing, /features, /aitd, /product, /solutions, /about, /platform</td>
+<td>These return Webflow&#x27;s 404 page — confirmed inaccessible</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2 id="g-unknowns-required-follow-ups">G) Unknowns &amp; Required Follow-ups</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Check</th>
+<th>What Is Unknown</th>
+<th>How to Verify</th>
+</tr></thead><tbody>
+<tr>
+<td>Core Web Vitals (LCP, INP, CLS)</td>
+<td>Actual scores not available — signal-based estimate only</td>
+<td>Run PageSpeed Insights on <code>/</code>, <code>/primer</code>, <code>/primer-aitd</code>; check GSC CWV report</td>
+</tr>
+<tr>
+<td>CrUX real-user data</td>
+<td>No Chrome User Experience Report data assessed</td>
+<td>Google Search Console → Core Web Vitals report</td>
+</tr>
+<tr>
+<td>GA4 event/conversion configuration</td>
+<td>GA4 fires but goals, conversions, and audience definitions unverified</td>
+<td>Access GA4 property; review Events and Conversions setup</td>
+</tr>
+<tr>
+<td>Google Search Console data</td>
+<td>Impressions, clicks, positions, crawl errors, manual actions unknown</td>
+<td>Request GSC access; check Index Coverage and Performance reports</td>
+</tr>
+<tr>
+<td>Actual Google index status</td>
+<td>All pages confirmed crawlable; actual indexation unverified</td>
+<td><code>site:pdistack.com</code> in Google Search; GSC Index Coverage</td>
+</tr>
+<tr>
+<td>Backlink profile</td>
+<td>No external link analysis performed</td>
+<td>Run Ahrefs or Semrush backlink audit for pdistack.com</td>
+</tr>
+<tr>
+<td>Keyword rankings</td>
+<td>No ranking data available</td>
+<td>Set up Semrush or Ahrefs position tracking for target keyword list</td>
+</tr>
+<tr>
+<td>Floodlight tag configuration</td>
+<td>DC-13585536 fires everywhere; conversion activities unknown</td>
+<td>Audit in Google Campaign Manager 360</td>
+</tr>
+<tr>
+<td>Cookie consent / GDPR compliance</td>
+<td>&quot;Cookies Settings&quot; link is <code>href=&quot;#&quot;</code>; no cookie banner observed in static HTML</td>
+<td>Test interactively in browser with cleared cookies; verify GDPR/CCPA compliance</td>
+</tr>
+<tr>
+<td>Image file sizes</td>
+<td>CDN-served; actual KB sizes not accessible from HTML</td>
+<td>PageSpeed Insights waterfall or Chrome DevTools Network tab</td>
+</tr>
+<tr>
+<td>Mobile rendering quality</td>
+<td>Webflow is responsive but mobile UX not tested</td>
+<td>Chrome DevTools mobile emulation; BrowserStack</td>
+</tr>
+<tr>
+<td>&quot;NoraAI&quot; / Nora product</td>
+<td>Referenced in client ICP brief but zero mentions found on site</td>
+<td>Confirm with client whether NoraAI is a current product feature that should appear on site</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<p><em>Audit completed: 2026-05-01 | Surge SEO Pipeline | pdistack.com</em></p>
+</div></div></div>
+
+<div class="tab-panel" id="panel-action"><div class="container"><div class="md-content"><h1 id="pdi-pdistack-com-seo-action-plan">PDi (pdistack.com) — SEO Action Plan</h1>
+<p><strong>Date:</strong> 2026-05-01</p>
+<p><strong>Based on:</strong> Full SEO Audit (FULL-AUDIT-REPORT.md)</p>
+<p><strong>Overall Score at audit:</strong> 28/100 — Poor</p>
+<p><strong>Target score (90 days):</strong> 55–65/100 — Fair/Good</p>
+
+<hr>
+
+<h2 id="immediate-blockers-fix-this-week">Immediate Blockers — Fix This Week</h2>
+
+<p>These issues are either harming indexability right now, creating legal/compliance risk, or are embarrassing on a live production site.</p>
+
+<h3 id="1-replace-placeholder-team-names-on-about-us-page">1. Replace placeholder team names on About Us page</h3>
+<ul>
+<li><strong>The issue:</strong> CEO &quot;John Doe,&quot; CTO &quot;Jane Smith,&quot; CMO &quot;Emily Johnson&quot; are live on pdistack.com/about-us</li>
+<li><strong>Who:</strong> Client (PDi) provides real names/bios; Surge updates in Webflow</li>
+<li><strong>Fix:</strong> Update the three leadership cards with real names, titles, LinkedIn URLs, and 2–3 sentence bios in Webflow CMS</li>
+<li><strong>Impact:</strong> Eliminates the single biggest E-E-A-T red flag on the site; also removes a sales-credibility blocker</li>
+</ul>
+
+<h3 id="2-fix-blog-post-title-tags-all-3-show-pdi-website">2. Fix blog post title tags (all 3 show &quot;PDI Website&quot;)</h3>
+<ul>
+<li><strong>The issue:</strong> All three blog posts have <code>&lt;title&gt;PDI Website&lt;/title&gt;</code> — Google is indexing them under the wrong title</li>
+<li><strong>Who:</strong> Webflow configuration (template/collection settings)</li>
+<li><strong>Fix:</strong> In Webflow, open the Blog Post Collection Template → Page Settings → Title Field → bind to the CMS &quot;Name&quot; or &quot;Title&quot; field. Republish.</li>
+<li><strong>Impact:</strong> Immediate improvement in SERP click-through rate; Google re-crawls and updates titles within days</li>
+</ul>
+
+<h3 id="3-create-privacy-policy-and-terms-of-service-pages">3. Create Privacy Policy and Terms of Service pages</h3>
+<ul>
+<li><strong>The issue:</strong> Footer links go to <code>href=&quot;#&quot;</code> — no real pages exist; <code>/privacy-policy</code> and <code>/terms</code> return 404</li>
+<li><strong>Who:</strong> Client provides legal text (use a generator if needed: Termly, iubenda); Surge implements in Webflow</li>
+<li><strong>Fix:</strong> Create two new Webflow pages: <code>/privacy-policy</code> and <code>/terms</code>; link from footer</li>
+<li><strong>Impact:</strong> Fixes a GDPR/compliance gap; adds E-E-A-T trust signals Google looks for</li>
+</ul>
+
+<h3 id="4-fix-the-two-confirmed-typos-in-heading-tags">4. Fix the two confirmed typos in heading tags</h3>
+<ul>
+<li><strong>The issue:</strong></li>
+<li><code>/primer-aitd</code> H1: &quot;Programatic&quot; → should be &quot;Programmatic&quot;</li>
+<li><code>/blog/understanding-aitd</code> H2: &quot;adverting&quot; → should be &quot;advertising&quot;</li>
+<li><strong>Fix:</strong> Two quick edits in Webflow designer/CMS; republish</li>
+<li><strong>Impact:</strong> Typos in H1s undermine credibility with buyers and weaken keyword matching</li>
+</ul>
+
+<hr>
+
+<h2 id="quick-wins-high-impact-low-effort-week-2-3">Quick Wins — High Impact, Low Effort (Week 2–3)</h2>
+
+<h3 id="5-enable-canonical-tags-in-webflow">5. Enable canonical tags in Webflow</h3>
+<ul>
+<li><strong>Fix:</strong> Webflow Project Settings → SEO → &quot;Canonical Tag&quot; → ensure it is set to self-referencing for all pages</li>
+<li><strong>Time:</strong> 5 minutes + republish</li>
+<li><strong>Impact:</strong> Eliminates duplicate-content risk sitewide; one of the highest-leverage Webflow toggles</li>
+</ul>
+
+<h3 id="6-add-meta-descriptions-to-all-product-pages-and-blog-index">6. Add meta descriptions to all product pages and blog index</h3>
+<ul>
+<li><strong>Fix:</strong> In Webflow, open each page → Page Settings → SEO Description field. Write 140–160 char descriptions for:</li>
+<li>/about-us, /primer, /primer-aitd, /primer-data-lake, /primer-planning, /primer-reporting, /blog, /contact</li>
+<li><strong>Priority descriptions (write these first):</strong></li>
+<li><code>/primer-aitd</code>: Target query — &quot;AI trading desk programmatic advertising&quot; — lead with &quot;14+ DSPs, 40% better performance&quot;</li>
+<li><code>/primer</code>: Target query — &quot;programmatic advertising platform for agencies&quot; — lead with Primer&#x27;s unified workflow</li>
+<li><code>/about-us</code>: Target query — &quot;PDi Prime Datalytics&quot; branded + &quot;programmatic advertising company&quot;</li>
+<li><strong>Time:</strong> 2–3 hours to write all 8</li>
+<li><strong>Impact:</strong> Google stops writing its own snippets; CTR improves within 2–4 weeks after crawl</li>
+</ul>
+
+<h3 id="7-configure-blog-post-cms-to-pull-meta-descriptions-from-post-excerpt-summary-field">7. Configure blog post CMS to pull meta descriptions from post excerpt/summary field</h3>
+<ul>
+<li><strong>Fix:</strong> In Webflow blog CMS template → Page Settings → SEO Description → bind to &quot;Excerpt&quot; or &quot;Summary&quot; CMS field; write excerpt for each of the 3 existing posts</li>
+<li><strong>Time:</strong> 30 minutes setup + 3 × 5 min per post</li>
+<li><strong>Impact:</strong> All future blog posts get meta descriptions automatically</li>
+</ul>
+
+<h3 id="8-fix-homepage-h1-promote-hero-tagline-demote-our-services">8. Fix homepage H1 — promote hero tagline, demote &quot;Our Services&quot;</h3>
+<ul>
+<li><strong>Current:</strong> H1 = &quot;Our Services&quot; (mid-page section label)</li>
+<li><strong>Fix:</strong> In Webflow designer, change the hero text element (currently H2 marquee) to H1; change &quot;Our Services&quot; section label to H2 or a styled div</li>
+<li><strong>Recommended H1 text:</strong> &quot;The AI-Powered Meta-DSP for Agency Programmatic Trading&quot; (or use client&#x27;s preferred brand statement)</li>
+<li><strong>Time:</strong> 30 min including republish and QA</li>
+<li><strong>Impact:</strong> Homepage H1 now carries primary keyword signal for &quot;AI trading desk,&quot; &quot;programmatic advertising platform,&quot; &quot;meta-DSP&quot;</li>
+</ul>
+
+<h3 id="9-add-alt-text-to-the-20-highest-priority-images">9. Add alt text to the 20 highest-priority images</h3>
+<ul>
+<li><strong>Fix (triage approach):</strong> Start with homepage logo, hero image, product screenshots, and any images on the AiTD and Primer pages</li>
+<li><strong>Time:</strong> 1–2 hours for the first pass</li>
+<li><strong>Full fix:</strong> Bulk-update all 226 images across the site (schedule as ongoing cleanup)</li>
+<li><strong>Impact:</strong> Immediate accessibility compliance improvement; image search and keyword signals begin building</li>
+</ul>
+
+<h3 id="10-fix-homepage-h2-fragmentation">10. Fix homepage H2 fragmentation</h3>
+<ul>
+<li><strong>Current:</strong> Three separate H2 tags: &quot;Harness&quot; / &quot;the Power&quot; / &quot;of AI-Driven Programmatic Advertising&quot; — plus a near-duplicate H2 below</li>
+<li><strong>Fix:</strong> Combine into a single H2: &quot;Harness the Power of AI-Driven Programmatic Advertising&quot;; remove the near-duplicate</li>
+<li><strong>Time:</strong> 15 minutes</li>
+<li><strong>Impact:</strong> Consolidates keyword signal into one heading; removes confusion for Googlebot</li>
+</ul>
+
+<hr>
+
+<h2 id="strategic-improvements-1-to-3-months">Strategic Improvements — 1 to 3 Months</h2>
+
+<h3 id="11-implement-json-ld-structured-data-organization-priority-1">11. Implement JSON-LD structured data — Organization (Priority 1)</h3>
+<ul>
+<li><strong>What to add:</strong></li>
+</ul>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Organization&quot;,
+  &quot;name&quot;: &quot;Prime Datalytics (PDi)&quot;,
+  &quot;alternateName&quot;: &quot;PDi&quot;,
+  &quot;url&quot;: &quot;https://pdistack.com&quot;,
+  &quot;logo&quot;: &quot;https://[logo-url]&quot;,
+  &quot;description&quot;: &quot;AI-powered meta-DSP and programmatic trading platform&quot;,
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;streetAddress&quot;: &quot;70 University Ave., Suite 1200&quot;,
+    &quot;addressLocality&quot;: &quot;Toronto&quot;,
+    &quot;addressRegion&quot;: &quot;ON&quot;,
+    &quot;postalCode&quot;: &quot;M5J 2M4&quot;,
+    &quot;addressCountry&quot;: &quot;CA&quot;
+  },
+  &quot;contactPoint&quot;: { &quot;@type&quot;: &quot;ContactPoint&quot;, &quot;email&quot;: &quot;info@primedatalytics.com&quot; },
+  &quot;sameAs&quot;: [&quot;https://www.linkedin.com/company/18638821&quot;]
+}</code></pre>
+<ul>
+<li><strong>Where:</strong> Global site-wide via Webflow Project Settings → Custom Code → Head code</li>
+<li><strong>Time:</strong> 1 hour</li>
+<li><strong>Impact:</strong> Google Knowledge Panel eligibility; AI knowledge graph anchor for brand queries</li>
+</ul>
+
+<h3 id="12-implement-json-ld-softwareapplication-for-aitd-primer">12. Implement JSON-LD — SoftwareApplication for AiTD / Primer</h3>
+<ul>
+<li><strong>What to add:</strong> SoftwareApplication schema on <code>/primer</code> and <code>/primer-aitd</code> pages with applicationCategory, operatingSystem, offers, and review</li>
+<li><strong>Time:</strong> 2 hours</li>
+<li><strong>Impact:</strong> Eligibility for app-style rich results; signals to AI systems that this is a software product</li>
+</ul>
+
+<h3 id="13-implement-json-ld-article-blogposting-on-all-blog-posts">13. Implement JSON-LD — Article/BlogPosting on all blog posts</h3>
+<ul>
+<li><strong>What to add:</strong> BlogPosting schema with headline, datePublished, dateModified, author (Person), publisher (Organization), image, and description</li>
+<li><strong>Note:</strong> Requires adding real author data first (see Item #1 / author bylines)</li>
+<li><strong>Time:</strong> 1 hour to configure Webflow CMS blog template; applies automatically to all posts</li>
+<li><strong>Impact:</strong> Blog posts become eligible for Google News-style rich results; articles can appear in AI Overviews</li>
+</ul>
+
+<h3 id="14-expand-all-product-pages-to-600-1-000-words">14. Expand all product pages to 600–1,000 words</h3>
+<ul>
+<li><strong>Priority order:</strong> /primer-aitd (272 words → 700+), /primer-reporting (239 words → 600+), /about-us (275 words → 600+)</li>
+<li><strong>Content approach:</strong> Add: (a) &quot;How it works&quot; section with 3–4 steps, (b) &quot;Who it&#x27;s for&quot; section naming agency programmatic leads, agency owners, senior traders, (c) &quot;Integrations&quot; section naming specific DSPs supported, (d) one use case or mini case study per page</li>
+<li><strong>Time:</strong> 4–6 hours of copywriting per page</li>
+<li><strong>Impact:</strong> Product pages become competitive for category-level B2B queries</li>
+</ul>
+
+<h3 id="15-add-named-authorship-to-blog-posts-and-future-content">15. Add named authorship to blog posts and future content</h3>
+<ul>
+<li><strong>Fix:</strong> Create an &quot;Authors&quot; collection in Webflow CMS; link blog posts to author profiles with name, title, LinkedIn, headshot, and 2-sentence bio</li>
+<li><strong>Time:</strong> 2 hours setup + 30 min per author profile</li>
+<li><strong>Impact:</strong> E-E-A-T authorship signals; eligible for author schema markup</li>
+</ul>
+
+<h3 id="16-add-faq-sections-to-aitd-primer-and-blog-posts">16. Add FAQ sections to AiTD, Primer, and blog posts</h3>
+<ul>
+<li><strong>Recommended FAQs for /primer-aitd:</strong></li>
+<li>&quot;What is a meta-DSP?&quot;</li>
+<li>&quot;Which DSPs does AiTD connect to?&quot;</li>
+<li>&quot;How is AiTD different from a single-DSP trading desk?&quot;</li>
+<li>&quot;What results can agencies expect from AiTD?&quot;</li>
+<li>&quot;Is there a minimum spend requirement?&quot;</li>
+<li><strong>Format:</strong> Standard accordion or Q&amp;A section with FAQPage JSON-LD</li>
+<li><strong>Time:</strong> 2–3 hours per page</li>
+<li><strong>Impact:</strong> FAQ pages are the #1 format for featured snippets and AI Overviews; directly targets buyer consideration-stage queries</li>
+</ul>
+
+<h3 id="17-add-what-is-a-meta-dsp-definition-to-the-primer-or-aitd-product-page">17. Add &quot;What is a Meta-DSP?&quot; definition to the Primer or AiTD product page</h3>
+<ul>
+<li><strong>Current state:</strong> This definition only exists in the AiTD blog post</li>
+<li><strong>Fix:</strong> Add a short definitional paragraph to <code>/primer-aitd</code> above the fold:</li>
+<li>Example: &quot;A meta-DSP (meta demand-side platform) is a software layer that connects to multiple DSPs via APIs, allowing advertisers to plan, execute, and optimize campaigns across all major programmatic platforms from a single interface — without walled-garden restrictions.&quot;</li>
+<li><strong>Time:</strong> 30 min copy + 30 min Webflow implementation</li>
+<li><strong>Impact:</strong> Homepage and product pages become citeable by AI systems for the &quot;meta-DSP&quot; category term</li>
+</ul>
+
+<h3 id="18-build-a-content-calendar-2-posts-per-month-targeting-high-intent-keywords">18. Build a content calendar — 2 posts per month targeting high-intent keywords</h3>
+<ul>
+<li><strong>Priority clusters from audit findings:</strong></li>
+<li>&quot;programmatic trading desk for agencies&quot; — pillar post</li>
+<li>&quot;cross-DSP campaign management&quot; — feature explainer</li>
+<li>&quot;cookieless audience targeting&quot; — Data Lake tie-in</li>
+<li>&quot;The Trade Desk vs. meta-DSP&quot; — comparison post (high-intent B2B)</li>
+<li>&quot;programmatic advertising campaign optimization&quot; — how-to</li>
+<li><strong>Time:</strong> Ongoing; 4–6 hours per post</li>
+<li><strong>Impact:</strong> Content footprint grows from 3 posts to 20+ posts over 9 months; compounds into organic traffic</li>
+</ul>
+
+<h3 id="19-rewrite-all-page-title-tags-using-the-keyword-rich-format">19. Rewrite all page title tags using the keyword-rich format</h3>
+<ul>
+<li><strong>Target format:</strong> <code>[Primary Keyword — Descriptive Phrase] | PDi</code></li>
+<li><strong>Recommended rewrites:</strong></li>
+<li>Homepage: <code>AI-Powered Meta-DSP for Agencies | PDi | Primer™</code></li>
+<li>/primer-aitd: <code>AI Trading Desk for Programmatic Campaigns | Primer AiTD | PDi</code></li>
+<li>/primer: <code>Programmatic Advertising Platform for Agencies | Primer | PDi</code></li>
+<li>/primer-data-lake: <code>Cookieless First-Party Data Lake for Programmatic | PDi</code></li>
+<li>/primer-planning: <code>AI Media Planning Tool for Agencies | Primer Planning | PDi</code></li>
+<li>/primer-reporting: <code>Programmatic Campaign Reporting Dashboard | Primer | PDi</code></li>
+<li>/about-us: <code>About PDi (Prime Datalytics) | AI AdTech Platform</code></li>
+<li>/blog: <code>Programmatic Advertising Blog | AI AdTech Insights | PDi</code></li>
+<li>/contact: <code>Contact PDi | Book a Call | AI Programmatic Trading Platform</code></li>
+<li><strong>Time:</strong> 2 hours</li>
+<li><strong>Impact:</strong> Every page title becomes a keyword signal; CTR improvement expected within 4–6 weeks</li>
+</ul>
+
+<h3 id="20-run-pagespeed-insights-and-address-top-cwv-issues">20. Run PageSpeed Insights and address top CWV issues</h3>
+<ul>
+<li><strong>Action:</strong> Run <code>pagespeed.web.dev</code> on <code>/</code>, <code>/primer</code>, <code>/primer-aitd</code>; share results with Surge</li>
+<li><strong>Expected issues to find:</strong> LCP from large PNG hero images; INP from Webflow interaction JS; potential TBT from render-blocking scripts</li>
+<li><strong>Common Webflow CWV fixes:</strong> Convert PNG hero to WebP; add width/height to all images; move non-critical scripts to footer; review if jQuery can be removed</li>
+<li><strong>Time:</strong> Audit: 1 hour; fixes: 4–8 hours depending on findings</li>
+</ul>
+
+<hr>
+
+<h2 id="maintenance-backlog">Maintenance / Backlog</h2>
+
+<h3 id="21-update-robots-txt-with-explicit-user-agent-rules">21. Update robots.txt with explicit User-agent rules</h3>
+<ul>
+<li>Add <code>User-agent: * / Allow: /</code> explicitly (even though no Disallow rules exist, explicit is better)</li>
+<li>Consider adding <code>Disallow: /</code> for any staging environment if one exists on the same domain</li>
+</ul>
+
+<h3 id="22-add-social-media-profiles-to-footer-and-link-from-organization-schema">22. Add social media profiles to footer and link from Organization schema</h3>
+<ul>
+<li>Add Twitter/X, YouTube, and any other active profiles to the footer</li>
+<li>Update the Organization JSON-LD <code>sameAs</code> array with all profile URLs</li>
+</ul>
+
+<h3 id="23-add-lastmod-dates-to-sitemap">23. Add <code>&lt;lastmod&gt;</code> dates to sitemap</h3>
+<ul>
+<li>Webflow should auto-populate these on publish; verify in Webflow sitemap settings</li>
+<li>Confirm the sitemap at <code>pdistack.com/sitemap.xml</code> shows <code>&lt;lastmod&gt;</code> dates after next publish</li>
+</ul>
+
+<h3 id="24-build-a-dedicated-case-studies-or-results-page">24. Build a dedicated /case-studies or /results page</h3>
+<ul>
+<li>Even one named case study with a real agency, specific campaign objective, and measurable outcome (with permission) would dramatically improve E-E-A-T</li>
+<li>Format: Challenge → Solution → Result with specific metrics</li>
+</ul>
+
+<h3 id="25-set-up-google-search-console-and-verify-all-12-sitemap-urls-are-indexed">25. Set up Google Search Console and verify all 12 sitemap URLs are indexed</h3>
+<ul>
+<li>Request or verify GSC access for pdistack.com</li>
+<li>Submit sitemap.xml via GSC</li>
+<li>Review Index Coverage report for any Excluded or Discovered — Not Indexed pages</li>
+<li>Set up email alerts for coverage drops</li>
+</ul>
+
+<h3 id="26-image-accessibility-full-sweep">26. Image accessibility full sweep</h3>
+<ul>
+<li>After the quick-win first pass (Item #9), systematically add descriptive alt text to all 226 images</li>
+<li>Use Webflow&#x27;s bulk asset manager to update alt text without touching individual pages where possible</li>
+</ul>
+
+<h3 id="27-cookie-consent-and-legal-compliance-review">27. Cookie consent and legal compliance review</h3>
+<ul>
+<li>Implement a real cookie consent banner (Webflow supports Osano, CookieYes, and similar)</li>
+<li>Create functional <code>/privacy-policy</code> and <code>/terms</code> pages (Item #3 above); also create <code>/cookies</code> if needed for the &quot;Cookies Settings&quot; footer link</li>
+</ul>
+
+<hr>
+
+<h2 id="pipeline-handoff-notes">Pipeline Handoff Notes</h2>
+
+<h3 id="for-the-keywords-step">For the /keywords step:</h3>
+<ul>
+<li><strong>Primary keyword clusters to research:</strong></li>
+</ul>
+<ol>
+<li>&quot;meta-DSP&quot; + &quot;meta demand side platform&quot; — this is PDi&#x27;s category-defining term; find volume and competition</li>
+<li>&quot;AI trading desk&quot; + &quot;AI programmatic trading desk&quot; — core product keywords</li>
+<li>&quot;programmatic advertising platform for agencies&quot; — buyer-intent B2B query</li>
+<li>&quot;cross-DSP campaign management&quot; + &quot;multi-DSP platform&quot; — feature-level queries</li>
+<li>&quot;cookieless audience targeting&quot; + &quot;cookieless data&quot; — Data Lake differentiator</li>
+<li>&quot;programmatic media planning tool&quot; — Planning product angle</li>
+<li>&quot;programmatic campaign reporting dashboard&quot; — Reporting product angle</li>
+<li>&quot;The Trade Desk alternative&quot; + &quot;DV360 alternative&quot; — competitor comparison intent</li>
+</ol>
+<ul>
+<li><strong>Brand terms to include:</strong> &quot;PDi,&quot; &quot;Prime Datalytics,&quot; &quot;Primer platform,&quot; &quot;AiTD,&quot; &quot;Primer AiTD&quot;</li>
+<li><strong>Negative signals from audit:</strong> Avoid pure &quot;AdTech&quot; (too broad); &quot;AI AdTech&quot; is vague and appears in the homepage title — needs refinement</li>
+</ul>
+
+<h3 id="for-the-copy-step">For the /copy step:</h3>
+<ul>
+<li><strong>Pages that most urgently need new copy:</strong></li>
+</ul>
+<ol>
+<li><code>/primer-aitd</code> (272 words, typo in H1, no meta desc) — the primary revenue product page</li>
+<li><code>/about-us</code> (placeholder team names, 275 words) — the biggest trust gap</li>
+<li><code>/primer</code> (558 words but thin; H1 has no keywords) — the platform overview hub</li>
+</ol>
+<ul>
+<li><strong>Key messages to work in:</strong></li>
+<li>&quot;14+ DSPs in one platform&quot; and &quot;40% more efficient&quot; are strong differentiators — use throughout</li>
+<li>&quot;Managed Service Today, Self-Serve Coming IN 2026&quot; — acknowledge the current access model in copy</li>
+<li>&quot;No contracts, no minimums&quot; — this appears on the AiTD page; it&#x27;s a strong sales objection handler worth featuring more prominently</li>
+<li>Nielsen measurement attribution (98% on-target) — cite on all product pages, not just homepage</li>
+<li><strong>Tone notes from audit:</strong> Current copy is B2B-appropriate but sometimes generic (&quot;Our dedicated operations team provides end-to-end support&quot;). Buyer is an agency programmatic lead or owner — speak to their pains (fragmented DSPs, manual optimization, client reporting overhead) not just features</li>
+<li><strong>FAQ content needed for /primer-aitd:</strong> &quot;What is a meta-DSP?&quot;, &quot;Which DSPs does AiTD connect to?&quot;, &quot;What&#x27;s the difference between a managed trading desk and AiTD?&quot;, &quot;Minimum spend / contract requirements?&quot;, &quot;How does AiTD handle brand safety?&quot;</li>
+<li><strong>Do not write around:</strong> The &quot;NoraAI&quot; mention in the ICP brief — confirm with client before including; it appears nowhere on the site and may be a product roadmap item, not a current feature</li>
+</ul>
+
+<h3 id="for-the-blog-step">For the /blog step:</h3>
+<ul>
+<li><strong>Existing posts to optimize before writing new ones:</strong></li>
+<li>Fix title tags (all show &quot;PDI Website&quot;) — covered in Immediate Blockers</li>
+<li>Add meta descriptions to all 3 posts</li>
+<li>Add author attribution to all 3 posts</li>
+<li>The &quot;Demystifying DSPs and SSPs&quot; post (~3,090 words) is the strongest content asset — prioritize getting it fully optimized</li>
+<li><strong>Recommended next blog posts:</strong></li>
+</ul>
+<ol>
+<li>&quot;What Is a Meta-DSP and Why Should Your Agency Care?&quot; — definitional pillar post, links to AiTD page</li>
+<li>&quot;Cross-DSP Campaign Management: The Agency&#x27;s Guide to Programmatic Efficiency&quot; — targets buyers managing multiple platforms</li>
+<li>&quot;How Primer&#x27;s Data Lake Enables Cookieless Audience Targeting&quot; — product-SEO blog tied to Data Lake page</li>
+<li>&quot;The Trade Desk vs. Meta-DSP: When Traditional DSPs Aren&#x27;t Enough&quot; — comparison post for high-intent buyers</li>
+</ol>
+
+<hr>
+
+<p><em>Action Plan generated: 2026-05-01 | Surge SEO Pipeline | pdistack.com</em></p>
+</div></div></div>
+
+<div class="tab-panel" id="panel-keywords"><div class="container"><div class="md-content"><h1 id="seo-keyword-analysis-prime-datalytics-pdi-aitd">SEO Keyword Analysis — Prime Datalytics (PDi) / AiTD</h1>
+<p><strong>Prepared by:</strong> Powered By Surge</p>
+<p><strong>Client:</strong> Prime Datalytics (PDi) — pdistack.com</p>
+<p><strong>Product:</strong> AiTD (AI Trading Desk) — Meta-DSP platform</p>
+<p><strong>Date:</strong> 2026-05-02</p>
+<p><strong>Keyword files analyzed:</strong> 9</p>
+<p><strong>Total unique keywords catalogued:</strong> ~640 across all seed reports</p>
+
+<hr>
+
+<h2 id="overview">Overview</h2>
+
+<p>PDi&#x27;s AiTD sits in a category with very low branded search volume today (&quot;meta-DSP&quot; returns no measurable search volume) but substantial adjacent demand across three well-established keyword pools: programmatic advertising (5,400 vol), DSP comparison and evaluation (1,600–2,900 vol), and agency-side workflow pain-points (480–2,900 vol). The SEO opportunity is to own the category-definition layer now while it has low competition, and simultaneously capture mid-funnel comparison and pain-point traffic where CPC signals ($40–$120) confirm strong commercial intent.</p>
+
+<p>The five seed terms that produced the most actionable data were: &quot;programmatic advertising,&quot; &quot;DSP advertising,&quot; &quot;agency programmatic,&quot; &quot;programmatic media buying,&quot; and &quot;ad tech platform.&quot; Seeds like &quot;cross DSP reporting,&quot; &quot;DV360 alternatives,&quot; and &quot;Trade Desk alternatives&quot; returned very thin results (&lt;20 searches/mo), which is itself a strategic signal: the category is under-defined in search, which means first-mover blog and landing page content can claim positions that have zero serious competition.</p>
+
+<hr>
+
+<h2 id="1-top-10-keywords-ranked-by-buyer-intent">1. Top 10 Keywords — Ranked by Buyer Intent</h2>
+
+<p>Buyer intent score weights: commercial CPC signal (40%), funnel stage (30%), ICP query match (20%), competition headroom (10%).</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Keyword</th>
+<th>Volume</th>
+<th>Competition</th>
+<th>CPC</th>
+<th>Intent Tier</th>
+<th>Rationale</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>programmatic advertising platforms</td>
+<td>1,600</td>
+<td>LOW (13)</td>
+<td>$117.26</td>
+<td>High / Bottom-funnel</td>
+<td>Highest CPC in the full dataset. Buyers actively evaluating platforms. Direct product category match. Low comp means pdistack.com can rank.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>programmatic ad buying platforms</td>
+<td>110</td>
+<td>LOW (15)</td>
+<td>$31.77</td>
+<td>High / Bottom-funnel</td>
+<td>Explicit &quot;platform&quot; modifier + buying context = evaluation mindset. Low volume but high quality.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>demand side platform providers</td>
+<td>720</td>
+<td>LOW (3)</td>
+<td>$41.99</td>
+<td>High / Bottom-funnel</td>
+<td>&quot;Providers&quot; = vendor-shopping intent. Comp score of 3 is exceptionally low for 720 vol. Priority target.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>programmatic ad buying</td>
+<td>480</td>
+<td>LOW (13)</td>
+<td>$94.36</td>
+<td>High / Bottom-funnel</td>
+<td>$94 CPC confirms paid advertisers pay top dollar for this audience. Traders and agency leads in active buying mode.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>programmatic advertising agency</td>
+<td>2,900</td>
+<td>LOW (10)</td>
+<td>$85.46</td>
+<td>High / Mid-funnel</td>
+<td>High volume + very low competition + $85 CPC. ICP agency operators search this when vetting peers or platforms.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>programmatic advertising platforms</td>
+<td>(see #1)</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>(variant)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>demand side platform</td>
+<td>1,600</td>
+<td>LOW (29)</td>
+<td>$59.10</td>
+<td>High / Mid-funnel</td>
+<td>Core category term. Any serious buyer researching DSPs will hit this. Solid CPC signal. Table-stakes page.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>programmatic agencies</td>
+<td>140</td>
+<td>LOW (8)</td>
+<td>$197.91</td>
+<td>High / Mid-funnel</td>
+<td>Highest CPC in the entire dataset at $197.91. Tiny volume but the audience is exactly PDi&#x27;s ICP (agency operators evaluating programmatic stacks).</td>
+</tr>
+<tr>
+<td>8</td>
+<td>programmatic media buying</td>
+<td>260</td>
+<td>LOW (16)</td>
+<td>$32.53</td>
+<td>Medium / Mid-funnel</td>
+<td>Core workflow term for traders and agency leads. Moderate intent. Pairs well with &quot;how to&quot; blog content.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>dsp programmatic advertising</td>
+<td>390</td>
+<td>LOW (23)</td>
+<td>$49.68</td>
+<td>Medium / Mid-funnel</td>
+<td>DSP + programmatic overlap indicates a researcher building category knowledge. Good top-of-funnel service page anchor.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>ad tech platform</td>
+<td>140</td>
+<td>LOW (20)</td>
+<td>$34.82</td>
+<td>Medium / Mid-funnel</td>
+<td>Decision-maker language. Buyers comparing vendor categories use &quot;platform.&quot; Useful secondary term on core service pages.</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Honorable mentions (not in top 10 but worth tracking):</strong></p>
+<ul>
+<li><code>programmatic ad companies</code> (2,900 vol, comp 10) — high volume, may attract wrong searcher intent (buyers looking for vendors to hire, not a platform to operate)</li>
+<li><code>adtech dsp</code> (90 vol, comp 21, $57 CPC) — tight qualifier, niche audience, very relevant to AiTD product pages</li>
+<li><code>automated media buying</code> (70 vol, comp 6) — low comp, category-creation opportunity</li>
+</ul>
+
+<hr>
+
+<h2 id="2-service-page-clusters">2. Service Page Clusters</h2>
+
+<p>Five service page clusters derived from keyword groupings, ICP personas, and the six content pillars defined in the ICP. Each cluster maps to a distinct URL, primary keyword, and audience layer.</p>
+
+<hr>
+
+<h3 id="cluster-1-meta-dsp-unified-programmatic-platform-core-product-page">Cluster 1: Meta-DSP / Unified Programmatic Platform (Core Product Page)</h3>
+<p><strong>Primary URL slug:</strong> <code>/meta-dsp-platform</code> or <code>/unified-dsp-platform</code></p>
+<p><strong>Primary keyword:</strong> programmatic advertising platforms (1,600 vol, comp 13, $117 CPC)</p>
+<p><strong>Supporting keywords:</strong></p>
+<ul>
+<li>programmatic ad platforms (1,600 vol)</li>
+<li>demand side platform (1,600 vol)</li>
+<li>dsp platforms (1,600 vol)</li>
+<li>ad tech platform (140 vol)</li>
+<li>adtech dsp (90 vol)</li>
+</ul>
+
+<p><strong>Audience:</strong> All three personas — this is the primary homepage and product landing page anchor.</p>
+<p><strong>Page goal:</strong> Define what AiTD is, how it differs from operating a single DSP, and route to demo request.</p>
+<p><strong>Content angle:</strong> &quot;What is a Meta-DSP — and why your agency is leaving money on the table by running DV360 alone.&quot; Use comparison table: Single DSP column vs. AiTD column. NoraAI Autopilot featured prominently.</p>
+
+<hr>
+
+<h3 id="cluster-2-agency-programmatic-workflow-efficiency">Cluster 2: Agency Programmatic Workflow &amp; Efficiency</h3>
+<p><strong>Primary URL slug:</strong> <code>/programmatic-platform-for-agencies</code></p>
+<p><strong>Primary keyword:</strong> programmatic advertising agency (2,900 vol, comp 10, $85 CPC)</p>
+<p><strong>Supporting keywords:</strong></p>
+<ul>
+<li>programmatic ad agencies (2,900 vol, comp 10)</li>
+<li>programmatic agencies (140 vol, comp 8, $198 CPC — highest CPC signal)</li>
+<li>agency programmatic stack (ICP organic — use as secondary H2 anchor)</li>
+<li>programmatic buying platform (110 vol, comp 15)</li>
+</ul>
+
+<p><strong>Audience:</strong> Persona 1 (Agency Programmatic Lead) and Persona 2 (Agency Owner/Operator).</p>
+<p><strong>Page goal:</strong> Speak directly to multi-DSP agency pain. Drive demo request from agency operators.</p>
+<p><strong>Content angle:</strong> &quot;Built for agencies running DV360, The Trade Desk, and Yahoo DSP simultaneously.&quot; Lead with margin masking, role-based access, and NoraAI guardrails as agency-specific differentiators. Buyer quote / social proof from agency context if available.</p>
+
+<hr>
+
+<h3 id="cluster-3-cross-dsp-reporting-attribution">Cluster 3: Cross-DSP Reporting &amp; Attribution</h3>
+<p><strong>Primary URL slug:</strong> <code>/cross-dsp-reporting</code></p>
+<p><strong>Primary keyword:</strong> dsp programmatic advertising (390 vol, comp 23, $50 CPC) + cross-DSP reporting (0 vol — category creation)</p>
+<p><strong>Supporting keywords:</strong></p>
+<ul>
+<li>dsp programmatic (390 vol)</li>
+<li>dsp in programmatic (390 vol)</li>
+<li>demand side platform companies (390 vol, comp 16)</li>
+<li>programmatic media (390 vol)</li>
+<li>cross dsp reporting (0 vol — own the SERP before competition arrives)</li>
+</ul>
+
+<p><strong>Audience:</strong> Persona 3 (Senior Trader / Campaign Manager) and Persona 1 (Director of Programmatic).</p>
+<p><strong>Page goal:</strong> Address the reporting-fragmentation pain point directly. Show unified dashboard UI screenshots. Drive demo.</p>
+<p><strong>Content angle:</strong> &quot;One dashboard. All DSPs. Data-yesterday reporting, so your team pulls clean numbers every morning instead of waiting hours.&quot; Feature CM360 integration and deduplication attribution story.</p>
+<p><strong>Note on volume:</strong> &quot;Cross DSP reporting&quot; returns 0 volume today, meaning no one is searching for it yet — PDi can define and own this SERP with zero competition. The ICP pain is real even if the search language isn&#x27;t settled yet.</p>
+
+<hr>
+
+<h3 id="cluster-4-programmatic-media-buying-execution">Cluster 4: Programmatic Media Buying &amp; Execution</h3>
+<p><strong>Primary URL slug:</strong> <code>/programmatic-media-buying</code></p>
+<p><strong>Primary keyword:</strong> programmatic ad buying (480 vol, comp 13, $94 CPC)</p>
+<p><strong>Supporting keywords:</strong></p>
+<ul>
+<li>programmatic buying (480 vol)</li>
+<li>programmatic media buying (260 vol)</li>
+<li>programmatic ad buying platforms (110 vol)</li>
+<li>automated media buying (70 vol, comp 6)</li>
+<li>programmatic media buying platforms (30 vol)</li>
+</ul>
+
+<p><strong>Audience:</strong> Persona 3 (Senior Trader) — operational, execution-focused.</p>
+<p><strong>Page goal:</strong> Capture mid-funnel workflow searches. Position AiTD as a smarter execution layer vs. logging into DSPs one at a time.</p>
+<p><strong>Content angle:</strong> &quot;Plan, activate, and optimize programmatic buys across DV360, The Trade Desk, and Yahoo DSP — without the tab-switching.&quot; Lead with the sandbox staging environment and NoraAI Autopilot pacing guardrails as trader-specific trust signals.</p>
+
+<hr>
+
+<h3 id="cluster-5-dsp-comparison-selection">Cluster 5: DSP Comparison &amp; Selection</h3>
+<p><strong>Primary URL slug:</strong> <code>/dsp-comparison</code> or <code>/best-dsp-for-agencies</code></p>
+<p><strong>Primary keyword:</strong> demand side platform providers (720 vol, comp 3, $42 CPC)</p>
+<p><strong>Supporting keywords:</strong></p>
+<ul>
+<li>demand side platform companies (390 vol, comp 16)</li>
+<li>list of demand side platforms (110 vol, comp 32)</li>
+<li>top demand side platforms (210 vol — comp 37, just above threshold but still viable)</li>
+<li>dv360 alternatives (10 vol — low vol, zero competition, high intent)</li>
+<li>trade desk alternatives (20 vol — framing caution: AiTD is not a TTD replacement, it sits on top of TTD)</li>
+</ul>
+
+<p><strong>Audience:</strong> All three personas in active vendor evaluation mode.</p>
+<p><strong>Page goal:</strong> Capture comparison-stage searches. Reframe the competitive question from &quot;DV360 vs. TTD vs. Yahoo&quot; to &quot;single DSP vs. unified meta-DSP.&quot;</p>
+<p><strong>Content angle:</strong> &quot;Choosing between DV360, The Trade Desk, and Yahoo DSP? You don&#x27;t have to.&quot; Comparison table of each DSP&#x27;s strengths/weaknesses. AiTD positioned as the unifying layer, not a competitor to any of them.</p>
+<p><strong>Positioning caution (per ICP brief):</strong> Never position AiTD as a DV360 or TTD replacement. Frame as &quot;powered by&quot; and &quot;on top of.&quot; The correct comparison is: operating one DSP alone vs. all three through AiTD.</p>
+
+<hr>
+
+<h2 id="3-blog-topic-clusters">3. Blog Topic Clusters</h2>
+
+<p>Five editorial clusters mapped to the ICP&#x27;s four intent buckets (category creation, comparison, pain-point, competitor/alternative). Each cluster contains 3–5 post ideas with target keywords attached.</p>
+
+<hr>
+
+<h3 id="blog-cluster-a-category-creation-what-is-a-meta-dsp">Blog Cluster A: Category Creation — &quot;What Is a Meta-DSP?&quot;</h3>
+<p><strong>Intent:</strong> Top-of-funnel education. Defines the category; positions PDi as the authority before competitors enter.</p>
+<p><strong>Target personas:</strong> All three. Agency owners doing first-pass research; traders Googling to understand the landscape.</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Post Title</th>
+<th>Target Keyword</th>
+<th>Volume</th>
+<th>Comp</th>
+</tr></thead><tbody>
+<tr>
+<td>What Is a Meta-DSP (And Why Single DSPs Are Leaving Money on the Table)</td>
+<td>meta-DSP / programmatic advertising what is</td>
+<td>1,900</td>
+<td>14</td>
+</tr>
+<tr>
+<td>How a Unified Programmatic Trading Platform Works</td>
+<td>unified DSP platform / programmatic advertising platforms</td>
+<td>1,600</td>
+<td>13</td>
+</tr>
+<tr>
+<td>What Is Automated Media Buying in 2026?</td>
+<td>automated media buying</td>
+<td>70</td>
+<td>6</td>
+</tr>
+<tr>
+<td>The Evolution of the Trading Desk: From Manual Buying to AI-Driven Optimization</td>
+<td>programmatic media buying 101</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>In-Housing Programmatic vs. Agency-Managed Buying: A 2026 Framework</td>
+<td>in house programmatic / bringing programmatic in house</td>
+<td>10</td>
+<td>0–18</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Editorial note:</strong> &quot;Programmatic advertising what is&quot; at 1,900 vol and comp 14 is one of the clearest quick-win blog opportunities in the entire dataset. Write this first.</p>
+
+<hr>
+
+<h3 id="blog-cluster-b-dsp-comparisons-high-commercial-intent">Blog Cluster B: DSP Comparisons — High Commercial Intent</h3>
+<p><strong>Intent:</strong> Mid-to-bottom-funnel. Buyers in active eval. &quot;Best of&quot; and &quot;vs.&quot; searches.</p>
+<p><strong>Target personas:</strong> Persona 1 (Director of Programmatic), Persona 3 (Senior Trader doing pre-eval research).</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Post Title</th>
+<th>Target Keyword</th>
+<th>Volume</th>
+<th>Comp</th>
+</tr></thead><tbody>
+<tr>
+<td>DV360 vs. The Trade Desk vs. Yahoo DSP: Which Is Right for Your Agency?</td>
+<td>DSP comparison / best dsp platforms</td>
+<td>390</td>
+<td>64 (paid; organic can rank)</td>
+</tr>
+<tr>
+<td>The Best DSP for Programmatic Agencies in 2026</td>
+<td>best dsp platforms / best demand side platform</td>
+<td>390</td>
+<td>64</td>
+</tr>
+<tr>
+<td>DV360 Alternatives: What to Know Before You Switch</td>
+<td>DV360 alternatives</td>
+<td>10</td>
+<td>21</td>
+</tr>
+<tr>
+<td>The Trade Desk Alternatives: Can a Meta-DSP Replace the Need to Pick?</td>
+<td>trade desk alternatives</td>
+<td>10–20</td>
+<td>45–57</td>
+</tr>
+<tr>
+<td>What to Look for in a Demand Side Platform (If You&#x27;re Running 2+ DSPs)</td>
+<td>demand side platform providers</td>
+<td>720</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Editorial note:</strong> The competition on &quot;best DSP platforms&quot; is 64 (medium-high), but this is a CPC metric, not organic difficulty. Organic SERP for DSP comparisons in 2026 is dominated by listicles from ad-tech publications, not DSPs or platforms themselves — a well-structured, technically credible comparison post from PDi can rank. Write with ICP-specific framing (agencies running $5M+ programmatic spend, not SMBs).</p>
+
+<hr>
+
+<h3 id="blog-cluster-c-trader-pain-point-how-to-s">Blog Cluster C: Trader Pain-Point How-To&#x27;s</h3>
+<p><strong>Intent:</strong> Bottom-of-funnel. Problem-aware. Reader has the pain and is hunting for a solution or tool.</p>
+<p><strong>Target personas:</strong> Persona 3 (Senior Trader) primarily; Persona 1 secondarily.</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Post Title</th>
+<th>Target Keyword</th>
+<th>Volume</th>
+<th>Comp</th>
+</tr></thead><tbody>
+<tr>
+<td>How to Manage Multiple DSPs Without Losing Your Mind</td>
+<td>programmatic buying / programmatic ad buying</td>
+<td>480</td>
+<td>13</td>
+</tr>
+<tr>
+<td>How to Automate Programmatic Reporting Across DV360, Trade Desk, and Yahoo DSP</td>
+<td>cross dsp reporting / programmatic media buying</td>
+<td>0–260</td>
+<td>0–16</td>
+</tr>
+<tr>
+<td>How to Prevent Programmatic Overspend: The Agency Safety Net You&#x27;re Missing</td>
+<td>DSP overspend prevention (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cross-DSP Attribution: Why Your Current Setup Is Lying to You</td>
+<td>cross-DSP attribution (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>How to Set Up Role-Based Access Across Multiple DSPs for Your Agency</td>
+<td>DSP margin management / agency markup DSP</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Editorial note:</strong> Several of the highest-value pain-point terms (cross-DSP attribution, DSP margin management, DSP overspend prevention) return 0 or near-0 search volume because these are not yet settled search phrases. That is a category-creation opportunity: PDi writes the definitive content now, earns backlinks from ad-tech publications, and owns these SERPs before competition arrives. These posts also serve direct sales enablement (send to prospects in the pipeline).</p>
+
+<hr>
+
+<h3 id="blog-cluster-d-ai-in-programmatic-trust-building-for-agency-owners">Blog Cluster D: AI in Programmatic — Trust-Building for Agency Owners</h3>
+<p><strong>Intent:</strong> Mid-funnel trust. Addresses the &quot;AI anxiety&quot; pain point identified in the ICP directly.</p>
+<p><strong>Target personas:</strong> Persona 2 (Agency Owner/Operator). Also Persona 1.</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Post Title</th>
+<th>Target Keyword</th>
+<th>Volume</th>
+<th>Comp</th>
+</tr></thead><tbody>
+<tr>
+<td>AI in Programmatic Advertising: What It Can and Can&#x27;t Do in 2026</td>
+<td>AI in programmatic advertising (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Why &quot;Black Box&quot; Programmatic AI Is a Liability for Agencies</td>
+<td>programmatic optimization tools (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>How NoraAI Autopilot Makes Decisions (And How Traders Stay in Control)</td>
+<td>(product-specific; content marketing play)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Machine Learning in Programmatic: A Plain-Language Guide for Agency Leaders</td>
+<td>machine learning in programmatic (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Editorial note:</strong> These posts anchor PDi as the &quot;human intent + machine speed&quot; authority. They are less about search volume and more about credibility and trust-building for the economic buyer. Publish 2–3 of these before any paid outreach to agency owners.</p>
+
+<hr>
+
+<h3 id="blog-cluster-e-agency-profitability-competitive-positioning">Blog Cluster E: Agency Profitability &amp; Competitive Positioning</h3>
+<p><strong>Intent:</strong> Awareness/consideration for agency owners dealing with margin compression.</p>
+<p><strong>Target personas:</strong> Persona 2 (Agency Owner/Operator) — the economic buyer.</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Post Title</th>
+<th>Target Keyword</th>
+<th>Volume</th>
+<th>Comp</th>
+</tr></thead><tbody>
+<tr>
+<td>How Independent Programmatic Agencies Can Compete With Holding Companies in 2026</td>
+<td>how agencies can compete with holding companies (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Agency Programmatic Margin Management: What You Should and Shouldn&#x27;t Show Clients</td>
+<td>DSP markup transparency / agency markup DSP (ICP terms)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Building a Scalable Programmatic Trading Desk Without Adding Headcount</td>
+<td>programmatic agencies / agency programmatic stack</td>
+<td>140</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Is The Trade Desk Worth It for Independent Agencies? (And What That Question Gets Wrong)</td>
+<td>is the trade desk worth it for agencies (ICP term)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2 id="4-quick-wins-table">4. Quick Wins Table</h2>
+<p><strong>Definition:</strong> Competition score ≤ 35 and volume ≥ 50. These are keywords where pdistack.com can realistically rank within 90 days with a well-structured, technically sound page.</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Keyword</th>
+<th>Volume</th>
+<th>Competition</th>
+<th>CPC</th>
+<th>Best Placement</th>
+</tr></thead><tbody>
+<tr>
+<td>demand side platform providers</td>
+<td>720</td>
+<td>3</td>
+<td>$41.99</td>
+<td>Service page (Cluster 5) + Blog Cluster B</td>
+</tr>
+<tr>
+<td>programmatic advertising companies</td>
+<td>2,900</td>
+<td>10</td>
+<td>$85.46</td>
+<td>Service page (Cluster 2)</td>
+</tr>
+<tr>
+<td>programmatic advertising agency</td>
+<td>2,900</td>
+<td>10</td>
+<td>$85.46</td>
+<td>Service page (Cluster 2)</td>
+</tr>
+<tr>
+<td>programmatic ad agency</td>
+<td>2,900</td>
+<td>10</td>
+<td>$85.46</td>
+<td>Service page (Cluster 2)</td>
+</tr>
+<tr>
+<td>programmatic ad companies</td>
+<td>2,900</td>
+<td>10</td>
+<td>$85.46</td>
+<td>Service page (Cluster 2) — note: intent may skew toward buyers looking for agencies to hire, not a platform; monitor bounce rate</td>
+</tr>
+<tr>
+<td>programmatic advertising what is</td>
+<td>1,900</td>
+<td>14</td>
+<td>$9.71</td>
+<td>Blog Cluster A — first post to write</td>
+</tr>
+<tr>
+<td>programmatic advertising platforms</td>
+<td>1,600</td>
+<td>13</td>
+<td>$117.26</td>
+<td>Core product page (Cluster 1) — highest CPC in dataset</td>
+</tr>
+<tr>
+<td>programmatic ad platforms</td>
+<td>1,600</td>
+<td>13</td>
+<td>$117.26</td>
+<td>Core product page (Cluster 1)</td>
+</tr>
+<tr>
+<td>demand side platform</td>
+<td>1,600</td>
+<td>29</td>
+<td>$59.10</td>
+<td>Service page (Cluster 1 or 5)</td>
+</tr>
+<tr>
+<td>dsp platforms</td>
+<td>1,600</td>
+<td>29</td>
+<td>$59.10</td>
+<td>Service page (Cluster 1 or 5)</td>
+</tr>
+<tr>
+<td>dsp demand side platform</td>
+<td>590</td>
+<td>8</td>
+<td>$44.21</td>
+<td>Service page (Cluster 1)</td>
+</tr>
+<tr>
+<td>supply side platforms</td>
+<td>590</td>
+<td>15</td>
+<td>$29.84</td>
+<td>Blog (educational — position PDi in the buy-side supply-demand context)</td>
+</tr>
+<tr>
+<td>amazon dsp ads</td>
+<td>480</td>
+<td>31</td>
+<td>$18.37</td>
+<td>Blog Cluster B (DSP comparison)</td>
+</tr>
+<tr>
+<td>programmatic ad buying</td>
+<td>480</td>
+<td>13</td>
+<td>$94.36</td>
+<td>Service page (Cluster 4)</td>
+</tr>
+<tr>
+<td>programmatic buying</td>
+<td>480</td>
+<td>13</td>
+<td>$94.36</td>
+<td>Service page (Cluster 4)</td>
+</tr>
+<tr>
+<td>programmatic buying platform</td>
+<td>110</td>
+<td>15</td>
+<td>$31.77</td>
+<td>Service page (Cluster 4)</td>
+</tr>
+<tr>
+<td>programmatic ad buying platforms</td>
+<td>110</td>
+<td>15</td>
+<td>$31.77</td>
+<td>Service page (Cluster 4)</td>
+</tr>
+<tr>
+<td>programmatic media buying</td>
+<td>260</td>
+<td>16</td>
+<td>$32.53</td>
+<td>Service page (Cluster 4)</td>
+</tr>
+<tr>
+<td>programmatic display advertising</td>
+<td>720</td>
+<td>18</td>
+<td>$35.76</td>
+<td>Blog Cluster A or supplemental service page</td>
+</tr>
+<tr>
+<td>demand side platform companies</td>
+<td>390</td>
+<td>16</td>
+<td>$36.19</td>
+<td>Blog Cluster B</td>
+</tr>
+<tr>
+<td>dsp programmatic</td>
+<td>390</td>
+<td>23</td>
+<td>$49.68</td>
+<td>Service page (Cluster 3)</td>
+</tr>
+<tr>
+<td>dsp in programmatic</td>
+<td>390</td>
+<td>23</td>
+<td>$49.68</td>
+<td>Service page (Cluster 1)</td>
+</tr>
+<tr>
+<td>dsp programmatic advertising</td>
+<td>390</td>
+<td>23</td>
+<td>$49.68</td>
+<td>Service page (Cluster 1 or 3)</td>
+</tr>
+<tr>
+<td>programmatic media</td>
+<td>390</td>
+<td>28</td>
+<td>$25.86</td>
+<td>Service page (Cluster 4)</td>
+</tr>
+<tr>
+<td>multi channel advertising campaigns</td>
+<td>480</td>
+<td>7</td>
+<td>$0.44</td>
+<td>Blog Cluster C (low CPC = informational intent; use for top-of-funnel education)</td>
+</tr>
+<tr>
+<td>ad tech platform</td>
+<td>140</td>
+<td>20</td>
+<td>$34.82</td>
+<td>Service page (Cluster 1) secondary</td>
+</tr>
+<tr>
+<td>list of demand side platforms</td>
+<td>110</td>
+<td>32</td>
+<td>$39.20</td>
+<td>Blog Cluster B</td>
+</tr>
+<tr>
+<td>programmatic agencies</td>
+<td>140</td>
+<td>8</td>
+<td>$197.91</td>
+<td>Service page (Cluster 2) — note: $198 CPC is the highest in the dataset; high-value audience</td>
+</tr>
+<tr>
+<td>automated media buying</td>
+<td>70</td>
+<td>6</td>
+<td>$0.00</td>
+<td>Blog Cluster A</td>
+</tr>
+<tr>
+<td>programmatic display</td>
+<td>480</td>
+<td>30</td>
+<td>$50.14</td>
+<td>Blog or service supplement</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Total quick-win keywords identified: 30</strong></p>
+
+<hr>
+
+<h2 id="5-gaps-additional-research-recommended">5. Gaps &amp; Additional Research Recommended</h2>
+
+<h3 id="5a-keyword-gaps-searches-that-matter-but-returned-no-data">5A. Keyword Gaps — Searches That Matter but Returned No Data</h3>
+
+<p>The following high-priority ICP search terms returned 0 or near-0 volume in DataForSEO. This signals unsettled category language, not absence of intent. PDi should own these now with targeted content before competitors define the vocabulary.</p>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Gap Term</th>
+<th>ICP Source</th>
+<th>Strategic Priority</th>
+</tr></thead><tbody>
+<tr>
+<td>cross-DSP optimization</td>
+<td>ICP Section 6A</td>
+<td>Critical — core product differentiator</td>
+</tr>
+<tr>
+<td>meta-DSP</td>
+<td>ICP Section 6A</td>
+<td>Critical — category creation</td>
+</tr>
+<tr>
+<td>what is a meta DSP</td>
+<td>ICP Section 6A</td>
+<td>Critical — blog post #1</td>
+</tr>
+<tr>
+<td>cross-DSP attribution</td>
+<td>ICP Section 6C</td>
+<td>High — trader pain-point</td>
+</tr>
+<tr>
+<td>DSP margin management</td>
+<td>ICP Section 6C</td>
+<td>High — agency owner pain-point</td>
+</tr>
+<tr>
+<td>agency markup DSP</td>
+<td>ICP Section 6C</td>
+<td>High — economic buyer search</td>
+</tr>
+<tr>
+<td>DSP overspend prevention</td>
+<td>ICP Section 6C</td>
+<td>High — trader safety pain</td>
+</tr>
+<tr>
+<td>multi-KPI programmatic optimization</td>
+<td>ICP / AiTD differentiator</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>NoraAI autopilot</td>
+<td>Product-specific branded</td>
+<td>Medium — build organic before paid</td>
+</tr>
+<tr>
+<td>cross-DSP audience management</td>
+<td>ICP Section 6C</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>unified programmatic platform</td>
+<td>Product category</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>programmatic trading desk software</td>
+<td>Adjacent category</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Recommended action:</strong> Run a new keyword seed batch on: &quot;cross-DSP optimization,&quot; &quot;multi DSP management,&quot; &quot;programmatic trading desk software,&quot; &quot;DSP attribution tool,&quot; &quot;agency DSP management platform,&quot; &quot;how to manage DV360 and trade desk together.&quot;</p>
+
+<hr>
+
+<h3 id="5b-competitor-seo-gap-analysis-not-yet-run">5B. Competitor SEO Gap Analysis (Not Yet Run)</h3>
+
+<p>The ICP names six direct competitors: Skai, Mediaocean, Basis Technologies, StackAdapt, Adform, MediaMath (Infillion). No keyword research was run against competitor brand + &quot;alternatives,&quot; &quot;vs,&quot; &quot;review,&quot; or &quot;pricing&quot; terms for these players. This is a high-value gap.</p>
+
+<p><strong>Recommended seeds for next keyword batch:</strong></p>
+<ul>
+<li>&quot;Skai alternatives&quot; / &quot;Skai DSP review&quot;</li>
+<li>&quot;Mediaocean alternatives&quot; / &quot;Flashtalking alternatives&quot;</li>
+<li>&quot;Basis Technologies alternatives&quot; / &quot;Centro DSP alternatives&quot;</li>
+<li>&quot;StackAdapt alternatives&quot; / &quot;StackAdapt vs DV360&quot;</li>
+<li>&quot;Adform alternatives&quot; / &quot;Adform review&quot;</li>
+<li>&quot;best programmatic platform for agencies&quot;</li>
+<li>&quot;StackAdapt review&quot;</li>
+</ul>
+
+<p>These competitor-adjacent terms were flagged in ICP Section 6D as a &quot;directly-bought commercial intent layer&quot; and no research was completed. They should be prioritized in the next keyword sprint.</p>
+
+<hr>
+
+<h3 id="5c-long-tail-b2b-saas-gaps">5C. Long-Tail B2B SaaS Gaps</h3>
+
+<p>The current keyword set skews toward mid-funnel programmatic advertising terms. Missing layers:</p>
+
+<ul>
+<li><strong>Job-title queries:</strong> &quot;programmatic director tools,&quot; &quot;how to manage a trading desk,&quot; &quot;programmatic campaign manager software&quot;</li>
+<li><strong>Spend-scale queries:</strong> &quot;programmatic platform for $10M media spend,&quot; &quot;enterprise DSP management&quot;</li>
+<li><strong>Vertical-specific:</strong> &quot;retail programmatic advertising platform,&quot; &quot;automotive programmatic DSP,&quot; &quot;CPG programmatic media buying&quot;</li>
+<li><strong>Reporting/analytics queries:</strong> &quot;programmatic reporting dashboard,&quot; &quot;cross-channel attribution dashboard,&quot; &quot;DSP analytics platform&quot;</li>
+<li><strong>Agency-scale queries:</strong> &quot;programmatic platform for independent agencies,&quot; &quot;DSP platform for boutique agency&quot;</li>
+</ul>
+
+<hr>
+
+<h3 id="5d-technical-seo-unknowns-open-items-from-icp">5D. Technical SEO Unknowns (Open Items from ICP)</h3>
+
+<p>Per ICP Section 12, the following technical items were flagged as open during the discovery call and should be resolved before content is published:</p>
+
+<ul>
+<li><strong>GA4 installation status:</strong> Confirmed as an open item by Sean Lundy. Verify tracking is active and demo request form submissions are firing as conversion events before publishing any SEO content.</li>
+<li><strong>Schema markup:</strong> No confirmation of existing schema. At minimum: Organization, SoftwareApplication, FAQPage, and BreadcrumbList schemas should be implemented on core service pages.</li>
+<li><strong>Sitemap/robots.txt:</strong> Not verified. Confirm sitemap is submitted to Google Search Console.</li>
+<li><strong>Webflow CMS content architecture:</strong> pdistack.com is on Webflow. Confirm blog is live and indexed (or will be) before any blog posts are produced.</li>
+<li><strong>Blog/content footprint:</strong> Per ICP, if no existing blog exists, this is &quot;the biggest greenfield opportunity.&quot; Confirm with Sean whether blog is live or needs to be built.</li>
+<li><strong>Core Web Vitals:</strong> Not audited. Run PageSpeed Insights and Lighthouse on pdistack.com. Webflow sites sometimes have CWV issues with heavy image/animation builds.</li>
+<li><strong>Indexable product content:</strong> AiTD product pages are currently gated (login-walled). Confirm whether any product feature pages, changelog, or help docs are publicly indexed — these could capture bottom-funnel product searches.</li>
+</ul>
+
+<hr>
+
+<h3 id="5e-content-velocity-recommendation">5E. Content Velocity Recommendation</h3>
+
+<p>Given the thin search volume for core product terms (&quot;meta-DSP,&quot; &quot;cross-DSP optimization&quot;), PDi&#x27;s path to organic visibility requires a content-velocity approach: publish consistently to build topical authority before broader category searches develop. Recommended minimum cadence:</p>
+
+<ul>
+<li><strong>Service pages:</strong> 5 pages (one per cluster above) published within 60 days of technical SEO setup</li>
+<li><strong>Blog posts:</strong> 2 posts/month minimum; 4/month during ramp</li>
+<li><strong>Priority order:</strong> Category-definition posts first (Blog Cluster A), then comparison posts (Cluster B), then pain-point how-to&#x27;s (Cluster C)</li>
+</ul>
+
+<hr>
+
+<h2 id="6-pipeline-handoff-copy-and-blog">6. Pipeline Handoff — /copy and /blog</h2>
+
+<p><em>Note: This section documents the recommended handoff for the Surge copy and blog production pipeline. For future use when those pipeline steps are activated.</em></p>
+
+<hr>
+
+<h3 id="copy-handoff-service-pages-priority-order">/copy Handoff — Service Pages (Priority Order)</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Page</th>
+<th>Cluster</th>
+<th>Primary KW</th>
+<th>Audience Persona</th>
+<th>CTA</th>
+</tr></thead><tbody>
+<tr>
+<td>Core Meta-DSP Product Page</td>
+<td>Cluster 1</td>
+<td>programmatic advertising platforms</td>
+<td>All personas</td>
+<td>Request a Demo</td>
+</tr>
+<tr>
+<td>Agency Programmatic Platform</td>
+<td>Cluster 2</td>
+<td>programmatic advertising agency</td>
+<td>Persona 1 + 2</td>
+<td>Request a Demo</td>
+</tr>
+<tr>
+<td>Programmatic Media Buying</td>
+<td>Cluster 4</td>
+<td>programmatic ad buying</td>
+<td>Persona 3</td>
+<td>Request a Demo</td>
+</tr>
+<tr>
+<td>Cross-DSP Reporting</td>
+<td>Cluster 3</td>
+<td>dsp programmatic advertising</td>
+<td>Persona 1 + 3</td>
+<td>Request a Demo</td>
+</tr>
+<tr>
+<td>DSP Comparison</td>
+<td>Cluster 5</td>
+<td>demand side platform providers</td>
+<td>All personas</td>
+<td>Request a Demo</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><strong>Brand voice reminders for /copy:</strong></p>
+<ul>
+<li>Technical vocabulary throughout; do not dumb down for generalists</li>
+<li>Always pair feature with a &quot;reason to believe&quot; (concrete business outcome)</li>
+<li>Use comparison framing: &quot;Single, Siloed DSPs vs. AiTD Unified Platform&quot;</li>
+<li>Avoid: &quot;revolutionary,&quot; &quot;game-changing,&quot; &quot;best-in-class&quot;</li>
+<li>Lead with: transparency, control, trader empowerment, margin protection</li>
+<li>DV360/TTD/Yahoo are <em>partners</em>, not competitors — never frame AiTD as a replacement</li>
+</ul>
+
+<hr>
+
+<h3 id="blog-handoff-first-8-posts-priority-order">/blog Handoff — First 8 Posts (Priority Order)</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>#</th>
+<th>Post Title</th>
+<th>Cluster</th>
+<th>Target KW</th>
+<th>Volume</th>
+<th>Comp</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>What Is Programmatic Advertising? A 2026 Guide for Agency Leaders</td>
+<td>A</td>
+<td>programmatic advertising what is</td>
+<td>1,900</td>
+<td>14</td>
+</tr>
+<tr>
+<td>2</td>
+<td>What Is a Meta-DSP (And Why Your Agency Needs One)</td>
+<td>A</td>
+<td>meta-DSP / unified DSP platform</td>
+<td>0*</td>
+<td>0*</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Demand Side Platform Providers: How to Evaluate DSPs for Your Agency</td>
+<td>B</td>
+<td>demand side platform providers</td>
+<td>720</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DV360 vs. The Trade Desk vs. Yahoo DSP: The Agency Comparison Guide</td>
+<td>B</td>
+<td>best dsp platforms</td>
+<td>390</td>
+<td>64</td>
+</tr>
+<tr>
+<td>5</td>
+<td>How to Manage Multiple DSPs Without Losing Reporting Accuracy</td>
+<td>C</td>
+<td>programmatic ad buying</td>
+<td>480</td>
+<td>13</td>
+</tr>
+<tr>
+<td>6</td>
+<td>AI in Programmatic Advertising: What It Can and Can&#x27;t Do</td>
+<td>D</td>
+<td>AI in programmatic</td>
+<td>0*</td>
+<td>0*</td>
+</tr>
+<tr>
+<td>7</td>
+<td>How Independent Agencies Can Compete With Holding Companies on Programmatic</td>
+<td>E</td>
+<td>programmatic agencies</td>
+<td>140</td>
+<td>8</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Cross-DSP Reporting: Why Fragmented Data Is Costing Your Agency Clients</td>
+<td>C</td>
+<td>cross dsp reporting</td>
+<td>0*</td>
+<td>0*</td>
+</tr>
+</tbody>
+</table></div>
+
+<p><em>0 vol terms are category-creation opportunities; publish to own SERP before competition develops.</em></p>
+
+<p><strong>Blog format standards:</strong></p>
+<ul>
+<li>Length: 1,800–2,500 words for comparison/pillar posts; 1,200–1,500 for how-to posts</li>
+<li>Structure: H1 (target KW), intro with pain-first hook, 4–6 H2 sections, comparison table where applicable, CTA block at end pointing to demo request</li>
+<li>Schema: FAQPage or HowTo markup where applicable</li>
+<li>Internal links: Each post should link to at least one service page cluster</li>
+<li>Author attribution: Use a named PDi or PDi-affiliated author for E-E-A-T signals (not &quot;Staff Writer&quot;)</li>
+</ul>
+
+<hr>
+
+<p><em>End of SEO Analysis — Prime Datalytics (PDi) / AiTD</em></p>
+<p><em>Prepared by Powered By Surge | pdistack.com | May 2026</em></p>
+</div></div></div>
+
+<div class="container">
+  <div class="footer">
+    <p>Generated by <strong>Surge SEO</strong> &middot; May 01, 2026</p>
+  </div>
+</div>
+
+<script>
+function switchTab(id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+    if (html.getAttribute('data-theme') === 'light') {
+        html.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        html.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+    }
+}
+(function() {
+    if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        const btn = document.querySelector('.theme-toggle');
+        if (btn) btn.textContent = '☀️';
+    }
+})();
+
+</script>
+
+</body>
+</html>

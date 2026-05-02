@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDi × Powered By Surge: Proposal</title>
+  <meta property="og:title" content="PDi × Powered By Surge — Proposal" />
+  <meta property="og:description" content="A technical rebuild, SEO foundation, and ongoing content engine to make pdistack.com perform like the AiTD platform behind it." />
+  <meta property="og:image" content="../../brand/SurgeProposalOG.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../brand/SurgeProposalOG.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" />
+  <link rel="icon" href="https://thesurgeagency.com/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://thesurgeagency.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://thesurgeagency.com/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="https://thesurgeagency.com/apple-touch-icon.png" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --accent:       #dee535;
+      --accent-hover: #b8be2a;
+      --bg:           #080808;
+      --surface:      #111111;
+      --surface2:     #0d0d0d;
+      --border:       rgba(255,255,255,0.06);
+      --muted:        #9ca3af;
+      --faint:        #4b5563;
+      --danger:       #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 0.93;
+      letter-spacing: 0.01em;
+    }
+
+    .accent-line {
+      width: 36px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Entrance animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+    .d6 { transition-delay: 0.60s; }
+
+    /* Nav */
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .nav-brand-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .nav-brand-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+      line-height: 1;
+    }
+
+    /* Hero */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(222,229,53,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(222,229,53,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .scope-item {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    /* Timeline */
+    .t-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .t-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .t-step::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1.4rem;
+      width: 2px;
+      height: calc(100% + 1.5rem);
+      background: rgba(222,229,53,0.15);
+    }
+    .t-step:last-child::after { display: none; }
+
+    /* Proof cards */
+    .proof {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.06em;
+      color: #080808;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+    }
+    .btn:hover  { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    /* Form */
+    .field {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 0.875rem 1rem;
+      width: 100%;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+    }
+    .field:focus        { border-color: var(--accent); }
+    .field::placeholder { color: #374151; }
+
+    /* Score circle */
+    .score-ring {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .score-ring svg { transform: rotate(-90deg); }
+    .score-ring-label {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scorecard table */
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .score-table th {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .score-table td {
+      padding: 0.875rem 1rem;
+      font-size: 0.9375rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .score-table tr:last-child td { border-bottom: none; }
+    .score-table td:first-child { color: #e5e7eb; }
+    .score-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .score-bar-bg {
+      flex: 1;
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--danger);
+    }
+    .score-bar-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      width: 3.25rem;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* Keyword table */
+    .kw-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .kw-table th {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+      text-align: left;
+      padding: 0.625rem 0.875rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .kw-table td {
+      padding: 0.75rem 0.875rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .kw-table tr:last-child td { border-bottom: none; }
+    .kw-table td:first-child { color: #e5e7eb; font-weight: 500; }
+    .kw-table td:last-child { color: var(--accent); font-weight: 600; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.04em; }
+
+    /* Three-column projection grid */
+    .proj-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .proj-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    /* Two-column split */
+    .two-col {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Finding items */
+    .finding-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* Callout */
+    .callout-accent {
+      background: #0f1300;
+      border: 1px solid rgba(222,229,53,0.2);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+
+    .callout-danger {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    /* Bullet list */
+    .check-list {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .check-list li {
+      display: flex;
+      gap: 0.625rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+    .check-list li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+      line-height: 1.5;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar          { width: 4px; }
+    ::-webkit-scrollbar-track    { background: var(--bg); }
+    ::-webkit-scrollbar-thumb    { background: #222; border-radius: 2px; }
+
+    @media (max-width: 639px) {
+      .score-table th:nth-child(2),
+      .score-table td:nth-child(2) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <div class="nav-brand">
+    <img src="../../brand/SRG%20JR.svg" alt="Powered By Surge" style="height:32px;width:auto;filter:brightness(0) invert(1);" />
+    <div>
+      <div class="nav-brand-label">POWERED BY SURGE</div>
+      <div class="nav-brand-sub">Creative Agency</div>
+    </div>
+  </div>
+  <span style="font-size:0.6875rem;font-weight:500;color:var(--faint);letter-spacing:0.1em;text-transform:uppercase;">Confidential · May 2026</span>
+</nav>
+
+
+<!-- 01  HERO -->
+<section class="hero-grid" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 1.5rem 4.5rem;position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:-15%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(222,229,53,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(222,229,53,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+  <div style="max-width:900px;position:relative;">
+    <div class="section-label fade-up" style="margin-bottom:1.5rem;">Proposal · Prime Datalytics (PDi) · pdistack.com</div>
+
+    <h1 class="font-display fade-up d1" style="font-size:clamp(3.25rem,10vw,7.5rem);line-height:0.9;margin-bottom:1.75rem;">
+      MAKE THE WEBSITE<br/>
+      <span style="color:var(--accent);">MATCH THE PRODUCT.</span>
+    </h1>
+
+    <p class="fade-up d2" style="font-size:1.0625rem;color:var(--muted);max-width:580px;line-height:1.7;margin-bottom:2.75rem;">
+      A technical rebuild, SEO foundation, and ongoing content engine to make pdistack.com perform like the AiTD platform behind it.
+    </p>
+
+    <div class="fade-up d3" style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-size:0.8125rem;">
+      <span style="color:var(--faint);">Prepared for <span style="color:#fff;font-weight:500;">Sean Lundy, Head of Product</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">Prepared by <span style="color:var(--accent);font-weight:600;">Powered By Surge</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">May 2026</span>
+    </div>
+  </div>
+
+  <div class="fade-up d4" style="position:absolute;bottom:2.25rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+    <span style="font-size:0.625rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);">Scroll</span>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);"></div>
+  </div>
+</section>
+
+
+<!-- 02  THE SITE HASN'T CAUGHT UP -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">02 · The Problem</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">
+      EIGHTEEN MONTHS OF<br/>
+      <span style="color:var(--accent);">PRODUCT EVOLUTION.</span><br/>
+      ZERO SITE UPDATES.
+    </h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3rem;">
+      When we built pdistack.com, AiTD was a roadmap item. Today it is the product. NoraAI is in production. The trading desk hierarchy is live. The platform is integrated across DV360, The Trade Desk, and Yahoo DSP. The website is still talking about the old version of PDi.
+    </p>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="card fade-up d1" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">The four products are invisible.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Primer, AiTD, Data Lake, Planning, and Reporting are five distinct product surfaces. The site treats them as undifferentiated marketing pages, none deeper than 600 words. The /primer-aitd page is 272 words. NoraAI Assistant and NoraAI Autopilot, the proprietary differentiators in your AI/ML FAQ, are not mentioned anywhere on pdistack.com.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d2" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">The category-defining term lives in a blog post.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">"Meta-DSP" is the term that should anchor your homepage and product pages. Today it is defined in exactly one place: a single blog post buried two clicks deep. It does not appear on the homepage, the AiTD product page, or any service page. Buyers searching for "meta-DSP" or "cross-DSP optimization" cannot find you because you are not telling Google or LLMs that you own this category.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d3" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">The technical foundation is undermining everything else.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Even if the content were perfect, the underlying SEO configuration is leaking value. We ran a full audit on May 1. The findings are in the next section.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 03  THE AUDIT -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 · The Audit</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">WE RAN A FULL AUDIT.<br/><span style="color:var(--accent);">THE SCORE IS 28 OUT OF 100.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3.5rem;">Twelve pages reviewed. Seven SEO categories scored. Twenty-seven specific findings catalogued, each with severity and confidence ratings. The full report is available on request. The headline number is below.</p>
+
+    <!-- Score circle + category cards -->
+    <div style="display:grid;gap:2.5rem;align-items:center;" class="fade-up d4">
+
+      <!-- Big score visual -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1.75rem;">
+        <div class="score-ring">
+          <svg width="220" height="220" viewBox="0 0 220 220">
+            <!-- Background ring -->
+            <circle cx="110" cy="110" r="90" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+            <!-- Score arc: 28% of circumference, starting from top -->
+            <!-- circumference = 2*pi*90 = 565.49 | 28% = 158.34 | dashoffset = 565.49/4 = 141.37 -->
+            <circle
+              cx="110" cy="110" r="90"
+              fill="none"
+              stroke="#ef4444"
+              stroke-width="12"
+              stroke-linecap="round"
+              stroke-dasharray="158.34 565.49"
+              stroke-dashoffset="141.37"
+            />
+          </svg>
+          <div class="score-ring-label" style="text-align:center;">
+            <div class="font-display" style="font-size:4.25rem;line-height:1;color:#fff;">28</div>
+            <div style="font-size:0.875rem;color:var(--faint);line-height:1;margin-bottom:0.25rem;">out of 100</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.14em;color:#ef4444;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:4px;padding:0.2rem 0.625rem;">POOR</div>
+          </div>
+        </div>
+
+        <!-- Score band legend -->
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
+          <div style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;">
+            <div style="width:10px;height:10px;background:#ef4444;border-radius:2px;"></div>
+            <span style="color:var(--muted);">0–30 Poor</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;">
+            <div style="width:10px;height:10px;background:#f59e0b;border-radius:2px;"></div>
+            <span style="color:var(--faint);">31–55 Fair</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;">
+            <div style="width:10px;height:10px;background:#22c55e;border-radius:2px;"></div>
+            <span style="color:var(--faint);">56–75 Good</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;">
+            <div style="width:10px;height:10px;background:var(--accent);border-radius:2px;"></div>
+            <span style="color:var(--faint);">76–100 Strong</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category scorecard -->
+      <div class="card" style="overflow:hidden;">
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Weight</th>
+              <th colspan="2">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Technical SEO</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">25%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:30%;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">30/100</td>
+            </tr>
+            <tr>
+              <td>Content Quality</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">20%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:30%;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">30/100</td>
+            </tr>
+            <tr>
+              <td>On-Page SEO</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">15%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:30%;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">30/100</td>
+            </tr>
+            <tr>
+              <td>Schema / Structured Data</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">15%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:15%;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">15/100</td>
+            </tr>
+            <tr>
+              <td>Performance / Core Web Vitals</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">10%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:40%;background:#f59e0b;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">40/100</td>
+            </tr>
+            <tr>
+              <td>Images</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">10%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:29%;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">29/100</td>
+            </tr>
+            <tr>
+              <td>AI Search Readiness</td>
+              <td style="color:var(--faint);font-size:0.8125rem;">5%</td>
+              <td>
+                <div class="score-bar-wrap">
+                  <div class="score-bar-bg"><div class="score-bar-fill" style="width:45%;background:#f59e0b;"></div></div>
+                </div>
+              </td>
+              <td class="score-bar-val">45/100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 04  CRITICAL FINDINGS -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 · Critical Findings</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">THREE ISSUES ARE DOING<br/><span style="color:var(--accent);">THE MOST DAMAGE.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3rem;">The audit catalogued 27 findings. Most are configuration-level fixes that take hours, not weeks. Three findings sit in the critical category and are actively suppressing every other SEO investment you might make.</p>
+
+    <div style="display:grid;gap:1.25rem;margin-bottom:2.5rem;">
+
+      <div class="card fade-up d1" style="padding:1.875rem;">
+        <div class="finding-item">
+          <div class="font-display" style="font-size:2.75rem;color:var(--danger);line-height:1;flex-shrink:0;opacity:0.9;">01</div>
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+              <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;">Zero meta descriptions on 92% of pages.</h3>
+              <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;">Critical</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Eleven of twelve pages have no meta description tag. Google is writing its own snippets for the entire site except the homepage. Click-through rates from search results are suffering across every page that matters.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card fade-up d2" style="padding:1.875rem;">
+        <div class="finding-item">
+          <div class="font-display" style="font-size:2.75rem;color:var(--danger);line-height:1;flex-shrink:0;opacity:0.9;">02</div>
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+              <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;">Zero canonical tags sitewide.</h3>
+              <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;">Critical</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Not a single page has a canonical tag. This creates unmitigated duplicate-content risk, especially for the blog. Webflow has a five-minute toggle that handles this. It has not been enabled.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card fade-up d3" style="padding:1.875rem;">
+        <div class="finding-item">
+          <div class="font-display" style="font-size:2.75rem;color:var(--danger);line-height:1;flex-shrink:0;opacity:0.9;">03</div>
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+              <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;">Zero structured data anywhere.</h3>
+              <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--danger);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:4px;padding:0.15rem 0.5rem;white-space:nowrap;">Critical</span>
+            </div>
+            <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">No Organization schema. No SoftwareApplication schema. No Article schema. Google cannot confirm brand identity, product category, or article authorship through the channels it expects. AI systems like ChatGPT and Perplexity cannot cite the site reliably for category queries because there is no structured data to anchor to.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Additional findings callout -->
+    <div class="callout-danger fade-up d4">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.12em;color:#fca5a5;margin-bottom:1rem;">A few more, for completeness:</div>
+      <ul style="display:grid;gap:0.5rem;">
+        <li style="display:flex;gap:0.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">
+          <span style="color:#fca5a5;flex-shrink:0;">—</span>
+          About Us page lists CEO "John Doe," CTO "Jane Smith," CMO "Emily Johnson" as live team members
+        </li>
+        <li style="display:flex;gap:0.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">
+          <span style="color:#fca5a5;flex-shrink:0;">—</span>
+          /primer-aitd H1 reads "Programatic Advertising Industry" (typo, missing 'm')
+        </li>
+        <li style="display:flex;gap:0.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">
+          <span style="color:#fca5a5;flex-shrink:0;">—</span>
+          /blog/understanding-aitd H2 reads "the next evolution in digital adverting" (typo)
+        </li>
+        <li style="display:flex;gap:0.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">
+          <span style="color:#fca5a5;flex-shrink:0;">—</span>
+          All 226 images on the site have empty alt text
+        </li>
+        <li style="display:flex;gap:0.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">
+          <span style="color:#fca5a5;flex-shrink:0;">—</span>
+          Privacy Policy, Terms of Service, and Cookie Settings footer links go to # (no real pages exist)
+        </li>
+        <li style="display:flex;gap:0.75rem;font-size:0.875rem;color:var(--muted);line-height:1.6;">
+          <span style="color:#fca5a5;flex-shrink:0;">—</span>
+          All three blog post title tags read "PDI Website" (CMS default never configured)
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 05  WHAT GOOD LOOKS LIKE -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">05 · The Opportunity</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">FROM 28/100 TO 65/100<br/><span style="color:var(--accent);">IN 90 DAYS.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3.5rem;">The audit identified 30 quick-win keywords where pdistack.com can realistically rank within 90 days. Each has a competition score of 35 or lower. The opportunity below shows what becomes possible once the foundation is fixed.</p>
+
+    <!-- Three projection columns -->
+    <div class="proj-grid fade-up d4" style="margin-bottom:3rem;">
+
+      <div class="card" style="padding:1.75rem;">
+        <div class="section-label" style="margin-bottom:1rem;">Score Lift</div>
+        <ul style="display:grid;gap:0.875rem;">
+          <li style="display:flex;justify-content:space-between;align-items:baseline;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:0.625rem;">
+            <span style="color:var(--muted);">Today</span>
+            <span style="color:var(--danger);font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.04em;">28/100</span>
+          </li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:0.625rem;">
+            <span style="color:var(--muted);">90-day target</span>
+            <span style="color:#f59e0b;font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.04em;">55–65/100</span>
+          </li>
+          <li style="display:flex;justify-content:space-between;align-items:baseline;font-size:0.875rem;">
+            <span style="color:var(--muted);">12-month target</span>
+            <span style="color:var(--accent);font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.04em;">75+</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:1.75rem;">
+        <div class="section-label" style="margin-bottom:1rem;">Indexed Footprint</div>
+        <ul style="display:grid;gap:0.875rem;">
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:0.625rem;gap:0.5rem;">
+            <span style="color:var(--muted);flex-shrink:0;">Today</span>
+            <span style="color:#e5e7eb;text-align:right;">12 pages, 3 blog posts</span>
+          </li>
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:0.625rem;gap:0.5rem;">
+            <span style="color:var(--muted);flex-shrink:0;">90 days</span>
+            <span style="color:#e5e7eb;text-align:right;">15 pages, 15 blog posts</span>
+          </li>
+          <li style="display:flex;justify-content:space-between;align-items:flex-start;font-size:0.875rem;gap:0.5rem;">
+            <span style="color:var(--muted);flex-shrink:0;">12 months</span>
+            <span style="color:var(--accent);text-align:right;">22 pages, 36+ blog posts</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:1.75rem;">
+        <div class="section-label" style="margin-bottom:1rem;">First-Mover Advantage</div>
+        <p style="color:var(--muted);font-size:0.875rem;line-height:1.7;margin-bottom:0.875rem;">Terms like "meta-DSP," "cross-DSP optimization," and "cross-DSP attribution" return near-zero search volume today.</p>
+        <p style="color:#d1d5db;font-size:0.875rem;line-height:1.7;">That is not a problem. It is an opportunity. PDi can publish authoritative content now and own the SERP before competitors define the language.</p>
+      </div>
+
+    </div>
+
+    <!-- Keyword table -->
+    <div class="card fade-up d5" style="overflow:hidden;margin-bottom:1.5rem;">
+      <div style="padding:1.25rem 1.25rem 0.75rem;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.1em;color:var(--muted);">Top Keyword Opportunities — Competition Score 35 or Lower</div>
+      </div>
+      <table class="kw-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Monthly Searches</th>
+            <th>CPC</th>
+            <th>Competition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>programmatic advertising platforms</td>
+            <td>1,600</td>
+            <td style="color:var(--muted);">$117</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <td>demand side platform providers</td>
+            <td>720</td>
+            <td style="color:var(--muted);">$42</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>programmatic advertising agency</td>
+            <td>2,900</td>
+            <td style="color:var(--muted);">$85</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>programmatic agencies</td>
+            <td>140</td>
+            <td style="color:var(--muted);">$198</td>
+            <td>highest in dataset</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 06  THE TECHNICAL FOUNDATION -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">06 · The Technical Foundation</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">A NEW FOUNDATION.<br/><span style="color:var(--accent);">INCLUDED.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3rem;">The current site runs on Webflow. It works, but it costs you in flexibility, content scaling, and developer access. We are including a full rebuild on Next.js + Tailwind, deployed to Vercel, at no additional cost. The reasons matter for both sides.</p>
+
+    <div class="two-col fade-up d4" style="margin-bottom:2rem;">
+
+      <div class="card" style="padding:1.875rem;">
+        <div class="section-label" style="margin-bottom:1rem;">For PDi</div>
+        <ul class="check-list">
+          <li>Your dev team can update the site through Claude Code, the same way they would any modern repo</li>
+          <li>Vercel hosting is faster and cheaper than Webflow</li>
+          <li>The site can scale to 100+ content pages without CMS limitations</li>
+          <li>The stack matches the technical credibility of the AiTD platform</li>
+        </ul>
+      </div>
+
+      <div class="card" style="padding:1.875rem;">
+        <div class="section-label" style="margin-bottom:1rem;">For Powered By Surge</div>
+        <ul class="check-list">
+          <li>Eliminates Webflow workflow friction so we ship content and updates faster</li>
+          <li>Better margin on ongoing maintenance, which means more time invested in your content engine</li>
+          <li>One less platform fee to coordinate across teams</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout-accent fade-up d5">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.625rem;">Built On</div>
+      <p style="color:#d1d5db;font-size:0.9375rem;line-height:1.7;margin:0;">Next.js + Tailwind CSS, deployed to Vercel, with content managed through Markdown or a headless CMS of your team's choice. Full repo handed over to PDi at launch. You own the code.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 07  SCOPE OF WORK -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">07 · Scope of Work</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">ONE ENGAGEMENT.<br/><span style="color:var(--accent);">THREE WORKSTREAMS.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.7;margin-bottom:3.5rem;">Month 1 is intentionally heavy: we rebuild the site, fix every critical and high-severity audit finding, and ship the first four blog posts. From Month 2 forward, the engine runs at a steady cadence: content, service pages, AEO, and reporting.</p>
+
+    <!-- Month 1 -->
+    <div style="margin-bottom:3rem;" class="fade-up d3">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.75rem;">
+        <div style="width:28px;height:2px;background:var(--accent);border-radius:1px;"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.0625rem;letter-spacing:0.06em;color:var(--accent);">MONTH 1 DELIVERABLES</div>
+      </div>
+
+      <div style="display:grid;gap:1.875rem;">
+
+        <div class="scope-item fade-up">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">01</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;">Site Rebuild on Vercel</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Full migration off Webflow. Brand system carried over and modernized. Page structure rebuilt around your actual product hierarchy. DNS cutover and redirects handled by us.</p>
+        </div>
+
+        <div class="scope-item fade-up d1">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">02</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;">Critical Audit Fixes</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Every critical and high-severity finding from the audit. Real Privacy Policy and Terms pages. About Us rebuild with real team. H1 typos corrected. Meta descriptions written for every page. Canonical tags enabled. Title tags rewritten with keyword targeting. All 226 image alt tags written.</p>
+        </div>
+
+        <div class="scope-item fade-up d2">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">03</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;">Schema Implementation</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Organization schema sitewide. SoftwareApplication schema on AiTD and Primer. BlogPosting schema across blog posts. BreadcrumbList sitewide. FAQPage schema where applicable.</p>
+        </div>
+
+        <div class="scope-item fade-up d3">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">04</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;">Product Page Rebuilds</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The five product surfaces (Primer, AiTD, Data Lake, Planning, Reporting) expanded from current 239–587 word stubs to 700–1,000 word product pages with NoraAI, cross-DSP attribution, and CM360 integration featured prominently.</p>
+        </div>
+
+        <div class="scope-item fade-up d4">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">05</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;">Four Blog Posts</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Foundational content shipped in Month 1. Topics: what is programmatic advertising, what is a meta-DSP, demand side platform providers, and DV360 vs The Trade Desk vs Yahoo DSP comparison.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Monthly -->
+    <div class="fade-up d4">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.75rem;">
+        <div style="width:28px;height:2px;background:rgba(222,229,53,0.4);border-radius:1px;"></div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.0625rem;letter-spacing:0.06em;color:var(--muted);">MONTHLY FROM MONTH 2 ONWARD</div>
+      </div>
+
+      <div style="display:grid;gap:1.875rem;">
+
+        <div class="scope-item fade-up" style="border-color:rgba(222,229,53,0.3);">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--muted);font-size:0.9375rem;letter-spacing:0.06em;">01</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;color:#e5e7eb;">Four Blog Posts Per Month</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Mix of pillar posts (1,800–2,500 words), comparison content (1,500–2,000 words), and trader pain-point how-tos (1,200–1,500 words). Every post includes FAQ sections, schema markup, and named author attribution. All written for both Google ranking and LLM citation.</p>
+        </div>
+
+        <div class="scope-item fade-up d1" style="border-color:rgba(222,229,53,0.3);">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--muted);font-size:0.9375rem;letter-spacing:0.06em;">02</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;color:#e5e7eb;">One Service Page Per Month</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Built or refreshed from the five-cluster keyword strategy. Each targets a specific buyer persona and primary keyword: Meta-DSP core product page, agency persona page, programmatic media buying, cross-DSP reporting, DSP comparison. 600–1,000 words, keyword-optimized, internally linked to relevant blog content.</p>
+        </div>
+
+        <div class="scope-item fade-up d2" style="border-color:rgba(222,229,53,0.3);">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--muted);font-size:0.9375rem;letter-spacing:0.06em;">03</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;color:#e5e7eb;">AI Engine Optimization (AEO)</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Reddit community seeding in r/programmaticadvertising, r/PPC, r/AdOps, r/AdTech. Backlink and citation work designed for ingestion by ChatGPT, Claude, and Perplexity. Strategic content structure built for LLM citation. PDi's buyers use these tools every day. Most agencies are not optimizing for this yet.</p>
+        </div>
+
+        <div class="scope-item fade-up d3" style="border-color:rgba(222,229,53,0.3);">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+            <span class="font-display" style="color:var(--muted);font-size:0.9375rem;letter-spacing:0.06em;">04</span>
+            <h3 style="font-weight:600;font-size:1.0625rem;color:#e5e7eb;">Site Maintenance and Reporting</h3>
+          </div>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Ongoing technical SEO maintenance. Monthly performance report covering rankings, organic traffic, demo requests, and AEO citations. Quarterly strategy review with Sean. Slack and email access to the Powered By Surge team throughout.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 08  INVESTMENT -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 · Investment</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">TRANSPARENT PRICING.</h2>
+
+    <!-- Single tier block -->
+    <div class="fade-up d3" style="background:var(--surface);border:1px solid rgba(222,229,53,0.25);border-radius:16px;padding:2.25rem;margin-bottom:2rem;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;">
+        <div>
+          <div class="section-label" style="margin-bottom:0.5rem;">Monthly Retainer</div>
+          <h3 class="font-display" style="font-size:1.875rem;line-height:1.1;margin-bottom:0.375rem;">Everything in Scope of Work</h3>
+          <p style="color:var(--muted);font-size:0.875rem;">Site rebuild · Audit fixes · Schema · Product pages · 4 blog posts/mo · 1 service page/mo · AEO · Maintenance · Reporting</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="font-display" style="font-size:4.25rem;color:var(--accent);line-height:1;">$5,000</div>
+          <div style="font-size:0.8125rem;color:var(--faint);">per month</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06);">
+        <div>
+          <div style="font-size:0.75rem;color:var(--faint);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:0.25rem;">Minimum Commitment</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:#e5e7eb;">120 days, then month-to-month</div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem;color:var(--faint);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:0.25rem;">Total Over Minimum</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:var(--accent);">$20,000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why this number works -->
+    <div class="callout-accent fade-up d4">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.12em;color:var(--accent);margin-bottom:0.875rem;">Why This Number Works</div>
+      <p style="color:#d1d5db;font-size:0.9375rem;line-height:1.7;margin:0;">Comparable engagements typically split into a site rebuild project ($15,000–$25,000 one-time), an SEO retainer ($4,000–$8,000/month), and a separate content production line item ($2,000–$5,000/month). We bundle everything because we built your brand, our onboarding cost is zero, and our AI-native execution stack lets us ship at the pace of a 10-person agency with a two-person team.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 09  WHY POWERED BY SURGE -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">09 · Why Powered By Surge</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">THREE REASONS.<br/><span style="color:var(--accent);">NO FLUFF.</span></h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="proof fade-up d1">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">01</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We built your brand.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The original pdistack.com design, the brand system, the messaging architecture. We have your design files, we know your voice, we already understand your product. Day one is execution day. No 30-day discovery phase, no slide deck of generic positioning frameworks. We ship.</p>
+      </div>
+
+      <div class="proof fade-up d2">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">02</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We are AI-native, end to end.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Powered By Surge has rebuilt our delivery stack around AI-augmented workflows over the past 18 months. That's why we can deliver site rebuild + technical SEO + content engine + AEO at $5K/month with no setup fee. The same scope from a traditional agency runs $10K to $15K/month. We pass the efficiency through.</p>
+      </div>
+
+      <div class="proof fade-up d3">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">03</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We do the technical work most agencies don't.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">This proposal includes a full Vercel rebuild, Schema markup implementation, Core Web Vitals work, and DNS migration. Most marketing agencies subcontract this kind of work or skip it entirely. We do it in house because that's where the SEO compounding actually happens.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 10  NEXT STEPS -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">10 · Next Steps</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">LET'S GO.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Sign below to approve this proposal. Once signed and the first month is paid, we schedule the kickoff call and begin Week 1 immediately.</p>
+
+    <!-- What happens after -->
+    <div class="card fade-up d4" style="padding:1.875rem;margin-bottom:2rem;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.12em;color:var(--muted);margin-bottom:1.25rem;">What Happens After Sign-Off</div>
+      <div style="display:grid;gap:1.25rem;">
+        <div class="t-step">
+          <div class="font-display" style="font-size:1rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.25rem;">Within 48 Hours</div>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.65;">Kickoff call with Sean. We confirm the team info for the About Us rebuild, get access to Webflow + Google Search Console + GA4, and lock the Vercel rebuild timeline.</p>
+        </div>
+        <div class="t-step">
+          <div class="font-display" style="font-size:1rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.25rem;">Week 1</div>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.65;">Vercel rebuild begins. First content brief shared by end of week.</p>
+        </div>
+        <div class="t-step">
+          <div class="font-display" style="font-size:1rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.25rem;">Week 3</div>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.65;">First blog post live. Schema implementation complete.</p>
+        </div>
+        <div class="t-step">
+          <div class="font-display" style="font-size:1rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.25rem;">Week 4</div>
+          <p style="color:var(--muted);font-size:0.9rem;line-height:1.65;">Vercel cutover. Site relaunched. Audit fixes shipped. Engine running.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signature form -->
+    <form id="proposal-form" class="card fade-up d5" style="padding:2rem;margin-bottom:2rem;transition:opacity 0.4s ease,transform 0.4s ease;" onsubmit="handleSubmit(event)">
+      <h3 style="font-weight:600;font-size:1rem;color:#d1d5db;margin-bottom:1.5rem;">Approve Proposal</h3>
+
+      <div style="display:grid;gap:1rem;margin-bottom:1.25rem;">
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-name">Full Name</label>
+          <input class="field" type="text" id="f-name" name="name" placeholder="Sean Lundy" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-company">Company</label>
+          <input class="field" type="text" id="f-company" name="company" placeholder="Prime Datalytics (PDi)" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-email">Your Email</label>
+          <input class="field" type="email" id="f-email" name="clientEmail" placeholder="sean@pdistack.com" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
+          <input class="field" type="date" id="f-date" name="date" required />
+        </div>
+
+      </div>
+
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, you approve the scope and investment outlined in this proposal and authorize Powered By Surge to begin work upon receipt of payment.</p>
+
+      <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.25rem;padding:1.125rem 2rem;">
+        SIGN &amp; APPROVE PROPOSAL
+      </button>
+    </form>
+
+    <!-- Signed confirmation — hidden until form submitted -->
+    <div id="signed-confirmation" style="display:none;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;">
+      <div style="background:#0a1200;border:1px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.75rem;">
+          <div style="width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:var(--accent);">Proposal Approved</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Sam has been notified. You're all set.</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:0.75rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Signed by</span>
+            <span id="conf-name" style="color:#fff;font-weight:600;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Company</span>
+            <span id="conf-company" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Date</span>
+            <span id="conf-date" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Monthly Retainer</span>
+            <span style="color:var(--accent);font-weight:500;">$5,000/month</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Minimum Commitment</span>
+            <span style="color:#fff;font-weight:600;">120 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment CTA -->
+    <div id="payment-cta" style="text-align:center;opacity:0.35;transition:opacity 0.5s ease,transform 0.5s ease;">
+      <p id="payment-label" style="font-size:0.875rem;color:var(--faint);margin-bottom:1.125rem;">Sign the proposal above to unlock payment.</p>
+      <a id="payment-btn" href="#stripe-link-here" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.25rem;padding:1.375rem 2.5rem;pointer-events:none;width:100%;justify-content:center;">
+        PAY $5,000: START MONTH 1
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p style="font-size:0.75rem;color:var(--faint);margin-top:0.875rem;">Secure payment via Stripe. Work begins within 48 hours of payment confirmation.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="padding:1.75rem 1.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+  <div style="display:flex;align-items:center;gap:0.5rem;">
+    <img src="../../brand/SRG%20JR.svg" alt="Powered By Surge" style="height:22px;width:auto;filter:brightness(0) invert(1);" />
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:0.75rem;letter-spacing:0.1em;color:var(--faint);">POWERED BY SURGE</span>
+  </div>
+  <span style="font-size:0.75rem;color:var(--faint);">Prepared for Prime Datalytics (PDi) · May 2026 · Confidential</span>
+</footer>
+
+
+<!-- SCRIPTS -->
+<script>
+  // Entrance animations
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Pre-fill today's date
+  const dateInput = document.getElementById('f-date');
+  if (dateInput) {
+    const t  = new Date();
+    const mm = String(t.getMonth() + 1).padStart(2, '0');
+    const dd = String(t.getDate()).padStart(2, '0');
+    dateInput.value = `${t.getFullYear()}-${mm}-${dd}`;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fd          = new FormData(e.target);
+    const name        = fd.get('name')        || '';
+    const company     = fd.get('company')     || '';
+    const clientEmail = fd.get('clientEmail') || '';
+    const date        = fd.get('date')        || '';
+
+    const dateDisplay = date
+      ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+      : date;
+
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        company,
+        clientEmail,
+        date: dateDisplay,
+        proposal: 'PDi: Technical Rebuild, SEO Foundation, and Content Engine',
+        fee: '$5,000/month',
+      }),
+    }).catch(() => {});
+
+    const form = document.getElementById('proposal-form');
+    form.style.opacity   = '0';
+    form.style.transform = 'translateY(-12px)';
+    setTimeout(() => { form.style.display = 'none'; }, 420);
+
+    document.getElementById('conf-name').textContent    = name;
+    document.getElementById('conf-company').textContent = company || 'N/A';
+    document.getElementById('conf-date').textContent    = dateDisplay;
+
+    const conf = document.getElementById('signed-confirmation');
+    conf.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      conf.style.opacity   = '1';
+      conf.style.transform = 'translateY(0)';
+    }));
+
+    const payBtn   = document.getElementById('payment-btn');
+    const payLabel = document.getElementById('payment-label');
+    const cta      = document.getElementById('payment-cta');
+    setTimeout(() => {
+      cta.style.opacity          = '1';
+      payBtn.style.pointerEvents = 'auto';
+      payLabel.textContent       = "You're approved. One step left — lock in your start date.";
+      payLabel.style.color       = '#d1d5db';
+      payLabel.style.fontWeight  = '500';
+    }, 600);
+  }
+</script>
+
+</body>
+</html>
