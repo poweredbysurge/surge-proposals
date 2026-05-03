@@ -16,7 +16,7 @@ cat > "$OUT/config.json" <<'EOF'
   "routes": [
     { "src": "/PDI", "dest": "/clients/PDI/index.html" },
     { "src": "/accuenviro", "dest": "/clients/accuenviro/index.html" },
-    { "src": "/sunrise-command-center", "dest": "/clients/sunrise-command-center/index.html" },
+    { "src": "/sunrise", "dest": "/clients/sunrise/index.html" },
     { "src": "/test", "dest": "/clients/test/index.html" },
     { "handle": "filesystem" }
   ]
