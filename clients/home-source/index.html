@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Source Roofing x Surge: Growth Strategy</title>
+  <meta property="og:title" content="Home Source Roofing x Surge: Growth Strategy" />
+  <meta property="og:description" content="Meta Ads, AI follow-up, the Surge Command Center, and a new website you own forever. Built in 30 to 45 days." />
+  <meta property="og:image" content="../../brand/SurgeProposalOG.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../brand/SurgeProposalOG.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" />
+  <link rel="icon" href="https://thesurgeagency.com/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://thesurgeagency.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://thesurgeagency.com/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="https://thesurgeagency.com/apple-touch-icon.png" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --accent:       #dee535;
+      --accent-hover: #b8be2a;
+      --bg:           #080808;
+      --surface:      #111111;
+      --surface2:     #0d0d0d;
+      --border:       rgba(255,255,255,0.06);
+      --muted:        #9ca3af;
+      --faint:        #4b5563;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 0.93;
+      letter-spacing: 0.01em;
+    }
+
+    .accent-line {
+      width: 36px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+    .d6 { transition-delay: 0.60s; }
+
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(222,229,53,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(222,229,53,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .scope-item {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    .t-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .t-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .t-step::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1.4rem;
+      width: 2px;
+      height: calc(100% + 1.5rem);
+      background: rgba(222,229,53,0.15);
+    }
+    .t-step:last-child::after { display: none; }
+
+    .tier {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tier:hover {
+      border-color: rgba(222,229,53,0.25);
+      transform: translateY(-2px);
+    }
+    .tier.featured {
+      border-color: var(--accent);
+      background: #0f1300;
+      position: relative;
+    }
+
+    .proof {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.06em;
+      color: #080808;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+    }
+    .btn:hover  { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .field {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 0.875rem 1rem;
+      width: 100%;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+    }
+    .field:focus        { border-color: var(--accent); }
+    .field::placeholder { color: #374151; }
+    select.field        { cursor: pointer; }
+
+    .tier-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .tier-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .ad-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .ad-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .ad-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .col-bad  { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.18); border-radius: 16px; padding: 1.75rem; }
+    .col-good { background: rgba(222,229,53,0.05); border: 1px solid rgba(222,229,53,0.18); border-radius: 16px; padding: 1.75rem; }
+
+    .check-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .check-item:last-child { border-bottom: none; }
+
+    .funnel-step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .stat-chip {
+      display: inline-flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+
+    ::-webkit-scrollbar          { width: 4px; }
+    ::-webkit-scrollbar-track    { background: var(--bg); }
+    ::-webkit-scrollbar-thumb    { background: #222; border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<script>
+  const STRIPE_LINK = 'https://invoice.stripe.com/i/acct_1Q7PzhCsRrvmli7r/live_YWNjdF8xUTdQemhDc1Jydm1saTdyLF9VWGl2OU9DaXRVZktvMTJZajZROWlSWkwyNjlnMlhyLDE2OTY5ODgyNg02006GnTTxZk?s=ap';
+</script>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <img src="../../brand/SRG%20JR.svg" alt="Surge" style="height:38px;width:auto;padding-left:0.75rem;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.6875rem;font-weight:500;color:var(--faint);letter-spacing:0.1em;text-transform:uppercase;">Confidential &middot; May 2026</span>
+</nav>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     01  HERO
+──────────────────────────────────────────────────────────────── -->
+<section class="hero-grid" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 1.5rem 4.5rem;position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:-15%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(222,229,53,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(222,229,53,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+  <div style="max-width:860px;position:relative;">
+    <div class="section-label fade-up" style="margin-bottom:1.5rem;">Growth Strategy &middot; Home Source Roofing</div>
+
+    <h1 class="font-display fade-up d1" style="font-size:clamp(3.5rem,11vw,8rem);line-height:0.9;margin-bottom:1.75rem;">
+      WHAT IF YOUR<br/>
+      MARKETING WORKED<br/>
+      <span style="color:var(--accent);">AS HARD AS YOUR CREW?</span>
+    </h1>
+
+    <p class="fade-up d2" style="font-size:1.0625rem;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:2.75rem;">
+      A complete growth system built on assets you own, leads you can predict, and a pipeline that runs while you're on the roof.
+    </p>
+
+    <div class="fade-up d3" style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-size:0.8125rem;">
+      <span style="color:var(--faint);">Prepared for <span style="color:#fff;font-weight:500;">Brandon and Chris Moye</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">Hagerstown, MD</span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">Prepared by <span style="color:var(--accent);font-weight:600;">Surge</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">May 18, 2026</span>
+    </div>
+  </div>
+
+  <div class="fade-up d4" style="position:absolute;bottom:2.25rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+    <span style="font-size:0.625rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);">Scroll</span>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);"></div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     02  THE SITUATION
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">02 &middot; The Situation</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">
+      THREE PROBLEMS.<br/><span style="color:var(--accent);">ONE DECISION.</span>
+    </h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="card fade-up d1" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">One Call in Five Months</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">In five months of paying $2,995 a month, you have spoken with your account manager once. Not for a strategy review, not for a performance update. Contractor click fraud forced the call. When the only time your vendor picks up the phone is because your budget is being drained by competitors gaming the system, that is not account management. That is damage control.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d2" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Half-Owned Assets</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">You own the domain (homesourceroofing.net via GoDaddy) and your Google and Meta ad accounts. That is more than most operators realize they have. But the website itself, its build, its code, its structure, belongs to Job Nimbus Marketing. Walk away and the site walks with them. All the SEO equity built on that domain stays. The asset sitting on top of it does not. You are renting the most visible thing your business owns.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d3" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Stagnant Strategy</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">$2,995 a month paid to Job Nimbus Marketing to manage Google PPC and some funnel activity. The problem is not that the channel is wrong. The problem is it is the only play. High-intent keywords, bidding against every roofer in the market, no channel diversification, and great content (you have it) sitting unused. The strategy has not evolved in months. You have the ingredients to build something much more efficient. The system just has not been built yet.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     03  DIGITAL ASSETS
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 &middot; Your Digital Assets</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">WHAT YOU HAVE<br/><span style="color:var(--accent);">VS. WHAT YOU OWN.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">The distinction matters. Having access to something and owning it are two different things. Right now, most of your marketing stack lives on someone else's property.</p>
+
+    <div style="display:grid;gap:1.25rem;" class="fade-up d3">
+      <div style="display:grid;gap:1.25rem;grid-template-columns:1fr;">
+
+        <div class="col-bad">
+          <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:1.25rem;">
+            <div style="width:8px;height:8px;background:#ef4444;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.05em;color:#ef4444;">Current Setup</span>
+          </div>
+          <div>
+            <div class="check-item">
+              <span style="color:#4ade80;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Domain (homesourceroofing.net via GoDaddy)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:#4ade80;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Google and Meta ad accounts (in your name)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:#4ade80;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Some lead funnel activity (forms on site and ads)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:#ef4444;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">NO</span>
+              <span style="color:var(--muted);">Website build and code (belongs to Job Nimbus Marketing, leaves if you do)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:#ef4444;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">NO</span>
+              <span style="color:var(--muted);">Optimized funnel with qualification layer (current forms surface tire kickers)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:#ef4444;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">NO</span>
+              <span style="color:var(--muted);">Speed-to-lead automation (unknown what happens after a form submits)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:#ef4444;flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">NO</span>
+              <span style="color:var(--muted);">AI automation or multi-touch follow-up system</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-good">
+          <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:1.25rem;">
+            <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.05em;color:var(--accent);">With Surge (Day One)</span>
+          </div>
+          <div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Domain (still yours)</span>
+            </div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">New website built on your domain, code yours forever</span>
+            </div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Google and Meta ad accounts in your name</span>
+            </div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">All campaign data owned by you, accessible forever</span>
+            </div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Lead funnels built and owned by you</span>
+            </div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">Meta Ads live with targeted homeowner campaigns</span>
+            </div>
+            <div class="check-item">
+              <span style="color:var(--accent);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem;">YES</span>
+              <span style="color:#d1d5db;">AI automation integrated directly with Job Nimbus</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="fade-up d4" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;margin-top:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin:0;">Everything Surge builds lives on your domain, in your accounts, under your name. If we ever part ways, you keep everything. That is not a promise. That is how we structure every engagement.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     04  WEBSITE AUDIT
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 &middot; Website Audit</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">HOMESOURCEROOFING.NET:<br/><span style="color:var(--accent);">WHAT WE FOUND.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">We ran a full site crawl and audit before this call. The foundation is solid. The gaps are fixable. Here is exactly where you stand.</p>
+
+    <div style="display:grid;gap:1.25rem;margin-bottom:1.5rem;" class="fade-up d3">
+
+      <div class="col-good">
+        <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:1.25rem;">
+          <div style="width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.05em;color:var(--accent);">What Is Working</span>
+        </div>
+        <div>
+          <div class="check-item">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="color:#d1d5db;">10+ services covered with dedicated pages</span>
+          </div>
+          <div class="check-item">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="color:#d1d5db;">20+ location pages across MD, PA, and WV</span>
+          </div>
+          <div class="check-item">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="color:#d1d5db;">Active Learning Hub blog with real content</span>
+          </div>
+          <div class="check-item">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="color:#d1d5db;">GAF and CertainTeed certified (top 5% nationally)</span>
+          </div>
+          <div class="check-item">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="color:#d1d5db;">4.7 Google rating and 4.6 Facebook rating</span>
+          </div>
+          <div class="check-item">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="color:#d1d5db;">Family and veteran-owned positioning (underused)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-bad">
+        <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:1.25rem;">
+          <div style="width:8px;height:8px;background:#ef4444;border-radius:50%;flex-shrink:0;"></div>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;letter-spacing:0.05em;color:#ef4444;">What Needs Work</span>
+        </div>
+        <div>
+          <div class="check-item">
+            <span style="color:#ef4444;flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span style="color:var(--muted);">Zero owner-generated video (only GAF stock clips)</span>
+          </div>
+          <div class="check-item">
+            <span style="color:#ef4444;flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span style="color:var(--muted);">Only 231 Google reviews (vs. competitors with 300-427)</span>
+          </div>
+          <div class="check-item">
+            <span style="color:#ef4444;flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span style="color:var(--muted);">No lead qualification funnel (form goes straight to booking, surfaces tire kickers)</span>
+          </div>
+          <div class="check-item">
+            <span style="color:#ef4444;flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span style="color:var(--muted);">BBB not accredited (competitors use this against you)</span>
+          </div>
+          <div class="check-item">
+            <span style="color:#ef4444;flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span style="color:var(--muted);">Site speed degraded by unoptimized image delivery</span>
+          </div>
+          <div class="check-item">
+            <span style="color:#ef4444;flex-shrink:0;margin-top:0.1rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </span>
+            <span style="color:var(--muted);">GAF and veteran credentials buried, not leading the conversation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     05  GOOGLE BUSINESS PROFILE
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">05 &middot; Google Business Profile</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">LOCAL PACK.<br/><span style="color:var(--accent);">YOUR BIGGEST LEVER.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">When a homeowner in Hagerstown searches "roofer near me," the first three results that show up are the three jobs they call. Getting into that pack is not optional. It is the game.</p>
+
+    <div style="display:grid;gap:2rem;align-items:start;" class="fade-up d3">
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-bottom:1.5rem;">
+        <div class="stat-chip">
+          <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">4.7</span>
+          <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Google Stars</span>
+        </div>
+        <div class="stat-chip">
+          <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">231</span>
+          <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Total Reviews</span>
+        </div>
+        <div class="stat-chip">
+          <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">20+</span>
+          <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Service Areas Listed</span>
+        </div>
+        <div class="stat-chip">
+          <span class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">#1</span>
+          <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Goal: Hagerstown Pack</span>
+        </div>
+      </div>
+
+      <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);">
+        <img src="img/gmb-screenshot.png" alt="Home Source Roofing Google Business Profile" style="width:100%;display:block;object-fit:cover;" />
+      </div>
+
+    </div>
+
+    <div class="fade-up d4" style="margin-top:2rem;">
+      <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">What Surge Does With Your GMB</p>
+      <div style="display:grid;gap:0.75rem;">
+        <div class="card" style="padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <span style="font-size:0.9375rem;color:#d1d5db;">Automated post-job review requests integrated with Job Nimbus (every closed job triggers a review ask)</span>
+        </div>
+        <div class="card" style="padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <span style="font-size:0.9375rem;color:#d1d5db;">Weekly GMB posts (seasonal offers, completed jobs, team content)</span>
+        </div>
+        <div class="card" style="padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <span style="font-size:0.9375rem;color:#d1d5db;">Geotagged photo strategy (every job photo tagged to its zip code)</span>
+        </div>
+        <div class="card" style="padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;"></div>
+          <span style="font-size:0.9375rem;color:#d1d5db;">Local pack targeting across all 20+ zip codes in your service area</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     06  WHERE YOU STAND
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">06 &middot; Where You Stand</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">21 COMPETITORS.<br/><span style="color:var(--accent);">THREE MARKETS. ONE MAP.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">We mapped every competitor across MD, PA, and WV within a 60-mile radius. Review volume is the primary ranking lever in local search. Here is exactly where you sit.</p>
+
+    <div style="display:grid;gap:1.25rem;" class="fade-up d3">
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;color:#fff;">Hagerstown, MD &mdash; Your Home Market</span>
+          <span style="font-size:0.75rem;color:var(--accent);font-weight:600;background:rgba(222,229,53,0.1);padding:0.25rem 0.625rem;border-radius:999px;">You Lead This Market</span>
+        </div>
+        <div style="padding:1rem 1.5rem;">
+          <div style="display:grid;gap:0.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:var(--accent);font-weight:600;">Home Source Roofing</span>
+              <span style="color:var(--accent);font-weight:600;">231 reviews &middot; 4.7 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:var(--muted);">Happy Home</span>
+              <span style="color:var(--muted);">198 reviews &middot; 5.0 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:var(--muted);">Shumaker Roofing (Hagerstown)</span>
+              <span style="color:var(--muted);">51 reviews &middot; 5.0 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;">
+              <span style="color:var(--muted);">E&amp;Y Home Improvement</span>
+              <span style="color:var(--muted);">28 reviews &middot; 4.8 ★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;color:#fff;">Martinsburg / WV Corridor</span>
+          <span style="font-size:0.75rem;color:#ef4444;font-weight:600;background:rgba(239,68,68,0.1);padding:0.25rem 0.625rem;border-radius:999px;">Review Gap to Close</span>
+        </div>
+        <div style="padding:1rem 1.5rem;">
+          <div style="display:grid;gap:0.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:#ef4444;">High Point Roofing</span>
+              <span style="color:#ef4444;">427 reviews &middot; 4.9 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:#ef4444;">Crafted Exterior Services</span>
+              <span style="color:#ef4444;">385 reviews &middot; 5.0 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:var(--muted);">Modern Renovations (Martinsburg)</span>
+              <span style="color:var(--muted);">216 reviews &middot; 4.7 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;">
+              <span style="color:var(--accent);font-weight:600;">Home Source Roofing</span>
+              <span style="color:var(--accent);font-weight:600;">231 reviews &middot; 4.7 ★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;color:#fff;">Frederick, MD Corridor</span>
+          <span style="font-size:0.75rem;color:var(--faint);font-weight:600;background:rgba(255,255,255,0.04);padding:0.25rem 0.625rem;border-radius:999px;">Expansion Opportunity</span>
+        </div>
+        <div style="padding:1rem 1.5rem;">
+          <div style="display:grid;gap:0.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:#ef4444;">Shumaker Roofing (Frederick)</span>
+              <span style="color:#ef4444;">326 reviews &middot; 4.8 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">
+              <span style="color:var(--muted);">TEO Roofing</span>
+              <span style="color:var(--muted);">285 reviews &middot; 4.9 ★</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.875rem;padding:0.625rem 0;">
+              <span style="color:var(--muted);">PJ's Roofing</span>
+              <span style="color:var(--muted);">218 reviews &middot; 4.9 ★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fade-up d4" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;margin-top:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin:0;">No competitor in this analysis is running owner-generated content. No one is using Meta to build trust before a homeowner searches. That lane is completely open, and it is the fastest path to outgrowing the review gap in every market.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     07  THE CPL PROBLEM
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">07 &middot; The Lead Problem</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">UNPREDICTABLE<br/><span style="color:var(--accent);">VS. PREDICTABLE.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">The problem is not just how much a lead costs. It is whether you can predict it, and whether the lead is worth anything when it shows up.</p>
+
+    <div style="display:grid;gap:1.25rem;grid-template-columns:1fr;" class="fade-up d3">
+
+      <div class="col-bad">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.375rem;letter-spacing:0.04em;color:#ef4444;margin-bottom:1.25rem;">Current Provider (Job Nimbus Marketing)</div>
+        <div style="display:grid;gap:0.875rem;">
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:#ef4444;border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:var(--muted);line-height:1.6;">$2,995/mo to Job Nimbus Marketing for Google PPC management plus some funnel activity. The channel is not the problem. Being 100% reliant on it is. When Google gets more competitive, your cost per lead goes up with no second system to absorb it.</p>
+          </div>
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:#ef4444;border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:var(--muted);line-height:1.6;">There is a funnel, but we saw significant gaps in it. The qualification is not tight enough to filter price shoppers and job seekers before they reach your reps. Your team is spending time on leads that were never going to book.</p>
+          </div>
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:#ef4444;border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:var(--muted);line-height:1.6;">Speed-to-lead is unclear. We do not know what happens the moment a lead form is submitted. If there is no instant follow-up firing in the first 60 seconds, a significant percentage of those leads are going cold before anyone calls.</p>
+          </div>
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:#ef4444;border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:var(--muted);line-height:1.6;">Great content exists and is not being deployed. That video content, those job photos, that expertise, none of it is being used as a channel. It is the most underutilized asset in the account.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-good">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.375rem;letter-spacing:0.04em;color:var(--accent);margin-bottom:1.25rem;">Surge Strategy</div>
+        <div style="display:grid;gap:0.875rem;">
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.6;">Meta Ads plus AI follow-up running in parallel with any Google spend. Two channels, diversified spend, and a system that keeps working when one channel gets expensive.</p>
+          </div>
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.6;">Qualification funnel on every form submission. Before a lead reaches your rep, it has already answered what type of job it is, when they want it done, and whether they own the home. Your team only talks to people worth talking to.</p>
+          </div>
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.6;">AI follow-up fires instantly on every submission. SMS and email sequence starts within 60 seconds, personalized, multi-touch, and looks like it came from Brandon. Leads get worked around the clock without adding headcount.</p>
+          </div>
+          <div style="display:flex;gap:0.875rem;align-items:flex-start;">
+            <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:0.45rem;"></div>
+            <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.6;">Every lead, every source, every dollar tracked in real time inside the Surge Command Center. Predictable costs and full visibility. No more guessing.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     08  PAID MEDIA AUDIT
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 &middot; Paid Media Audit</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">7 ADS.<br/><span style="color:var(--accent);">1 IDEA.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.65;margin-bottom:3rem;">You are running Meta ads. These seven creatives are proof. But Job Nimbus Marketing launched all seven the same week, with the same angle, same format, same fear: storm damage discount. Running variations of one message is effectively one ad. The account is active. The strategy is flat.</p>
+
+    <div class="ad-grid fade-up d3" style="margin-bottom:2rem;">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-01.png" alt="Ad 1" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-02.png" alt="Ad 2" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-03.png" alt="Ad 3" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-04.png" alt="Ad 4" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-05.png" alt="Ad 5" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-06.png" alt="Ad 6" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);"><img src="img/ad-07.png" alt="Ad 7" style="width:100%;display:block;" /></div>
+      <div style="border-radius:12px;border:1px solid rgba(222,229,53,0.2);background:#0f1300;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center;min-height:120px;">
+        <div class="font-display" style="font-size:2rem;color:var(--accent);line-height:1;margin-bottom:0.5rem;">+8</div>
+        <div style="font-size:0.8125rem;color:var(--muted);line-height:1.5;">Andromeda needs 15 distinct concepts. You have 1 concept in 7 variations.</div>
+      </div>
+    </div>
+
+    <div class="fade-up d4" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;">
+      <div class="font-display" style="font-size:1.375rem;letter-spacing:0.04em;color:var(--accent);margin-bottom:1rem;">What Andromeda Actually Needs</div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;">Meta's Andromeda system, the AI backbone that controls ad delivery across Meta's entire network, changed the game for advertisers. Andromeda does not optimize a single message. It learns from creative signals across many distinct concepts and uses those signals to find the right buyer at the right moment. The old advice was 3 to 5 concepts. Post-Andromeda, Meta's own guidance pushes toward 15 or more distinct creative pieces: varied hooks, different formats, multiple angles, and content that speaks to different stages of the buying decision. Running seven variations of one storm damage fear hook is giving Andromeda one data point. That is not enough to find your buyer. That is enough to keep spending your budget on the same audience that already said no.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     09  GOOGLE ADS AUDIT
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">09 &middot; Google Ads Audit</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">$2,995/MO.<br/><span style="color:var(--accent);">HERE IS WHAT IT IS BUYING.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:580px;line-height:1.65;margin-bottom:3rem;">We pulled SpyFu data on your current Google Ads presence. $2,995 a month goes to Job Nimbus Marketing to manage your PPC, separate from whatever your actual ad spend is going to Google. Here is what that management is producing.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:2rem;" class="fade-up d3">
+      <div class="stat-chip">
+        <span class="font-display" style="font-size:2rem;color:#ef4444;line-height:1;">2%</span>
+        <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Organic Traffic Share</span>
+      </div>
+      <div class="stat-chip">
+        <span class="font-display" style="font-size:2rem;color:#ef4444;line-height:1;">16.7%</span>
+        <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Impression Coverage</span>
+      </div>
+      <div class="stat-chip">
+        <span class="font-display" style="font-size:2rem;color:#ef4444;line-height:1;">188</span>
+        <span style="font-size:0.75rem;color:var(--muted);margin-top:0.375rem;font-weight:500;">Potential Waste Keywords</span>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:1.5rem;" class="fade-up d4">
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;color:#ef4444;">Expensive Generic Keywords Being Targeted</div>
+          <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.25rem;">High cost, broad intent, mixed buyer quality</div>
+        </div>
+        <div style="padding:1rem 1.5rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">roofing company</span>
+          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">roof repair</span>
+          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">roofing contractor</span>
+          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">local roofing company</span>
+          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">gutter repair near me</span>
+          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fca5a5;font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">best roofing company near me</span>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0;overflow:hidden;">
+        <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;color:var(--accent);">High-Volume Keywords Being Missed</div>
+          <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.25rem;">Strong buyer intent, currently unaddressed</div>
+        </div>
+        <div style="padding:1rem 1.5rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">roofers near me</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">roofing contractors near me</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">roof replacement near me</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">hagerstown roofer</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">insurance roof claim hagerstown</span>
+          <span style="background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);color:var(--accent);font-size:0.8125rem;font-weight:500;padding:0.375rem 0.75rem;border-radius:999px;">storm damage roof repair md</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fade-up d5" style="border-radius:16px;overflow:hidden;border:1px solid var(--border);margin-top:1.5rem;">
+      <img src="img/spyfu-overview.png" alt="SpyFu account overview" style="width:100%;display:block;" />
+    </div>
+
+    <div class="fade-up d5" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;margin-top:1.25rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin:0;">To be clear: the $2,995 is the management fee paid to Job Nimbus Marketing to manage your PPC. That number is not your Google ad spend. We are not making claims about what your actual monthly media budget is going to Google. What we do know is what the management fee is producing at a strategic level, and the data above shows exactly that.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     10  OWNER-GENERATED CONTENT
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">10 &middot; Owner-Generated Content</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">THEY TRUST YOU<br/><span style="color:var(--accent);">BEFORE THEY EVER CALL.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">No competitor in this market is doing owner-generated video. Not one. The homeowner who watches Brandon explain storm damage on video is not calling the next roofer. They already trust him.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-bottom:2rem;" class="fade-up d3">
+
+      <div class="card" style="padding:1.5rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--accent);line-height:1;margin-bottom:0.875rem;">01</div>
+        <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.5rem;color:#e5e7eb;">You Film</h3>
+        <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">30 to 60 seconds on your phone. Surge writes the scripts and coaches the delivery. Brandon or Chris on camera. Real jobs, real expertise, real Hagerstown.</p>
+      </div>
+
+      <div class="card" style="padding:1.5rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--accent);line-height:1;margin-bottom:0.875rem;">02</div>
+        <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.5rem;color:#e5e7eb;">We Produce</h3>
+        <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Surge edits, captions, brands, and formats every clip for Meta and YouTube. Professional output from a 60-second phone video. Every time.</p>
+      </div>
+
+      <div class="card" style="padding:1.5rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--accent);line-height:1;margin-bottom:0.875rem;">03</div>
+        <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.5rem;color:#e5e7eb;">AI Targets</h3>
+        <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Meta delivers the video to homeowners in your 20+ zip codes. Not renters. Not job seekers. Homeowners in your service area ready for a roof conversation.</p>
+      </div>
+
+      <div class="card" style="padding:1.5rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--accent);line-height:1;margin-bottom:0.875rem;">04</div>
+        <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.5rem;color:#e5e7eb;">They Trust You</h3>
+        <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">By the time they fill out the form, they have already seen you explain the work. The inspection is a formality. You are the expert before you pull into the driveway.</p>
+      </div>
+
+    </div>
+
+    <div class="fade-up d4" style="margin-bottom:2rem;">
+      <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Three Video Hooks Ready to Film</p>
+      <div style="display:grid;gap:0.75rem;">
+        <div class="card" style="padding:1.375rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="color:var(--accent);flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;">01</div>
+          <span style="color:#d1d5db;font-size:0.9375rem;">"3 things to check on your roof before calling a roofer"</span>
+        </div>
+        <div class="card" style="padding:1.375rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="color:var(--accent);flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;">02</div>
+          <span style="color:#d1d5db;font-size:0.9375rem;">"Here's what your insurance won't tell you about storm damage"</span>
+        </div>
+        <div class="card" style="padding:1.375rem 1.5rem;display:flex;gap:1rem;align-items:center;">
+          <div style="color:var(--accent);flex-shrink:0;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;">03</div>
+          <span style="color:#d1d5db;font-size:0.9375rem;">"Why Hagerstown homeowners choose Home Source Roofing"</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);" class="fade-up d5">
+      <img src="img/owner-reel.png" alt="Owner reel example" style="width:100%;display:block;" />
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     11  THE FUNNEL
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">11 &middot; The Funnel</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">FIVE STEPS.<br/><span style="color:var(--accent);">EVERY LEAD WORKED.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">The warm handoff effect: every inspection is pre-sold on trust before you pull into the driveway. No cold leads. No tire kickers reaching your reps. Just homeowners ready to book.</p>
+
+    <div style="display:grid;gap:1rem;" class="fade-up d3">
+
+      <div class="funnel-step">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2.5rem;text-align:center;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Meta Ad</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Owner-generated video or image ad delivered to homeowners in your 20+ service zip codes across MD, PA, and WV. AI targeting to the right homeowner at the right moment.</p>
+        </div>
+      </div>
+
+      <div style="width:2px;height:1.25rem;background:rgba(222,229,53,0.2);margin-left:1.25rem;"></div>
+
+      <div class="funnel-step">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2.5rem;text-align:center;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Landing Page and Qualification Form</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Not a generic contact form. A multi-step qualification flow that captures job type, timeline, home ownership status, and zip code. Price shoppers and job seekers filter themselves out before your rep ever picks up the phone.</p>
+        </div>
+      </div>
+
+      <div style="width:2px;height:1.25rem;background:rgba(222,229,53,0.2);margin-left:1.25rem;"></div>
+
+      <div class="funnel-step">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2.5rem;text-align:center;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">AI Follow-Up (Instant SMS and Email)</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Within 60 seconds of form submission, the lead receives a personalized SMS and email. Multi-touch nurture sequence runs automatically, looks like it came from Brandon personally, and keeps working the lead until your SDR picks it up.</p>
+        </div>
+      </div>
+
+      <div style="width:2px;height:1.25rem;background:rgba(222,229,53,0.2);margin-left:1.25rem;"></div>
+
+      <div class="funnel-step">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2.5rem;text-align:center;">04</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">SDR Outreach (Warm Call)</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Your sales rep calls with full context already in Job Nimbus: job type, what they said in the form, how many times they engaged with follow-up, and what their timeline is. Not a cold call. A warm handoff with everything they need to close it.</p>
+        </div>
+      </div>
+
+      <div style="width:2px;height:1.25rem;background:rgba(222,229,53,0.2);margin-left:1.25rem;"></div>
+
+      <div class="funnel-step" style="border-color:rgba(222,229,53,0.2);background:#0f1300;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2.5rem;text-align:center;">05</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:var(--accent);">Booked Inspection</h3>
+          <p style="color:#d1d5db;font-size:0.875rem;line-height:1.65;">The homeowner has already watched your video, read your follow-up, and talked to your rep. They know Home Source before you arrive. The inspection is a formality. The job is already half-sold.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     12  THE ROADMAP
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">12 &middot; The Roadmap</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">30 TO 45 DAYS<br/><span style="color:var(--accent);">TO FULL LAUNCH.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3.25rem;">When we originally pitched this, the timeline was 60 to 90 days. We have since built most of this infrastructure for other clients. It is ready. This is a 30-day rollout. Call it 45 to be conservative.</p>
+
+    <div style="display:grid;gap:2.75rem;" class="fade-up d3">
+
+      <div class="t-step">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.375rem;letter-spacing:0.04em;">PHASE 1 &middot; DAYS 1 TO 20 &middot; FOUNDATION</div>
+        <div style="display:grid;gap:0.625rem;margin-top:0.875rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            New website rebuilt on homesourceroofing.net. SEO-safe migration, mobile-first, conversion-optimized. Your domain, your code, your site forever.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            All lead funnels designed and built, with qualification forms per service line.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Job Nimbus integration scoped and wired. Two-way sync so every lead flows clean into your CRM from day one.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Surge Command Center built. Live ops dashboard wired to Job Nimbus, Meta, Google, and GBP.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            ICP refreshed from March work. Campaign strategy locked. First three video scripts written and creative session scheduled.
+          </div>
+        </div>
+      </div>
+
+      <div class="t-step">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.375rem;letter-spacing:0.04em;">PHASE 2 &middot; DAYS 20 TO 35 &middot; LAUNCH</div>
+        <div style="display:grid;gap:0.625rem;margin-top:0.875rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Meta Ads live with first owner-generated video creative.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            AI follow-up automation firing on every form submission, integrated directly with Job Nimbus.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Surge Command Center live. Every lead, every source, every dollar visible in real time.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            GMB optimization running. Automated review request system active after every closed job.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Weekly performance reporting begins.
+          </div>
+        </div>
+      </div>
+
+      <div class="t-step">
+        <div class="font-display" style="font-size:1.0625rem;color:var(--accent);margin-bottom:0.375rem;letter-spacing:0.04em;">PHASE 3 &middot; DAYS 35 TO 45 &middot; OPTIMIZE AND TRANSITION</div>
+        <div style="display:grid;gap:0.625rem;margin-top:0.875rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Performance reviewed against targets. Creative iteration based on what the algorithm is learning.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Job Nimbus Marketing wound down once the Surge pipeline is producing qualified leads consistently.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Ongoing tier confirmed. Scale and Dominate options reviewed if you want to add SEO authority work or CRO.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--muted);line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            In-person sales training visit to Hagerstown scheduled (Scale and Dominate tiers).
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     COMMAND CENTER INTERSTITIAL
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:3.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(222,229,53,0.12);border-bottom:1px solid rgba(222,229,53,0.12);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="fade-up" style="background:rgba(222,229,53,0.05);border:1px solid rgba(222,229,53,0.2);border-radius:12px;padding:2.25rem 2.5rem;display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between;">
+      <div style="flex:1;min-width:240px;">
+        <div class="font-display" style="font-size:0.75rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.625rem;">SURGE COMMAND CENTER &middot; WORKING PROTOTYPE</div>
+        <div class="font-display" style="font-size:1.625rem;line-height:1.15;color:#fff;margin-bottom:0.75rem;">SEE WHAT WE'RE<br/>BUILDING.</div>
+        <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;max-width:400px;">This is a working prototype of the Command Center, currently in development for another home service client. Yours will be wired into Job Nimbus, Meta, Google, and GBP specific to Home Source. Same infrastructure, built for your operation.</p>
+      </div>
+      <div style="flex-shrink:0;">
+        <a href="https://tinyurl.com/yc7wwy55" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.625rem;background:var(--accent);color:#080808;font-family:'Bebas Neue',display;font-size:1.0625rem;letter-spacing:0.06em;padding:0.875rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:700;transition:background 0.18s;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          LIVE DEMO
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     13  PROTECTING YOUR PIPELINE
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">13 &middot; Protecting Your Pipeline</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">BUILD FIRST.<br/><span style="color:var(--accent);">THEN SWITCH.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">Because you own your ad accounts, we cannot run Surge campaigns and Job Nimbus campaigns at the same time on the same accounts. The transition has a clear trigger: once the new system is built, approved, and ready, we flip. Not before. Not after. Here is exactly how that works.</p>
+
+    <div style="display:grid;gap:1.25rem;" class="fade-up d3">
+
+      <div class="card" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Phase 1 and 2: Job Nimbus keeps running while we build</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">During the foundation and launch build (days 1 to 35), your current lead flow keeps running exactly as it does today. We audit what was working under Job Nimbus, take what produced results, and build the new strategy on top of it. Nothing gets cut off mid-build.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Strategy approval triggers the switch</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Once the new website, funnels, campaigns, and Command Center are ready, we present the full strategy for your sign-off. You review what we have built and approve the go-live plan. That approval is the trigger. We are not guessing when to switch. You decide.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;border-color:rgba(222,229,53,0.2);">
+        <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Clean cut. No overlap, no gap.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Because you own the ad accounts, we take over management directly. Job Nimbus Marketing is removed from the account. Surge takes the wheel on the same accounts with an optimized keyword strategy, fresh creative, and better targeting. One clean handoff. Your lead flow does not stop. It improves.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     14  THE OFFER
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">14 &middot; The Offer</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">BUILT FOR YOU.<br/><span style="color:var(--accent);">OWNED BY YOU.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">One signature, one payment, the entire build kicks off tomorrow.</p>
+
+    <!-- Kickoff Block -->
+    <div class="fade-up d3" style="background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem;">
+        <div>
+          <div class="section-label" style="margin-bottom:0.5rem;">One-Time Kickoff Fee</div>
+          <h3 class="font-display" style="font-size:1.75rem;line-height:1.1;color:#fff;">The Entire Build, Start to Finish</h3>
+          <p style="color:var(--muted);font-size:0.875rem;margin-top:0.375rem;">Honoring March pricing. Full retail $6,500.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="font-display" style="font-size:4rem;color:var(--accent);line-height:1;">$6,000</div>
+          <div style="font-size:0.8125rem;color:var(--faint);">One-time. No surprises.</div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+        <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">What Is Included in the $6,000</p>
+        <div style="display:grid;gap:0.625rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            New website rebuilt on the domain you own (homesourceroofing.net). SEO-safe migration, mobile-first, conversion-optimized.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            All marketing funnels designed and built, with lead qualification per service line.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Job Nimbus speed-to-lead integration. Two-way sync, every lead flows clean into your CRM.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Surge Command Center. Live ops dashboard wired to Job Nimbus, Meta, Google, and GBP. Yours on day one.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            AI automation systems. Instant SMS and email follow-up on every form submission, multi-touch nurture until your SDR books the inspection.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Campaign and creative architecture. First three video scripts written, ICP locked, Meta campaign built and ready to launch.
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Google and Meta ad accounts set up in your name. You own the accounts. You own the data. Always.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Block -->
+    <div class="fade-up d4" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem;">
+        <div>
+          <div class="section-label" style="margin-bottom:0.5rem;">Monthly Engagement &middot; Launch Tier</div>
+          <h3 class="font-display" style="font-size:1.75rem;line-height:1.1;color:#fff;">A Like-for-Like Swap</h3>
+          <p style="color:var(--muted);font-size:0.875rem;margin-top:0.375rem;">Same monthly spend. Better system. Better results.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="font-display" style="font-size:4rem;color:var(--accent);line-height:1;">$3,000</div>
+          <div style="font-size:0.8125rem;color:var(--faint);">/month</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+        <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">What Is Included Each Month</p>
+        <div style="display:grid;gap:0.625rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Meta Ads management across all active campaigns
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            AI follow-up automation operations (SMS, email, Job Nimbus sync)
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Monthly performance reporting and strategy review
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:#d1d5db;line-height:1.55;">
+            <span style="color:var(--accent);flex-shrink:0;margin-top:0.1rem;">&#8594;</span>
+            Surge Command Center hosting and updates
+          </div>
+        </div>
+        <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-top:1.25rem;">You are currently paying $2,995/mo to Job Nimbus Marketing to manage your PPC. The Launch tier costs $3,000/mo. That is a like-for-like swap in budget with a completely different system underneath it and the Surge Command Center giving you full visibility into every dollar and every lead.</p>
+      </div>
+    </div>
+
+    <!-- Ad Spend Callout -->
+    <div class="fade-up d4" style="background:#150f00;border:2px solid rgba(222,229,53,0.4);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div>
+        <div class="font-display" style="font-size:1.25rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.5rem;">Required Ad Spend: $100/Day ($3,000/Month)</div>
+        <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;">This is paid directly to Meta and Google by you. It does not go through Surge. This is your media budget, controlled by you, spent on your campaigns, in your accounts. The system only produces if media budget is running. This line item is not optional and should not be buried.</p>
+      </div>
+    </div>
+
+    <!-- No Contract -->
+    <div class="fade-up d5" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:center;">
+      <div style="color:var(--accent);flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;color:var(--accent);letter-spacing:0.04em;">No Contract. No Commitment.</span>
+        <span style="font-size:0.9rem;color:var(--muted);margin-left:0.625rem;line-height:1.65;">Stay because the results are there. Not because a contract says you have to.</span>
+      </div>
+    </div>
+
+    <!-- Scale/Dominate mention -->
+    <div class="fade-up d5" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;">
+      <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;">As You Grow</p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;">We also offer Scale and Dominate tiers for clients ready to layer on dedicated SEO authority work, advanced conversion rate optimization, backlink campaigns, or quarterly in-person training. We will review these options once the Launch tier is producing. No pressure to decide now.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     15  WHY SURGE
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">15 &middot; Why Surge</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">THREE REASONS.<br/><span style="color:var(--accent);">NO FLUFF.</span></h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="proof fade-up d1">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">01</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">Two-person, partner-led delivery.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Sam and Mario work your account directly. Not an account manager you have never met, not a junior strategist handling 40 clients. The two people who built the system are the two people running it. That is a structural advantage you will not get at a larger agency.</p>
+      </div>
+
+      <div class="proof fade-up d2">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">02</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">You own everything we build. Day one.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The website is on your domain. The ad accounts are in your name. The Command Center is yours. The data is yours. If we ever part ways, you keep everything Surge has built. No hostage-taking, no lock-in. That is how we operate with every client.</p>
+      </div>
+
+      <div class="proof fade-up d3">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">03</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">AI infrastructure built for operators, not agencies.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The Surge Command Center and Job Nimbus integration are not concepts. We are shipping this infrastructure for other home service businesses right now. The AI follow-up system, the live ops dashboard, the speed-to-lead automation: these are real products in production. Home Source is not a pilot. You are getting the version that already works.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────────────────────────────────────────────
+     16  NEXT STEPS
+──────────────────────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:720px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">16 &middot; Next Steps</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">LET'S BUILD THIS.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Three steps. One signature, access granted, launch call scheduled. The build kicks off the next business day.</p>
+
+    <div style="display:grid;gap:1rem;margin-bottom:3rem;" class="fade-up d3">
+      <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Grant account access</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Meta Business Manager, Google Ads, and Job Nimbus CRM. We need admin access to audit what has been working under Job Nimbus before we change anything. Understanding what produced results is step one of building a better system.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Sign and pay the $6,000 kickoff</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">One signature from any authorized representative of Home Source Roofing. One payment via Stripe. The build starts the next business day.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Launch call: dissect the lead system</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">We get on a call and map every lead channel end-to-end. What happens when someone calls? When someone DMs? When someone fills out a form from an ad or the website? Where does it go in Job Nimbus? Is it actually hitting the CRM? What steps happen after it lands? We map every path before we touch anything. That audit becomes the foundation of the new system.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signature form -->
+    <form id="proposal-form" class="card fade-up d4" style="padding:2rem;margin-bottom:2rem;transition:opacity 0.4s ease,transform 0.4s ease;" onsubmit="handleSubmit(event)">
+      <h3 style="font-weight:600;font-size:1rem;color:#d1d5db;margin-bottom:0.375rem;">Approve Proposal</h3>
+      <p style="font-size:0.8125rem;color:var(--faint);margin-bottom:1.75rem;">One signature from any authorized representative. Typed name serves as a binding signature.</p>
+
+      <div style="display:grid;gap:1rem;margin-bottom:1.25rem;">
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-signer">Your Full Name</label>
+          <input class="field" type="text" id="f-signer" name="signer_name" placeholder="Type full name to sign" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-title">Your Title</label>
+          <input class="field" type="text" id="f-title" name="signer_title" placeholder="e.g. Co-Owner" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
+          <input class="field" type="date" id="f-date" name="date" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-tier">Monthly Tier Selection <span style="color:var(--faint);font-weight:400;">(optional, decide later)</span></label>
+          <select class="field" id="f-tier" name="tier">
+            <option value="" style="background:#111;">-- Choose a tier or decide after the call --</option>
+            <option value="Launch: $3,000/mo" style="background:#111;">Launch: $3,000/mo (Meta Ads + AI follow-up + Command Center)</option>
+            <option value="Scale or Dominate (discuss on call)" style="background:#111;">Scale or Dominate (let's discuss on the call)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, both parties approve the scope and investment outlined in this proposal and authorize Surge to begin work upon receipt of the $6,000 kickoff payment.</p>
+
+      <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.25rem;padding:1.125rem 2rem;">
+        SIGN AND APPROVE
+      </button>
+    </form>
+
+    <!-- Signed confirmation -->
+    <div id="signed-confirmation" style="display:none;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;">
+      <div style="background:#0a1200;border:1px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.75rem;">
+          <div style="width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:var(--accent);">Proposal Approved</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Sam and Mario have been notified. You are all set.</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:0.75rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Signed by</span>
+            <span id="conf-names" style="color:#fff;font-weight:600;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Date</span>
+            <span id="conf-date" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Monthly Tier</span>
+            <span id="conf-tier" style="color:var(--accent);font-weight:500;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Kickoff Fee</span>
+            <span style="color:#fff;font-weight:600;">$6,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment CTA -->
+    <div id="payment-cta" style="text-align:center;opacity:0.35;transition:opacity 0.5s ease;">
+      <p id="payment-label" style="font-size:0.875rem;color:var(--faint);margin-bottom:1.125rem;">Sign the proposal above to unlock payment.</p>
+      <a id="payment-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.25rem;padding:1.375rem 2.5rem;pointer-events:none;width:100%;justify-content:center;">
+        PAY $6,000: START THE BUILD
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p style="font-size:0.75rem;color:var(--faint);margin-top:0.875rem;">Secure payment via Stripe. Build kicks off within 24 hours of payment confirmation.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="padding:1.75rem 1.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+  <img src="../../brand/SRG%20JR.svg" alt="Surge" style="height:24px;width:auto;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.75rem;color:var(--faint);">Prepared for Home Source Roofing &middot; May 2026 &middot; Confidential</span>
+</footer>
+
+
+<!-- SCRIPTS -->
+<script>
+  // Entrance animations
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Pre-fill today's date
+  const dateInput = document.getElementById('f-date');
+  if (dateInput) {
+    const t  = new Date();
+    const mm = String(t.getMonth() + 1).padStart(2, '0');
+    const dd = String(t.getDate()).padStart(2, '0');
+    dateInput.value = `${t.getFullYear()}-${mm}-${dd}`;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fd          = new FormData(e.target);
+    const signerName  = fd.get('signer_name')  || '';
+    const signerTitle = fd.get('signer_title') || '';
+    const date        = fd.get('date')          || '';
+    const tier        = fd.get('tier')          || 'Decide after call';
+
+    const dateDisplay = date
+      ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+      : date;
+
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:     signerTitle ? `${signerName} (${signerTitle})` : signerName,
+        company:  'Home Source Roofing',
+        date:     dateDisplay,
+        retainer: tier,
+        proposal: 'Home Source Roofing Growth Strategy',
+        fee:      '$6,000 kickoff + $3,000/mo Launch tier',
+      }),
+    }).catch(() => {});
+
+    const form = document.getElementById('proposal-form');
+    form.style.opacity   = '0';
+    form.style.transform = 'translateY(-12px)';
+    setTimeout(() => { form.style.display = 'none'; }, 420);
+
+    document.getElementById('conf-names').textContent = signerTitle ? `${signerName}, ${signerTitle}` : signerName;
+    document.getElementById('conf-date').textContent  = dateDisplay;
+    document.getElementById('conf-tier').textContent  = tier || 'Decide after call';
+
+    const conf = document.getElementById('signed-confirmation');
+    conf.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      conf.style.opacity   = '1';
+      conf.style.transform = 'translateY(0)';
+    }));
+
+    const payBtn   = document.getElementById('payment-btn');
+    const payLabel = document.getElementById('payment-label');
+    const cta      = document.getElementById('payment-cta');
+    setTimeout(() => {
+      cta.style.opacity          = '1';
+      payBtn.href                = STRIPE_LINK;
+      payBtn.style.pointerEvents = 'auto';
+      payLabel.textContent       = "You're approved. One step left: lock in your start date.";
+      payLabel.style.color       = '#d1d5db';
+      payLabel.style.fontWeight  = '500';
+    }, 600);
+  }
+</script>
+
+</body>
+</html>
