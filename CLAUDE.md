@@ -45,6 +45,17 @@ clients/[kebab-case-client-name]/
 Vercel. Each proposal gets a unique path: proposals.thesurgeagency.com/[client-name]
 Run: vercel --prod from the surge-proposals root, NOT the client folder (api/ must be at root).
 
+**Every new client requires two manual steps before pushing — skip either and the proposal will 404 or show broken images:**
+
+1. **Add the route to `build.sh`** (not just `vercel.json`). The build script generates its own hardcoded Vercel output config at `.vercel/output/config.json` that overrides `vercel.json` at deploy time. Add the route inside the heredoc in `build.sh`:
+   ```
+   { "src": "/[client-name]", "dest": "/clients/[client-name]/index.html" },
+   ```
+
+2. **Use absolute image paths in `index.html`**. When Vercel serves `/clients/[client-name]/index.html` at the URL `/[client-name]`, relative paths like `img/foo.png` resolve to `/img/foo.png` (wrong). Always write image sources as `/clients/[client-name]/img/foo.png`.
+
+Also add the route to `vercel.json` for consistency, but `build.sh` is what actually governs the live deploy.
+
 ## Environment variables (set in Vercel dashboard + .env locally)
 - STRIPE_API_KEY — Stripe secret key (sk_live_...)
 - RESEND_API_KEY — Resend API key for proposal approval emails
