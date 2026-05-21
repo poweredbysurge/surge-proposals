@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "installCommand": "echo skip",
+  "installCommand": "npm install",
   "buildCommand": "bash build.sh",
   "routes": [
     { "src": "/PDI", "dest": "/clients/PDI/index.html" },
@@ -8,6 +8,7 @@
     { "src": "/accuenviro", "dest": "/clients/accuenviro/index.html" },
     { "src": "/sunrise", "dest": "/clients/sunrise/index.html" },
     { "src": "/home-source", "dest": "/clients/home-source/index.html" },
+    { "src": "/home-source/onboarding", "dest": "/clients/home-source/onboarding.html" },
     { "src": "/test", "dest": "/clients/test/index.html" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "handle": "filesystem" }

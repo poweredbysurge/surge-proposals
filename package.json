@@ -1,7 +1,12 @@
 {
   "name": "surge-proposals",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "build": "bash build.sh"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "googleapis": "^144.0.0"
   }
 }
