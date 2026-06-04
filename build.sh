@@ -17,6 +17,7 @@ cat > "$OUT/config.json" <<'EOF'
     { "src": "/PDI", "dest": "/clients/PDI/index.html" },
     { "src": "/PDI/seo-report", "dest": "/clients/PDI/seo-report/index.html" },
     { "src": "/accuenviro", "dest": "/clients/accuenviro/index.html" },
+    { "src": "/accuenviro/seo", "dest": "/clients/accuenviro/seo.html" },
     { "src": "/sunrise", "dest": "/clients/sunrise/index.html" },
     { "src": "/home-source", "dest": "/clients/home-source/index.html" },
     { "src": "/home-source/onboarding", "dest": "/clients/home-source/onboarding.html" },

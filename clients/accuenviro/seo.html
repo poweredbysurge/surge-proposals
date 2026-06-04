@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AccuEnviro × Surge: SEO Domination</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="AccuEnviro × Surge — SEO Domination" />
+  <meta property="og:description" content="Phase 2: Own every search that matters. Full-spectrum SEO domination for Accurate Environmental Services, Inc." />
+  <meta property="og:image" content="/brand/SurgeProposalOG.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/brand/SurgeProposalOG.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" />
+  <link rel="icon" href="https://thesurgeagency.com/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://thesurgeagency.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://thesurgeagency.com/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="https://thesurgeagency.com/apple-touch-icon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --accent:       #dee535;
+      --accent-hover: #b8be2a;
+      --bg:           #080808;
+      --surface:      #111111;
+      --surface2:     #0d0d0d;
+      --border:       rgba(255,255,255,0.06);
+      --muted:        #9ca3af;
+      --faint:        #4b5563;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 0.93;
+      letter-spacing: 0.01em;
+    }
+
+    .accent-line {
+      width: 36px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+    .d6 { transition-delay: 0.60s; }
+
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(222,229,53,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(222,229,53,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .scope-item {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+    }
+
+    .deliverable-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .deliverable-row:last-child { border-bottom: none; }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      background: rgba(222,229,53,0.12);
+      border: 1px solid rgba(222,229,53,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .proof {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.06em;
+      color: #080808;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+    }
+    .btn:hover  { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .field {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 0.875rem 1rem;
+      width: 100%;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+    }
+    .field:focus        { border-color: var(--accent); }
+    .field::placeholder { color: #374151; }
+
+    .stat-pill {
+      background: rgba(222,229,53,0.08);
+      border: 1px solid rgba(222,229,53,0.18);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+
+    ::-webkit-scrollbar          { width: 4px; }
+    ::-webkit-scrollbar-track    { background: var(--bg); }
+    ::-webkit-scrollbar-thumb    { background: #222; border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <img src="/brand/SRG%20JR.svg" alt="Surge" style="height:38px;width:auto;padding-left:0.75rem;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.6875rem;font-weight:500;color:var(--faint);letter-spacing:0.1em;text-transform:uppercase;">Confidential · June 2026</span>
+</nav>
+
+
+<!-- ─── 01 HERO ────────────────────────────────────────────────────── -->
+<section class="hero-grid" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 1.5rem 4.5rem;position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:-15%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(222,229,53,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(222,229,53,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+  <div style="max-width:860px;position:relative;">
+    <div style="display:inline-flex;align-items:center;gap:0.625rem;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.25);border-radius:999px;padding:0.35rem 1rem;margin-bottom:1.75rem;" class="fade-up">
+      <span style="width:7px;height:7px;background:var(--accent);border-radius:50%;flex-shrink:0;"></span>
+      <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Phase 2 · SEO Domination</span>
+    </div>
+
+    <h1 class="font-display fade-up d1" style="font-size:clamp(3.5rem,11vw,8rem);line-height:0.9;margin-bottom:1.75rem;">
+      THE SITE IS LIVE.<br/>
+      <span style="color:var(--accent);">NOW LET'S</span><br/>
+      OWN THE MARKET.
+    </h1>
+
+    <p class="fade-up d2" style="font-size:1.0625rem;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:2.75rem;">
+      AccuEnviro has the foundation — a fast, conversion-optimized website and a reclaimed Google Business Profile. Phase 2 turns that foundation into total search dominance: owning the local pack, ranking for every high-intent keyword in the service area, and making AccuEnviro impossible to miss.
+    </p>
+
+    <div class="fade-up d3" style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-size:0.8125rem;">
+      <span style="color:var(--faint);">Prepared for <span style="color:#fff;font-weight:500;">Khalid Elashi</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">Prepared by <span style="color:var(--accent);font-weight:600;">Surge</span></span>
+      <span style="color:#222;">·</span>
+      <span style="color:var(--faint);">June 2026</span>
+    </div>
+  </div>
+
+  <div class="fade-up d4" style="position:absolute;bottom:2.25rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+    <span style="font-size:0.625rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);">Scroll</span>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);"></div>
+  </div>
+</section>
+
+
+<!-- ─── 02 WHERE WE LEFT OFF ──────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">02 · Where We Left Off</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">
+      THE FOUNDATION<br/><span style="color:var(--accent);">IS BUILT.</span>
+    </h2>
+
+    <div style="display:grid;gap:1.25rem;margin-bottom:3rem;">
+
+      <div class="card fade-up d1" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Website: done and live.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">AccuEnviro now has a fast, mobile-first website with service pages built for both humans and search engines — ammonia, multi-metals, formaldehyde, NOx, CO, and stack testing, each with on-page SEO embedded from the ground up.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d2" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Google Business Profile: reclaimed and optimized.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The "Permanently Closed" nightmare is gone. The listing is live, verified, and fully optimized with services, service areas, photos, and categories. AccuEnviro now shows up in the local pack. Phase 2 is about owning it.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d3" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">The competitive window is still wide open.</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Competitors like Erthwrks, Energy Environmental Solutions, and Air Hygiene have minimal content, weak backlink profiles, and outdated sites. AccuEnviro has a legitimate shot at ranking #1 across source testing terms in Orange County — but only if the engine keeps running. That's what Phase 2 does.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats row -->
+    <div class="fade-up d4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;">
+      <div class="stat-pill">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">6–8</div>
+        <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;">SEO articles/month</div>
+      </div>
+      <div class="stat-pill">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">#1</div>
+        <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;">local pack target</div>
+      </div>
+      <div class="stat-pill">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">4+</div>
+        <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;">service area pages/mo</div>
+      </div>
+      <div class="stat-pill">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;">∞</div>
+        <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;">link building, always on</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 03 GOOGLE BUSINESS DOMINATION ────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 · Google Business Domination</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">
+      OWN THE MAP.<br/><span style="color:var(--accent);">EVERY SEARCH.</span>
+    </h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.7;margin-bottom:3.5rem;">
+      The Google local pack — the map block at the top of every "near me" search — is the highest-value real estate in local search. When a facility manager in Anaheim types "source testing company" on their phone, we want AccuEnviro to be the first name they see. Every month, we work that listing aggressively.
+    </p>
+
+    <div style="display:grid;gap:1.5rem;margin-bottom:2.5rem;">
+
+      <div class="card fade-up d1" style="padding:2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+          <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="font-display" style="font-size:1.125rem;letter-spacing:0.04em;color:#fff;">Service Area Expansion &amp; Targeting</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Orange County, LA County, Inland Empire, and beyond</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin:0;">We continuously refine AccuEnviro's defined service area in the GBP to match actual coverage — pulling in searches from Anaheim, Irvine, Long Beach, Riverside, and every industrial corridor where facilities need testing. More coverage = more local pack appearances = more inbound calls.</p>
+      </div>
+
+      <div class="card fade-up d2" style="padding:2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+          <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="font-display" style="font-size:1.125rem;letter-spacing:0.04em;color:#fff;">Review Generation Strategy</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Reviews are a ranking signal — and a sales signal</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin:0;">We build and maintain a simple review request system so every satisfied client becomes a 5-star review. Google's algorithm weights review volume and velocity — businesses with more recent reviews outrank those with older ones. We make it effortless for Khalid's team to collect reviews consistently.</p>
+      </div>
+
+      <div class="card fade-up d3" style="padding:2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+          <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          </div>
+          <div>
+            <div class="font-display" style="font-size:1.125rem;letter-spacing:0.04em;color:#fff;">GBP Posts &amp; Updates</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Active listings outrank dormant ones — always</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin:0;">Monthly Google Business posts keep the profile active and signal relevance to the algorithm. We write and publish these for AccuEnviro — service announcements, compliance tips, seasonal content, new blog highlights — so the listing stays fresh without any effort from the team.</p>
+      </div>
+
+      <div class="card fade-up d4" style="padding:2rem;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;">
+          <div style="width:40px;height:40px;background:rgba(222,229,53,0.1);border:1px solid rgba(222,229,53,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="font-display" style="font-size:1.125rem;letter-spacing:0.04em;color:#fff;">Q&amp;A Management &amp; Photo Updates</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Credibility signals that convert clicks to calls</div>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin:0;">We monitor and respond to the GBP Q&amp;A section, proactively seeding common questions and authoritative answers that help searchers convert. Fresh photos from the field — equipment, team, test setups — reinforce professionalism and signal an active, legitimate operation to Google.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 04 CONTENT & SEO STRATEGY ─────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--bg);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 · Content &amp; SEO Strategy</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">
+      BECOME THE AUTHORITY.<br/><span style="color:var(--accent);">RANK EVERYWHERE.</span>
+    </h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.7;margin-bottom:3.5rem;">
+      Google ranks businesses that demonstrate consistent expertise and relevance. Six to eight targeted articles every month — plus new service and location landing pages — build the kind of content depth that pushes AccuEnviro to the top of organic results and keeps it there.
+    </p>
+
+    <div style="display:grid;gap:1.25rem;margin-bottom:3rem;">
+
+      <div class="scope-item fade-up d1" style="padding-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.625rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">01</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">6–8 SEO Blog Posts Every Month</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Each article is written to rank for a specific keyword and serve a real reader — facility managers, EHS coordinators, compliance officers. Topics span the full source testing space: AQMD permit requirements, how specific stack tests work, what to expect from a compliance inspection, regulatory updates. Over time, AccuEnviro becomes the go-to informational resource in the field — which translates directly into inbound leads.</p>
+      </div>
+
+      <div class="scope-item fade-up d2" style="padding-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.625rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">02</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Location + Service Landing Pages</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Every city in AccuEnviro's service area is a search opportunity. We build dedicated landing pages for each combination that matters — "source testing in Los Angeles," "stack testing contractor Riverside," "SCAQMD compliance testing Long Beach" — with geo-specific copy that ranks locally. Each new page is a new entry point for a potential client.</p>
+      </div>
+
+      <div class="scope-item fade-up d3" style="padding-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.625rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">03</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Full Link Building Campaign</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Backlinks from credible, relevant sources are the #1 ranking factor for competitive keywords. We run ongoing outreach to industry directories, environmental engineering publications, trade associations, and regional business resources — earning links that raise AccuEnviro's domain authority and push rankings up across every page on the site.</p>
+      </div>
+
+      <div class="scope-item fade-up d4" style="padding-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.625rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">04</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Schema Markup Implementation</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Schema markup is structured data that tells Google exactly what AccuEnviro does, where it operates, what it costs, and how to contact it — in machine-readable format. Properly implemented schema triggers rich results (stars, FAQs, business info) directly in the search listing, boosting click-through rates before a visitor even reaches the site.</p>
+      </div>
+
+      <div class="scope-item fade-up d5">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.625rem;">
+          <span class="font-display" style="color:var(--accent);font-size:0.9375rem;letter-spacing:0.06em;">05</span>
+          <h3 style="font-weight:600;font-size:1.0625rem;">Quarterly Audits + Monthly Strategy Calls</h3>
+        </div>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Every quarter, we run a full technical and content audit — identifying ranking opportunities, diagnosing drops, and adjusting the content roadmap based on what's working. Monthly calls with Khalid ensure strategy stays aligned with the business. You'll always know what's happening and why.</p>
+      </div>
+
+    </div>
+
+    <!-- Keyword callout -->
+    <div class="fade-up" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin:0;">We already know the competitive landscape. Erthwrks, Energy Environmental Solutions, and Air Hygiene are the names showing up for source testing terms in Southern California — and every one of them has a thin content strategy and weak backlink profile. With six to eight high-quality articles per month and an active link building campaign, AccuEnviro will rank above them within six months on most target terms.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 05 WHAT YOU GET MONTHLY ───────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">05 · Monthly Deliverables</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.25rem;">
+      WHAT HAPPENS<br/><span style="color:var(--accent);">EVERY MONTH.</span>
+    </h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:560px;line-height:1.7;margin-bottom:3rem;">
+      No vague "we're working on it" updates. Every month, this is exactly what Surge delivers for AccuEnviro.
+    </p>
+
+    <div class="card fade-up d4" style="padding:2rem;">
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">6–8 SEO-optimized blog articles</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Each article targets a specific keyword, is written for the right audience, and is published and indexed on the AccuEnviro site.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Google Business Profile management</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Monthly GBP posts, Q&amp;A management, photo updates, service area tuning, and review generation support.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">New location + service landing pages</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Dedicated pages targeting each city and service combination in AccuEnviro's coverage area — each one an additional organic entry point.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Active link building outreach</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Ongoing outreach to earn backlinks from industry directories, environmental publications, and regional business resources.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Rank tracking + monthly performance report</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Rankings tracked across all target keywords. Monthly summary shows where you stand, what moved, and what's next.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Competitor gap analysis (monthly)</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">We monitor what Erthwrks, Energy Environmental Solutions, and Air Hygiene are publishing and ranking for — and fill the gaps before they do.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Schema markup &amp; technical SEO maintenance</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Structured data updated as new pages are added. Core Web Vitals monitored. Technical issues addressed before they hurt rankings.</div>
+        </div>
+      </div>
+
+      <div class="deliverable-row">
+        <div class="check-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Monthly strategy call</div>
+          <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">30 minutes with Sam. Review the numbers, align on priorities, and decide what's next. You're never in the dark.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 06 INVESTMENT ─────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--bg);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">06 · Investment</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">ONE NUMBER.<br/><span style="color:var(--accent);">NO SURPRISES.</span></h2>
+
+    <!-- Pricing block -->
+    <div class="fade-up d3" style="background:#0f1300;border:1px solid var(--accent);border-radius:16px;padding:2.5rem;margin-bottom:2rem;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;right:0;background:var(--accent);color:#080808;font-family:'Bebas Neue',sans-serif;font-size:0.8125rem;letter-spacing:0.08em;padding:0.3rem 1.25rem;border-radius:0 0 0 12px;">SEO DOMINATION</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:2rem;margin-top:0.5rem;">
+        <div>
+          <h3 class="font-display" style="font-size:2rem;line-height:1.1;margin-bottom:0.625rem;">Domination Package</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.6;max-width:400px;">Everything AccuEnviro needs to achieve and maintain total search market ownership in Southern California. No tiers, no add-ons — just results.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="font-display" style="font-size:4.5rem;color:var(--accent);line-height:1;">$2,500</div>
+          <div style="font-size:0.875rem;color:var(--faint);">per month · cancel anytime</div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,0.07);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;">
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>6–8 SEO blog posts/month</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Full GBP management + domination</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Location + service landing pages</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Full link building campaign</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Schema markup + technical SEO</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Quarterly SEO audits</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Competitor gap analysis</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Monthly rank tracking + reporting</div>
+        <div style="display:flex;gap:0.625rem;align-items:flex-start;font-size:0.875rem;color:#d1d5db;"><span style="color:var(--accent);flex-shrink:0;line-height:1.5;">→</span>Monthly strategy call</div>
+      </div>
+    </div>
+
+    <!-- Context note -->
+    <div class="fade-up d4" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--muted);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p style="font-size:0.875rem;color:var(--muted);line-height:1.65;margin:0;">SEO compounds over time. The content and links we build in month one keep working in month twelve. This is not an expense — it's infrastructure for a second lead channel that AccuEnviro owns permanently.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 07 WHY THIS WORKS ─────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">07 · Why This Works</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">THE UNFAIR<br/><span style="color:var(--accent);">ADVANTAGE.</span></h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="proof fade-up d1">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">01</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">The competition isn't doing this.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Erthwrks, Energy Environmental Solutions, and Air Hygiene are sitting still digitally. They have no content cadence, minimal backlinks, and outdated sites. AccuEnviro starting a sustained SEO campaign right now is like entering a race where the other runners are standing at the starting line. First-mover advantage in search is durable — rankings earned now compound for years.</p>
+      </div>
+
+      <div class="proof fade-up d2">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">02</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We already know the terrain.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">We built the site. We wrote the initial content. We know the keywords, the competitor landscape, the service area geography, and the regulatory language that matters to AccuEnviro's buyers. There's no onboarding lag. We start executing from day one.</p>
+      </div>
+
+      <div class="proof fade-up d3">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">03</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">Every dollar builds equity.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Paid advertising stops the moment you stop paying. SEO compounds — a blog post that ranks today generates leads in year three. Every location page, every backlink, every optimized listing is a permanent asset on AccuEnviro's balance sheet. The Domination package isn't a monthly expense; it's a systematic acquisition of market share that AccuEnviro keeps forever.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 08 NEXT STEPS ─────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--bg);">
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 · Next Steps</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">READY TO OWN IT.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Sign below to kick off Phase 2. Once signed, Surge will send the first month's invoice and lock in a start date. Content production and GBP work begin in the first week.</p>
+
+    <!-- Signature form -->
+    <form id="proposal-form" class="card fade-up d4" style="padding:2rem;margin-bottom:2rem;transition:opacity 0.4s ease,transform 0.4s ease;" onsubmit="handleSubmit(event)">
+      <h3 style="font-weight:600;font-size:1rem;color:#d1d5db;margin-bottom:1.5rem;">Approve SEO Domination Package</h3>
+
+      <div style="display:grid;gap:1rem;margin-bottom:1.25rem;">
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-name">Full Name</label>
+          <input class="field" type="text" id="f-name" name="name" placeholder="Khalid Elashi" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-company">Company</label>
+          <input class="field" type="text" id="f-company" name="company" placeholder="Accurate Environmental Services, Inc." />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
+          <input class="field" type="date" id="f-date" name="date" required />
+        </div>
+
+      </div>
+
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, you approve the Domination SEO package at $2,500/month and authorize Surge to begin work. Billed monthly. Cancel with 30 days' notice.</p>
+
+      <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.25rem;padding:1.125rem 2rem;">
+        SIGN &amp; APPROVE — START PHASE 2
+      </button>
+    </form>
+
+    <!-- Signed confirmation -->
+    <div id="signed-confirmation" style="display:none;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;">
+      <div style="background:#0a1200;border:1px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.75rem;">
+          <div style="width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:var(--accent);">Phase 2 Approved</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Sam has been notified. You're locked in.</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:0.75rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Signed by</span>
+            <span id="conf-name" style="color:#fff;font-weight:600;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Company</span>
+            <span id="conf-company" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Date</span>
+            <span id="conf-date" style="color:#fff;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Package</span>
+            <span style="color:var(--accent);font-weight:500;">SEO Domination</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;">
+            <span style="color:var(--muted);">Monthly Rate</span>
+            <span style="color:#fff;font-weight:600;">$2,500 / month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment CTA -->
+    <div id="payment-cta" style="text-align:center;opacity:0.35;transition:opacity 0.5s ease;">
+      <p id="payment-label" style="font-size:0.875rem;color:var(--faint);margin-bottom:1.125rem;">Sign the proposal above to unlock payment.</p>
+      <a id="payment-btn" href="https://buy.stripe.com/00w28qeMzcoZb74cGI2ZO00" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.25rem;padding:1.375rem 2.5rem;pointer-events:none;width:100%;justify-content:center;">
+        PAY $2,500 — START THE SEO ENGINE
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p style="font-size:0.75rem;color:var(--faint);margin-top:0.875rem;">Secure payment via Stripe. Monthly subscription — cancel anytime with 30 days' notice.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="padding:1.75rem 1.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+  <img src="/brand/SRG%20JR.svg" alt="Surge" style="height:24px;width:auto;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.75rem;color:var(--faint);">Prepared for Accurate Environmental Services, Inc. · June 2026 · Confidential</span>
+</footer>
+
+
+<!-- SCRIPTS -->
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  const dateInput = document.getElementById('f-date');
+  if (dateInput) {
+    const t  = new Date();
+    const mm = String(t.getMonth() + 1).padStart(2, '0');
+    const dd = String(t.getDate()).padStart(2, '0');
+    dateInput.value = `${t.getFullYear()}-${mm}-${dd}`;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fd      = new FormData(e.target);
+    const name    = fd.get('name')    || '';
+    const company = fd.get('company') || '';
+    const date    = fd.get('date')    || '';
+
+    const dateDisplay = date
+      ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+      : date;
+
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        company,
+        date: dateDisplay,
+        retainer: 'SEO Domination: $2,500/mo',
+        proposal: 'AccuEnviro SEO Domination Package',
+        fee: '$2,500/month',
+      }),
+    }).catch(() => {});
+
+    const form = document.getElementById('proposal-form');
+    form.style.opacity   = '0';
+    form.style.transform = 'translateY(-12px)';
+    setTimeout(() => { form.style.display = 'none'; }, 420);
+
+    document.getElementById('conf-name').textContent    = name;
+    document.getElementById('conf-company').textContent = company || 'N/A';
+    document.getElementById('conf-date').textContent    = dateDisplay;
+
+    const conf = document.getElementById('signed-confirmation');
+    conf.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      conf.style.opacity   = '1';
+      conf.style.transform = 'translateY(0)';
+    }));
+
+    const payBtn   = document.getElementById('payment-btn');
+    const payLabel = document.getElementById('payment-label');
+    const cta      = document.getElementById('payment-cta');
+    setTimeout(() => {
+      cta.style.opacity          = '1';
+      payBtn.style.pointerEvents = 'auto';
+      payLabel.textContent       = "You're signed. One step left — activate your retainer.";
+      payLabel.style.color       = '#d1d5db';
+      payLabel.style.fontWeight  = '500';
+    }, 600);
+  }
+</script>
+
+</body>
+</html>
