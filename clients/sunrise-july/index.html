@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sunrise Landscape &amp; Design × The Surge Agency: July Growth Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090b;
+    --bg-raised: #101014;
+    --bg-card: #131318;
+    --line: #26262e;
+    --line-soft: #1c1c22;
+    --green: #dee535;
+    --green-dim: rgba(222,229,53,0.12);
+    --text: #f4f4f2;
+    --dim: #c2c2cb;
+    --faint: #8f8f9a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: .015em; font-weight: 400; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+  .eyebrow { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--green); font-weight: 800; }
+  .glow {
+    position: fixed; width: 800px; height: 520px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(222,229,53,0.07), transparent);
+    top: -160px; right: -160px; pointer-events: none; z-index: 0;
+  }
+
+  /* reveal */
+  .rv { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* hero */
+  header { min-height: 88vh; display: flex; align-items: center; border-bottom: 1px solid var(--line-soft); position: relative; padding: 80px 0; }
+  .hero-brands { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; flex-wrap: wrap; }
+  .hero-brands .b { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: .1em; color: var(--dim); }
+  .hero-brands .x { color: var(--green); font-weight: 800; }
+  h1.display { font-size: clamp(52px, 9vw, 110px); line-height: .9; }
+  h1 .g { color: var(--green); }
+  .hero-sub { margin-top: 24px; max-width: 520px; color: var(--dim); font-size: 16px; line-height: 1.65; }
+  .hero-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 28px; border-radius: 8px; font-weight: 800;
+    font-size: 14px; text-decoration: none; letter-spacing: .02em;
+  }
+  .btn-solid { background: var(--green); color: var(--bg); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .hero-meta { position: absolute; bottom: 26px; left: 0; right: 0; }
+  .hero-meta .wrap { display: flex; justify-content: space-between; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); font-weight: 700; flex-wrap: wrap; gap: 8px; }
+
+  section { padding: 88px 0; border-bottom: 1px solid var(--line-soft); }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+  .sec-num { font-family: 'Bebas Neue', sans-serif; font-size: 17px; color: var(--faint); }
+  h2.display { font-size: clamp(34px, 5.5vw, 58px); line-height: .95; }
+  .lede { color: var(--dim); font-size: 15px; line-height: 1.7; max-width: 600px; margin-top: 18px; }
+  .lede strong { color: var(--text); }
+
+  /* straight talk */
+  .talk { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+  .talk-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; padding: 30px 28px; }
+  .talk-card.where { border-color: rgba(222,229,53,.4); background: linear-gradient(180deg, rgba(222,229,53,.05), var(--bg-card) 45%); }
+  .talk-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; margin-bottom: 12px; }
+  .talk-card p { color: var(--dim); font-size: 14px; line-height: 1.7; }
+  .talk-card p + p { margin-top: 12px; }
+  .talk-card b { color: var(--text); }
+
+  /* deliverables */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+  .del {
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; padding: 28px;
+    position: relative; overflow: hidden;
+  }
+  .del::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); }
+  .del h3 { font-family: 'Bebas Neue', sans-serif; font-size: 25px; margin-bottom: 6px; }
+  .del .k { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--green); font-weight: 800; }
+  .del ul { list-style: none; margin-top: 14px; }
+  .del li { font-size: 13.5px; color: var(--dim); padding: 8px 0 8px 20px; border-top: 1px solid var(--line-soft); position: relative; line-height: 1.55; }
+  .del li::before { content: ''; position: absolute; left: 0; top: 15px; width: 7px; height: 7px; border-radius: 2px; background: var(--green); }
+  .del li b { color: var(--text); }
+
+  /* light-mode deliverable cards */
+  .sec-light .del { background: #ffffff; border-color: #e0e0d6; }
+  .sec-light .del h3 { color: #0d0d10; }
+  .sec-light .del .k { color: #74790f; }
+  .sec-light .del li { color: #4c4c53; border-top: 1px solid #ececdf; }
+  .sec-light .del li b { color: #0d0d10; }
+  .addons {
+    margin-top: 26px; background: #0d0d10; border-radius: 12px; padding: 22px 26px;
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  }
+  .addons .k { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--green); font-weight: 800; white-space: nowrap; }
+  .addons p { color: #b6b6bf; font-size: 13px; line-height: 1.6; flex: 1; min-width: 260px; }
+  .addons p b { color: #f4f4f2; }
+
+  /* ladder */
+  .ladder { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; align-items: end; }
+  .rung { border: 1px solid var(--line); border-radius: 12px 12px 0 0; background: var(--bg-card); padding: 22px 20px; text-align: center; }
+  .rung .nm { font-family: 'Bebas Neue', sans-serif; font-size: 22px; }
+  .rung .pr { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--green); margin-top: 4px; }
+  .rung .pr small { font-family: 'Manrope'; font-size: 11px; color: var(--faint); }
+  .rung .depth { font-size: 11px; color: var(--dim); margin-top: 10px; line-height: 1.5; }
+  .rung.r1 { padding-bottom: 26px; }
+  .rung.r2 { padding-bottom: 54px; border-color: rgba(222,229,53,.45); }
+  .rung.r3 { padding-bottom: 82px; }
+  .ladder-note { margin-top: 22px; text-align: center; }
+  .you-are-here {
+    display: inline-block; background: var(--green); color: var(--bg); border-radius: 30px;
+    font-size: 12px; font-weight: 800; letter-spacing: .06em; padding: 8px 18px;
+  }
+  .ladder-sub { margin-top: 14px; color: var(--dim); font-size: 13.5px; line-height: 1.65; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .ladder-sub b { color: var(--text); }
+
+  /* pricing: LIGHT section */
+  .sec-light { background: #f2f2ec; border-bottom: 1px solid #e3e3d9; }
+  .sec-light .sec-num { color: #a8a89a; }
+  .sec-light .eyebrow { color: #74790f; }
+  .sec-light h2.display { color: #0d0d10; }
+  .sec-light .lede { color: #4c4c53; }
+  .sec-light .lede strong { color: #0d0d10; }
+
+  .discount-path { display: flex; gap: 10px; margin-top: 44px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
+  .dp-step { background: #ffffff; border: 1px solid #e0e0d6; border-radius: 12px; padding: 20px 26px; text-align: center; min-width: 200px; }
+  .dp-step .lbl { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #8b8b7e; font-weight: 800; }
+  .dp-step .val { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: #0d0d10; margin-top: 6px; }
+  .dp-step .val s { color: #b0b0a4; }
+  .dp-step .sub { font-size: 11.5px; color: #6c6c74; margin-top: 4px; }
+  .dp-step.final { background: #0d0d10; border-color: #0d0d10; }
+  .dp-step.final .lbl { color: var(--green); }
+  .dp-step.final .val { color: var(--green); }
+  .dp-step.final .sub { color: #b6b6bf; }
+  .dp-arrow { align-self: center; font-size: 22px; color: #74790f; font-weight: 800; }
+
+  .price-stage { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .price-card { background: #ffffff; border: 1px solid #e0e0d6; border-radius: 16px; padding: 34px 30px; text-align: center; }
+  .price-card.jul { background: var(--green); border-color: var(--green); }
+  .price-card .when { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #74790f; font-weight: 800; }
+  .price-card.jul .when { color: rgba(13,13,16,.75); }
+  .price-card .amt { font-family: 'Bebas Neue', sans-serif; font-size: 74px; line-height: 1; margin-top: 12px; color: #0d0d10; }
+  .price-card .amt small { font-family: 'Manrope'; font-size: 13px; color: #8b8b90; font-weight: 600; }
+  .price-card.jul .amt small { color: rgba(13,13,16,.6); }
+  .price-card .was { color: #8b8b90; font-size: 13px; margin-top: 6px; }
+  .price-card.jul .was { color: rgba(13,13,16,.65); }
+  .price-card p { color: #4c4c53; font-size: 13.5px; line-height: 1.65; margin-top: 16px; }
+  .price-card.jul p { color: rgba(13,13,16,.8); }
+  .price-foot { margin-top: 22px; color: #6c6c74; font-size: 12.5px; line-height: 1.6; text-align: center; max-width: 620px; margin-left: auto; margin-right: auto; }
+
+  /* timeline */
+  .tl { margin-top: 44px; }
+  .tl-row { display: grid; grid-template-columns: 120px 1fr; gap: 22px; padding: 22px 0; border-top: 1px solid var(--line-soft); }
+  .tl-row:last-child { border-bottom: 1px solid var(--line-soft); }
+  .tl-when { font-family: 'Bebas Neue', sans-serif; font-size: 21px; color: var(--green); }
+  .tl-row h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .tl-row p { font-size: 13.5px; color: var(--dim); line-height: 1.6; }
+
+  /* promise + cta */
+  .promise { text-align: center; padding: 96px 0; border-bottom: 1px solid var(--line-soft); }
+  .promise .display { font-size: clamp(34px, 6vw, 64px); line-height: .95; }
+  .promise .display .g { color: var(--green); }
+  .promise p { color: var(--dim); max-width: 560px; margin: 22px auto 0; font-size: 15px; line-height: 1.7; }
+  .cta-final { text-align: center; padding: 90px 0 70px; }
+  .cta-final .btn { font-size: 16px; padding: 18px 40px; }
+  .cta-final .sub { margin-top: 16px; color: var(--faint); font-size: 13px; }
+
+  footer { padding: 40px 0 60px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--faint); flex-wrap: wrap; gap: 10px; }
+  footer .brand { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: .06em; color: var(--dim); }
+
+  @media (max-width: 760px) {
+    header { min-height: 78vh; padding: 60px 0; }
+    section { padding: 64px 0; }
+    .talk, .grid2, .price-stage { grid-template-columns: 1fr; }
+    .ladder { grid-template-columns: 1fr; align-items: stretch; gap: 10px; }
+    .rung, .rung.r2, .rung.r3 { padding-bottom: 22px; border-radius: 12px; }
+    .tl-row { grid-template-columns: 1fr; gap: 6px; }
+    .hero-meta { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<header>
+  <div class="wrap">
+    <div class="hero-brands rv in">
+      <span class="b">SUNRISE LANDSCAPE &amp; DESIGN</span><span class="x">×</span><span class="b">THE SURGE AGENCY</span>
+    </div>
+    <h1 class="display rv in">YOUR JULY<br><span class="g">GROWTH PLAN.</span></h1>
+    <p class="hero-sub rv in">Mike, this is the plan we walked through together: get your lead volume back, show you everything in one place, and build the machine that makes August ads a switch we flip, not a project we start.</p>
+    <div class="hero-cta rv in">
+      <a class="btn btn-solid" href="#offer">See the plan</a>
+      <a class="btn btn-ghost" href="#investment">Jump to investment</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="wrap"><span>Prepared for Mike Flickinger · July 6, 2026</span><span>Review together Wednesday</span></div>
+  </div>
+</header>
+
+<!-- 01 STRAIGHT TALK -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">01</span><span class="eyebrow">Where We Stand</span></div>
+    <h2 class="display rv">STRAIGHT TALK FIRST.</h2>
+    <p class="lede rv">You've been with us through our evolution: social media first, then SEO, and this year some misses on lead capture that cost you real opportunities. We own that. This proposal is the fix, and it's built on what we do best now.</p>
+    <div class="talk">
+      <div class="talk-card rv">
+        <h3>WHAT WENT WRONG</h3>
+        <p>Form bugs and site errors cost you leads earlier this year. Your engagement grew piece by piece instead of being designed as one system, so attribution was murky and reporting was thin.</p>
+        <p><b>The recovery is already underway:</b> forms patched and monitored daily, rankings moving on your target keywords, and the site rebuild preserving your SEO history.</p>
+      </div>
+      <div class="talk-card where rv">
+        <h3>WHAT'S DIFFERENT NOW</h3>
+        <p>We rebuilt our whole agency around home services. One system: local SEO that owns your map pack, a website built to convert, and a live dashboard so you never have to wonder what your marketing is doing.</p>
+        <p><b>Transparency is the contract:</b> monthly reporting, before/after comparisons, and every lead tracked to its source.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 THE OFFER -->
+<section id="offer" class="sec-light">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">02</span><span class="eyebrow">The July Engagement</span></div>
+    <h2 class="display rv">WHAT YOU GET.</h2>
+    <p class="lede rv">This is our full Launch package plus July bonuses. One goal: <strong>lead volume back up, with proof.</strong></p>
+    <div class="grid2">
+      <div class="del rv">
+        <div class="k">Command Center</div>
+        <h3>YOUR BIRD'S-EYE VIEW</h3>
+        <ul>
+          <li><b>Launches for you in July.</b> Every lead from your website, calls, and referrals in one live dashboard</li>
+          <li><b>Connected to your LMN</b> so marketing and operations finally speak the same language</li>
+          <li>Speed-to-lead tracking, so no inquiry sits unanswered</li>
+          <li>You own it. Your data, your accounts, always</li>
+        </ul>
+      </div>
+      <div class="del rv">
+        <div class="k">Local SEO + Content</div>
+        <h3>DOMINATE YOUR MAP</h3>
+        <ul>
+          <li>Google Business Profile managed: optimization, weekly posts, review strategy</li>
+          <li><b>Rich content engine:</b> blog and service content targeting your highest-value keywords, hardscaping first</li>
+          <li><b>Technical SEO fixes + a high-quality backlink strategy</b> to rebuild domain authority, included for July</li>
+          <li>Map pack rank tracking, movement shown in your monthly report</li>
+        </ul>
+      </div>
+      <div class="del rv">
+        <div class="k">Never Miss a Lead</div>
+        <h3>AI FOLLOW-UP, 24/7</h3>
+        <ul>
+          <li><b>Every inquiry answered in under 5 minutes,</b> day or night, weekends included</li>
+          <li>Automated follow-up sequences that keep working a lead until a human takes over</li>
+          <li>Missed calls captured and followed up, not lost</li>
+          <li>Monthly strategy call with us, on top of the reporting</li>
+        </ul>
+      </div>
+      <div class="del rv">
+        <div class="k">Ready in August</div>
+        <h3>ADS + FUNNELS, ONE SWITCH AWAY</h3>
+        <ul>
+          <li><b>Meta + Google ads management included in your package:</b> creative, copy, and landing pages all handled by us</li>
+          <li>Local Service Ads setup and management when we flip the switch</li>
+          <li><b>High-converting, mobile-first funnels</b> built and included with ad management</li>
+          <li>Every dollar tracked in Command Center; ad spend stays yours, paid to Google/Meta directly</li>
+          <li>We wire it all during July so August launch is a switch, not a project</li>
+        </ul>
+      </div>
+      <div class="del rv">
+        <div class="k">Website</div>
+        <h3>BUILT TO CONVERT</h3>
+        <ul>
+          <li>Migration to our managed stack: automated uptime monitoring, faster content updates, no more mystery errors</li>
+          <li>Security warning fixed, layout issues fixed, and a sharper first 3-second impression</li>
+          <li>SEO history preserved: 1:1 URLs, schema, rankings protected through the move</li>
+        </ul>
+      </div>
+      <div class="del rv">
+        <div class="k">Lead Recovery + Reporting</div>
+        <h3>PROOF, MONTHLY</h3>
+        <ul>
+          <li><b>Rehash your Feb-May lead stack</b> and qualify it for your sales team</li>
+          <li>Monthly report: rankings, traffic, leads by source, before and after</li>
+          <li>Live screen-share reviews so you see the same tools we see</li>
+          <li>Weekly July check-ins while we rebuild momentum</li>
+        </ul>
+      </div>
+    </div>
+    <div class="addons rv">
+      <span class="k">As You Scale</span>
+      <p><b>Available as add-ons whenever Sunrise is ready:</b> custom AI automations and integrations beyond the LMN connection, AI voice agent for after-hours booking, and conversion rate optimization (heatmaps, A/B testing). We'll recommend them when the data says they'll pay for themselves, not before.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE LADDER -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">03</span><span class="eyebrow">Where This Sits</span></div>
+    <h2 class="display rv">OUR PACKAGES SCALE<br>WITH SEO INTENSITY.</h2>
+    <p class="lede rv">The more of your market's search you want to own, the deeper the engagement gets. Simple as that.</p>
+    <div class="ladder">
+      <div class="rung r1 rv">
+        <div class="nm">LAUNCH</div>
+        <div class="pr">$3,000<small> /mo</small></div>
+        <div class="depth">Local SEO: your Google Business Profile managed + every lead captured</div>
+      </div>
+      <div class="rung r2 rv">
+        <div class="nm">SCALE</div>
+        <div class="pr">$6,500<small> /mo</small></div>
+        <div class="depth">Full SEO: technical, content, service area pages, AI search</div>
+      </div>
+      <div class="rung r3 rv">
+        <div class="nm">DOMINATE</div>
+        <div class="pr">$10,000<small> /mo</small></div>
+        <div class="depth">Everything, heavier: more content, more links, every channel</div>
+      </div>
+    </div>
+    <div class="ladder-note rv">
+      <span class="you-are-here">YOUR PLAN: LAUNCH</span>
+      <p class="ladder-sub">Plus two July bonuses while we rebuild momentum: <b>technical SEO fixes and a high-quality backlink strategy</b>, because getting your lead volume back is the whole point of this month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 INVESTMENT -->
+<section id="investment" class="sec-light">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">04</span><span class="eyebrow">The Investment</span></div>
+    <h2 class="display rv">SCOPED AT $5,000.<br>JULY IS $2,000.</h2>
+    <p class="lede rv">The plan we originally scoped for this build ran <strong>$5,000 a month</strong>, custom dashboard and all. We built the dashboard anyway as we grew. So you come in at our standard package instead, and July is a migration-month rate on top of that.</p>
+    <div class="discount-path rv">
+      <div class="dp-step"><div class="lbl">As originally scoped</div><div class="val"><s>$5,000</s></div><div class="sub">Custom dashboard build + marketing</div></div>
+      <div class="dp-arrow">→</div>
+      <div class="dp-step"><div class="lbl">Standard package today</div><div class="val">$3,000</div><div class="sub">Dashboard already built, you benefit</div></div>
+      <div class="dp-arrow">→</div>
+      <div class="dp-step final"><div class="lbl">Your July</div><div class="val">$2,000</div><div class="sub">Migration month, full delivery</div></div>
+    </div>
+    <div class="price-stage">
+      <div class="price-card jul rv">
+        <div class="when">July · Migration Month</div>
+        <div class="amt">$2,000<small> /mo</small></div>
+        <div class="was">$3,000 value, delivered in full</div>
+        <p>Everything above: Command Center launch + LMN connection, site migration and fixes, local SEO, technical fixes + backlink strategy, content, lead rehash, weekly check-ins.</p>
+      </div>
+      <div class="price-card rv">
+        <div class="when">August Onward</div>
+        <div class="amt">$3,000<small> /mo</small></div>
+        <div class="was">Standard Launch rate, month to month</div>
+        <p>The machine keeps running: SEO, content, Command Center, reporting. And the moment you're ready, we flip on ads: management included, wired into everything we build in July.</p>
+      </div>
+    </div>
+    <p class="price-foot rv">You own every account and asset. No long-term contract on this plan. Ad spend, when we get there, is yours and goes to Google/Meta directly, our management of it is included.</p>
+  </div>
+</section>
+
+<!-- 05 TIMELINE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv"><span class="sec-num">05</span><span class="eyebrow">30-Day Runway</span></div>
+    <h2 class="display rv">JULY, WEEK BY WEEK.</h2>
+    <div class="tl">
+      <div class="tl-row rv"><div class="tl-when">WEEK 1</div><div><h4>Foundation + fixes</h4><p>Site migration begins, security warning and layout fixes ship, SEO reports shared live so you see the baseline we're working from. Command Center demo.</p></div></div>
+      <div class="tl-row rv"><div class="tl-when">WEEK 2</div><div><h4>Command Center live</h4><p>Dashboard launched and connected to LMN. Feb-May leads rehashed and handed to your sales team, qualified.</p></div></div>
+      <div class="tl-row rv"><div class="tl-when">WEEK 3</div><div><h4>Content + authority</h4><p>Hardscaping-first content engine running. Backlink strategy launched. AI follow-up live on every incoming lead.</p></div></div>
+      <div class="tl-row rv"><div class="tl-when">WEEK 4</div><div><h4>Proof + August plan</h4><p>Monthly report #1: before and after, leads by source, rankings. We agree the August ad plan together, launch is one switch away.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<div class="promise">
+  <div class="wrap">
+    <div class="display rv">39 YEARS OF REPUTATION.<br><span class="g">FINALLY MATCHED ONLINE.</span></div>
+    <p class="rv">Sunrise has the work, the reviews, and the history. July is about making sure Northern Virginia sees it every time they search.</p>
+  </div>
+</div>
+
+<div class="cta-final">
+  <div class="wrap">
+    <a class="btn btn-solid rv in" href="https://invoice.stripe.com/i/acct_1Q7PzhCsRrvmli7r/live_YWNjdF8xUTdQemhDc1Jydm1saTdyLF9VcVFvTzFLTVllZ1VtVEQ5SFZyQlBEUnJ1b0FmRmNkLDE3NDAxMzYxNw0200gkFoRMqs?s=ap">Approve + start July</a>
+    <div class="sub rv in">One click, pay securely through Stripe. Or bring your questions Wednesday, we're reviewing it together either way.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">THE SURGE AGENCY</span>
+    <span>Prepared for Sunrise Landscape &amp; Design · July 2026 · sam@thesurgeagency.com</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rv:not(.in)').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
