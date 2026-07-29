@@ -11,6 +11,7 @@
     { "src": "/sunrise-july", "dest": "/clients/sunrise-july/index.html" },
     { "src": "/home-source", "dest": "/clients/home-source/index.html" },
     { "src": "/home-source/onboarding", "dest": "/clients/home-source/onboarding.html" },
+    { "src": "/rush-delivery", "dest": "/clients/rush-delivery/index.html" },
     { "src": "/test", "dest": "/clients/test/index.html" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "handle": "filesystem" }
