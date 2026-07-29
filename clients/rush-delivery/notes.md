@@ -4,10 +4,11 @@
 
 - Contact: Rosa
 - Referral: Jose, SLR Credit Solutions
-- Goal: approve and pay on the July 29, 2026 call for an August start
-- Offer: $4,000 per month
-- Initial commitment: 3 months
-- Recommended runway: 6 months
+- Goal: execute the agreement for an August 1, 2026 start
+- Offer: $3,000 per month
+- Initial commitment: 6 months
+- First charge: $3,000 on August 1, 2026
+- Billing schedule: charge the card on file $3,000 on the first of each month
 - Paid media budget: separate from the monthly fee
 
 ## Current footprint reviewed
@@ -53,4 +54,3 @@
 - Which matters can the team support directly, and which require an attorney?
 - Which address, phone number, hours, and business name are legally correct everywhere?
 - What would make this feel successful after 90 days?
-

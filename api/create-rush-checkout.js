@@ -19,31 +19,47 @@ export default async function handler(req, res) {
   const proto = req.headers['x-forwarded-proto'] || 'https';
   const host = req.headers.host;
   const origin = `${proto}://${host}`;
+  const augustFirstAtNinePacific = 1785600000;
+  const scheduleFirstCharge = Math.floor(Date.now() / 1000) < augustFirstAtNinePacific;
 
   try {
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       customer_email: email,
       client_reference_id: 'rush-delivery',
+      payment_method_collection: 'always',
       line_items: [
         {
           price_data: {
             currency: 'usd',
-            unit_amount: 400000,
+            unit_amount: 300000,
             recurring: { interval: 'month' },
             product_data: {
               name: 'Rush & Delivery Growth Partnership',
-              description: 'Website, local SEO, content, and paid media management. Advertising spend is separate.',
+              description: '6-month partnership for website, local SEO, content, and paid media management. Advertising spend is separate.',
             },
           },
           quantity: 1,
         },
       ],
       subscription_data: {
+        ...(scheduleFirstCharge
+          ? {
+              billing_cycle_anchor: augustFirstAtNinePacific,
+              proration_behavior: 'none',
+            }
+          : {}),
         metadata: {
           client: 'Rush & Delivery Attorney Services',
           signed_by: name,
-          initial_commitment_months: '3',
+          initial_commitment_months: '6',
+        },
+      },
+      custom_text: {
+        submit: {
+          message: scheduleFirstCharge
+            ? 'Your card will be saved today. The first $3,000 payment will run on August 1, 2026. Future $3,000 payments will run monthly on the first.'
+            : 'Your first $3,000 payment will run today. Future $3,000 payments will run monthly on the first.',
         },
       },
       allow_promotion_codes: false,
@@ -62,4 +78,3 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Could not start secure payment' });
   }
 }
-

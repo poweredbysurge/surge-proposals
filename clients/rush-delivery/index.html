@@ -480,7 +480,7 @@
           <div class="separate">
             <div class="meta">Paid separately</div>
             <h3 style="font-size:25px;margin-top:14px;">Advertising spend</h3>
-            <p class="small">This is the money paid directly to Google and Meta to show the ads. It is not part of the $4,000 monthly fee.</p>
+            <p class="small">This is the money paid directly to Google and Meta to show the ads. It is not part of the $3,000 monthly fee.</p>
             <p class="small" style="color:var(--text-soft);margin-top:18px;">We choose the starting budget together after we know the service, market, and lead capacity.</p>
           </div>
         </div>
@@ -500,15 +500,15 @@
       </div>
     </section>
 
-    <section class="slide" data-title="Investment" data-note="Anchor on one plan. “This is $4,000 a month. The initial commitment is 3 months because month 1 is the build, month 2 is traction, and month 3 is optimization. We recommend 6 months because local SEO compounds.”">
+    <section class="slide" data-title="Investment" data-note="Anchor on one plan. “This is $3,000 a month for 6 months. The first payment runs on August 1. After that, the same card is billed on the first of each month. The 6-month runway gives the website, local SEO, content, and ads time to compound.”">
       <div class="wrap">
         <div class="topline"><div class="eyebrow">10 · The investment</div><div class="count">11 / 13</div></div>
         <h2>ONE TEAM. <span class="accent">ONE PLAN.</span></h2>
         <div class="price-grid">
           <div class="card featured">
             <span class="pill">Growth partnership</span>
-            <div class="price">$4,000 <small>/ month</small></div>
-            <p class="small" style="color:var(--text-soft);">3-month initial commitment. 6 months recommended.</p>
+            <div class="price">$3,000 <small>/ month</small></div>
+            <p class="small" style="color:var(--text-soft);">6-month commitment. First payment on August 1, 2026.</p>
             <ul class="feature-list">
               <li><span class="check">✓</span>New conversion-focused website</li>
               <li><span class="check">✓</span>Complimentary logo refresh</li>
@@ -524,8 +524,8 @@
             <p class="small">Your media budget goes directly to Google and Meta. It can grow or shrink based on capacity and results.</p>
             <div style="height:1px;background:var(--border-strong);margin:24px 0;"></div>
             <div class="meta">Start</div>
-            <h3 style="font-size:25px;margin-top:10px;">August 2026</h3>
-            <p class="small">Payment locks the kickoff and begins access collection.</p>
+            <h3 style="font-size:25px;margin-top:10px;">August 1, 2026</h3>
+            <p class="small">Your card is saved when you execute. The first $3,000 payment runs August 1, then on the first of each month.</p>
           </div>
         </div>
       </div>
@@ -544,13 +544,13 @@
       </div>
     </section>
 
-    <section class="slide" data-title="Start" data-note="Close directly. “Rosa, if this feels like the right plan, we can lock August in now. Type your name and email. The secure payment page will open. Once payment is complete, we schedule kickoff and start access collection.”">
+    <section class="slide" data-title="Start" data-note="Close directly. “Rosa, if this feels like the right plan, we can lock August in now. Type your name and email. The secure page will save your card. The first $3,000 payment runs August 1, then the same card is billed on the first of each month.”">
       <div class="wrap">
         <div class="topline"><div class="eyebrow">12 · Start August</div><div class="count">13 / 13</div></div>
         <h2>READY TO <span class="accent">BUILD IT?</span></h2>
         <div class="close-grid">
           <div class="steps">
-            <div class="step"><div><h3>Approve and pay</h3><p class="small" style="margin:0;">The first $4,000 monthly payment locks the project.</p></div></div>
+            <div class="step"><div><h3>Approve and save your card</h3><p class="small" style="margin:0;">Your first $3,000 payment runs on August 1.</p></div></div>
             <div class="step"><div><h3>Kickoff</h3><p class="small" style="margin:0;">We confirm goals, services, markets, and responsibilities.</p></div></div>
             <div class="step"><div><h3>Send access</h3><p class="small" style="margin:0;">Website, Google, social pages, listings, and brand files.</p></div></div>
             <div class="step"><div><h3>Build August</h3><p class="small" style="margin:0;">The foundation begins immediately after kickoff.</p></div></div>
@@ -559,10 +559,10 @@
             <div class="eyebrow">Approve the growth partnership</div>
             <div class="field"><label for="signer-name">Your full name</label><input id="signer-name" name="name" autocomplete="name" required></div>
             <div class="field"><label for="signer-email">Your email</label><input id="signer-email" name="email" type="email" autocomplete="email" required></div>
-            <label class="terms"><input id="terms" type="checkbox" required><span>I approve the $4,000 monthly growth partnership with a 3-month initial commitment. I understand that advertising spend is separate.</span></label>
-            <button class="btn" id="pay-btn" type="submit">Approve and pay $4,000</button>
+            <label class="terms"><input id="terms" type="checkbox" required><span>I approve the $3,000 monthly growth partnership with a 6-month commitment. My first $3,000 payment will run August 1, 2026, then the card on file will be billed on the first of each month. I understand that advertising spend is separate.</span></label>
+            <button class="btn" id="pay-btn" type="submit">Approve and schedule $3,000</button>
             <div class="status" id="status" role="status" aria-live="polite"></div>
-            <div class="success-note">Payment received. Welcome to Surge. We will contact you to schedule kickoff.</div>
+            <div class="success-note">Agreement approved and card saved. Your first $3,000 payment is scheduled for August 1. We will contact you to schedule kickoff.</div>
           </form>
         </div>
       </div>
@@ -655,9 +655,9 @@
             name,
             company: 'Rush & Delivery Attorney Services',
             date: new Date().toISOString().slice(0, 10),
-            retainer: '3-month initial commitment',
+            retainer: '6-month commitment',
             proposal: 'Rush & Delivery Growth Partnership',
-            fee: '$4,000 per month',
+            fee: '$3,000 per month, first charge August 1',
           }),
         }).catch(() => {});
         const response = await fetch('/api/create-rush-checkout', {
@@ -679,4 +679,3 @@
   </script>
 </body>
 </html>
-
