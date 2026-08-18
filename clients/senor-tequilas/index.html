@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Señor Tequila's × Surge: Proposal</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Señor Tequila's × Surge — Proposal" />
+  <meta property="og:description" content="A complete rebuild: fast, mobile-first website, three design directions, and a local SEO engine for Germantown's favorite cantina." />
+  <meta property="og:image" content="../../brand/SurgeProposalOG.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="../../brand/SurgeProposalOG.png" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://thesurgeagency.com/favicon.ico" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:        #38B049;
+      --green-deep:   #018B45;
+      --red:          #BF1E2E;
+      --gold:         #B99C66;
+      --cream:        #EAE2D6;
+      --bg:           #080808;
+      --surface:      #111111;
+      --surface2:     #0d0d0d;
+      --border:       rgba(234,226,214,0.08);
+      --muted:        #a39d92;
+      --faint:        #5f5b53;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+    }
+
+    .font-display { font-family: 'Archivo Black', sans-serif; }
+    .font-ticket  { font-family: 'Special Elite', cursive; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 6vw, 4.25rem);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .accent-line { width: 36px; height: 3px; background: var(--green); border-radius: 2px; }
+
+    .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.10s; } .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; } .d4 { transition-delay: 0.40s; }
+
+    #site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(234,226,214,0.05);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(56,176,73,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,176,73,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.625rem;
+      background: var(--green); color: #06130a;
+      font-family: 'Archivo Black', sans-serif; text-transform: uppercase;
+      font-size: 1rem; letter-spacing: 0.04em;
+      padding: 1rem 1.75rem; border-radius: 8px; border: none;
+      text-decoration: none; cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn:hover { background: #45c257; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--gold);
+      border: 1px solid rgba(185,156,102,0.5);
+    }
+    .btn-outline:hover { background: rgba(185,156,102,0.08); }
+
+    .stat { border-left: 2px solid var(--green); padding-left: 1.125rem; }
+    .stat .num { font-family: 'Archivo Black', sans-serif; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; color: #fff; }
+    .stat .lbl { font-size: 0.8125rem; color: var(--muted); margin-top: 0.25rem; line-height: 1.45; }
+    .stat.bad  { border-left-color: var(--red); }
+    .stat.bad .num { color: #e2564e; }
+
+    .scope-item { border-left: 2px solid var(--green); padding-left: 1.25rem; }
+
+    .t-step { position: relative; padding-left: 2rem; }
+    .t-step::before {
+      content: ''; position: absolute; left: 0; top: 0.55rem;
+      width: 10px; height: 10px; background: var(--green); border-radius: 50%;
+    }
+    .t-step::after {
+      content: ''; position: absolute; left: 4px; top: 1.4rem;
+      width: 2px; height: calc(100% + 1.5rem); background: rgba(56,176,73,0.18);
+    }
+    .t-step:last-child::after { display: none; }
+
+    /* Design direction cards */
+    .direction {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .direction:hover { border-color: rgba(56,176,73,0.45); transform: translateY(-3px); }
+    .direction img { width: 100%; display: block; }
+    .direction .shot { position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .direction .tag {
+      position: absolute; top: 0.875rem; left: 0.875rem;
+      font-family: 'Archivo Black', sans-serif; font-size: 0.6875rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.375rem 0.625rem; border-radius: 6px; color: #fff;
+    }
+
+    kw-table, .kw-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .kw-table th {
+      text-align: left; font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--faint); font-weight: 700; padding: 0.625rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .kw-table td { padding: 0.7rem 0.75rem; border-bottom: 1px solid rgba(234,226,214,0.05); color: var(--muted); }
+    .kw-table td:first-child { color: var(--cream); font-weight: 600; }
+    .kw-table .vol { color: #fff; font-weight: 700; }
+    .kw-table .kd-easy { color: var(--green); font-weight: 700; }
+
+    .field {
+      width: 100%; background: #0a0a0a; border: 1px solid rgba(234,226,214,0.12);
+      border-radius: 8px; color: #fff; font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem; padding: 0.8125rem 1rem; outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .field:focus { border-color: var(--green); }
+
+    .chart-wrap { position: relative; }
+    .chart-tip {
+      position: absolute; pointer-events: none; z-index: 10;
+      background: #1a1a18; border: 1px solid rgba(234,226,214,0.15); border-radius: 8px;
+      padding: 0.5rem 0.75rem; font-size: 0.75rem; color: var(--cream);
+      transform: translate(-50%, calc(-100% - 12px)); white-space: nowrap;
+      display: none; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .chart-tip .v { font-weight: 700; color: #fff; }
+
+    @media (max-width: 760px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <img src="../../brand/SRG%20JR.svg" alt="Surge" style="height:22px;width:auto;filter:brightness(0) invert(1);" onerror="this.style.display='none'" />
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <span class="font-ticket" style="font-size:0.75rem;color:var(--gold);">Señor Tequila's · Germantown, MD</span>
+    <a href="#next-steps" class="btn" style="font-size:0.75rem;padding:0.625rem 1.125rem;">Approve</a>
+  </div>
+</nav>
+
+<!-- ─────────────────────────────────────────────
+     01  HERO
+────────────────────────────────────────────── -->
+<header class="hero-grid" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.5rem 4rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 75% 20%, rgba(56,176,73,0.10), transparent 60%), radial-gradient(ellipse 55% 45% at 15% 85%, rgba(191,30,46,0.07), transparent 60%);pointer-events:none;"></div>
+  <div style="max-width:900px;margin:0 auto;width:100%;position:relative;">
+    <div class="section-label fade-up in" style="margin-bottom:1.5rem;">Proposal · Señor Tequila's · Folklore. Kitchen. Cantina</div>
+    <h1 class="font-display fade-up in d1" style="font-size:clamp(1.35rem,5.9vw,3.8rem);line-height:1.06;text-transform:uppercase;margin-bottom:1.75rem;">
+      <span style="white-space:nowrap;">Built to be <span style="color:var(--green);">found.</span></span><br/>
+      <span style="white-space:nowrap;">Built to <span style="color:var(--gold);">fill tables.</span></span>
+    </h1>
+    <p class="fade-up in d2" style="color:var(--muted);font-size:1.0625rem;line-height:1.7;max-width:560px;margin-bottom:2.5rem;">
+      A complete website rebuild and local SEO engine for Germantown's favorite Mexican kitchen and cantina. Fast, mobile-first, and engineered to win the searches that put new families at your tables.
+    </p>
+    <div class="fade-up in d3" style="display:flex;gap:0.875rem;flex-wrap:wrap;">
+      <a class="btn" href="#directions">See the three designs</a>
+      <a class="btn btn-outline" href="/senor-tequilas/seo-report" target="_blank" rel="noopener">Read the full SEO report</a>
+    </div>
+    <div class="fade-up in d4" style="margin-top:3.5rem;display:flex;gap:2rem;flex-wrap:wrap;font-size:0.8125rem;color:var(--faint);">
+      <span>Prepared by Surge</span>
+      <span>August 2026</span>
+      <span>proposals.thesurgeagency.com</span>
+    </div>
+  </div>
+</header>
+
+<!-- ─────────────────────────────────────────────
+     02  THE OPPORTUNITY
+────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(234,226,214,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">02 · The Opportunity</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.5rem;">The food is packing the house.<br/>The website isn't.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.75;max-width:640px;margin-bottom:1.25rem;">
+      Señor Tequila's has everything a restaurant needs to dominate its market: a signature 54-ounce margarita, quesabirria people drive across the county for, 301 Google reviews (more than any local competitor), and eleven years of La Familia culture. What it doesn't have is a website that brings in anyone new.
+    </p>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.75;max-width:640px;margin-bottom:3rem;">
+      This month the site was hacked and had to be restored from a backup. That's the symptom. The condition is an aging WordPress build that loads slow, ranks for almost nothing, and sends 95% of its remaining visitors from people who already knew your name.
+    </p>
+
+    <div class="grid-2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:3.5rem;">
+      <div class="stat bad fade-up d1"><div class="num">▼73%</div><div class="lbl">Organic traffic since June 2025 (1,009 → 273 visits/mo)</div></div>
+      <div class="stat bad fade-up d2"><div class="num">95%</div><div class="lbl">Of remaining traffic is people searching your name</div></div>
+      <div class="stat bad fade-up d3"><div class="num">22</div><div class="lbl">Total keywords ranked. Only 5 are non-branded</div></div>
+      <div class="stat fade-up d4"><div class="num">301</div><div class="lbl">Google reviews at 4.1★. You already lead the map fight</div></div>
+    </div>
+
+    <!-- Traffic history chart -->
+    <div class="card fade-up d2" style="padding:1.75rem 1.5rem 1.25rem;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;">
+        <h3 style="font-size:0.9375rem;font-weight:700;color:var(--cream);">Monthly organic visits · Aug 2024 to Aug 2026</h3>
+        <span style="font-size:0.75rem;color:var(--faint);">Ahrefs, pulled live Aug 18, 2026</span>
+      </div>
+      <p style="font-size:0.8125rem;color:var(--muted);margin-bottom:1rem;">Two years of steady decline while local demand held steady. The site stopped competing, not the restaurant.</p>
+      <div class="chart-wrap" id="traffic-chart"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     03  THE SEARCH OPPORTUNITY
+────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 · The Search Opportunity</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.5rem;">The demand is real.<br/>Nobody local is claiming it.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.75;max-width:640px;margin-bottom:2.5rem;">
+      We pulled the entire Germantown-area keyword market. Every local competitor is asleep: the strongest sits at Domain Rating 12 with 18 keywords. Meanwhile the searches below go to nobody. Two numbers to remember: your signature dish gets <strong style="color:#fff;">26,000 searches a month</strong> at difficulty 4 of 100, and "taco catering near me" gets <strong style="color:#fff;">4,100 searches a month at difficulty zero</strong>, and you sell catering with no page for it.
+    </p>
+
+    <div class="card fade-up d2" style="padding:0.5rem 0.5rem;overflow-x:auto;margin-bottom:1.5rem;">
+      <table class="kw-table">
+        <thead><tr><th>Keyword</th><th>US searches/mo</th><th>Difficulty</th><th>Page that wins it</th></tr></thead>
+        <tbody>
+          <tr><td>quesabirria tacos</td><td class="vol">26,000</td><td class="kd-easy">4 / 100</td><td>Signature dish page (you already sell it)</td></tr>
+          <tr><td>birria tacos near me</td><td class="vol">48,000</td><td>24 / 100</td><td>Dish page + Google Maps</td></tr>
+          <tr><td>taco catering near me</td><td class="vol">4,100</td><td class="kd-easy">0 / 100</td><td>Catering hub + city pages</td></tr>
+          <tr><td>best margaritas near me</td><td class="vol">3,200</td><td>28 / 100</td><td>Margarita and tequila bar page (Big Mami)</td></tr>
+          <tr><td>happy hour germantown md</td><td class="vol">90</td><td class="kd-easy">1 / 100</td><td>You're #4 today. We push to #1</td></tr>
+          <tr><td>mexican restaurant near me</td><td class="vol">205,000</td><td class="kd-easy">9 / 100</td><td>Google Business Profile + reviews (the local pack)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="fade-up d3" style="font-size:0.8125rem;color:var(--faint);line-height:1.65;max-width:640px;margin-bottom:2rem;">
+      "Near me" volumes are national. The prize is the Germantown, Gaithersburg, and Clarksburg slice served through the Google local pack, which is why half this engagement runs on the map, not just the website. Full data, competitor teardown, and methodology in the report.
+    </p>
+    <a class="btn btn-outline fade-up d4" href="/senor-tequilas/seo-report" target="_blank" rel="noopener">Open the full SEO report</a>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     04  THREE DESIGN DIRECTIONS
+────────────────────────────────────────────── -->
+<section id="directions" style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(234,226,214,0.04);">
+  <div style="max-width:1050px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 · Design Directions</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1.5rem;">We didn't bring sketches.<br/>We built three websites.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.75;max-width:640px;margin-bottom:3rem;">
+      Three complete homepage directions, live and clickable, built with your food, your photos, your colors, and your voice. Open each one on your phone, that's where your customers are. Pick the one that feels like your restaurant and we build the full site from it.
+    </p>
+
+    <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem;">
+
+      <div class="direction fade-up d1">
+        <div class="shot">
+          <span class="tag" style="background:var(--green-deep);">Direction 01</span>
+          <img src="/clients/senor-tequilas/img/cantina-desktop.jpg" alt="Modern Cantina direction, dark premium homepage" loading="lazy" />
+        </div>
+        <div style="padding:1.375rem;">
+          <h3 class="font-display" style="font-size:1.125rem;text-transform:uppercase;margin-bottom:0.5rem;">Modern Cantina</h3>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.65;margin-bottom:1.125rem;">Dark, premium, date-night energy. The tequila wall glows, the Big Mami is the hero, and happy hour feels like an event.</p>
+          <a class="btn" style="font-size:0.8125rem;padding:0.75rem 1.25rem;width:100%;justify-content:center;" href="/senor-tequilas/designs/cantina" target="_blank" rel="noopener">View live demo</a>
+        </div>
+      </div>
+
+      <div class="direction fade-up d2">
+        <div class="shot">
+          <span class="tag" style="background:var(--red);">Direction 02</span>
+          <img src="/clients/senor-tequilas/img/mercado-desktop.jpg" alt="Mercado Folklore direction, vibrant hand-crafted homepage" loading="lazy" />
+        </div>
+        <div style="padding:1.375rem;">
+          <h3 class="font-display" style="font-size:1.125rem;text-transform:uppercase;margin-bottom:0.5rem;">Mercado Folklore</h3>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.65;margin-bottom:1.125rem;">Vibrant and hand-crafted, like walking into a mercado. Leans into the Mexico City street art on your walls and the family story.</p>
+          <a class="btn" style="font-size:0.8125rem;padding:0.75rem 1.25rem;width:100%;justify-content:center;" href="/senor-tequilas/designs/mercado" target="_blank" rel="noopener">View live demo</a>
+        </div>
+      </div>
+
+      <div class="direction fade-up d3">
+        <div class="shot">
+          <span class="tag" style="background:var(--gold);color:#171204;">Direction 03</span>
+          <img src="/clients/senor-tequilas/img/retro-desktop.jpg" alt="Bold Retro Poster direction, vintage luchador homepage" loading="lazy" />
+        </div>
+        <div style="padding:1.375rem;">
+          <h3 class="font-display" style="font-size:1.125rem;text-transform:uppercase;margin-bottom:0.5rem;">Bold Retro Poster</h3>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.65;margin-bottom:1.125rem;">Vintage lucha libre matinee, printed in 2026. Loud type, ticket-stub buttons, and your "forget flowers" humor turned all the way up.</p>
+          <a class="btn" style="font-size:0.8125rem;padding:0.75rem 1.25rem;width:100%;justify-content:center;" href="/senor-tequilas/designs/retro" target="_blank" rel="noopener">View live demo</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="fade-up" style="font-size:0.8125rem;color:var(--faint);">Whichever direction you choose, the build underneath is identical: fast, mobile-first, and SEO-optimized on every page.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     05  SCOPE OF WORK
+────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">05 · Scope of Work</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">Two engines.<br/>One system.</h2>
+
+    <div class="grid-2" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;">
+
+      <div class="fade-up d1">
+        <h3 class="font-display" style="font-size:1.25rem;text-transform:uppercase;color:var(--green);margin-bottom:1.5rem;">The rebuild</h3>
+        <div style="display:grid;gap:1.375rem;">
+          <div class="scope-item"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Full site design and build in your chosen direction</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Every page designed and built custom. No WordPress, no plugins to hack, nothing to restore from backup ever again.</span></div>
+          <div class="scope-item"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">A page for every search worth winning</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Full HTML menu (no more PDF), quesabirria and birria page, margaritas and tequila bar page, happy hour, brunch, catering hub, private parties, live events, and nearby-city pages for Gaithersburg, Clarksburg, and Rockville.</span></div>
+          <div class="scope-item"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Speed and structure Google rewards</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Core Web Vitals-clean build, Restaurant, Menu, and Event schema markup, and 301 redirects that protect the rankings you already hold.</span></div>
+          <div class="scope-item"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Toast, wired everywhere</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Online ordering and reservations one thumb-tap away on every page, plus gift cards and the weekly events program.</span></div>
+        </div>
+      </div>
+
+      <div class="fade-up d2">
+        <h3 class="font-display" style="font-size:1.25rem;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;">The SEO engine</h3>
+        <div style="display:grid;gap:1.375rem;">
+          <div class="scope-item" style="border-left-color:var(--gold);"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Google Maps domination</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Google Business Profile rebuilt and run as a publishing channel: weekly posts, dish photos, Q&amp;A, and citation cleanup across every directory that matters.</span></div>
+          <div class="scope-item" style="border-left-color:var(--gold);"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Content that ranks and sells</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">4 to 8 optimized pages and posts a month: signature dishes, happy hour guides, catering city pages, seasonal pushes like Cinco de Mayo, built before the demand spikes.</span></div>
+          <div class="scope-item" style="border-left-color:var(--gold);"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Real local links and press</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Montgomery County food press, chamber, community sponsorships, and event calendars. Links no local competitor has bothered to earn.</span></div>
+          <div class="scope-item" style="border-left-color:var(--gold);"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Reviews and reporting</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Review velocity system (QR and SMS) targeting 15 to 20 fresh Google reviews a month, plus a monthly plain-English report: map grid rankings, traffic, calls, and direction requests.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     06  TIMELINE
+────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(234,226,214,0.04);">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">06 · Timeline</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">Weeks, not months.</h2>
+
+    <div style="display:grid;gap:1.5rem;">
+      <div class="t-step fade-up d1"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Weeks 1 to 4 · The rebuild ships</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Direction locked, full site designed, built, and launched with the complete page architecture, schema, and redirects. Our build system ships a full architecture in weeks where traditional agencies take a quarter.</span></div>
+      <div class="t-step fade-up d2"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Month 1 · Local foundation</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Google Business Profile rebuilt, citations cleaned, baseline map-grid scans running.</span></div>
+      <div class="t-step fade-up d3"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Months 2 to 3 · Signature dish offensive + catering revenue</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Quesabirria and margarita content lands, first local press, review system live, catering city pages with quote forms.</span></div>
+      <div class="t-step fade-up d4"><strong style="display:block;font-size:0.9375rem;margin-bottom:0.25rem;">Months 4 to 6 · Authority and compounding</strong><span style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Local link campaign, content engine at full speed, then a full re-baseline against this report with the months 7 to 12 expansion map.</span></div>
+    </div>
+
+    <!-- Projection chart -->
+    <div class="card fade-up d2" style="padding:1.75rem 1.5rem 1.25rem;margin-top:3rem;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;">
+        <h3 style="font-size:0.9375rem;font-weight:700;color:var(--cream);">Where this goes · monthly organic visits</h3>
+        <span style="font-size:0.75rem;color:var(--faint);">Projection vs Aug 2026 baseline of 273</span>
+      </div>
+      <p style="font-size:0.8125rem;color:var(--muted);margin-bottom:1rem;">The target track follows the trajectory Guapo's has already proven in this market. Even the conservative track passes your all-time peak by month six.</p>
+      <div class="chart-wrap" id="projection-chart"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     07  INVESTMENT
+────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">07 · Investment</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">One plan. Everything above.</h2>
+
+    <div class="card fade-up d2" style="padding:2rem;border-color:rgba(56,176,73,0.35);">
+      <div style="display:grid;gap:2rem;">
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:2rem;">
+          <div style="min-width:220px;">
+            <div class="font-display" style="font-size:1.375rem;text-transform:uppercase;">Website rebuild</div>
+            <div style="font-size:0.875rem;color:var(--muted);margin-top:0.375rem;line-height:1.6;">Full site in your chosen direction. Mobile-first, page-speed and SEO optimized, live in four weeks.</div>
+          </div>
+          <div style="text-align:right;">
+            <span class="font-display" style="font-size:2.5rem;color:var(--green);line-height:1;">$5,000</span>
+            <div style="font-size:0.8125rem;color:var(--faint);margin-top:0.25rem;">one-time</div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;">
+          <div style="min-width:220px;">
+            <div class="font-display" style="font-size:1.375rem;text-transform:uppercase;">SEO engine</div>
+            <div style="font-size:0.875rem;color:var(--muted);margin-top:0.375rem;line-height:1.6;">Maps, content, links, reviews, and reporting. Six-month initial roadmap, then compounding from there.</div>
+          </div>
+          <div style="text-align:right;">
+            <span class="font-display" style="font-size:2.5rem;color:var(--green);line-height:1;">$3,000</span>
+            <div style="font-size:0.8125rem;color:var(--faint);margin-top:0.25rem;">per month</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="fade-up d3" style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-top:1.25rem;">The rebuild fee locks your start date. The SEO engagement begins the month the new site launches, so the two compound instead of overlapping.</p>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     08  WHY SURGE
+────────────────────────────────────────────── -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(234,226,214,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 · Why Surge</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">Three reasons.<br/>No fluff.</h2>
+
+    <div style="display:grid;gap:1.25rem;">
+      <div class="card fade-up d1" style="padding:1.75rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--green);line-height:1;margin-bottom:1rem;">01</div>
+        <h3 style="font-weight:700;font-size:1.0625rem;margin-bottom:0.625rem;">The proof is on this page.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">You're not reading promises about what we might design. Three finished homepage directions are one tap away, built with your food and your colors before you've paid us a dollar. That's the speed the whole engagement runs at.</p>
+      </div>
+      <div class="card fade-up d2" style="padding:1.75rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--green);line-height:1;margin-bottom:1rem;">02</div>
+        <h3 style="font-weight:700;font-size:1.0625rem;margin-bottom:0.625rem;">SEO is the architecture, not an add-on.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Every page in the new site exists to win a specific search we've already sized. Design, copy, build, and SEO happen together, by one team, so you never get a pretty site that nobody finds.</p>
+      </div>
+      <div class="card fade-up d3" style="padding:1.75rem;">
+        <div class="font-display" style="font-size:3rem;color:var(--green);line-height:1;margin-bottom:1rem;">03</div>
+        <h3 style="font-weight:700;font-size:1.0625rem;margin-bottom:0.625rem;">The window is open right now.</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">We mapped every competitor in your market. Nobody local is doing real SEO, and you already lead on reviews. The first restaurant to show up with a fast site and a worked Google profile takes the map. That should be you, not whoever reads this playbook next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────────
+     09  NEXT STEPS
+────────────────────────────────────────────── -->
+<section id="next-steps" style="padding:5.5rem 1.5rem;">
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">09 · Next Steps</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">Vámonos.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Pick your design direction, sign below, and we schedule the kickoff. The new site is live within four weeks of payment.</p>
+
+    <form id="proposal-form" class="card fade-up d4" style="padding:2rem;margin-bottom:2rem;transition:opacity 0.4s ease,transform 0.4s ease;" onsubmit="handleSubmit(event)">
+      <h3 style="font-weight:700;font-size:1rem;color:var(--cream);margin-bottom:1.5rem;">Approve Proposal</h3>
+
+      <div style="display:grid;gap:1rem;margin-bottom:1.25rem;">
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;" for="f-name">Full Name</label>
+          <input class="field" type="text" id="f-name" name="name" placeholder="Roberto Rivas" required />
+        </div>
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;" for="f-company">Restaurant</label>
+          <input class="field" type="text" id="f-company" name="company" value="Señor Tequila's" />
+        </div>
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
+          <input class="field" type="date" id="f-date" name="date" required />
+        </div>
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:600;color:var(--muted);margin-bottom:0.5rem;" for="f-direction">
+            Design Direction
+            <span style="color:var(--faint);font-weight:400;">, you can change your mind at kickoff</span>
+          </label>
+          <select class="field" id="f-direction" name="direction">
+            <option value="" style="background:#111;">-- Pick a direction or decide at kickoff --</option>
+            <option value="Modern Cantina" style="background:#111;">Direction 01: Modern Cantina</option>
+            <option value="Mercado Folklore" style="background:#111;">Direction 02: Mercado Folklore</option>
+            <option value="Bold Retro Poster" style="background:#111;">Direction 03: Bold Retro Poster</option>
+            <option value="Decide at kickoff" style="background:#111;">I'll decide at kickoff</option>
+          </select>
+        </div>
+      </div>
+
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, you approve the scope and investment outlined in this proposal and authorize Surge to begin work upon receipt of payment.</p>
+
+      <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.125rem;padding:1.125rem 2rem;justify-content:center;">Sign &amp; Approve Proposal</button>
+    </form>
+
+    <!-- Signed confirmation -->
+    <div id="signed-confirmation" style="display:none;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;">
+      <div style="background:#07120a;border:1px solid var(--green);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.75rem;">
+          <div style="width:36px;height:36px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="font-display" style="font-size:1.125rem;letter-spacing:0.02em;color:var(--green);text-transform:uppercase;">Proposal Approved</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Sam has been notified. You're all set.</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:0.75rem;border-top:1px solid rgba(234,226,214,0.08);padding-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--muted);">Signed by</span><span id="conf-name" style="color:#fff;font-weight:600;"></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--muted);">Restaurant</span><span id="conf-company" style="color:#fff;"></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--muted);">Date</span><span id="conf-date" style="color:#fff;"></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--muted);">Design direction</span><span id="conf-direction" style="color:var(--green);font-weight:600;"></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--muted);">Rebuild fee</span><span style="color:#fff;font-weight:600;">$5,000</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.875rem;"><span style="color:var(--muted);">SEO engine</span><span style="color:#fff;font-weight:600;">$3,000/month</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment CTA -->
+    <div id="payment-cta" style="text-align:center;opacity:0.35;transition:opacity 0.5s ease,transform 0.5s ease;">
+      <p id="payment-label" style="font-size:0.875rem;color:var(--faint);margin-bottom:1.125rem;">Sign the proposal above to unlock payment.</p>
+      <!-- TODO(Sam): replace href with the live Stripe payment link for the $5,000 rebuild -->
+      <a id="payment-btn" href="#stripe-link-pending" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.125rem;padding:1.375rem 2.5rem;pointer-events:none;width:100%;justify-content:center;">
+        Pay $5,000: Start the Build
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p style="font-size:0.75rem;color:var(--faint);margin-top:0.875rem;">Secure payment via Stripe. Work begins within 48 hours of payment confirmation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:1.75rem 1.5rem;border-top:1px solid rgba(234,226,214,0.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+  <img src="../../brand/SRG%20JR.svg" alt="Surge" style="height:24px;width:auto;filter:brightness(0) invert(1);" onerror="this.style.display='none'" />
+  <span style="font-size:0.75rem;color:var(--faint);">Prepared for Señor Tequila's · August 2026 · Confidential</span>
+</footer>
+
+<script>
+  // Entrance animations
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Pre-fill today's date
+  const dateInput = document.getElementById('f-date');
+  if (dateInput) {
+    const t = new Date();
+    dateInput.value = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2,'0')}-${String(t.getDate()).padStart(2,'0')}`;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const name = fd.get('name') || '';
+    const company = fd.get('company') || '';
+    const date = fd.get('date') || '';
+    const direction = fd.get('direction') || 'Decide at kickoff';
+    const dateDisplay = date ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }) : date;
+
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, company, date: dateDisplay,
+        retainer: 'SEO Engine: $3,000/mo · Direction: ' + direction,
+        proposal: "Señor Tequila's Website Rebuild + Local SEO",
+        fee: '$5,000',
+      }),
+    }).catch(() => {});
+
+    const form = document.getElementById('proposal-form');
+    form.style.opacity = '0';
+    form.style.transform = 'translateY(-12px)';
+    setTimeout(() => { form.style.display = 'none'; }, 420);
+
+    document.getElementById('conf-name').textContent = name;
+    document.getElementById('conf-company').textContent = company || "Señor Tequila's";
+    document.getElementById('conf-date').textContent = dateDisplay;
+    document.getElementById('conf-direction').textContent = direction;
+
+    const conf = document.getElementById('signed-confirmation');
+    conf.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      conf.style.opacity = '1';
+      conf.style.transform = 'translateY(0)';
+    }));
+
+    const payBtn = document.getElementById('payment-btn');
+    const payLabel = document.getElementById('payment-label');
+    const cta = document.getElementById('payment-cta');
+    setTimeout(() => {
+      cta.style.opacity = '1';
+      payBtn.style.pointerEvents = 'auto';
+      payLabel.textContent = "You're approved. One step left: lock in your start date.";
+      payLabel.style.color = '#d8d2c6';
+      payLabel.style.fontWeight = '600';
+    }, 600);
+  }
+
+  /* ───────── Charts (SVG, hover tooltips, no libraries) ───────── */
+  const GREEN = '#38B049', GOLD = '#B99C66', MUTED = '#a39d92', FAINT = '#5f5b53', GRID = 'rgba(234,226,214,0.07)';
+
+  function lineChart(el, opts) {
+    const { series, labels, height = 240, yMax } = opts;
+    const wrap = document.getElementById(el);
+    const W = 860, H = height, padL = 44, padR = 16, padT = 14, padB = 28;
+    const iw = W - padL - padR, ih = H - padT - padB;
+    const max = yMax || Math.max(...series.flatMap(s => s.data.filter(v => v != null))) * 1.08;
+    const n = labels.length;
+    const x = i => padL + (i / (n - 1)) * iw;
+    const y = v => padT + ih - (v / max) * ih;
+
+    let g = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block;" role="img" aria-label="${opts.aria || 'line chart'}">`;
+    // gridlines (4)
+    for (let t = 0; t <= 4; t++) {
+      const gy = padT + (t / 4) * ih, val = Math.round(max * (1 - t / 4));
+      g += `<line x1="${padL}" y1="${gy}" x2="${W - padR}" y2="${gy}" stroke="${GRID}" stroke-width="1"/>`;
+      g += `<text x="${padL - 8}" y="${gy + 4}" text-anchor="end" font-size="11" fill="${FAINT}" font-family="Manrope">${val.toLocaleString()}</text>`;
+    }
+    // x labels (sparse)
+    (opts.xTicks || []).forEach(([i, lab]) => {
+      g += `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="${FAINT}" font-family="Manrope">${lab}</text>`;
+    });
+    // series paths
+    series.forEach(s => {
+      const pts = s.data.map((v, i) => v == null ? null : `${x(i)},${y(v)}`).filter(Boolean).join(' ');
+      g += `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2" ${s.dash ? `stroke-dasharray="${s.dash}"` : ''} stroke-linejoin="round" stroke-linecap="round"/>`;
+      if (s.area) {
+        const first = s.data.findIndex(v => v != null), last = s.data.length - 1;
+        g += `<polygon points="${x(first)},${y(s.data[first])} ${pts} ${x(last)},${padT + ih} ${x(first)},${padT + ih}" fill="${s.color}" opacity="0.07"/>`;
+      }
+      // direct label at line end
+      const li = s.data.length - 1, lv = s.data[li];
+      if (lv != null && s.label) {
+        g += `<text x="${x(li) - 4}" y="${y(lv) - 10}" text-anchor="end" font-size="11.5" font-weight="700" fill="${s.labelColor || s.color}" font-family="Manrope">${s.label}</text>`;
+      }
+      // end marker
+      if (lv != null) g += `<circle cx="${x(li)}" cy="${y(lv)}" r="4" fill="${s.color}" stroke="#111111" stroke-width="2"/>`;
+    });
+    // annotations
+    (opts.marks || []).forEach(m => {
+      g += `<circle cx="${x(m.i)}" cy="${y(m.v)}" r="4.5" fill="${m.color}" stroke="#111111" stroke-width="2"/>`;
+      g += `<text x="${x(m.i)}" y="${y(m.v) - 12}" text-anchor="${m.anchor || 'middle'}" font-size="11.5" font-weight="700" fill="${m.color}" font-family="Manrope">${m.label}</text>`;
+    });
+    // hover overlay
+    g += `<rect id="${el}-hit" x="${padL}" y="${padT}" width="${iw}" height="${ih}" fill="transparent"/>`;
+    g += `<line id="${el}-cross" x1="0" y1="${padT}" x2="0" y2="${padT + ih}" stroke="rgba(234,226,214,0.25)" stroke-width="1" style="display:none;"/>`;
+    g += `</svg><div class="chart-tip" id="${el}-tip"></div>`;
+    wrap.innerHTML = g;
+
+    const svg = wrap.querySelector('svg'), hit = document.getElementById(el + '-hit'),
+          cross = document.getElementById(el + '-cross'), tip = document.getElementById(el + '-tip');
+    svg.addEventListener('mousemove', ev => {
+      const r = svg.getBoundingClientRect();
+      const sx = (ev.clientX - r.left) * (W / r.width);
+      const i = Math.max(0, Math.min(n - 1, Math.round(((sx - padL) / iw) * (n - 1))));
+      cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.style.display = 'block';
+      const rows = series.filter(s => s.data[i] != null).map(s =>
+        `<div><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${s.color};margin-right:6px;"></span>${s.name}: <span class="v">${s.data[i].toLocaleString()}</span></div>`).join('');
+      tip.innerHTML = `<div style="color:${MUTED};margin-bottom:2px;">${labels[i]}</div>${rows}`;
+      tip.style.display = 'block';
+      tip.style.left = (x(i) / W * 100) + '%';
+      tip.style.top = (Math.min(...series.filter(s => s.data[i] != null).map(s => y(s.data[i]))) / H * 100) + '%';
+    });
+    svg.addEventListener('mouseleave', () => { cross.style.display = 'none'; tip.style.display = 'none'; });
+  }
+
+  // Traffic history: Aug'24 → Aug'26
+  const tLabels = ["Aug '24","Sep","Oct","Nov","Dec","Jan '25","Feb","Mar","Apr","May","Jun '25","Jul","Aug","Sep","Oct","Nov","Dec","Jan '26","Feb","Mar","Apr","May","Jun","Jul","Aug '26"];
+  const tData = [870,795,667,783,961,815,786,802,815,953,1009,997,850,677,604,552,530,526,578,511,449,583,561,507,273];
+  lineChart('traffic-chart', {
+    labels: tLabels, yMax: 1120, height: 250,
+    aria: 'Monthly organic visits declining from a 1,009 peak in June 2025 to 273 in August 2026',
+    xTicks: [[0,"Aug '24"],[6,"Feb '25"],[10,"Jun '25"],[17,"Jan '26"],[24,"Aug '26"]],
+    series: [{ name: 'Organic visits', data: tData, color: GREEN, area: true }],
+    marks: [
+      { i: 10, v: 1009, label: 'Peak: 1,009', color: GOLD },
+      { i: 24, v: 273, label: 'Now: 273', color: '#e2564e', anchor: 'end' }
+    ]
+  });
+
+  // Projection: baseline + 6 months (Sep'26 → Feb'27)
+  const pLabels = ["Aug '26","Sep","Oct","Nov","Dec","Jan '27","Feb '27"];
+  lineChart('projection-chart', {
+    labels: pLabels, yMax: 2200, height: 250,
+    aria: 'Projected monthly organic visits: conservative track reaching 1,050 and target track reaching 2,000 by February 2027',
+    xTicks: [[0,"Aug '26"],[2,"Oct"],[4,"Dec"],[6,"Feb '27"]],
+    series: [
+      { name: 'Target track', data: [273,380,550,800,1150,1550,2000], color: GREEN, area: true, label: 'Target: 2,000' },
+      { name: 'Conservative', data: [273,320,450,600,750,900,1050], color: MUTED, dash: '5 5', label: 'Conservative: 1,050', labelColor: MUTED }
+    ],
+    marks: [{ i: 0, v: 273, label: 'Today: 273', color: GOLD, anchor: 'start' }]
+  });
+</script>
+
+</body>
+</html>

@@ -22,6 +22,10 @@ cat > "$OUT/config.json" <<'EOF'
     { "src": "/home-source", "dest": "/clients/home-source/index.html" },
     { "src": "/home-source/onboarding", "dest": "/clients/home-source/onboarding.html" },
     { "src": "/rush-delivery", "dest": "/clients/rush-delivery/index.html" },
+    { "src": "/senor-tequilas", "dest": "/clients/senor-tequilas/index.html" },
+    { "src": "/senor-tequilas/seo-report", "dest": "/clients/senor-tequilas/seo-report.html" },
+    { "src": "/senor-tequilas/designs/support.js", "dest": "/clients/senor-tequilas/designs/support.js" },
+    { "src": "/senor-tequilas/designs/([a-z]+)", "dest": "/clients/senor-tequilas/designs/$1.html" },
     { "src": "/test", "dest": "/clients/test/index.html" },
     { "handle": "filesystem" }
   ]

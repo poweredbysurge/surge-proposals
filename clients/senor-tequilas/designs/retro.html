@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;500;700;900&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#EAE2D6;color:#1C1710;font-family:Roboto,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#BF1E2E;text-decoration:none}
+a:hover{color:#018B45}
+::selection{background:#BF1E2E;color:#EAE2D6}
+@keyframes st-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<sc-if value="{{ showTicker }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="Ticker bar" style="background:#1C1710;overflow:hidden;padding:8px 0">
+  <div style="display:flex;width:max-content;white-space:nowrap;animation:st-ticker 38s linear infinite">
+    <span style="padding-right:0.55em;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.14em;color:#B99C66">TONIGHT IN GERMANTOWN ★ HAPPY HOUR 11:30 TO 5 ★ MARGARITAS ★ TACOS ★ TONIGHT IN GERMANTOWN ★ HAPPY HOUR 11:30 TO 5 ★ MARGARITAS ★ TACOS ★ TONIGHT IN GERMANTOWN ★ HAPPY HOUR 11:30 TO 5 ★ MARGARITAS ★ TACOS ★</span>
+    <span aria-hidden="true" style="padding-right:0.55em;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.14em;color:#B99C66">TONIGHT IN GERMANTOWN ★ HAPPY HOUR 11:30 TO 5 ★ MARGARITAS ★ TACOS ★ TONIGHT IN GERMANTOWN ★ HAPPY HOUR 11:30 TO 5 ★ MARGARITAS ★ TACOS ★ TONIGHT IN GERMANTOWN ★ HAPPY HOUR 11:30 TO 5 ★ MARGARITAS ★ TACOS ★</span>
+  </div>
+</div>
+</sc-if>
+<header data-screen-label="Header" style="position:sticky;top:0;z-index:60;background:#EAE2D6;border-bottom:3px solid #1C1710">
+  <div style="max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px clamp(14px,4vw,40px)">
+    <a href="#" style="display:inline-flex;flex:0 0 auto">
+      <img src="https://senortequilas.com/wp-content/uploads/2022/02/retina-logo-updated-copy.png" alt="Señor Tequila's" referrerpolicy="no-referrer" style="height:34px;display:block">
+    </a>
+    <div style="display:flex;align-items:center;gap:12px">
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ false }}">
+        <nav style="display:flex;gap:20px;align-items:center;margin-right:8px">
+          <a href="#menu" style="color:#1C1710;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#BF1E2E">Menu</a>
+          <a href="#events" style="color:#1C1710;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#BF1E2E">Events</a>
+          <a href="#story" style="color:#1C1710;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#BF1E2E">Our Story</a>
+          <a href="#gift" style="color:#1C1710;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#BF1E2E">Gift Cards</a>
+          <a href="#visit" style="color:#1C1710;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#BF1E2E">Visit</a>
+        </nav>
+      </sc-if>
+      <a href="https://order.toasttab.com/online/senortequilastogo" target="_blank" style="display:inline-flex;align-items:stretch;background:#BF1E2E;color:#EAE2D6;border:2px solid #1C1710;box-shadow:3px 3px 0 #1C1710" style-hover="background:#A81624;color:#EAE2D6;box-shadow:1px 1px 0 #1C1710">
+        <span style="display:flex;align-items:center;font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:0.05em;padding:9px 12px">ORDER</span>
+        <span style="display:flex;align-items:center;padding:0 8px;border-left:2px dashed rgba(234,226,214,0.6);font-family:'Special Elite',monospace;font-size:9px">GO</span>
+      </a>
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ openNav }}" aria-label="Open menu" style="width:44px;height:44px;background:#EAE2D6;border:2px solid #1C1710;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:3px 3px 0 #1C1710">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1710" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+</header>
+<sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="Nav overlay" style="position:fixed;inset:0;z-index:100;background:#EAE2D6;display:flex;flex-direction:column;padding:14px clamp(18px,5vw,44px) 26px;overflow:auto;background-image:radial-gradient(circle,rgba(28,23,16,0.05) 1.1px,transparent 1.4px);background-size:9px 9px">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <span style="display:inline-flex">
+      <img src="https://senortequilas.com/wp-content/uploads/2022/02/retina-logo-updated-copy.png" alt="Señor Tequila's" referrerpolicy="no-referrer" style="height:31px;display:block">
+    </span>
+    <button onClick="{{ closeNav }}" aria-label="Close menu" style="width:44px;height:44px;background:#EAE2D6;border:2px solid #1C1710;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:3px 3px 0 #1C1710">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1710" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+  </div>
+  <nav style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:30px 4px">
+    <a href="#menu" onClick="{{ closeNav }}" style="color:#1C1710;font-family:'Archivo Black',sans-serif;font-size:32px;text-transform:uppercase" style-hover="color:#BF1E2E"><span style="font-family:'Special Elite',monospace;font-size:13px;color:#BF1E2E;margin-right:12px">01</span>Menu</a>
+    <a href="#events" onClick="{{ closeNav }}" style="color:#1C1710;font-family:'Archivo Black',sans-serif;font-size:32px;text-transform:uppercase" style-hover="color:#BF1E2E"><span style="font-family:'Special Elite',monospace;font-size:13px;color:#BF1E2E;margin-right:12px">02</span>Weekly Bill</a>
+    <a href="#story" onClick="{{ closeNav }}" style="color:#1C1710;font-family:'Archivo Black',sans-serif;font-size:32px;text-transform:uppercase" style-hover="color:#BF1E2E"><span style="font-family:'Special Elite',monospace;font-size:13px;color:#BF1E2E;margin-right:12px">03</span>Our Story</a>
+    <a href="#gift" onClick="{{ closeNav }}" style="color:#1C1710;font-family:'Archivo Black',sans-serif;font-size:32px;text-transform:uppercase" style-hover="color:#BF1E2E"><span style="font-family:'Special Elite',monospace;font-size:13px;color:#BF1E2E;margin-right:12px">04</span>Gift Cards</a>
+    <a href="#visit" onClick="{{ closeNav }}" style="color:#1C1710;font-family:'Archivo Black',sans-serif;font-size:32px;text-transform:uppercase" style-hover="color:#BF1E2E"><span style="font-family:'Special Elite',monospace;font-size:13px;color:#BF1E2E;margin-right:12px">05</span>Visit</a>
+  </nav>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <a href="https://order.toasttab.com/online/senortequilastogo" target="_blank" style="display:flex;align-items:stretch;background:#BF1E2E;color:#EAE2D6;border:2px solid #1C1710;box-shadow:4px 4px 0 #1C1710" style-hover="background:#A81624;color:#EAE2D6"><span style="flex:1;text-align:center;font-family:'Archivo Black',sans-serif;font-size:15px;padding:15px 16px">ORDER ONLINE</span><span style="display:flex;align-items:center;padding:0 10px;border-left:2px dashed rgba(234,226,214,0.6);font-family:'Special Elite',monospace;font-size:9px;text-align:center">ADMIT<br>UNO</span></a>
+    <a href="https://tables.toasttab.com/restaurants/d94fa749-fbd5-4a66-90b6-d7755b8c3af3/findTime" target="_blank" style="display:flex;align-items:stretch;background:#38B049;color:#0C120D;border:2px solid #1C1710;box-shadow:4px 4px 0 #1C1710" style-hover="background:#2E9C3D;color:#0C120D"><span style="flex:1;text-align:center;font-family:'Archivo Black',sans-serif;font-size:15px;padding:15px 16px">RESERVE A TABLE</span><span style="display:flex;align-items:center;padding:0 10px;border-left:2px dashed rgba(12,18,13,0.45);font-family:'Special Elite',monospace;font-size:9px;text-align:center">ANY<br>NIGHT</span></a>
+    <a href="tel:3015694574" style="text-align:center;font-family:'Special Elite',monospace;font-size:13px;color:#BF1E2E;padding:8px" style-hover="color:#018B45">301-569-4574</a>
+  </div>
+</div>
+</sc-if>
+<section data-screen-label="Hero poster" style="position:relative;overflow:hidden;border-bottom:3px solid #1C1710">
+  <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(30px,6vw,72px) clamp(18px,4.5vw,48px) clamp(44px,6vw,76px);display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:clamp(30px,4vw,56px);align-items:center">
+    <div style="text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px">
+        <span style="width:34px;height:2px;background:#1C1710"></span>
+        <span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:#1C1710">THE RIVAS BROTHERS PRESENT</span>
+        <span style="width:34px;height:2px;background:#1C1710"></span>
+      </div>
+      <h1 style="margin:14px 0 0;text-transform:uppercase;line-height:0.92">
+        <sc-if value="{{ mobile }}" hint-placeholder-val="{{ true }}">
+          <span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(64px,25vw,124px);letter-spacing:-0.01em;color:#BF1E2E;text-shadow:0.045em 0.045em 0 #018B45">Señor</span>
+          <span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(40px,15vw,72px);letter-spacing:-0.01em;color:#1C1710;text-shadow:-0.035em 0.03em 0 rgba(191,30,46,0.5), 0.035em -0.03em 0 rgba(1,139,69,0.4)">Tequila's</span>
+        </sc-if>
+        <sc-if value="{{ desktop }}" hint-placeholder-val="{{ false }}">
+          <span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(64px,11vw,124px);letter-spacing:-0.01em;color:#BF1E2E;text-shadow:0.045em 0.045em 0 #018B45">Señor</span>
+          <span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(40px,6.5vw,72px);letter-spacing:-0.01em;color:#1C1710;text-shadow:-0.035em 0.03em 0 rgba(191,30,46,0.5), 0.035em -0.03em 0 rgba(1,139,69,0.4)">Tequila's</span>
+        </sc-if>
+      </h1>
+      <div style="display:inline-block;margin-top:16px;background:#1C1710;color:#EAE2D6;font-family:'Archivo Black',sans-serif;font-size:clamp(11px,3vw,15px);letter-spacing:0.18em;padding:9px 16px;transform:rotate(-1.2deg);box-shadow:3px 3px 0 #B99C66">FOLKLORE ★ KITCHEN ★ CANTINA</div>
+      <div style="margin-top:14px;font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E;letter-spacing:0.04em">"From Mexico, With Love!"</div>
+      <p style="font-size:15.5px;line-height:1.6;color:#57503F;max-width:44ch;margin:14px auto 24px">Family-owned Mexican kitchen and cantina on Century Blvd, run by the Rivas brothers since 2015.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <a href="https://order.toasttab.com/online/senortequilastogo" target="_blank" style="flex:1 1 240px;max-width:330px;display:flex;align-items:stretch;background:#BF1E2E;color:#EAE2D6;border:2px solid #1C1710;box-shadow:5px 5px 0 #1C1710" style-hover="background:#A81624;color:#EAE2D6;box-shadow:2px 2px 0 #1C1710">
+          <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.04em;padding:15px 14px">ORDER ONLINE</span>
+          <span style="display:flex;flex-direction:column;justify-content:center;padding:0 10px;border-left:2px dashed rgba(234,226,214,0.6);font-family:'Special Elite',monospace;font-size:9px;line-height:1.3">ADMIT<br>UNO</span>
+        </a>
+        <a href="https://tables.toasttab.com/restaurants/d94fa749-fbd5-4a66-90b6-d7755b8c3af3/findTime" target="_blank" style="flex:1 1 240px;max-width:330px;display:flex;align-items:stretch;background:#38B049;color:#0C120D;border:2px solid #1C1710;box-shadow:5px 5px 0 #1C1710" style-hover="background:#2E9C3D;color:#0C120D;box-shadow:2px 2px 0 #1C1710">
+          <span style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:15px;letter-spacing:0.04em;padding:15px 14px">RESERVE A TABLE</span>
+          <span style="display:flex;flex-direction:column;justify-content:center;padding:0 10px;border-left:2px dashed rgba(12,18,13,0.45);font-family:'Special Elite',monospace;font-size:9px;line-height:1.3">ANY<br>NIGHT</span>
+        </a>
+      </div>
+    </div>
+    <div style="position:relative;max-width:460px;margin:14px auto 0;width:100%">
+      <div style="position:relative;background:#EAE2D6;border:4px solid #1C1710;box-shadow:10px 10px 0 #B99C66;transform:rotate(1.2deg)">
+        <img src="https://senortequilas.com/wp-content/uploads/2025/11/Photo-Sep-05-2025-11-07-18-AM-1-1-1536x1024.jpg" alt="Señor Tequila's cantina" referrerpolicy="no-referrer" style="display:block;width:100%;aspect-ratio:1/1;object-fit:cover;mix-blend-mode:multiply;filter:contrast(1.06) saturate(1.08)">
+        <span style="position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;background-image:radial-gradient(circle,rgba(28,23,16,0.16) 1px,transparent 1.3px);background-size:6px 6px"></span>
+      </div>
+      <div style="position:absolute;top:-26px;right:-8px;width:104px;height:104px;transform:rotate(10deg);z-index:4">
+        <span style="position:absolute;inset:10px;background:#B99C66;border:2px solid #1C1710"></span>
+        <span style="position:absolute;inset:10px;background:#B99C66;border:2px solid #1C1710;transform:rotate(30deg)"></span>
+        <span style="position:absolute;inset:10px;background:#B99C66;border:2px solid #1C1710;transform:rotate(60deg)"></span>
+        <span style="position:absolute;inset:22px;border-radius:50%;background:#B99C66;border:2px solid #1C1710;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1">
+          <span style="font-family:'Special Elite',monospace;font-size:10px;color:#1C1710">DESDE</span>
+          <span style="font-family:'Archivo Black',sans-serif;font-size:19px;color:#1C1710;margin-top:2px">2015</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ tex }}" hint-placeholder-val="{{ true }}">
+    <span style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(28,23,16,0.055) 1.1px,transparent 1.4px);background-size:9px 9px"></span>
+  </sc-if>
+</section>
+<section data-screen-label="Quick actions" style="max-width:760px;margin:0 auto;padding:20px clamp(18px,4.5vw,48px) 6px">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+    <a href="#menu" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px dashed #1C1710;background:#F2ECE1;padding:12px 6px;min-height:76px;transform:rotate(-1.2deg);color:#1C1710" style-hover="background:#B99C66;color:#1C1710">
+      <span style="font-family:'Special Elite',monospace;font-size:9px;letter-spacing:0.14em;color:#BF1E2E">BOLETO 01</span>
+      <span style="font-family:'Archivo Black',sans-serif;font-size:13px">MENU</span>
+      <span style="font-family:'Special Elite',monospace;font-size:10px;color:#57503F">la carta</span>
+    </a>
+    <a href="tel:3015694574" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px dashed #1C1710;background:#F2ECE1;padding:12px 6px;min-height:76px;transform:rotate(0.8deg);color:#1C1710" style-hover="background:#B99C66;color:#1C1710">
+      <span style="font-family:'Special Elite',monospace;font-size:9px;letter-spacing:0.14em;color:#BF1E2E">BOLETO 02</span>
+      <span style="font-family:'Archivo Black',sans-serif;font-size:13px">CALL</span>
+      <span style="font-family:'Special Elite',monospace;font-size:10px;color:#57503F">301-569-4574</span>
+    </a>
+    <a href="https://maps.google.com/?q=20021+Century+Blvd,+Germantown,+MD" target="_blank" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px dashed #1C1710;background:#F2ECE1;padding:12px 6px;min-height:76px;transform:rotate(-0.6deg);color:#1C1710" style-hover="background:#B99C66;color:#1C1710">
+      <span style="font-family:'Special Elite',monospace;font-size:9px;letter-spacing:0.14em;color:#BF1E2E">BOLETO 03</span>
+      <span style="font-family:'Archivo Black',sans-serif;font-size:13px">DIRECTIONS</span>
+      <span style="font-family:'Special Elite',monospace;font-size:10px;color:#57503F">Century Blvd</span>
+    </a>
+  </div>
+</section>
+<section data-screen-label="Main event" style="position:relative;background:#1C1710;color:#EAE2D6;overflow:hidden;margin-top:26px">
+  <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(44px,7vw,84px) clamp(18px,4.5vw,48px)">
+    <div style="text-align:center">
+      <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.2em;color:#B99C66">★ EL EVENTO PRINCIPAL ★</div>
+      <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(38px,9vw,72px);line-height:0.95;margin:10px 0 0;text-transform:uppercase;color:#EAE2D6;text-shadow:0.06em 0.06em 0 #BF1E2E">Main Event</h2>
+      <p style="font-size:15px;line-height:1.6;color:rgba(234,226,214,0.75);max-width:46ch;margin:14px auto 0">Two house legends. One table. You decide.</p>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:34px">
+      <article style="background:#272117;border:2px solid #BF1E2E;padding:16px 16px 22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px">
+          <span style="background:#BF1E2E;color:#EAE2D6;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:0.12em;padding:5px 10px">RED CORNER</span>
+          <span style="color:#B99C66;font-size:15px">★</span>
+        </div>
+        <div style="position:relative;border:2px solid #1C1710">
+          <img src="https://senortequilas.com/wp-content/uploads/2022/02/Margaritas.jpg" alt="The Big Mami margarita" referrerpolicy="no-referrer" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(1.08) contrast(1.05);background:#332B1E">
+          <span style="position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;background-image:radial-gradient(circle,rgba(28,23,16,0.12) 1px,transparent 1.3px);background-size:7px 7px"></span>
+        </div>
+        <h3 style="font-family:'Archivo Black',sans-serif;font-size:clamp(24px,5vw,30px);margin:16px 0 0;text-transform:uppercase;color:#EAE2D6">The Big Mami</h3>
+        <div style="font-family:'Special Elite',monospace;font-size:13px;letter-spacing:0.08em;color:#B99C66;margin-top:6px">54 OZ ★ BUILT TO SHARE</div>
+        <p style="font-size:14px;line-height:1.6;color:rgba(234,226,214,0.78);margin:10px 0 0">A 54 ounce shareable margarita built on premium tequilas. Bring backup.</p>
+      </article>
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ true }}">
+        <div style="position:relative;width:92px;height:92px;margin:-14px auto;z-index:5">
+          <span style="position:absolute;inset:8px;background:#B99C66;border:2px solid #1C1710"></span>
+          <span style="position:absolute;inset:8px;background:#B99C66;border:2px solid #1C1710;transform:rotate(30deg)"></span>
+          <span style="position:absolute;inset:8px;background:#B99C66;border:2px solid #1C1710;transform:rotate(60deg)"></span>
+          <span style="position:absolute;inset:19px;border-radius:50%;background:#B99C66;border:2px solid #1C1710;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:25px;color:#1C1710;transform:rotate(-8deg)">VS</span>
+        </div>
+      </sc-if>
+      <article style="background:#272117;border:2px solid #38B049;padding:16px 16px 22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px">
+          <span style="background:#38B049;color:#0C120D;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:0.12em;padding:5px 10px">GREEN CORNER</span>
+          <span style="color:#B99C66;font-size:15px">★</span>
+        </div>
+        <div style="position:relative;border:2px solid #1C1710">
+          <img src="https://senortequilas.com/wp-content/uploads/2022/04/Birria.jpg" alt="Quesabirria tacos with consomé" referrerpolicy="no-referrer" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:saturate(1.08) contrast(1.05);background:#332B1E">
+          <span style="position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;background-image:radial-gradient(circle,rgba(28,23,16,0.12) 1px,transparent 1.3px);background-size:7px 7px"></span>
+        </div>
+        <h3 style="font-family:'Archivo Black',sans-serif;font-size:clamp(24px,5vw,30px);margin:16px 0 0;text-transform:uppercase;color:#EAE2D6">Quesabirria Tacos</h3>
+        <div style="font-family:'Special Elite',monospace;font-size:13px;letter-spacing:0.08em;color:#B99C66;margin-top:6px">6 HOURS ★ SLOW COOKED</div>
+        <p style="font-size:14px;line-height:1.6;color:rgba(234,226,214,0.78);margin:10px 0 0">Beef slow-cooked over 6 hours, crisped on the griddle, served with consomé for dipping.</p>
+      </article>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:96px;z-index:5;pointer-events:none">
+          <span style="position:absolute;inset:8px;background:#B99C66;border:2px solid #1C1710"></span>
+          <span style="position:absolute;inset:8px;background:#B99C66;border:2px solid #1C1710;transform:rotate(30deg)"></span>
+          <span style="position:absolute;inset:8px;background:#B99C66;border:2px solid #1C1710;transform:rotate(60deg)"></span>
+          <span style="position:absolute;inset:20px;border-radius:50%;background:#B99C66;border:2px solid #1C1710;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black',sans-serif;font-size:26px;color:#1C1710;transform:rotate(-8deg)">VS</span>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ tex }}" hint-placeholder-val="{{ true }}">
+    <span style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(234,226,214,0.05) 1.1px,transparent 1.4px);background-size:9px 9px"></span>
+  </sc-if>
+</section>
+<section id="events" data-screen-label="Weekly bill" style="max-width:900px;margin:0 auto;padding:clamp(48px,8vw,90px) clamp(18px,4.5vw,48px) 0">
+  <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:#BF1E2E">EL PROGRAMA SEMANAL</div>
+  <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,7vw,54px);line-height:0.98;margin:8px 0 0;text-transform:uppercase;color:#1C1710;text-shadow:0.06em 0.06em 0 #B99C66">The Weekly Bill</h2>
+  <div style="border-top:3px solid #1C1710;margin-top:22px">
+    <div style="position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:2px solid #1C1710">
+      <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #1C1710;background:#F2ECE1;height:56px;transform:rotate(-2deg)"><span style="font-family:'Special Elite',monospace;font-size:16px;color:#BF1E2E">SUN</span><span style="font-family:'Special Elite',monospace;font-size:7px;letter-spacing:0.1em;color:#57503F">CADA SEMANA</span></span>
+      <span><span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(18px,4.5vw,25px);text-transform:uppercase;color:#1C1710">Mariachi Sundays</span><span style="display:block;font-size:13.5px;color:#57503F;margin-top:3px">Live mariachi over dinner, from 5pm</span></span>
+      <sc-if value="{{ quietSun }}" hint-placeholder-val="{{ true }}"><span style="color:#B99C66;font-size:16px">★</span></sc-if>
+      <sc-if value="{{ tonightSun }}" hint-placeholder-val="{{ false }}">
+        <span style="justify-self:end;white-space:nowrap;transform:rotate(-8deg);border:2px solid #BF1E2E;color:#BF1E2E;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.12em;padding:4px 9px;background:rgba(191,30,46,0.07)">TONIGHT</span>
+      </sc-if>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:2px solid #1C1710">
+      <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #1C1710;background:#F2ECE1;height:56px;transform:rotate(1.4deg)"><span style="font-family:'Special Elite',monospace;font-size:16px;color:#BF1E2E">MON</span><span style="font-family:'Special Elite',monospace;font-size:7px;letter-spacing:0.1em;color:#57503F">CADA SEMANA</span></span>
+      <span><span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(18px,4.5vw,25px);text-transform:uppercase;color:#1C1710">Margarita Mondays</span><span style="display:block;font-size:13.5px;color:#57503F;margin-top:3px">House margaritas at happy hour prices, all night</span></span>
+      <sc-if value="{{ quietMon }}" hint-placeholder-val="{{ true }}"><span style="color:#B99C66;font-size:16px">★</span></sc-if>
+      <sc-if value="{{ tonightMon }}" hint-placeholder-val="{{ false }}">
+        <span style="justify-self:end;white-space:nowrap;transform:rotate(-8deg);border:2px solid #BF1E2E;color:#BF1E2E;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.12em;padding:4px 9px;background:rgba(191,30,46,0.07)">TONIGHT</span>
+      </sc-if>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:2px solid #1C1710">
+      <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #1C1710;background:#F2ECE1;height:56px;transform:rotate(-1deg)"><span style="font-family:'Special Elite',monospace;font-size:16px;color:#BF1E2E">TUE</span><span style="font-family:'Special Elite',monospace;font-size:7px;letter-spacing:0.1em;color:#57503F">CADA SEMANA</span></span>
+      <span><span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(18px,4.5vw,25px);text-transform:uppercase;color:#1C1710">Bingo Tuesdays</span><span style="display:block;font-size:13.5px;color:#57503F;margin-top:3px">Free to play, prizes on the house</span></span>
+      <sc-if value="{{ quietTue }}" hint-placeholder-val="{{ true }}"><span style="color:#B99C66;font-size:16px">★</span></sc-if>
+      <sc-if value="{{ tonightTue }}" hint-placeholder-val="{{ false }}">
+        <span style="justify-self:end;white-space:nowrap;transform:rotate(-8deg);border:2px solid #BF1E2E;color:#BF1E2E;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.12em;padding:4px 9px;background:rgba(191,30,46,0.07)">TONIGHT</span>
+      </sc-if>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:2px solid #1C1710">
+      <span style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid #1C1710;background:#F2ECE1;height:56px;transform:rotate(1.8deg)"><span style="font-family:'Special Elite',monospace;font-size:16px;color:#BF1E2E">THU</span><span style="font-family:'Special Elite',monospace;font-size:7px;letter-spacing:0.1em;color:#57503F">CADA SEMANA</span></span>
+      <span><span style="display:block;font-family:'Archivo Black',sans-serif;font-size:clamp(18px,4.5vw,25px);text-transform:uppercase;color:#1C1710">Karaoke Thursdays</span><span style="display:block;font-size:13.5px;color:#57503F;margin-top:3px">Grab the mic, kitchen stays open late</span></span>
+      <sc-if value="{{ quietThu }}" hint-placeholder-val="{{ true }}"><span style="color:#B99C66;font-size:16px">★</span></sc-if>
+      <sc-if value="{{ tonightThu }}" hint-placeholder-val="{{ false }}">
+        <span style="justify-self:end;white-space:nowrap;transform:rotate(-8deg);border:2px solid #BF1E2E;color:#BF1E2E;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.12em;padding:4px 9px;background:rgba(191,30,46,0.07)">TONIGHT</span>
+      </sc-if>
+    </div>
+  </div>
+</section>
+<section id="story" data-screen-label="Story" style="background:#018B45;color:#EAE2D6;border-top:3px solid #1C1710;border-bottom:3px solid #1C1710;margin-top:clamp(48px,8vw,90px)">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(44px,7vw,84px) clamp(18px,4.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,5vw,60px);align-items:center">
+    <div style="position:relative;max-width:440px;width:100%;margin:0 auto">
+      <div style="position:relative;border:4px solid #EAE2D6;box-shadow:10px 10px 0 rgba(28,23,16,0.35);background:#EAE2D6">
+        <img src="https://senortequilas.com/wp-content/uploads/2022/02/Brothers-e1650353623141.jpg" alt="The Rivas brothers" referrerpolicy="no-referrer" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.1)">
+        <span style="position:absolute;inset:0;pointer-events:none;background:#B99C66;mix-blend-mode:color"></span>
+        <span style="position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;background-image:radial-gradient(circle,rgba(28,23,16,0.14) 1px,transparent 1.3px);background-size:6px 6px"></span>
+      </div>
+      <svg width="112" height="112" viewBox="0 0 112 112" style="position:absolute;right:-18px;bottom:-20px;transform:rotate(12deg)">
+        <circle cx="56" cy="56" r="53" fill="#B99C66" stroke="#1C1710" stroke-width="2"></circle>
+        <circle cx="56" cy="56" r="33" fill="none" stroke="#1C1710" stroke-width="1.5" stroke-dasharray="3 3"></circle>
+        <path id="st-stamp-circ" d="M 56,56 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" fill="none"></path>
+        <text font-family="Special Elite, monospace" font-size="10.5" letter-spacing="1.6" fill="#1C1710"><textPath href="#st-stamp-circ">FROM MEXICO ★ WITH LOVE ★ DESDE 2015 ★</textPath></text>
+        <text x="56" y="62" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="17" fill="#1C1710">ST</text>
+      </svg>
+    </div>
+    <div>
+      <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:rgba(234,226,214,0.85)">LA FAMILIA</div>
+      <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,7vw,54px);line-height:0.98;margin:8px 0 0;text-transform:uppercase;color:#EAE2D6;text-shadow:0.06em 0.06em 0 #1C1710">The Rivas Brothers</h2>
+      <p style="font-size:15.5px;line-height:1.65;color:rgba(234,226,214,0.92);max-width:52ch;margin:16px 0 24px">Sharing La Familia culture since 2015, with decor handmade by street artists in Mexico City.</p>
+      <a href="https://senortequilas.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;border:2px solid #EAE2D6;color:#EAE2D6;font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:0.06em;padding:13px 18px" style-hover="background:#EAE2D6;color:#018B45">OUR STORY <span style="font-family:'Special Elite',monospace;font-size:12px">★</span></a>
+    </div>
+  </div>
+</section>
+<section id="menu" data-screen-label="Menu playbill" style="max-width:1000px;margin:0 auto;padding:clamp(48px,8vw,90px) clamp(18px,4.5vw,48px) 0">
+  <div style="text-align:center">
+    <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:#BF1E2E">DE LA COCINA</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,7vw,54px);line-height:0.98;margin:8px 0 0;text-transform:uppercase;color:#1C1710;text-shadow:0.06em 0.06em 0 rgba(191,30,46,0.45)">On The Menu</h2>
+    <div style="font-family:'Special Elite',monospace;font-size:12px;color:#57503F;margin-top:10px">a preview from the kitchen</div>
+  </div>
+  <div style="background:#F2ECE1;border:3px solid #1C1710;box-shadow:8px 8px 0 #B99C66;padding:clamp(20px,4vw,44px);margin-top:26px;column-width:290px;column-gap:44px;column-rule:1px dashed #B7AB93">
+    <div style="break-inside:avoid;margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="flex:1;height:2px;background:#1C1710"></span><span style="font-family:'Archivo Black',sans-serif;font-size:16px;letter-spacing:0.08em">TACOS</span><span style="flex:1;height:2px;background:#1C1710"></span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Quesabirria Tacos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">16.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Tacos al Pastor</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">15.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Carne Asada Tacos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">16.50</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Baja Fish Tacos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">16.95</span></div>
+    </div>
+    <div style="break-inside:avoid;margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="flex:1;height:2px;background:#1C1710"></span><span style="font-family:'Archivo Black',sans-serif;font-size:16px;letter-spacing:0.08em">ENCHILADAS</span><span style="flex:1;height:2px;background:#1C1710"></span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Enchiladas Suizas</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">15.50</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Enchiladas de Mole</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">16.50</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Spinach Enchiladas</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">14.50</span></div>
+    </div>
+    <div style="break-inside:avoid;margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="flex:1;height:2px;background:#1C1710"></span><span style="font-family:'Archivo Black',sans-serif;font-size:16px;letter-spacing:0.08em">FAJITAS</span><span style="flex:1;height:2px;background:#1C1710"></span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Fajitas Texanas</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">22.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Fajitas de Pollo</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">19.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Tres Amigos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">23.95</span></div>
+    </div>
+    <div style="break-inside:avoid;margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="flex:1;height:2px;background:#1C1710"></span><span style="font-family:'Archivo Black',sans-serif;font-size:16px;letter-spacing:0.08em">MOLCAJETES</span><span style="flex:1;height:2px;background:#1C1710"></span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Molcajete Señor Tequila's</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">28.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Molcajete de Mariscos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">30.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Molcajete Azteca</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">26.95</span></div>
+    </div>
+    <div style="break-inside:avoid;margin-bottom:4px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span style="flex:1;height:2px;background:#1C1710"></span><span style="font-family:'Archivo Black',sans-serif;font-size:16px;letter-spacing:0.08em">VEGETARIAN</span><span style="flex:1;height:2px;background:#1C1710"></span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Veggie Fajitas</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">17.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Cauliflower al Pastor Tacos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">14.95</span></div>
+      <div style="display:flex;align-items:baseline;gap:6px;padding:5px 0"><span style="font-weight:700;font-size:14.5px">Quesadilla de Hongos</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:14px;color:#BF1E2E">13.95</span></div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:center;margin-top:26px">
+    <a href="https://order.toasttab.com/online/senortequilastogo" target="_blank" style="display:inline-flex;align-items:stretch;background:#1C1710;color:#EAE2D6;border:2px solid #1C1710;box-shadow:5px 5px 0 #B99C66" style-hover="background:#BF1E2E;color:#EAE2D6;box-shadow:2px 2px 0 #B99C66">
+      <span style="display:flex;align-items:center;font-family:'Archivo Black',sans-serif;font-size:14px;letter-spacing:0.05em;padding:14px 20px">SEE FULL MENU</span>
+      <span style="display:flex;align-items:center;padding:0 10px;border-left:2px dashed rgba(234,226,214,0.5);font-family:'Special Elite',monospace;font-size:10px">MENÚ</span>
+    </a>
+  </div>
+</section>
+<section data-screen-label="Reviews" style="max-width:1140px;margin:0 auto;padding:clamp(48px,8vw,90px) clamp(18px,4.5vw,48px) 0">
+  <div style="text-align:center">
+    <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:#BF1E2E">CINCO ESTRELLAS</div>
+    <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,7vw,54px);line-height:0.98;margin:8px 0 0;text-transform:uppercase;color:#1C1710;text-shadow:0.06em 0.06em 0 #B99C66">The Crowd Roars</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px">
+    <figure style="margin:0;background:#F2ECE1;border:2px solid #1C1710;box-shadow:5px 5px 0 #1C1710;padding:22px;transform:rotate(-0.8deg)">
+      <div style="color:#B99C66;font-size:17px;letter-spacing:4px">★★★★★</div>
+      <blockquote style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#1C1710">"The Big Mami hit the table and the whole room turned around. Worth every one of its 54 ounces."</blockquote>
+      <figcaption style="display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-family:'Special Elite',monospace;font-size:12px;color:#57503F"><span>Danielle R.</span><span style="color:#B99C66">via Google</span></figcaption>
+    </figure>
+    <figure style="margin:0;background:#F2ECE1;border:2px solid #1C1710;box-shadow:5px 5px 0 #1C1710;padding:22px;transform:rotate(0.7deg)">
+      <div style="color:#B99C66;font-size:17px;letter-spacing:4px">★★★★★</div>
+      <blockquote style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#1C1710">"Quesabirria tacos are slow-cooked magic. We drove back from Rockville twice in one week."</blockquote>
+      <figcaption style="display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-family:'Special Elite',monospace;font-size:12px;color:#57503F"><span>Marcos V.</span><span style="color:#B99C66">via Yelp</span></figcaption>
+    </figure>
+    <figure style="margin:0;background:#F2ECE1;border:2px solid #1C1710;box-shadow:5px 5px 0 #1C1710;padding:22px;transform:rotate(-0.5deg)">
+      <div style="color:#B99C66;font-size:17px;letter-spacing:4px">★★★★★</div>
+      <blockquote style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#1C1710">"Mariachi Sunday with the kids, karaoke Thursday without them. This place is our weekly ritual."</blockquote>
+      <figcaption style="display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-family:'Special Elite',monospace;font-size:12px;color:#57503F"><span>Priya S.</span><span style="color:#B99C66">via Google</span></figcaption>
+    </figure>
+  </div>
+</section>
+<section id="gift" data-screen-label="Gift cards" style="position:relative;background:#BF1E2E;color:#EAE2D6;border-top:3px solid #1C1710;border-bottom:3px solid #1C1710;margin-top:clamp(48px,8vw,90px);overflow:hidden">
+  <div style="position:relative;max-width:1140px;margin:0 auto;padding:clamp(44px,7vw,84px) clamp(18px,4.5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,5vw,60px);align-items:center;z-index:1">
+    <div>
+      <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:#B99C66">EL REGALO PERFECTO</div>
+      <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,7.5vw,58px);line-height:0.98;margin:10px 0 0;text-transform:uppercase;color:#EAE2D6;text-shadow:0.05em 0.05em 0 #1C1710">Forget flowers, buy them tacos + margaritas.</h2>
+      <p style="font-size:15px;line-height:1.6;color:rgba(234,226,214,0.88);max-width:48ch;margin:16px 0 24px">Gift cards good for every taco, every margarita, every night of the week.</p>
+      <a href="https://senortequilas.com" target="_blank" style="display:inline-flex;align-items:stretch;background:#B99C66;color:#1C1710;border:2px solid #1C1710;box-shadow:5px 5px 0 #1C1710" style-hover="background:#EAE2D6;color:#1C1710;box-shadow:2px 2px 0 #1C1710">
+        <span style="display:flex;align-items:center;font-family:'Archivo Black',sans-serif;font-size:14px;letter-spacing:0.05em;padding:14px 20px">BUY NOW</span>
+        <span style="display:flex;align-items:center;padding:0 10px;border-left:2px dashed rgba(28,23,16,0.45);font-family:'Special Elite',monospace;font-size:10px">REGALO</span>
+      </a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <img src="https://senortequilas.com/wp-content/uploads/2022/04/SEN-GiftCard-New.jpg" alt="Señor Tequila's gift card" referrerpolicy="no-referrer" style="display:block;width:min(420px,100%);border:4px solid #EAE2D6;box-shadow:10px 10px 0 rgba(28,23,16,0.4);transform:rotate(-3deg);background:#8E1220">
+    </div>
+  </div>
+  <sc-if value="{{ tex }}" hint-placeholder-val="{{ true }}">
+    <span style="position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(28,23,16,0.1) 1.1px,transparent 1.4px);background-size:9px 9px"></span>
+  </sc-if>
+</section>
+<section id="visit" data-screen-label="Visit" style="max-width:1140px;margin:0 auto;padding:clamp(48px,8vw,90px) clamp(18px,4.5vw,48px) clamp(56px,8vw,96px)">
+  <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.18em;color:#BF1E2E">VISÍTANOS</div>
+  <h2 style="font-family:'Archivo Black',sans-serif;font-size:clamp(30px,7vw,54px);line-height:0.98;margin:8px 0 0;text-transform:uppercase;color:#1C1710;text-shadow:0.06em 0.06em 0 rgba(191,30,46,0.45)">Find The Cantina</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,48px);margin-top:26px;align-items:start">
+    <div>
+      <div style="font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase">20021 Century Blvd</div>
+      <div style="font-size:15px;color:#57503F;margin-top:4px">Germantown, MD 20874</div>
+      <a href="tel:3015694574" style="display:inline-flex;align-items:center;gap:8px;border:2px dashed #1C1710;background:#F2ECE1;color:#1C1710;font-family:'Special Elite',monospace;font-size:13px;letter-spacing:0.06em;padding:10px 14px;margin-top:14px" style-hover="background:#B99C66;color:#1C1710">CALL 301-569-4574</a>
+      <div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.16em;color:#BF1E2E;margin:26px 0 8px">HORAS</div>
+      <div style="border-top:2px solid #1C1710">
+        <div style="display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dashed #B7AB93"><span style="font-weight:700;font-size:14px">Mon to Wed</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:13px;color:#57503F">11:30 am to 10 pm</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dashed #B7AB93"><span style="font-weight:700;font-size:14px">Thursday</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:13px;color:#57503F">11:30 am to 12 am</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dashed #B7AB93"><span style="font-weight:700;font-size:14px">Friday</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:13px;color:#57503F">11:30 am to 1 am</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dashed #B7AB93"><span style="font-weight:700;font-size:14px">Saturday</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:13px;color:#57503F">11 am to 1 am</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dashed #B7AB93"><span style="font-weight:700;font-size:14px">Sunday</span><span style="flex:1;border-bottom:2px dotted #B7AB93;transform:translateY(-3px)"></span><span style="font-family:'Special Elite',monospace;font-size:13px;color:#57503F">11 am to 10 pm</span></div>
+      </div>
+    </div>
+    <div style="position:relative;border:3px dashed #B99C66;background:#F2ECE1;background-image:repeating-linear-gradient(45deg,transparent 0 10px,rgba(185,156,102,0.12) 10px 20px);min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center">
+      <span style="font-family:'Archivo Black',sans-serif;font-size:30px;color:#BF1E2E">✕</span>
+      <span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:0.08em;color:#57503F">mapa: google map embed goes here</span>
+      <span style="font-family:'Special Elite',monospace;font-size:11px;color:#8A7D5F">20021 Century Blvd, Germantown, MD</span>
+      <a href="https://maps.google.com/?q=20021+Century+Blvd,+Germantown,+MD" target="_blank" style="display:inline-flex;align-items:center;border:2px solid #1C1710;background:#EAE2D6;color:#1C1710;font-family:'Archivo Black',sans-serif;font-size:12px;letter-spacing:0.05em;padding:11px 16px;box-shadow:4px 4px 0 #1C1710;margin-top:8px" style-hover="background:#B99C66;color:#1C1710;box-shadow:1px 1px 0 #1C1710">GET DIRECTIONS</a>
+    </div>
+  </div>
+</section>
+<footer data-screen-label="Footer" style="background:#1C1710;color:#EAE2D6;border-top:3px solid #1C1710">
+  <div style="max-width:1140px;margin:0 auto;padding:clamp(36px,6vw,60px) clamp(18px,4.5vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px">
+      <img src="https://senortequilas.com/wp-content/uploads/2022/02/retina-logo-updated-copy.png" alt="Señor Tequila's" referrerpolicy="no-referrer" style="height:34px;display:block">
+      <nav style="display:flex;flex-wrap:wrap;gap:18px">
+        <a href="#menu" style="color:rgba(234,226,214,0.85);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#B99C66">Menu</a>
+        <a href="#events" style="color:rgba(234,226,214,0.85);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#B99C66">Events</a>
+        <a href="#story" style="color:rgba(234,226,214,0.85);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#B99C66">Our Story</a>
+        <a href="#gift" style="color:rgba(234,226,214,0.85);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#B99C66">Gift Cards</a>
+        <a href="#visit" style="color:rgba(234,226,214,0.85);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" style-hover="color:#B99C66">Visit</a>
+      </nav>
+    </div>
+    <div style="height:1px;background:rgba(234,226,214,0.16);margin:24px 0"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;font-family:'Special Elite',monospace;font-size:12px">
+        <a href="https://www.instagram.com/senortequilas_/" target="_blank" style="color:#B99C66" style-hover="color:#EAE2D6">Instagram @senortequilas_</a>
+        <a href="https://www.facebook.com/senortequilasDMV" target="_blank" style="color:#B99C66" style-hover="color:#EAE2D6">Facebook /senortequilasDMV</a>
+        <a href="https://www.yelp.com/search?find_desc=Senor+Tequilas&find_loc=Germantown%2C+MD" target="_blank" style="color:#B99C66" style-hover="color:#EAE2D6">Yelp</a>
+        <a href="https://www.tripadvisor.com/Search?q=Senor%20Tequilas%20Germantown" target="_blank" style="color:#B99C66" style-hover="color:#EAE2D6">TripAdvisor</a>
+      </div>
+      <div style="font-family:'Special Elite',monospace;font-size:11px;color:rgba(234,226,214,0.6)">Printed with love in Germantown, MD.</div>
+    </div>
+    <div style="font-family:'Special Elite',monospace;font-size:11px;color:rgba(234,226,214,0.45);margin-top:14px">© 2026 Señor Tequila's ★ "From Mexico, With Love!"</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showTicker&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Poster effects&quot;},
+  &quot;halftoneTexture&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Poster effects&quot;},
+  &quot;highlightTonight&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Poster effects&quot;}
+}">
+class Component extends DCLogic {
+  state = { nav: false, mobile: true };
+  componentDidMount() {
+    this.mq = window.matchMedia("(max-width: 760px)");
+    this.onMq = () => this.setState({ mobile: this.mq.matches });
+    this.mq.addEventListener("change", this.onMq);
+    this.onMq();
+  }
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener("change", this.onMq);
+  }
+  renderVals() {
+    const p = this.props;
+    const day = new Date().getDay();
+    const hl = p.highlightTonight ?? true;
+    return {
+      mobile: this.state.mobile,
+      desktop: !this.state.mobile,
+      navOpen: this.state.nav,
+      openNav: () => this.setState({ nav: true }),
+      closeNav: () => this.setState({ nav: false }),
+      showTicker: p.showTicker ?? true,
+      tex: p.halftoneTexture ?? true,
+      tonightSun: hl && day === 0,
+      quietSun: !(hl && day === 0),
+      tonightMon: hl && day === 1,
+      quietMon: !(hl && day === 1),
+      tonightTue: hl && day === 2,
+      quietTue: !(hl && day === 2),
+      tonightThu: hl && day === 4,
+      quietThu: !(hl && day === 4)
+    };
+  }
+}
+</script>
+</body>
+</html>
