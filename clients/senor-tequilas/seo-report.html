@@ -202,27 +202,37 @@
     <div class="section-label">05 · The 6-month strategy</div>
     <h2 class="title">Phase 0: the rebuild.<br/>Then the engine.</h2>
 
-    <p class="body">The current site is a few pages plus a PDF menu, and PDFs don't rank. The new architecture gives every page one job: win a specific search.</p>
+    <p class="body">The current site is a few pages plus a PDF menu, and PDFs don't rank. The new architecture is 20 pages, each with one job: win a specific search. Six existing pages are rebuilt (their crawl history and rankings preserved through 301 redirects, including the happy hour page that already ranks #4), and fourteen are new. This exact list is locked with the client in kickoff week; a keyword can be swapped with client sign-off if the first map scans surface a better target.</p>
 
     <div class="card tbl-scroll" style="margin:1.5rem 0 2rem;">
       <table>
-        <thead><tr><th>Page</th><th>Primary target</th><th>Vol/mo</th></tr></thead>
+        <thead><tr><th>Page</th><th>Status</th><th>Primary target</th><th>Vol/mo · KD</th></tr></thead>
         <tbody>
-          <tr><td>Home ("Mexican Restaurant in Germantown, MD")</td><td>mexican restaurant germantown md + brand</td><td class="vol">450+</td></tr>
-          <tr><td>Full HTML menu</td><td>senor tequilas menu + dish terms</td><td class="vol">220+</td></tr>
-          <tr><td>Quesabirria &amp; Birria Tacos</td><td>quesabirria tacos · birria tacos near me</td><td class="vol">74,000</td></tr>
-          <tr><td>Margaritas &amp; Tequila Bar (Big Mami hero)</td><td>best margaritas near me · margaritas germantown</td><td class="vol">15,200</td></tr>
-          <tr><td>Happy Hour</td><td>happy hour germantown md</td><td class="vol">90</td></tr>
-          <tr><td>Weekend Brunch</td><td>brunch germantown md</td><td class="vol">70</td></tr>
-          <tr><td>Catering hub</td><td>taco catering near me · mexican catering maryland</td><td class="vol">4,100+</td></tr>
-          <tr><td>Private Parties &amp; Events</td><td>private party venue germantown md</td><td>—</td></tr>
-          <tr><td>Live Events (Mariachi Sundays, Karaoke Thursdays…)</td><td>karaoke near me · things to do germantown md</td><td>—</td></tr>
-          <tr><td>Nearby: Gaithersburg · Clarksburg · Rockville</td><td>mexican restaurant [city] md</td><td class="vol">140+</td></tr>
+          <tr><td>Home</td><td class="hl">Rebuilt</td><td>mexican restaurant germantown md + "near me" pack</td><td class="vol">50 + 205,000 · KD 9</td></tr>
+          <tr><td>Menu (PDF → full HTML)</td><td class="hl">Rebuilt</td><td>senor tequilas menu · mexican food germantown md</td><td class="vol">220+</td></tr>
+          <tr><td>Catering</td><td class="hl">Rebuilt</td><td>taco catering near me · mexican catering maryland</td><td class="vol">4,100 · KD 0</td></tr>
+          <tr><td>Private Parties</td><td class="hl">Rebuilt</td><td>private party venue germantown md · birthday dinner restaurants near me</td><td class="vol">700+ · KD 27</td></tr>
+          <tr><td>Our Story</td><td class="hl">Rebuilt</td><td>restaurants in germantown md · best restaurants in germantown md</td><td class="vol">220+ · KD 6</td></tr>
+          <tr><td>Happy Hour</td><td class="hl">Rebuilt</td><td>happy hour germantown md (#4 → #1) + "near me" pack</td><td class="vol">90 + 201,000 · KD 1</td></tr>
+          <tr><td>Quesabirria Tacos</td><td>New</td><td>quesabirria tacos</td><td class="vol">26,000 · KD 4</td></tr>
+          <tr><td>Birria</td><td>New</td><td>birria tacos near me</td><td class="vol">48,000 · KD 24</td></tr>
+          <tr><td>Street Tacos</td><td>New</td><td>street tacos near me + "tacos near me" pack</td><td class="vol">22,000 · KD 22</td></tr>
+          <tr><td>Margaritas (Big Mami hero)</td><td>New</td><td>best margaritas near me · margaritas near me</td><td class="vol">3,200 + 12,000</td></tr>
+          <tr><td>Tequila Bar &amp; Flights</td><td>New</td><td>tequila bar near me · margarita flight near me</td><td class="vol">600 + 80 · KD 0</td></tr>
+          <tr><td>Weekend Brunch</td><td>New</td><td>brunch germantown md</td><td class="vol">70 · KD 0</td></tr>
+          <tr><td>Taco Tuesday &amp; Weekly Specials</td><td>New</td><td>taco tuesday near me</td><td class="vol">17,000 · KD 23</td></tr>
+          <tr><td>Karaoke Thursdays</td><td>New</td><td>karaoke bar near me</td><td class="vol">9,000 · KD 0</td></tr>
+          <tr><td>Mariachi Sundays / Live Music</td><td>New</td><td>mariachi restaurant near me · live music restaurants near me</td><td class="vol">2,100 combined</td></tr>
+          <tr><td>Fajitas &amp; Molcajetes</td><td>New</td><td>fajitas near me · molcajete near me</td><td class="vol">4,300 + 1,900 · KD 0</td></tr>
+          <tr><td>Enchiladas &amp; Classics</td><td>New</td><td>enchiladas near me</td><td class="vol">4,900 · KD 29</td></tr>
+          <tr><td>Near Gaithersburg</td><td>New</td><td>mexican restaurant gaithersburg md</td><td class="vol">90 · low</td></tr>
+          <tr><td>Near Clarksburg</td><td>New</td><td>mexican restaurant clarksburg md</td><td class="vol">pack-driven</td></tr>
+          <tr><td>Near Rockville</td><td>New</td><td>mexican restaurant rockville md</td><td class="vol">50 · KD 22</td></tr>
         </tbody>
       </table>
     </div>
 
-    <p class="body">Under the hood: Restaurant, Menu, and Event <strong>schema markup</strong>, embedded reviews, Toast ordering and reservation deep links on every page, a Core Web Vitals-clean build, and 301s preserving existing rankings. Because we build with an automated production system, the full architecture ships in weeks, not months. That's also how the $3K retainer delivers 4 to 8 optimized pages and posts a month where traditional agencies deliver one or two.</p>
+    <p class="body">Under the hood: Restaurant, Menu, and Event <strong>schema markup</strong>, embedded reviews, Toast ordering and reservation deep links on every page, a Core Web Vitals-clean build, and 301s preserving existing rankings. Because we build with an automated production system, the full architecture ships in weeks, not months. That's also how the $3K retainer delivers four new SEO pages and two blog posts a month where traditional agencies deliver one or two.</p>
 
     <div style="margin-top:2rem;">
       <div class="m-step"><strong>Month 1 · Launch &amp; local foundation</strong><span>Site live. GBP rebuilt (categories, services, menu link, dish photos, weekly posts). BrightLocal: citation audit + NAP cleanup, aggregator submissions, baseline local-rank grid scans.</span></div>
