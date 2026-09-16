@@ -9,6 +9,14 @@ This project handles CLIENT-FACING PROPOSALS only.
 - **Home services marketing**: Meta Ads, PPC, AI automation, speed-to-lead. Brand voice: results-driven, urgent, ROI-focused.
 Today's proposals are for: CREATIVE AGENCY unless instructed otherwise.
 
+## Decisions (ADRs)
+
+Meaningful decisions about how proposals are built here live in `adr/`.
+Read `adr/README.md` before changing payment wiring, page structure, or deploy
+conventions. When you make a decision worth remembering, write the ADR the same
+day using `adr/adr-template.md`. ADRs are immutable once accepted: supersede,
+don't edit.
+
 ## Brand tokens
 - Background: #080808
 - Accent: #dee535 (primary) / #b8be2a (hover)
@@ -33,7 +41,9 @@ Every proposal HTML file must include these sections in order:
 - Dark background (#080808) always. Accent (#dee535) for CTAs, highlights, active states.
 - Scroll-driven sections. Smooth scroll. Subtle entrance animations (Intersection Observer).
 - Signature section: name input + date input + submit button. On submit: POST to a Netlify function or mailto fallback until backend exists.
-- Payment button: Stripe payment link (Sam provides per proposal). Opens in new tab.
+- Payment button: Stripe **Payment Link** (not a hosted invoice URL). Opens in new tab.
+  See `adr/ADR-001-stripe-payment-links-for-proposals.md` for why, and for the narrow
+  cases where a hosted invoice is still correct.
 - DO NOT use placeholder lorem ipsum. Use real context from notes.md.
 
 ## File naming
