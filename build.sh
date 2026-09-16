@@ -20,6 +20,7 @@ cat > "$OUT/config.json" <<'EOF'
     { "src": "/accuenviro/seo", "dest": "/clients/accuenviro/seo.html" },
     { "src": "/sunrise", "dest": "/clients/sunrise/index.html" },
     { "src": "/home-source", "dest": "/clients/home-source/index.html" },
+    { "src": "/rc-all-exteriors", "dest": "/clients/rc-all-exteriors/index.html" },
     { "src": "/home-source/onboarding", "dest": "/clients/home-source/onboarding.html" },
     { "src": "/rush-delivery", "dest": "/clients/rush-delivery/index.html" },
     { "src": "/senor-tequilas", "dest": "/clients/senor-tequilas/index.html" },
