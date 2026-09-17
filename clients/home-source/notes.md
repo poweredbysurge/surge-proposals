@@ -191,3 +191,14 @@ Per surge-proposals/CLAUDE.md:
 - May 18 meeting notes (today): https://docs.google.com/document/d/1EsEYIPLztd2xFF-UNGQbE2KdotST4fl4yN-fivGT9TE/edit
 
 Notion lead record: https://www.notion.so/33aa76a737d681359455e1137559d1c4 (currently marked Cold, needs to move to Proposal stage)
+
+---
+
+## Phase 2 (September 2026)
+
+**Path:** proposals.thesurgeagency.com/home-source/phase-2 (file: `clients/home-source/phase-2.html`)
+**Pitched:** Sep 16, 2026 call (Sam, Mario, Brandon, Chris). Decision expected Friday Sep 18 after Brandon checks cash flow with CPA (Brandy).
+**Offer:** Scale tier at $6,000/mo (retail $6,500), month to month, no contract. Phase 1 $3,000 continues in full + $3,000 new: link building program (audit/disavow, 6 quality links/mo, central link log), citations extended to new markets, digital PR (1 story/quarter), content doubled ~4 to ~8 pages/mo, Frederick + Hagerstown city pages/cost variants, dedicated SEO, Local Falcon grids per market, second GBP when Frederick office opens.
+**Add-on:** paid placements up to $1,000/mo, billed at cost, client approves each one ($400 to $1,000 per quality placement, e.g. USA Today syndication).
+**Billing:** No Stripe link on this page by design. Existing subscription (22nd) moves $3,000 to $6,000 starting October cycle; placement spend itemized on the same invoice. Update Stripe manually after signature.
+**Source docs:** Mario's Phase 2 slide deck PDF (Local Falcon Aug 2026, Ahrefs Sep 2026), Surge backlink research brief (Sep 16, 2026), Gemini transcript of the Sep 16 call.
