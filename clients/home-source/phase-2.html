@@ -136,6 +136,10 @@
     .map-head { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 1.25rem 0.75rem; }
     .map-foot { padding: 0.875rem 1.25rem 1.125rem; font-size: 0.8125rem; color: var(--muted); line-height: 1.5; }
 
+    .fc-grid { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; padding: 1.25rem; aspect-ratio: 1 / 1; background: #1a0b0b; }
+    .fc-grid span { display: block; border-radius: 50%; background: #c8201f; width: 100%; aspect-ratio: 1 / 1; opacity: 0.9; }
+    .fc-stat { aspect-ratio: 1 / 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 1.5rem; background: #0b140d; }
+
     /* Share bars */
     .bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
     .bar-fill  { height: 100%; border-radius: 4px; }
@@ -276,7 +280,7 @@
     <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
     <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 &middot; Where you stand</div>
     <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">YOU OWN WILLIAMSPORT.<br/><span style="color:var(--accent);">YOU'RE INVISIBLE IN HAGERSTOWN.</span></h2>
-    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:640px;line-height:1.65;margin-bottom:2.5rem;">Straight from Local Falcon, August 2026. Every scan runs from the same 81-point grid centered on your Williamsport office, reaching about 23 miles across. The map is identical in all three. What changes is the keyword, and the answer.</p>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:640px;line-height:1.65;margin-bottom:2.5rem;">Straight from Local Falcon, August 2026. Every scan in this row runs from the same 81-point grid centered on your Williamsport office, reaching about 23 miles across. The map is identical in all three. What changes is the keyword, and the answer. The Frederick number here is measured from Williamsport. The real Frederick number is below it.</p>
 
     <div class="g3" style="margin-bottom:1.5rem;">
       <div class="map-card fade-up d1">
@@ -289,7 +293,7 @@
       </div>
       <div class="map-card fade-up d2">
         <div class="map-head">
-          <span style="font-weight:600;font-size:1rem;">Frederick</span>
+          <span style="font-weight:600;font-size:1rem;">Frederick <span style="color:var(--faint);font-weight:400;font-size:0.8125rem;">from Williamsport</span></span>
           <span class="font-display" style="font-size:2rem;color:var(--amber);line-height:1;">14.8%</span>
         </div>
         <img src="/clients/home-source/img/phase2/falcon-frederick.jpg" alt="Local Falcon grid for roofing frederick md, mostly yellow and red" />
@@ -320,7 +324,45 @@
     </div>
 
     <div class="fade-up d4" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.5rem;">
-      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;">The gap isn't effort. Hagerstown is six miles from your office and you have more reviews than every competitor there. Shumaker has 52 reviews and Happy Home has 204. You have 286. Reviews aren't the gap. Neither is the site, it's rebuilt. What Hagerstown competitors have that you don't is a decade of real local links.</p>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;">The gap isn't effort. Hagerstown is six miles from your office and you have more reviews than every competitor there. Shumaker has 52 reviews and Happy Home has 204. You have 293. Reviews aren't the gap. Neither is the site, it's rebuilt. What they have that you don't is a Hagerstown address. That's the map pack. For organic search, where your cost pages compete, what they have is a decade of real local links.</p>
+    </div>
+
+    <!-- Frederick, measured honestly -->
+    <div style="margin-top:3.5rem;">
+      <h3 class="font-display fade-up" style="font-size:clamp(1.75rem,4vw,2.5rem);line-height:1;margin-bottom:0.5rem;">FREDERICK, MEASURED FROM FREDERICK.</h3>
+      <p class="fade-up d1" style="color:var(--muted);font-size:0.9rem;max-width:640px;line-height:1.65;margin-bottom:1.5rem;">We re-ran the five core Frederick terms on a grid centered on Frederick itself, same 11.6-mile radius, only the center moved. Same keyword, two grids, two very different pictures.</p>
+
+      <div class="g3" style="margin-bottom:1.25rem;">
+        <div class="map-card fade-up d1">
+          <div class="map-head">
+            <span style="font-weight:600;font-size:0.9375rem;">From Williamsport</span>
+            <span class="font-display" style="font-size:2rem;color:var(--amber);line-height:1;">14.8%</span>
+          </div>
+          <img src="/clients/home-source/img/phase2/falcon-frederick.jpg" alt="roofing frederick md measured from the Williamsport office" />
+          <div class="map-foot">"roofing frederick md"<br/><span style="color:var(--faint);">measured from your Williamsport office</span></div>
+        </div>
+        <div class="map-card fade-up d2" style="border-color:rgba(239,68,68,0.3);">
+          <div class="map-head">
+            <span style="font-weight:600;font-size:0.9375rem;">From Frederick</span>
+            <span class="font-display" style="font-size:2rem;color:var(--red);line-height:1;">0%</span>
+          </div>
+          <div class="fc-grid" aria-label="Frederick-centered grid, all 81 points ranked 20th or worse"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="map-foot">"roofing frederick md"<br/><span style="color:var(--faint);">same keyword, measured from Frederick. Top 3 at 0 of 81 points</span></div>
+        </div>
+        <div class="map-card fade-up d3" style="border-color:rgba(74,222,128,0.3);">
+          <div class="map-head">
+            <span style="font-weight:600;font-size:0.9375rem;">The county term</span>
+            <span class="font-display" style="font-size:2rem;color:var(--green);line-height:1;">39.5%</span>
+          </div>
+          <div class="fc-stat"><div class="font-display" style="font-size:4.5rem;line-height:1;color:var(--green);">39.5%</div><div style="font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--faint);margin-top:0.5rem;">share of local voice</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:1rem;line-height:1.5;">Average rank 5.05 across the grid. Measured from Williamsport.</div></div>
+          <div class="map-foot">"frederick county roof repair"<br/><span style="color:var(--faint);">the strongest Frederick-area term in the whole set</span></div>
+        </div>
+      </div>
+
+      <div class="fade-up d3" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.5rem;">
+        <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin-bottom:0.75rem;">Both are true. Only one describes Frederick. The 14.8% is Williamsport strength bleeding into the western edge of the grid. Inside Frederick, on the terms people actually type, you don't show up. You already win the county-wide term. You're invisible in the city itself. That points at exactly where the work goes.</p>
+        <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;">Two more facts that matter. Ahrefs returns no search volume at all for any Williamsport term, they're below its reporting floor, while "roof repair frederick md" alone is about 700 searches a month. You own a market nobody searches. And the incumbents are named: Frederick Roof Repair holds the top three at 81 of 81 grid points on 202 reviews and an exact-match name, Shumaker at 76 of 81. That is the target.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -334,8 +376,9 @@
     <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
     <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 &middot; The full baseline</div>
     <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">TWELVE KEYWORDS.<br/><span style="color:var(--accent);">THREE MARKETS. ONE PATTERN.</span></h2>
-    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.65;margin-bottom:2.5rem;">Share of local voice, the percentage of the grid where you sit in the top three. Every one of these is rescanned monthly through Phase 2, so you will see the dots change color.</p>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.65;margin-bottom:2.5rem;">Share of local voice, the percentage of the grid where you sit in the top three. All twelve below are measured from the Williamsport grid. The Frederick-centered numbers follow. Every one of these is rescanned monthly through Phase 2, so you will see the dots change color.</p>
 
+    <p class="fade-up d2" style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:0.75rem;">Measured from the Williamsport grid</p>
     <div class="g4 fade-up d2" style="margin-bottom:1.5rem;">
       <div class="kw-tile kw-green"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--green);">95%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">residential roof repair williamsport</div></div>
       <div class="kw-tile kw-green"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--green);">90%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">roofing contractors near me williamsport</div></div>
@@ -351,14 +394,25 @@
       <div class="kw-tile kw-red"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--red);">0%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">siding installation hagerstown md</div></div>
     </div>
 
+    <p class="fade-up d2" style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:0.75rem;">Measured from a Frederick-centered grid</p>
+    <div class="g4 fade-up d2" style="margin-bottom:1.5rem;">
+      <div class="kw-tile kw-red"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--red);">0%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">roofing frederick md</div></div>
+      <div class="kw-tile kw-red"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--red);">0%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">roof repair frederick md</div></div>
+      <div class="kw-tile kw-red"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--red);">0%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">roof replacement frederick md</div></div>
+      <div class="kw-tile kw-red"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--red);">0%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">roofing contractor frederick md</div></div>
+      <div class="kw-tile kw-red"><div class="font-display" style="font-size:2.25rem;line-height:1;color:var(--red);">0%</div><div style="font-size:0.8125rem;color:var(--muted);margin-top:0.375rem;line-height:1.4;">roofers frederick md</div></div>
+    </div>
+
     <div class="g4 fade-up d3">
       <div style="padding:1rem 0;">
         <div style="display:flex;justify-content:space-between;font-size:0.8125rem;margin-bottom:0.5rem;"><span style="color:var(--muted);">Williamsport avg</span><span style="color:#fff;font-weight:600;">89.3%</span></div>
         <div class="bar-track"><div class="bar-fill" style="width:89.3%;background:var(--green);"></div></div>
       </div>
       <div style="padding:1rem 0;">
-        <div style="display:flex;justify-content:space-between;font-size:0.8125rem;margin-bottom:0.5rem;"><span style="color:var(--muted);">Frederick avg</span><span style="color:#fff;font-weight:600;">13.3%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8125rem;margin-bottom:0.5rem;"><span style="color:var(--muted);">Frederick avg, from Williamsport</span><span style="color:#fff;font-weight:600;">13.3%</span></div>
         <div class="bar-track"><div class="bar-fill" style="width:13.3%;background:var(--amber);"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8125rem;margin:0.75rem 0 0.5rem;"><span style="color:var(--muted);">Frederick avg, from Frederick</span><span style="color:#fff;font-weight:600;">0%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--red);"></div></div>
       </div>
       <div style="padding:1rem 0;">
         <div style="display:flex;justify-content:space-between;font-size:0.8125rem;margin-bottom:0.5rem;"><span style="color:var(--muted);">Hagerstown avg</span><span style="color:#fff;font-weight:600;">3.3%</span></div>
@@ -472,7 +526,7 @@
       </div>
       <div class="card fade-up d2" style="padding:1.75rem;">
         <div style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.25rem;">Map pack</div>
-        <p style="font-size:0.8125rem;color:var(--muted);line-height:1.6;margin-bottom:1.25rem;">Links are 15% of the map pack, behind GBP (32%), on-page (19%) and reviews (16%).</p>
+        <p style="font-size:0.8125rem;color:var(--muted);line-height:1.6;margin-bottom:1.25rem;">Links are 15% of the map pack, behind GBP (32%), reviews (20%) and on-page (19%).</p>
         <div class="check-item"><span class="font-display" style="color:var(--accent);font-size:1.5rem;line-height:1;min-width:2.75rem;">#25</span><span style="color:#d1d5db;">Quality and authority of links to landing page</span></div>
         <div class="check-item"><span class="font-display" style="color:var(--accent);font-size:1.5rem;line-height:1;min-width:2.75rem;">#26</span><span style="color:#d1d5db;">Links from locally-relevant domains</span></div>
         <div class="check-item"><span class="font-display" style="color:var(--faint);font-size:1.5rem;line-height:1;min-width:2.75rem;">#56</span><span style="color:var(--muted);">Raw quantity of inbound links</span></div>
@@ -515,20 +569,20 @@
         <p style="font-size:0.9rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem;">The booster pack. You have zero local links and a profile full of casino spam. We clean it, then build six real links a month through manual outreach, digital PR, and a small vetted slice of paid placements.</p>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Full audit of all 485 domains and a disavow file for the ~430 that are spam, with monitoring so the scraper network stops counting against you</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Link strategy locked: target authority range, relevance bar, link-type mix, and 30 to 50 scored prospect domains</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Six quality links a month, sourced by our team through manual outreach: local news, chamber, sponsorships, manufacturer and trade sites</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Citation management across every directory Google and the AI tools cross-check, extended to the new markets</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Quality links every month, more than you have ever had, sourced by our team through manual outreach: local news, chamber, sponsorships, manufacturer and trade sites</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Citation cleanup and build across every directory Google and the AI tools cross-check. We audited every profile this week and it needs real work (details in the investment section)</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Digital PR: one data-driven story a quarter pitched to regional press. Your published pricing is the hook nobody else has</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Paid placements on high-authority sites, capped at $1,000 a month, each one approved by you before we buy (details below)</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">A $1,000 a month placement budget, spent like ad spend on premium sites, each one approved by you before we buy (details below)</span></div>
       </div>
       <!-- Part 2 -->
       <div class="card fade-up d2" style="padding:2rem;border-color:rgba(222,229,53,0.3);">
         <span class="pill pill-accent" style="margin-bottom:1rem;">Part 2 &middot; Territory</span>
         <h3 class="font-display" style="font-size:2rem;line-height:1;margin-bottom:0.75rem;">FREDERICK AND HAGERSTOWN</h3>
-        <p style="font-size:0.9rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem;">Everything Job Nimbus built was Williamsport-first. Every title, every page. The new markets need the same treatment, at double the pace.</p>
+        <p style="font-size:0.9rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem;">Everything Job Nimbus built was Williamsport-first. Every title, every page. Frederick is the priority, Hagerstown is second, and both get the same treatment at double the pace. Expect 2 to 3 months before you start ranking on the new terms.</p>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Content velocity doubled, from about 4 to about 8 pages a month</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">City pages and cost variants for Frederick and Hagerstown first: replacement, repair, siding, each written for the market it targets</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Frederick first, Hagerstown second. City pages and cost variants for both: replacement, repair, siding, each written for the market it targets</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Dedicated SEO work every month: keyword expansion for the new regions, on-page and internal linking, technical fixes as Google indexes the new pages</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Local Falcon grids added for Frederick and Hagerstown, rescanned monthly, so you see the red turn yellow and the yellow turn green</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Local Falcon grids for Frederick and Hagerstown, rescanned monthly, so you see the red turn yellow and the yellow turn green</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Martinsburg and Chambersburg clusters follow once the first two markets are moving. Three-state licensing is the angle no one can copy</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">When the Frederick office opens, we build and optimize the second Google Business Profile the day you have a lease</span></div>
       </div>
@@ -544,8 +598,8 @@
   <div style="max-width:1000px;margin:0 auto;">
     <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
     <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 &middot; The link program</div>
-    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">SIX REAL LINKS A MONTH,<br/><span style="color:var(--accent);">DONE RIGHT.</span></h2>
-    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:620px;line-height:1.65;margin-bottom:3rem;">Two ways to get a link: earn it or buy it. We do both, and we're clear about which is which.</p>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">MORE REAL LINKS,<br/><span style="color:var(--accent);">DONE RIGHT.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:620px;line-height:1.65;margin-bottom:3rem;">Two ways to get a link: earn it or buy it. We do both, and we're clear about which is which. We don't promise a number per month, because the right link on the right site beats five filler ones. We promise more than you have now, every month, logged where you can see it.</p>
 
     <div class="g2" style="margin-bottom:1.5rem;">
       <div class="fade-up d1">
@@ -561,8 +615,8 @@
         </div>
         <div class="t-step">
           <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.25rem;">Month 3 onward</div>
-          <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.375rem;">Six links a month, every month</h3>
-          <p style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Distributed across the cost pages and the Frederick and Hagerstown hubs by keyword value. Every outcome logged in a central link database you can see at any time: date, source, authority, traffic, and which page it points at.</p>
+          <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.375rem;">Links every month, every month better</h3>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.65;">Distributed across the cost pages and the Frederick and Hagerstown hubs by keyword value, Frederick weighted first. Every outcome logged in a central link database you can see at any time: date, source, authority, traffic, and which page it points at.</p>
         </div>
       </div>
 
@@ -570,7 +624,7 @@
         <p style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:1rem;">What a quality link means here</p>
         <div style="margin-bottom:1rem;">
           <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Local</div>
-          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Hagerstown and Frederick news, chamber of commerce, sponsorships, community organizations. The category you have none of.</p>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Frederick and Hagerstown news, chamber of commerce, sponsorships, community organizations. The category you have none of.</p>
         </div>
         <div style="margin-bottom:1rem;">
           <div style="font-weight:600;font-size:0.9375rem;color:#e5e7eb;margin-bottom:0.25rem;">Industry</div>
@@ -592,14 +646,14 @@
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.25rem;">
         <div>
           <div class="section-label" style="margin-bottom:0.5rem;">Add-on &middot; Paid placements</div>
-          <h3 class="font-display" style="font-size:1.75rem;line-height:1.05;color:#fff;">The pay-to-play slice, capped at $1,000 a month.</h3>
+          <h3 class="font-display" style="font-size:1.75rem;line-height:1.05;color:#fff;">Think of it like ad spend. $1,000 a month for premium links.</h3>
         </div>
         <div style="text-align:right;flex-shrink:0;">
-          <div class="font-display" style="font-size:3rem;color:var(--accent);line-height:1;">Up to $1,000</div>
-          <div style="font-size:0.8125rem;color:var(--faint);">/month, billed at cost</div>
+          <div class="font-display" style="font-size:3rem;color:var(--accent);line-height:1;">$1,000</div>
+          <div style="font-size:0.8125rem;color:var(--faint);">/month, spent at cost</div>
         </div>
       </div>
-      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin-bottom:1.25rem;">Manual outreach gets you the local and industry links over time. The fastest way to get a placement on a site like USA Today syndication, a regional news network, or a national home-improvement publisher is to pay for it. Those placements run $400 to $1,000 each for the ones worth having. We'll buy one or two a month, never more than $1,000 total, and only ones that pass our vet: real organic traffic, on-topic, an editor who says no to things.</p>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;margin-bottom:1.25rem;">Manual outreach gets you the local and industry links over time. The fastest way onto a site like USA Today syndication, a regional news network, or a national home-improvement publisher is to pay for it. Premium placements run $400 to $1,000 each. We treat the $1,000 the same way we treat your ad budget: we spend it where it moves the needle that month. Some months that is one link at $1,000. Some months it is three or four smaller ones. Every one passes our vet first: real organic traffic, on-topic, an editor who says no to things.</p>
       <div class="g3" style="gap:0.75rem;">
         <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;">
           <div style="font-weight:600;font-size:0.875rem;color:#e5e7eb;margin-bottom:0.25rem;">You approve every one</div>
@@ -607,7 +661,7 @@
         </div>
         <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;">
           <div style="font-weight:600;font-size:0.875rem;color:#e5e7eb;margin-bottom:0.25rem;">Pass-through, no markup</div>
-          <p style="font-size:0.8125rem;color:var(--muted);line-height:1.55;">The placement cost is the placement cost. It's itemized on your invoice. Unused budget doesn't get spent to hit a number.</p>
+          <p style="font-size:0.8125rem;color:var(--muted);line-height:1.55;">The placement cost is the placement cost. It's itemized on your invoice. If nothing worth buying comes up, we don't spend it to hit a number.</p>
         </div>
         <div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:1rem;">
           <div style="font-weight:600;font-size:0.875rem;color:#e5e7eb;margin-bottom:0.25rem;">The accelerant, not the engine</div>
@@ -643,7 +697,7 @@
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Meta ads on Facebook and Instagram, including creative production</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Google Business Profile management and posts</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">SEO content: cost pages, service pages and city hubs, about 4 pages a month</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Local SEO, citations and Local Falcon tracking across 12 keywords</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Local SEO and Local Falcon tracking across 12 keywords</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Surge Command Center: lead board, two-way texting, Slack alerts, canvassing tracker</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">AI follow-up automations by text and email</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Automated review request flow, live once SMS registration clears</span></div>
@@ -657,14 +711,32 @@
           <span style="font-size:0.8125rem;color:var(--faint);">/month</span>
         </div>
         <p style="font-size:0.8125rem;color:var(--muted);margin-bottom:1.5rem;">Authority and territory. The work that gets you Frederick and Hagerstown.</p>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Link building program.</strong> Audit and disavow, then 6 quality links a month, scored and tracked in a database you can see</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Citation management</strong> extended to Frederick, Hagerstown and the tri-state</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Link building program.</strong> Audit and disavow, then ongoing quality links every month, scored and tracked in a database you can see</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Citation cleanup and build.</strong> Every profile fixed or created, then extended to Frederick, Hagerstown and the tri-state</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Digital PR.</strong> One data-led story per quarter pitched to regional press</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Content velocity doubled.</strong> From about 4 to about 8 pages a month</span></div>
-        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">City pages</strong> for Frederick and Hagerstown, cost variants per city, then Martinsburg and Chambersburg</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">City pages</strong> for Frederick first, then Hagerstown, cost variants per city, then Martinsburg and Chambersburg</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Dedicated SEO work</strong> every month: keyword expansion, on-page, internal linking, technical</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Local Falcon grids</strong> for each new market, rescanned monthly</span></div>
         <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Second Google Business Profile</strong> built and optimized when the Frederick office opens</span></div>
+      </div>
+    </div>
+
+    <!-- Citation audit -->
+    <div class="card fade-up d3" style="padding:1.75rem;margin-bottom:1.5rem;border-color:rgba(239,68,68,0.25);">
+      <p style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:0.5rem;">Why citations moved into Phase 2</p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;">The citation build under Job Nimbus never happened. We audited every profile this week. This is what's live right now:</p>
+      <div class="g2" style="gap:0 2rem;">
+        <div>
+          <div class="check-item"><span style="color:var(--red);flex-shrink:0;">&#8226;</span><span style="color:#d1d5db;"><strong style="font-weight:600;color:#fff;">GAF</strong> lists Brandon's personal cell as the only contact. Every GAF lead has been going to his phone, untracked.</span></div>
+          <div class="check-item"><span style="color:var(--red);flex-shrink:0;">&#8226;</span><span style="color:#d1d5db;"><strong style="font-weight:600;color:#fff;">Yelp</strong> has the wrong suite and the wrong hours.</span></div>
+          <div class="check-item"><span style="color:var(--red);flex-shrink:0;">&#8226;</span><span style="color:#d1d5db;"><strong style="font-weight:600;color:#fff;">CertainTeed</strong> is missing the unit number and lists a homesourcedesigns.com email.</span></div>
+        </div>
+        <div>
+          <div class="check-item"><span style="color:var(--red);flex-shrink:0;">&#8226;</span><span style="color:#d1d5db;"><strong style="font-weight:600;color:#fff;">Thumbtack</strong> is a rogue listing under a sales rep's name. <strong style="font-weight:600;color:#fff;">Nextdoor</strong> has two pages.</span></div>
+          <div class="check-item"><span style="color:var(--red);flex-shrink:0;">&#8226;</span><span style="color:#d1d5db;"><strong style="font-weight:600;color:#fff;">Angi, Houzz, LinkedIn, Trustpilot, Foursquare and Owens Corning</strong> don't exist at all.</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Phase 2 fixes every one of these, builds the missing ones, and keeps them matched as the new markets come online.</span></div>
+        </div>
       </div>
     </div>
 
@@ -684,7 +756,7 @@
       <div style="border-top:1px solid rgba(255,255,255,0.06);margin-top:1.5rem;padding-top:1.25rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;">
         <div>
           <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:0.25rem;">Plus paid placements</div>
-          <div style="font-size:0.9375rem;color:#d1d5db;">Up to $1,000 a month, at cost, each one approved by you</div>
+          <div style="font-size:0.9375rem;color:#d1d5db;">$1,000 a month, spent at cost like ad budget, each one approved by you</div>
         </div>
         <div style="text-align:right;">
           <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:0.25rem;">All-in ceiling</div>
@@ -705,7 +777,7 @@
         <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div>
           <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;color:var(--accent);letter-spacing:0.04em;">Billing stays on the 22nd.</span>
-          <span style="font-size:0.9rem;color:var(--muted);line-height:1.65;"> Nothing changes about how you pay. Your existing Stripe invoice moves from $3,000 to $6,000 starting with the October cycle, with any placement spend itemized on the same invoice. No new card, no new setup.</span>
+          <span style="font-size:0.9rem;color:var(--muted);line-height:1.65;"> Nothing changes about how you pay. Your September 22 invoice is the first at $6,000 and covers October's work, with placement spend itemized on the same invoice. No new card, no new setup.</span>
         </div>
       </div>
     </div>
@@ -725,55 +797,44 @@
   <div style="max-width:1000px;margin:0 auto;">
     <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
     <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">10 &middot; Timeline</div>
-    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">NONE OF THIS<br/><span style="color:var(--accent);">HAPPENS IN 30 DAYS.</span></h2>
-    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:620px;line-height:1.65;margin-bottom:3rem;">SEO is a compounding play. Google is a librarian who visits your shelf every three to four weeks, and she needs a few visits to file the new books. If we start October 1, late October is the first honest read and Q1 2027 is where it shows up in lead volume.</p>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">FREDERICK FIRST.<br/><span style="color:var(--accent);">2 TO 3 MONTHS TO RANK.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:620px;line-height:1.65;margin-bottom:3rem;">SEO is a compounding play. Google is a librarian who visits your shelf every three to four weeks, and she needs a few visits to file the new books. Frederick is the priority, Hagerstown is second, and it takes 2 to 3 months of this work before you start ranking on the new terms.</p>
 
-    <div class="g4" style="gap:1.25rem;">
-      <div class="card fade-up d1" style="padding:1.5rem;">
-        <div class="section-label" style="margin-bottom:0.75rem;">Q4 2026</div>
-        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Foundation for authority</h3>
+    <div class="g3" style="gap:1.25rem;">
+      <div class="card fade-up d1" style="padding:1.75rem;">
+        <div class="section-label" style="margin-bottom:0.75rem;">Month 1</div>
+        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Clean up and point at Frederick</h3>
         <div style="font-size:0.8438rem;color:var(--muted);line-height:1.75;">
           Backlink audit and disavow<br/>
-          Link strategy and 40 prospects<br/>
-          Batch 2 content (8 pages)<br/>
-          Frederick and Hagerstown city pages<br/>
-          Review system live<br/>
-          First 6 links<br/>
-          First Local Falcon rescan
+          Link strategy and first prospect list<br/>
+          Frederick city pages and cost variants start<br/>
+          Frederick and Hagerstown Local Falcon grids<br/>
+          Content doubled to ~8 pages a month<br/>
+          First placement options sent for your approval
         </div>
       </div>
-      <div class="card fade-up d2" style="padding:1.5rem;">
-        <div class="section-label" style="margin-bottom:0.75rem;">Q1 2027</div>
-        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Hagerstown push</h3>
+      <div class="card fade-up d2" style="padding:1.75rem;">
+        <div class="section-label" style="margin-bottom:0.75rem;">Months 2 to 3</div>
+        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Authority builds, Google catches up</h3>
         <div style="font-size:0.8438rem;color:var(--muted);line-height:1.75;">
-          6 links a month, local-weighted<br/>
-          Hagerstown cost variants<br/>
-          Digital PR story #1<br/>
-          Martinsburg grid added<br/>
-          Frederick GBP if the office is open<br/>
-          First real read on lead volume
+          Links landing every month, Frederick-weighted<br/>
+          Hagerstown city pages and cost variants<br/>
+          Premium placements bought as they clear the vet<br/>
+          Citations extended to both markets<br/>
+          First digital PR story pitched<br/>
+          Monthly rescans: this is where the dots start to change color
         </div>
       </div>
-      <div class="card fade-up d3" style="padding:1.5rem;">
-        <div class="section-label" style="margin-bottom:0.75rem;">Q2 2027</div>
-        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Frederick push</h3>
+      <div class="card fade-up d3" style="padding:1.75rem;">
+        <div class="section-label" style="margin-bottom:0.75rem;">Month 3 onward</div>
+        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Ranking, then expanding</h3>
         <div style="font-size:0.8438rem;color:var(--muted);line-height:1.75;">
-          6 links a month, Frederick-weighted<br/>
-          Frederick cost variants<br/>
-          Digital PR story #2<br/>
-          Chambersburg grid added<br/>
-          Batch 3 content
-        </div>
-      </div>
-      <div class="card fade-up d4" style="padding:1.5rem;">
-        <div class="section-label" style="margin-bottom:0.75rem;">Q3 2027</div>
-        <h3 style="font-weight:600;font-size:1rem;color:#e5e7eb;margin-bottom:0.75rem;">Tri-state consolidation</h3>
-        <div style="font-size:0.8438rem;color:var(--muted);line-height:1.75;">
-          6 links a month, industry-weighted<br/>
-          Martinsburg and Chambersburg clusters<br/>
-          Digital PR story #3<br/>
-          Full territory rescan<br/>
-          Phase 3 planning
+          Frederick and Hagerstown terms start ranking<br/>
+          Lead volume from the new markets shows up in the command center<br/>
+          Frederick GBP built when the office opens<br/>
+          Martinsburg and Chambersburg next<br/>
+          One data-led PR story every quarter<br/>
+          Same five numbers, every month
         </div>
       </div>
     </div>
@@ -793,7 +854,7 @@
     <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
     <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">11 &middot; Accountability</div>
     <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">FIVE NUMBERS,<br/><span style="color:var(--accent);">REPORTED EVERY MONTH.</span></h2>
-    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:620px;line-height:1.65;margin-bottom:2.5rem;">Targets, not guarantees. Every market is rescanned monthly and you'll see the same numbers we see.</p>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:620px;line-height:1.65;margin-bottom:2.5rem;">Targets, not guarantees. Every market is rescanned monthly and you'll see the same numbers we see. Proximity is the number one map-pack factor, so the Frederick target climbs with the office, and Hagerstown is set for what content and links can do without an address there.</p>
 
     <div class="card fade-up d2" style="padding:1.75rem;overflow-x:auto;">
       <table class="tbl">
@@ -802,8 +863,8 @@
         </thead>
         <tbody>
           <tr><td style="color:#fff;font-weight:500;">Real referring domains</td><td>~10</td><td style="color:var(--accent);font-weight:600;">60+</td><td class="hide-sm" style="color:var(--muted);">Manually verified, not the raw Ahrefs count. Spam excluded.</td></tr>
-          <tr><td style="color:#fff;font-weight:500;">Hagerstown share of local voice</td><td>3.3%</td><td style="color:var(--accent);font-weight:600;">25%+</td><td class="hide-sm" style="color:var(--muted);">Local Falcon, 81-point grid, monthly rescan</td></tr>
-          <tr><td style="color:#fff;font-weight:500;">Frederick share of local voice</td><td>13.3%</td><td style="color:var(--accent);font-weight:600;">30%+</td><td class="hide-sm" style="color:var(--muted);">Same grid, same cadence</td></tr>
+          <tr><td style="color:#fff;font-weight:500;">Frederick share of local voice</td><td>0%</td><td style="color:var(--accent);font-weight:600;">15%+<br/><span style="font-size:0.75rem;color:var(--muted);font-weight:400;">30%+ with a Frederick office</span></td><td class="hide-sm" style="color:var(--muted);">Local Falcon, 81-point grid centered on Frederick, monthly rescan</td></tr>
+          <tr><td style="color:#fff;font-weight:500;">Hagerstown share of local voice</td><td>3.3%</td><td style="color:var(--accent);font-weight:600;">10%+<br/><span style="font-size:0.75rem;color:var(--muted);font-weight:400;">organic path, no Hagerstown address in the plan</span></td><td class="hide-sm" style="color:var(--muted);">Williamsport grid, same cadence</td></tr>
           <tr><td style="color:#fff;font-weight:500;">Ranking keywords</td><td>30</td><td style="color:var(--accent);font-weight:600;">150+</td><td class="hide-sm" style="color:var(--muted);">Ahrefs organic keywords, US</td></tr>
           <tr><td style="color:#fff;font-weight:500;">Cost pages in top 10</td><td>0 of 8</td><td style="color:var(--accent);font-weight:600;">5 of 8</td><td class="hide-sm" style="color:var(--muted);">Primary term per page: replacement, repair, inspection, gutters, metal</td></tr>
         </tbody>
@@ -833,7 +894,7 @@
       </div>
       <div class="card fade-up d2" style="padding:1.75rem;">
         <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">You already own one market</h3>
-        <p style="color:var(--muted);font-size:0.9rem;line-height:1.65;">Williamsport is 90% green. Nobody is guessing whether this works for Home Source. The question is whether you want the same map in Hagerstown, six miles away, and in Frederick, where most people already think you're from.</p>
+        <p style="color:var(--muted);font-size:0.9rem;line-height:1.65;">Williamsport is 90% green. Nobody is guessing whether this works for Home Source. The question is whether you want the same map in Frederick, where most people already think you're from, and in Hagerstown, six miles away.</p>
       </div>
       <div class="card fade-up d3" style="padding:1.75rem;">
         <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Same two people, same accountability</h3>
@@ -852,7 +913,7 @@
     <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
     <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">13 &middot; Next steps</div>
     <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">$6,000 A MONTH.<br/><span style="color:var(--accent);">STARTING OCTOBER 1.</span></h2>
-    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Nothing to pay here today. Sign to approve, we update your existing subscription, and Phase 2 work starts the next business day.</p>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Nothing to pay here today. Sign to approve, your September 22 invoice clicks over to the new rate for October's work, and Phase 2 starts the next business day.</p>
 
     <div style="display:grid;gap:1rem;margin-bottom:3rem;" class="fade-up d3">
       <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
@@ -866,14 +927,14 @@
         <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">02</div>
         <div>
           <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">We update your Stripe subscription</h3>
-          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Same invoice, same date, same way you pay today. It moves to $6,000 starting with the October cycle. You'll see it before it's due, like always.</p>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Same invoice, same date, same way you pay today. The September 22 invoice is the first at $6,000 and covers October. You'll see it before it's due, like always.</p>
         </div>
       </div>
       <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
         <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">03</div>
         <div>
           <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Month 1 kicks off</h3>
-          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Backlink audit and disavow go first. Within two weeks you get the first prospect list and the first placement options to approve. Frederick and Hagerstown city pages start writing the same week.</p>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Backlink audit and disavow go first. Within two weeks you get the first prospect list and the first placement options to approve. Frederick city pages start writing the same week.</p>
         </div>
       </div>
     </div>
@@ -895,16 +956,18 @@
           <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
           <input class="field" type="date" id="f-date" name="date" required />
         </div>
-        <div>
-          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-placements">Paid placement budget</label>
-          <select class="field" id="f-placements" name="placements">
-            <option value="Approved, up to $1,000/mo" style="background:#111;">Approved, up to $1,000 a month, I approve each placement first</option>
-            <option value="Decide on the kickoff call" style="background:#111;">Let's decide on the kickoff call</option>
-            <option value="Earned links only, no paid placements" style="background:#111;">Earned links only, no paid placements for now</option>
-          </select>
-        </div>
       </div>
-      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, Home Source Roofing approves the Phase 2 scope and the $6,000 monthly engagement outlined above, month to month, billed on the existing Stripe subscription on the 22nd. Paid placements are billed at cost, never above $1,000 in a month, and only after Home Source approves each one. Ad spend continues to be paid directly to Google and Meta and is not included.</p>
+      <div style="display:grid;gap:0.75rem;margin-bottom:1.5rem;">
+        <label style="display:flex;gap:0.875rem;align-items:flex-start;background:#0d0d0d;border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:1rem;cursor:pointer;">
+          <input type="checkbox" name="approve_engagement" required style="margin-top:0.2rem;width:18px;height:18px;accent-color:#dee535;flex-shrink:0;" />
+          <span style="font-size:0.9rem;color:#e5e7eb;line-height:1.55;"><strong style="font-weight:600;">Approve the engagement increase to $6,000 a month.</strong><br/><span style="color:var(--muted);font-size:0.8125rem;">Phase 1 plus Phase 2, month to month, on the existing Stripe subscription.</span></span>
+        </label>
+        <label style="display:flex;gap:0.875rem;align-items:flex-start;background:#0d0d0d;border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:1rem;cursor:pointer;">
+          <input type="checkbox" name="approve_links" required style="margin-top:0.2rem;width:18px;height:18px;accent-color:#dee535;flex-shrink:0;" />
+          <span style="font-size:0.9rem;color:#e5e7eb;line-height:1.55;"><strong style="font-weight:600;">Approve the additional $1,000 a month for link building.</strong><br/><span style="color:var(--muted);font-size:0.8125rem;">Spent at cost on premium placements, each one approved by you before we buy.</span></span>
+        </label>
+      </div>
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, Home Source Roofing approves the Phase 2 scope and the $6,000 monthly engagement outlined above, month to month, billed on the existing Stripe subscription on the 22nd, starting with the September 22 invoice for October's work. The $1,000 placement budget is spent at cost and only on placements Home Source approves. Ad spend continues to be paid directly to Google and Meta and is not included.</p>
       <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.25rem;padding:1.125rem 2rem;">
         SIGN AND APPROVE PHASE 2
       </button>
@@ -926,7 +989,7 @@
           <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;"><span style="color:var(--muted);">Signed by</span><span id="conf-names" style="color:#fff;font-weight:600;text-align:right;"></span></div>
           <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;"><span style="color:var(--muted);">Date</span><span id="conf-date" style="color:#fff;text-align:right;"></span></div>
           <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;"><span style="color:var(--muted);">Monthly engagement</span><span style="color:#fff;font-weight:600;text-align:right;">$6,000/mo, month to month</span></div>
-          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;"><span style="color:var(--muted);">Paid placements</span><span id="conf-placements" style="color:var(--accent);font-weight:500;text-align:right;"></span></div>
+          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;"><span style="color:var(--muted);">Link building budget</span><span style="color:var(--accent);font-weight:500;text-align:right;">$1,000/mo, approved</span></div>
           <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;"><span style="color:var(--muted);">Billing</span><span style="color:#fff;text-align:right;">Existing Stripe subscription, 22nd of the month</span></div>
         </div>
       </div>
@@ -968,7 +1031,6 @@
     const signerName  = fd.get('signer_name')  || '';
     const signerTitle = fd.get('signer_title') || '';
     const date        = fd.get('date')         || '';
-    const placements  = fd.get('placements')   || 'Decide on the kickoff call';
     const dOpts       = { year:'numeric', month:'long', day:'numeric' };
     const dateDisplay = date ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', dOpts) : date;
 
@@ -979,9 +1041,9 @@
         name:     signerTitle ? `${signerName} (${signerTitle})` : signerName,
         company:  'Home Source Roofing',
         date:     dateDisplay,
-        retainer: `Scale $6,000/mo, month to month, on existing Stripe subscription (22nd). Paid placements: ${placements}`,
+        retainer: `Scale $6,000/mo, month to month, on existing Stripe subscription (22nd). Placement budget $1,000/mo approved.`,
         proposal: 'Home Source Roofing Phase 2',
-        fee:      '$6,000/mo Scale tier (Phase 1 $3,000 + Phase 2 $3,000). Placement budget up to $1,000/mo at cost.',
+        fee:      '$6,000/mo Scale tier (Phase 1 $3,000 + Phase 2 $3,000). Placement budget $1,000/mo at cost. First $6,000 invoice Sep 22 for October.',
       }),
     }).catch(() => {});
 
@@ -992,7 +1054,6 @@
 
     document.getElementById('conf-names').textContent      = signerTitle ? `${signerName}, ${signerTitle}` : signerName;
     document.getElementById('conf-date').textContent       = dateDisplay;
-    document.getElementById('conf-placements').textContent = placements;
 
     const conf = document.getElementById('signed-confirmation');
     conf.style.display = 'block';
