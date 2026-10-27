@@ -191,3 +191,21 @@ Per surge-proposals/CLAUDE.md:
 - May 18 meeting notes (today): https://docs.google.com/document/d/1EsEYIPLztd2xFF-UNGQbE2KdotST4fl4yN-fivGT9TE/edit
 
 Notion lead record: https://www.notion.so/33aa76a737d681359455e1137559d1c4 (currently marked Cold, needs to move to Proposal stage)
+
+---
+
+## Phase 2 (September 2026)
+
+**Path:** proposals.thesurgeagency.com/home-source/phase-2 (file: `clients/home-source/phase-2.html`)
+**Pitched:** Sep 16, 2026 call (Sam, Mario, Brandon, Chris). Decision expected Friday Sep 18 after Brandon checks cash flow with CPA (Brandy).
+**Offer:** Scale tier at $6,000/mo (retail $6,500), month to month, no contract. Phase 1 $3,000 continues in full + $3,000 new: link building program (audit/disavow, ongoing quality links every month, no fixed count promised, central link log), citations extended to new markets, digital PR (1 story/quarter), content doubled ~4 to ~8 pages/mo, Frederick (priority) then Hagerstown city pages/cost variants, 2 to 3 months to start ranking, dedicated SEO, Local Falcon grids per market, second GBP when Frederick office opens.
+**Add-on:** $1,000/mo premium placement budget, spent like ad spend at cost (one $1,000 link some months, three or four smaller ones others), client approves each one.
+**Billing:** No Stripe link on this page by design. Existing subscription clicks over on the Sep 22 invoice, which covers October's work; placement spend itemized on the same invoice. Update Stripe manually after signature.
+**Source docs:** Mario's Phase 2 slide deck PDF (Local Falcon Aug 2026, Ahrefs Sep 2026), Surge backlink research brief (Sep 16, 2026), Gemini transcript of the Sep 16 call.
+
+### Mario's corrections (Slack, Sep 16 evening) applied Sep 17
+Frederick baseline is 0% on a Frederick-centred 9x9 grid (the 13.3%/14.8% figures are Williamsport-grid). §03 now pairs the two grids; §04 labels the twelve tiles "from Williamsport" and adds five Frederick-centred rows at 0%; §11 Frederick 0% -> 15%+ (30%+ with office), Hagerstown 3.3% -> 10%+ organic path. Reviews weighting 20%. Review count 293. Hagerstown line: address = map pack gap, links = organic gap. Citations pulled from Phase 1 and featured in Phase 2 with the audit findings (GAF/Yelp/CertainTeed/Thumbtack/Nextdoor/missing profiles). Added Frederick incumbents (Frederick Roof Repair 81/81, Shumaker 76/81) and the 700/mo vs no-volume point.
+OPEN: the Frederick-centred map renders (lf-FC2-roofing-frederick.png, lf-FW4-frederick-county-roof-repair.png) are not on Sam's machine; graphics.zip in Slack is the original 12 Williamsport-grid maps. Page uses a CSS red grid and a stat card as stand-ins until Mario shares the ten new PNGs. Fifth Frederick-centred term is a guess ("roofers frederick md"); confirm against Mario's table.
+
+### Rufus explainer video (Sep 18)
+Embedded at the top of phase-2.html under the hero, same pattern as Senor Tequila's. Files: img/phase2/rufus-phase2.mp4 (6.9 MB, 1080p, crf 27, faststart) + rufus-poster.jpg. Master 22 MB and Remotion source (remotion-src.tgz) are in workspace/clients/homesource/Claude outputs. Voice: Higgsfield seed_audio preset Grady. Rufus clips: Seedance 2.5 omni_reference, 720p. To change copy: edit script.md and the VO, re-run the audio + Seedance + `npx remotion render`.
