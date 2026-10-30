@@ -1,3 +1,7 @@
 .env
 node_modules/
 .vercel
+
+# Agency OS proposal renders: drafts and raw decks never deploy (scripts/agency-os-render.mjs)
+clients/*/draft.html
+clients/*/agency-os-deck.json
