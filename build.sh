@@ -21,6 +21,7 @@ cat > "$OUT/config.json" <<'EOF'
     { "src": "/sunrise", "dest": "/clients/sunrise/index.html" },
     { "src": "/home-source", "dest": "/clients/home-source/index.html" },
     { "src": "/rc-all-exteriors", "dest": "/clients/rc-all-exteriors/index.html" },
+    { "src": "/nonitos-roofing", "dest": "/clients/nonitos-roofing/index.html" },
     { "src": "/home-source/onboarding", "dest": "/clients/home-source/onboarding.html" },
     { "src": "/home-source/phase-2", "dest": "/clients/home-source/phase-2.html" },
     { "src": "/rush-delivery", "dest": "/clients/rush-delivery/index.html" },

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nonitos Roofing x Surge: Website and Growth System</title>
+  <meta property="og:title" content="Nonitos Roofing x Surge: Website and Growth System" />
+  <meta property="og:description" content="A logo, a custom website, and an optimized Google Business Profile in month one. Ongoing SEO and ads management after that." />
+  <meta property="og:image" content="https://proposals.thesurgeagency.com/brand/SurgeProposalOG.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://proposals.thesurgeagency.com/brand/SurgeProposalOG.png" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" />
+  <link rel="icon" href="https://thesurgeagency.com/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://thesurgeagency.com/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://thesurgeagency.com/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="https://thesurgeagency.com/apple-touch-icon.png" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --accent:       #dee535;
+      --accent-hover: #b8be2a;
+      --bg:           #080808;
+      --surface:      #111111;
+      --surface2:     #0d0d0d;
+      --border:       rgba(255,255,255,0.06);
+      --muted:        #9ca3af;
+      --faint:        #4b5563;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+
+    .section-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.75rem, 7vw, 5.5rem);
+      line-height: 0.93;
+      letter-spacing: 0.01em;
+    }
+
+    .accent-line {
+      width: 36px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+    .d6 { transition-delay: 0.60s; }
+
+    #site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(222,229,53,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(222,229,53,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.06em;
+      color: #080808;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.1s;
+    }
+    .btn:hover  { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .field {
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 0.875rem 1rem;
+      width: 100%;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.18s;
+      -webkit-appearance: none;
+    }
+    .field:focus        { border-color: var(--accent); }
+    .field::placeholder { color: #374151; }
+    select.field        { cursor: pointer; }
+
+    .proof {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .t-step {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .t-step::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .t-step::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1.4rem;
+      width: 2px;
+      height: calc(100% + 1.5rem);
+      background: rgba(222,229,53,0.15);
+    }
+    .t-step:last-child::after { display: none; }
+
+    .col-bad  { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.18); border-radius: 16px; padding: 1.75rem; }
+    .col-good { background: rgba(222,229,53,0.05); border: 1px solid rgba(222,229,53,0.18); border-radius: 16px; padding: 1.75rem; }
+
+    .check-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .check-item:last-child { border-bottom: none; }
+
+    .engine {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.875rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .stat-chip {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .stat-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    ::-webkit-scrollbar          { width: 4px; }
+    ::-webkit-scrollbar-track    { background: var(--bg); }
+    ::-webkit-scrollbar-thumb    { background: #222; border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<script>
+  // Hosted invoice for the $5,000 kickoff (Stripe invoice in_1UbW9JCsRrvmli7rErjWbyBe, KADJPN6T-0001).
+  const STRIPE_LINK = 'https://invoice.stripe.com/i/acct_1Q7PzhCsRrvmli7r/live_YWNjdF8xUTdQemhDc1Jydm1saTdyLF9WY2xna21tSDh4TXVrdGxBMUE5TmV3ZDlJaFBoTXFJLDE4NTE2MjAwNA0200L6WsPqID?s=ap';
+</script>
+
+<!-- NAV -->
+<nav id="site-nav">
+  <img src="/brand/SRG%20JR.svg" alt="Surge" style="height:38px;width:auto;padding-left:0.75rem;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.6875rem;font-weight:500;color:var(--faint);letter-spacing:0.1em;text-transform:uppercase;">Confidential &middot; November 2026</span>
+</nav>
+
+
+<!-- 01  HERO -->
+<section class="hero-grid" style="min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:8rem 1.5rem 4.5rem;position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:-15%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(222,229,53,0.07) 0%,transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-10%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(222,229,53,0.04) 0%,transparent 65%);pointer-events:none;"></div>
+
+  <div style="max-width:880px;position:relative;">
+    <div class="section-label fade-up" style="margin-bottom:1.5rem;">Website and Growth System &middot; Nonitos Roofing</div>
+
+    <h1 class="font-display fade-up d1" style="font-size:clamp(3.25rem,10vw,7.5rem);line-height:0.9;margin-bottom:1.75rem;">
+      A NEW ROOFING COMPANY.<br/>
+      <span style="color:var(--accent);">BUILT TO BE FOUND FROM DAY ONE.</span>
+    </h1>
+
+    <p class="fade-up d2" style="font-size:1.0625rem;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:2.75rem;">You know the work, and you already have people who trust you. What Nonitos Roofing does not have yet is a place online that proves it. We build that in month one. Then we keep the leads coming every month after.</p>
+
+    <div class="fade-up d3" style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;font-size:0.8125rem;">
+      <span style="color:var(--faint);">Prepared for <span style="color:#fff;font-weight:500;">Noel Hernandez</span></span>
+      <span style="color:#222;">&middot;</span>
+      <span style="color:var(--faint);">Prepared by <span style="color:var(--accent);font-weight:600;">Surge</span></span>
+      <span style="color:#222;">&middot;</span>
+      <span style="color:var(--faint);">November 13, 2026</span>
+    </div>
+  </div>
+
+  <div class="fade-up d4" style="position:absolute;bottom:2.25rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+    <span style="font-size:0.625rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);">Scroll</span>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);"></div>
+  </div>
+</section>
+
+
+<!-- 02  WHERE YOU ARE STARTING -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">02 &middot; Where You Are Starting</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:1rem;">A CLEAN START<br/><span style="color:var(--accent);">IS AN ADVANTAGE.</span></h2>
+    <p class="fade-up d2" style="color:var(--muted);font-size:0.9375rem;max-width:560px;line-height:1.7;margin-bottom:3rem;">Most roofers come to us with an old website to fix and years of habits to undo. You have neither. Everything gets built right the first time.</p>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="card fade-up d1" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">There is no website yet</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">A new roof is a big purchase, and homeowners look a company up before they call. Right now, someone who hears your name has nowhere to go to check you out. That call goes to the roofer who has a website.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d2" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">Your Google Business Profile is brand new</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Opening it was the right first move. But a new profile with no reviews, few photos, and no website behind it does not show up in the map results yet. Filling it out and keeping it active is the fastest win on this list.</p>
+        </div>
+      </div>
+
+      <div class="card fade-up d3" style="padding:1.875rem;display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.75rem;color:var(--accent);line-height:1;flex-shrink:0;opacity:0.9;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;color:#e5e7eb;">You have a network most new roofers do not</h3>
+          <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Years of interior remodeling left you with past clients who trust your work and realtors who know you deliver. Those are real people who can leave honest Google reviews in your first weeks. Most new companies start at zero. You do not.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 03  THE WEBSITE -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">03 &middot; The Website</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">THE WEBSITE<br/><span style="color:var(--accent);">WE ARE BUILDING.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.7;margin-bottom:2.5rem;">A custom website for Nonitos Roofing, built the same way we built the sites for the two roofing companies we work with today. Open both and look around. Yours gets the same treatment.</p>
+
+    <div class="two-col fade-up d3" style="margin-bottom:2.5rem;">
+      <a href="https://homesourceroofing.net" target="_blank" rel="noopener noreferrer" class="col-good" style="display:block;text-decoration:none;">
+        <div style="font-size:0.6875rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.625rem;">Example 01</div>
+        <div class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;margin-bottom:0.5rem;">Home Source Roofing</div>
+        <p style="font-size:0.9rem;color:#d1d5db;line-height:1.6;margin-bottom:0.75rem;">Roofing company in Maryland. A page for every service, a page for every city, and a free inspection form on every page.</p>
+        <span style="font-size:0.875rem;color:var(--accent);font-weight:600;">homesourceroofing.net</span>
+      </a>
+      <a href="https://rcallexteriors.com" target="_blank" rel="noopener noreferrer" class="col-good" style="display:block;text-decoration:none;">
+        <div style="font-size:0.6875rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.625rem;">Example 02</div>
+        <div class="font-display" style="font-size:1.5rem;color:#fff;line-height:1.1;margin-bottom:0.5rem;">RC All Exteriors</div>
+        <p style="font-size:0.9rem;color:#d1d5db;line-height:1.6;margin-bottom:0.75rem;">Roofing contractor in Virginia, and the people who sent you our way. We launched their new site this fall.</p>
+        <span style="font-size:0.875rem;color:var(--accent);font-weight:600;">rcallexteriors.com</span>
+      </a>
+    </div>
+
+    <div class="card fade-up d2" style="padding:1.75rem;margin-bottom:1.25rem;">
+      <h3 style="font-weight:600;font-size:1rem;margin-bottom:1rem;color:#e5e7eb;">What you get in month one</h3>
+      <div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">A logo and brand.</strong> Logo, colors, and fonts for Nonitos Roofing, so the truck, the yard signs, the estimates, and the website all match.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">A home page with one job.</strong> Get the homeowner to call you or request a free inspection.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">A page for every service.</strong> Roof replacement, roof repair, storm damage, and whatever else you offer. Each one written the way homeowners search.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">A page for every city you want work in.</strong> Real pages, each written for that town. We pick the list together on the kickoff call.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Your story and your work.</strong> An about page, a project gallery that grows with every job, and your Google reviews shown where they help close.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Forms on every page.</strong> Short quote and inspection forms, plus a tap-to-call button, on every page of the site.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Built for phones.</strong> Most homeowners will find you on a phone. The site is designed for that first and loads fast.</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#10003;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">A domain in your name.</strong> We help you pick and register it. You own it.</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:1.25rem;">
+      <div class="card fade-up d1" style="padding:1.75rem;">
+        <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.625rem;color:#e5e7eb;">It makes a new company look established</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Homeowners compare two or three roofers before they pick one. A sharp logo, real photos, and a professional website put Nonitos Roofing on the same level as companies that have been around for twenty years.</p>
+      </div>
+      <div class="card fade-up d2" style="padding:1.75rem;">
+        <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.625rem;color:#e5e7eb;">It gets you found by people who do not know you yet</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Referrals only reach people who already know someone you worked for. Every service page and city page is one more way a stranger can find you on Google.</p>
+      </div>
+      <div class="card fade-up d3" style="padding:1.75rem;">
+        <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.625rem;color:#e5e7eb;">It takes leads while you are on a roof</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">You cannot answer the phone on a job, and you should not have to at 10pm. The website collects the request and sends it to you, any hour of the day.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 04  HOW IT CONVERTS -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">04 &middot; How It Brings In Work</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">THE PAGES BRING THEM IN.<br/><span style="color:var(--accent);">THE FORMS TURN THEM INTO JOBS.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.7;margin-bottom:3rem;">A good-looking website that nobody finds does not pay for itself. Here is how ours goes from a Google search to a lead on your phone.</p>
+
+    <div style="display:grid;gap:0.875rem;margin-bottom:2.5rem;">
+
+      <div class="fade-up d1" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:1.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2rem;">01</div>
+        <div style="flex:1;">
+          <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.25rem;color:#e5e7eb;">A homeowner searches</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.6;">They type something like "roof repair" and the name of their town. Google looks for a page that matches that exact service in that exact place.</p>
+        </div>
+      </div>
+
+      <div class="fade-up d2" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:1.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2rem;">02</div>
+        <div style="flex:1;">
+          <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.25rem;color:#e5e7eb;">They land on a page written for that search</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.6;">They do not land on a generic home page. They land on a page about their problem, in their town, with your photos and your reviews on it.</p>
+        </div>
+      </div>
+
+      <div class="fade-up d3" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:1.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2rem;">03</div>
+        <div style="flex:1;">
+          <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.25rem;color:#e5e7eb;">The form asks for just enough</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.6;">Name, phone, zip code, and what they need. Short forms get filled out. Long ones get abandoned. The form and a call button are on every page.</p>
+        </div>
+      </div>
+
+      <div class="fade-up d4" style="background:var(--surface);border:1px solid rgba(222,229,53,0.25);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:1.5rem;color:var(--accent);line-height:1;flex-shrink:0;width:2rem;">04</div>
+        <div style="flex:1;">
+          <h3 style="font-weight:600;font-size:0.9375rem;margin-bottom:0.25rem;color:#e5e7eb;">You hear about it right away</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.6;">The lead goes to your phone and email the moment the form is sent. It is also saved in your Surge Command Center, the dashboard where you see every lead and where it came from, so nothing gets lost in a text thread.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fade-up d5" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;">
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.75;">Most roofing websites are a home page, a services list, and a contact page. That gives Google three pages to work with. Yours launches with a page for every service and every city you care about, and we keep adding more every month.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 05  GOOGLE BUSINESS PROFILE -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">05 &middot; Google Business Profile</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">YOUR GOOGLE PROFILE,<br/><span style="color:var(--accent);">SET UP RIGHT.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:600px;line-height:1.7;margin-bottom:2.5rem;">For a local roofer, the Google Business Profile matters as much as the website. It is what shows up on the map when someone nearby searches for a roofer. We optimize yours in the first week.</p>
+
+    <div class="card fade-up d2" style="padding:1.75rem;margin-bottom:1.25rem;">
+      <div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">The right categories, the full list of services, your service area, hours, and a clear description</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Photos of your work, with new ones added on a steady schedule</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Connected to the new website, so the profile and the site back each other up</span></div>
+        <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Regular posts, so Google and homeowners can see the business is active</span></div>
+      </div>
+    </div>
+
+    <div class="fade-up d3" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.75rem;">
+      <div class="font-display" style="font-size:1.25rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.625rem;">Your First Reviews Are Already Out There</div>
+      <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.75;">You have past remodeling clients and realtors who have seen your work up close. We give you a direct review link and a short message you can text them, in English and in Spanish. Honest reviews from real people you have worked with. A new profile that earns real reviews in its first month looks very different to Google, and to the next homeowner deciding who to call.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 06  EVERY MONTH AFTER -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">06 &middot; Every Month After</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">$3,000 A MONTH.<br/><span style="color:var(--accent);">HERE IS WHAT IT COVERS.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:560px;line-height:1.65;margin-bottom:3rem;">Starting in month two. This is the same work we do every month for the roofing companies we run today. One fee covers all of it.</p>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="engine fade-up d1">
+        <div class="section-label" style="margin-bottom:0.5rem;">Part 01</div>
+        <h3 class="font-display" style="font-size:1.625rem;color:#fff;line-height:1.1;margin-bottom:0.875rem;">Ongoing SEO</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:1.25rem;">The work that moves you up in Google and on the map, month after month.</p>
+        <div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">New city pages and service pages added on a steady schedule</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Articles that answer what homeowners search before they call: costs, materials, storm damage, insurance claims</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Google Business Profile kept active with posts, photos, and updates</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Your business name, address, and phone listed the same way across the directories Google checks</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">A review request built into the end of every job, so reviews keep coming without you chasing them</span></div>
+        </div>
+      </div>
+
+      <div class="engine fade-up d2">
+        <div class="section-label" style="margin-bottom:0.5rem;">Part 02</div>
+        <h3 class="font-display" style="font-size:1.625rem;color:#fff;line-height:1.1;margin-bottom:0.875rem;">Ads Management</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:1.25rem;">Any ads you want to run on Google or Meta, we take over right away. That includes month one. You do not have to wait for the website to be finished.</p>
+        <div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Google Ads.</strong> Search campaigns for homeowners looking for a roofer right now, limited to the areas you want to drive to.</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Google Local Services Ads.</strong> The Google Guaranteed listings at the very top of the page. We handle the license and insurance verification with you.</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Meta ads on Facebook and Instagram.</strong> Job photos, before and after, and offers shown to homeowners in your area. We make the ads.</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;"><strong style="color:#fff;font-weight:600;">Daily management.</strong> We build the campaigns, watch them every day, and cut what is not producing leads.</span></div>
+        </div>
+      </div>
+
+      <div class="engine fade-up d3">
+        <div class="section-label" style="margin-bottom:0.5rem;">Part 03</div>
+        <h3 class="font-display" style="font-size:1.625rem;color:#fff;line-height:1.1;margin-bottom:0.875rem;">Website Care</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:1.25rem;">The site stays fast, secure, and current. You never have to call a web guy.</p>
+        <div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Hosting and security included</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Edits and updates whenever you need them</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">New project photos and reviews added as you finish jobs</span></div>
+        </div>
+      </div>
+
+      <div class="engine fade-up d4">
+        <div class="section-label" style="margin-bottom:0.5rem;">Part 04</div>
+        <h3 class="font-display" style="font-size:1.625rem;color:#fff;line-height:1.1;margin-bottom:0.875rem;">Tracking and Reporting</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:1.25rem;">You should never have to take our word for whether this is working.</p>
+        <div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Call tracking and form tracking, so every lead is tied to where it came from</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">A monthly report in plain language: leads, calls, rankings, and ad results</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">A monthly call with Sam and Mario, the two people doing the work</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 07  TIMELINE -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">07 &middot; Timeline</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">KICKOFF IS MONDAY.<br/><span style="color:var(--accent);">LIVE IN 30 TO 45 DAYS.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:560px;line-height:1.65;margin-bottom:3rem;">You see the work at each stage and approve it before we move on.</p>
+
+    <div style="display:grid;gap:2rem;">
+
+      <div class="t-step fade-up d1">
+        <div class="section-label" style="margin-bottom:0.375rem;">Monday, November 16</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.5rem;color:#e5e7eb;">Kickoff call</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">We go over the services you offer, the cities you want work in, and the look you want for the brand. We get access to your Google Business Profile, collect whatever job photos you have, and pick the domain.</p>
+      </div>
+
+      <div class="t-step fade-up d2">
+        <div class="section-label" style="margin-bottom:0.375rem;">Week 1</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.5rem;color:#e5e7eb;">Logo options and Google Business Profile</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">You get logo options to choose from. Your Google Business Profile gets fully optimized, and the review link goes out to your past clients and realtors.</p>
+      </div>
+
+      <div class="t-step fade-up d3">
+        <div class="section-label" style="margin-bottom:0.375rem;">Weeks 2 to 3</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.5rem;color:#e5e7eb;">Website plan, copy, and design</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">We map every page, write the copy, and design the site around your new brand. You review and sign off before we build.</p>
+      </div>
+
+      <div class="t-step fade-up d4">
+        <div class="section-label" style="margin-bottom:0.375rem;">Weeks 3 to 6</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.5rem;color:#e5e7eb;">Build and launch</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The site gets built, the forms and tracking get tested end to end, and we go live. If you want ads running sooner, we can start them during this stretch.</p>
+      </div>
+
+      <div class="t-step fade-up d5">
+        <div class="section-label" style="margin-bottom:0.375rem;">Month 2 onward</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.5rem;color:#e5e7eb;">Ongoing SEO and ads management</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">New pages and content every month, reviews coming in, ads managed daily, and a monthly call to go over the numbers. Ranking on Google takes a few months of steady work. We would rather tell you that now than explain it later.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 08  INVESTMENT -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">08 &middot; Investment</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">TWO NUMBERS.<br/><span style="color:var(--accent);">NO SURPRISES.</span></h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;max-width:520px;line-height:1.65;margin-bottom:3rem;">$5,000 for month one. $3,000 a month after that. Your ad budget is separate and goes straight to Google and Meta.</p>
+
+    <!-- Month 1 -->
+    <div class="fade-up d3" style="background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem;">
+        <div>
+          <div class="section-label" style="margin-bottom:0.5rem;">Month 1 &middot; Kickoff</div>
+          <h3 class="font-display" style="font-size:1.75rem;line-height:1.1;color:#fff;">Logo, Website, and Google Business Profile</h3>
+          <p style="color:var(--muted);font-size:0.875rem;margin-top:0.375rem;">One payment to get started.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="font-display" style="font-size:4rem;color:var(--accent);line-height:1;">$5,000</div>
+          <div style="font-size:0.8125rem;color:var(--faint);">month one</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+        <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">What Is Included</p>
+        <div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Logo and brand for Nonitos Roofing</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Custom website with service pages, city pages, and lead forms</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Google Business Profile optimization and the review plan</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Setup and management of any Google or Meta ads you want running in month one</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly -->
+    <div class="fade-up d3" style="background:var(--surface);border:1px solid rgba(222,229,53,0.35);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem;">
+        <div>
+          <div class="section-label" style="margin-bottom:0.5rem;">Month 2 Onward</div>
+          <h3 class="font-display" style="font-size:1.75rem;line-height:1.1;color:#fff;">Ongoing SEO and Ads Management</h3>
+          <p style="color:var(--muted);font-size:0.875rem;margin-top:0.375rem;">Billed monthly, starting one month after kickoff.</p>
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div class="font-display" style="font-size:4rem;color:var(--accent);line-height:1;">$3,000</div>
+          <div style="font-size:0.8125rem;color:var(--faint);">/month</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+        <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">What Is Included Every Month</p>
+        <div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Ongoing SEO: new pages, content, Google Business Profile, listings, and reviews</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Management of Google Ads, Google Local Services Ads, and Meta ads</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Website hosting, security, and edits</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Call and form tracking, and a monthly report</span></div>
+          <div class="check-item"><span style="color:var(--accent);flex-shrink:0;">&#8594;</span><span style="color:#d1d5db;">Monthly call with Sam and Mario</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad Spend Callout -->
+    <div class="fade-up d4" style="background:#150f00;border:2px solid rgba(222,229,53,0.4);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div>
+        <div class="font-display" style="font-size:1.25rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.5rem;">Ad Spend Is Separate.</div>
+        <p style="font-size:0.9375rem;color:#d1d5db;line-height:1.7;">Our fee covers the work of building and managing your ads. It does not include the ad budget itself. You pay Google and Meta directly, on your own card, in your own accounts. Whether to run ads, and how much to spend, is your call. We will recommend a starting budget on the kickoff call.</p>
+      </div>
+    </div>
+
+    <!-- No Contract -->
+    <div class="fade-up d5" style="background:#0f1300;border:1px solid rgba(222,229,53,0.2);border-radius:16px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+      <div style="color:var(--accent);flex-shrink:0;margin-top:0.125rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:1.125rem;color:var(--accent);letter-spacing:0.04em;">No Long-Term Contract.</span>
+        <span style="font-size:0.9rem;color:var(--muted);line-height:1.65;"> Month to month. Cancel with 30 days notice and keep everything we built, the website and the logo included.</span>
+      </div>
+    </div>
+
+    <!-- All-inclusive -->
+    <div class="fade-up d5" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-top:1.5rem;">
+      <p style="font-size:0.8125rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;">About This Rate</p>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;">This is our all-inclusive plan: SEO, ads management, and website care under one monthly fee. We are moving new clients to separate pricing for each service. You are coming in on the all-inclusive rate.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 09  WHY SURGE -->
+<section style="padding:5.5rem 1.5rem;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">09 &middot; Why Surge</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:3rem;">THREE REASONS.<br/><span style="color:var(--accent);">NO FLUFF.</span></h2>
+
+    <div style="display:grid;gap:1.25rem;">
+
+      <div class="proof fade-up d1">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">01</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">You work with the owners</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Sam and Mario run your account directly. You will not be handed to an account manager you have never met. The two people who built the system are the two people doing the work.</p>
+      </div>
+
+      <div class="proof fade-up d2">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">02</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">You own everything</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">The domain, the website, the logo, the Google Business Profile, and the ad accounts are all in your name. If we ever part ways, you keep every bit of it. Nothing is held back to keep you paying.</p>
+      </div>
+
+      <div class="proof fade-up d3">
+        <div class="font-display" style="font-size:3.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">03</div>
+        <h3 style="font-weight:600;font-size:1.0625rem;margin-bottom:0.625rem;">We do this for roofers right now</h3>
+        <p style="color:var(--muted);font-size:0.9375rem;line-height:1.7;">Home Source Roofing in Maryland and RC All Exteriors in Virginia both run on this same setup today. RC sent you our way, so you can ask them how it is going.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 10  NEXT STEPS -->
+<section style="padding:5.5rem 1.5rem;background:var(--surface2);border-top:1px solid rgba(255,255,255,0.04);">
+  <div style="max-width:720px;margin:0 auto;">
+    <div class="accent-line fade-up" style="margin-bottom:1.25rem;"></div>
+    <div class="section-label fade-up d1" style="margin-bottom:0.875rem;">10 &middot; Next Steps</div>
+    <h2 class="section-title fade-up d2" style="margin-bottom:0.875rem;">LET'S BUILD THIS.</h2>
+    <p class="fade-up d3" style="color:var(--muted);font-size:0.9375rem;line-height:1.7;margin-bottom:3rem;">Three steps. Sign, pay the kickoff invoice, and get on the call Monday.</p>
+
+    <div style="display:grid;gap:1rem;margin-bottom:3rem;" class="fade-up d3">
+      <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">01</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Sign below</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Type your name to sign. Sam and Mario are notified the moment you submit.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">02</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Pay the $5,000 kickoff invoice</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">Secure payment through Stripe. This covers month one: the logo, the website, and your Google Business Profile.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div class="font-display" style="font-size:2.5rem;color:var(--accent);line-height:1;flex-shrink:0;">03</div>
+        <div>
+          <h3 style="font-weight:600;font-size:1rem;margin-bottom:0.375rem;color:#e5e7eb;">Kickoff call on Monday</h3>
+          <p style="color:var(--muted);font-size:0.875rem;line-height:1.65;">We map out your services, your cities, and the look of the brand. That call becomes the plan for the build.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signature form -->
+    <form id="proposal-form" class="card fade-up d4" style="padding:2rem;margin-bottom:2rem;transition:opacity 0.4s ease,transform 0.4s ease;" onsubmit="handleSubmit(event)">
+      <h3 style="font-weight:600;font-size:1rem;color:#d1d5db;margin-bottom:0.375rem;">Approve Proposal</h3>
+      <p style="font-size:0.8125rem;color:var(--faint);margin-bottom:1.75rem;">One signature from an authorized representative. Typed name serves as a binding signature.</p>
+
+      <div style="display:grid;gap:1rem;margin-bottom:1.25rem;">
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-signer">Your Full Name</label>
+          <input class="field" type="text" id="f-signer" name="signer_name" placeholder="Type full name to sign" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-title">Your Title</label>
+          <input class="field" type="text" id="f-title" name="signer_title" placeholder="e.g. Owner" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-date">Date</label>
+          <input class="field" type="date" id="f-date" name="date" required />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:0.8125rem;font-weight:500;color:var(--muted);margin-bottom:0.5rem;" for="f-spend">Do you want ads running in month one? <span style="color:var(--faint);font-weight:400;">(optional)</span></label>
+          <select class="field" id="f-spend" name="spend">
+            <option value="" style="background:#111;">Decide on the kickoff call</option>
+            <option value="Yes, Google Ads" style="background:#111;">Yes, Google Ads</option>
+            <option value="Yes, Google and Meta" style="background:#111;">Yes, Google and Meta</option>
+            <option value="Not yet" style="background:#111;">Not yet</option>
+          </select>
+        </div>
+
+      </div>
+
+      <p style="font-size:0.8125rem;color:var(--faint);line-height:1.65;margin-bottom:1.5rem;">By signing, both parties approve the scope and investment outlined in this proposal: $5,000 for month one, then $3,000 per month starting one month after kickoff, month to month with 30 days notice. Ad spend is billed separately by Google and Meta directly to Nonitos Roofing and is not included in these fees.</p>
+
+      <button type="submit" id="submit-btn" class="btn" style="width:100%;font-size:1.25rem;padding:1.125rem 2rem;">
+        SIGN AND APPROVE
+      </button>
+    </form>
+
+    <!-- Signed confirmation -->
+    <div id="signed-confirmation" style="display:none;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease;">
+      <div style="background:#0a1200;border:1px solid var(--accent);border-radius:16px;padding:2rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.875rem;margin-bottom:1.75rem;">
+          <div style="width:36px;height:36px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#080808" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.04em;color:var(--accent);">Proposal Approved</div>
+            <div style="font-size:0.8125rem;color:var(--muted);margin-top:0.125rem;">Sam and Mario have been notified. You are all set.</div>
+          </div>
+        </div>
+        <div style="display:grid;gap:0.75rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;">
+            <span style="color:var(--muted);">Signed by</span>
+            <span id="conf-names" style="color:#fff;font-weight:600;text-align:right;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;">
+            <span style="color:var(--muted);">Date</span>
+            <span id="conf-date" style="color:#fff;text-align:right;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;">
+            <span style="color:var(--muted);">Ads in month one</span>
+            <span id="conf-spend" style="color:var(--accent);font-weight:500;text-align:right;"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;">
+            <span style="color:var(--muted);">Month one</span>
+            <span style="color:#fff;font-weight:600;text-align:right;">$5,000</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:1rem;font-size:0.875rem;">
+            <span style="color:var(--muted);">Month two onward</span>
+            <span style="color:#fff;font-weight:600;text-align:right;">$3,000/mo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment CTA -->
+    <div id="payment-cta" style="text-align:center;opacity:0.35;transition:opacity 0.5s ease;">
+      <p id="payment-label" style="font-size:0.875rem;color:var(--faint);margin-bottom:1.125rem;">Sign the proposal above to unlock payment.</p>
+      <a id="payment-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn" style="font-size:1.25rem;padding:1.375rem 2.5rem;pointer-events:none;width:100%;justify-content:center;">
+        PAY THE $5,000 KICKOFF INVOICE
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <p style="font-size:0.75rem;color:var(--faint);margin-top:0.875rem;">Secure payment via Stripe. The $3,000 monthly billing starts one month after kickoff.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="padding:1.75rem 1.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+  <img src="/brand/SRG%20JR.svg" alt="Surge" style="height:24px;width:auto;filter:brightness(0) invert(1);" />
+  <span style="font-size:0.75rem;color:var(--faint);">Prepared for Nonitos Roofing &middot; November 2026 &middot; Confidential</span>
+</footer>
+
+
+<!-- SCRIPTS -->
+<script>
+  // Entrance animations
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.08, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Pre-fill today's date
+  const dateInput = document.getElementById('f-date');
+  if (dateInput) {
+    const t  = new Date();
+    const mm = String(t.getMonth() + 1).padStart(2, '0');
+    const dd = String(t.getDate()).padStart(2, '0');
+    dateInput.value = `${t.getFullYear()}-${mm}-${dd}`;
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const fd          = new FormData(e.target);
+    const signerName  = fd.get('signer_name')  || '';
+    const signerTitle = fd.get('signer_title') || '';
+    const date        = fd.get('date')         || '';
+    const spend       = fd.get('spend')        || 'Decide on the kickoff call';
+
+    const locale = (window.__lang === 'es') ? 'es-US' : 'en-US';
+    const dOpts  = { year:'numeric', month:'long', day:'numeric' };
+    // What the client sees, in whichever language they are reading.
+    const dateDisplay = date ? new Date(date + 'T12:00:00').toLocaleDateString(locale, dOpts) : date;
+    // What Sam and Mario get in the notification email: always English.
+    const dateEn      = date ? new Date(date + 'T12:00:00').toLocaleDateString('en-US', dOpts) : date;
+
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name:     signerTitle ? `${signerName} (${signerTitle})` : signerName,
+        company:  'Nonitos Roofing',
+        date:     dateEn,
+        // Always English: this email goes to Sam and Mario, not the client.
+        retainer: `$3,000/mo from month 2. Ads in month one: ${spend}`,
+        language_viewed: (window.__lang === 'es') ? 'Spanish' : 'English',
+        proposal: 'Nonitos Roofing Website and Growth System',
+        fee:      '$5,000 month one (logo, website, GBP), then $3,000/mo',
+      }),
+    }).catch(() => {});
+
+    const form = document.getElementById('proposal-form');
+    form.style.opacity   = '0';
+    form.style.transform = 'translateY(-12px)';
+    setTimeout(() => { form.style.display = 'none'; }, 420);
+
+    document.getElementById('conf-names').textContent = signerTitle ? `${signerName}, ${signerTitle}` : signerName;
+    document.getElementById('conf-date').textContent  = dateDisplay;
+    document.getElementById('conf-spend').textContent = window.tr ? window.tr(spend) : spend;
+
+    const conf = document.getElementById('signed-confirmation');
+    conf.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      conf.style.opacity   = '1';
+      conf.style.transform = 'translateY(0)';
+    }));
+
+    const payBtn   = document.getElementById('payment-btn');
+    const payLabel = document.getElementById('payment-label');
+    const cta      = document.getElementById('payment-cta');
+    setTimeout(() => {
+      cta.style.opacity          = '1';
+      payBtn.href                = STRIPE_LINK;
+      payBtn.style.pointerEvents = 'auto';
+      const approvedMsg          = "You're approved. One step left: pay the kickoff invoice and we start Monday.";
+      payLabel.textContent       = window.tr ? window.tr(approvedMsg) : approvedMsg;
+      payLabel.style.color       = '#d1d5db';
+      payLabel.style.fontWeight  = '500';
+    }, 600);
+  }
+</script>
+
+</body>
+</html>
