@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ZZ Test Roofing (test page, not a real proposal)</title>
+<style>body{font-family:system-ui,sans-serif;max-width:560px;margin:60px auto;padding:0 20px;color:#111}label{display:block;margin:14px 0 4px}input,select{width:100%;padding:10px;font-size:16px}button{margin-top:20px;padding:12px 20px;font-size:16px}</style>
+</head>
+<body>
+<h1>ZZ Test Roofing</h1>
+<p>This is a test page, not a real proposal. Surge uses it to check that a signed proposal reaches Surge HQ. Nobody is sent this link. Signing here sends no email and charges nothing.</p>
+<form id="sign">
+  <label for="signer_name">Name</label>
+  <input id="signer_name" name="signer_name" required>
+  <label for="signer_title">Title</label>
+  <input id="signer_title" name="signer_title">
+  <label for="spend">Starting ad budget</label>
+  <select id="spend" name="spend"><option>$1,000/mo</option><option>$2,000/mo</option></select>
+  <button type="submit">Sign (test)</button>
+</form>
+<p id="out"></p>
+<script src="/brand/deal-sign.js"></script>
+<script>
+document.getElementById('sign').addEventListener('submit', function (e) {
+  e.preventDefault();
+  window.surgeDealSigned(e.target);
+  document.getElementById('out').textContent = 'Sent to HQ as a test.';
+});
+</script>
+<script type="application/json" id="surge-deal">
+{
+  "version": 1,
+  "client": {
+    "slug": "zz-test-roofing",
+    "name": "ZZ Test Roofing",
+    "contact_name": "Zed Tester",
+    "contact_email": "sam@thesurgeagency.com",
+    "contact_phone": "619-257-6251",
+    "website": "https://example.com/"
+  },
+  "brand": "the-surge-agency",
+  "services": ["custom-website", "local-seo-aeo", "google-business-profile", "google-ads-lsa", "meta-ads"],
+  "options": [{ "key": "ad_budget", "label": "Starting ad budget", "field": "spend" }],
+  "price": { "one_time": 0, "monthly": 3000, "monthly_starts": "at signing", "tier": "Launch", "term_months": null },
+  "first_payment": { "amount": 3000, "due": "at signing" },
+  "website_path": "rebuild",
+  "trade": "roofing",
+  "offerings": ["Roof replacement", "Roof repairs"],
+  "service_areas": ["San Diego, CA"],
+  "proposal_title": "ZZ Test Roofing (test)"
+}
+</script>
+</body>
+</html>
