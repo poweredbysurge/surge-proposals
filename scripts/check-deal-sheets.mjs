@@ -20,9 +20,15 @@ export function checkAll(dir = clients, skip = legacy, pick = only) {
   for (const folder of folders) {
     if (pick && folder !== pick) continue;
     if (Object.hasOwn(skip, folder) && !pick) { lines.push(`skip  ${folder} (${skip[folder]})`); continue; }
-    const got = extractDealSheet(readFileSync(join(dir, folder, 'index.html'), 'utf8'));
+    const html = readFileSync(join(dir, folder, 'index.html'), 'utf8');
+    const got = extractDealSheet(html);
     if (got.error) { failed++; lines.push(`FAIL  ${folder}: ${got.error}`); continue; }
     const { errors, warnings } = validateDealSheet(got.sheet, { folder });
+    // Signing has to reach HQ, or the deal sheet is never used.
+    if (!html.includes('/brand/deal-sign.js')) errors.push('the page does not load /brand/deal-sign.js (copy the line from templates/creative-agency.html)');
+    if (!html.includes('surgeDealSigned(')) errors.push('the signature handler does not call window.surgeDealSigned(e.target)');
+    if (!/name=["']signer_name["']/.test(html)) errors.push('the signature form needs a field named signer_name');
+    for (const o of got.sheet.options || []) if (o?.field && !new RegExp(`name=["']${o.field}["']`).test(html)) errors.push(`options: the page has no form field named "${o.field}"`);
     if (errors.length) {
       failed++;
       lines.push(`FAIL  ${folder}: the deal sheet is missing or has wrong items:`);

@@ -993,6 +993,9 @@
       }),
     }).catch(() => {});
 
+    // Tell Surge HQ what was signed (the deal sheet at the bottom of this page). See adr/ADR-002.
+    if (window.surgeDealSigned) window.surgeDealSigned(e.target);
+
     const form = document.getElementById('proposal-form');
     form.style.opacity   = '0';
     form.style.transform = 'translateY(-12px)';
@@ -1152,6 +1155,7 @@
 })();
 </script>
 
+<script src="/brand/deal-sign.js"></script>
 <!-- Deal sheet: the key facts of this proposal for Surge HQ. Must match the page. See adr/ADR-002. -->
 <script type="application/json" id="surge-deal">
 {

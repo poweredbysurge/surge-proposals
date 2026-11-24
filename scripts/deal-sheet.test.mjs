@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { SERVICES, accessFor, extractDealSheet, summaryLines, validateDealSheet } from './deal-sheet.mjs';
 import { checkAll } from './check-deal-sheets.mjs';
+import { buildSignedDeal, pageUrl } from './signed-deal.mjs';
 
 const good = () => ({
   version: 1,
@@ -20,7 +21,10 @@ const good = () => ({
   service_areas: ['Hagerstown, MD'],
   proposal_title: 'Acme Roofing Growth System',
 });
-const page = (sheet) => `<html><body><h1>x</h1><script type="application/json" id="surge-deal">${JSON.stringify(sheet)}</script></body></html>`;
+const page = (sheet) => `<html><body><form><input name="signer_name"><input name="signer_title"><input name="date"><input name="spend"></form>
+<script>function handleSubmit(e){ if (window.surgeDealSigned) window.surgeDealSigned(e.target); }</script>
+<script src="/brand/deal-sign.js"></script>
+<script type="application/json" id="surge-deal">${JSON.stringify(sheet)}</script></body></html>`;
 
 test('a complete deal sheet passes', () => {
   assert.deepEqual(validateDealSheet(good(), { folder: 'acme-roofing' }), { errors: [], warnings: [] });
@@ -88,4 +92,45 @@ test('the deploy check fails a proposal with no sheet, passes a good one and ski
 
 test('the real proposals in this repo pass the check', () => {
   assert.equal(checkAll(undefined, JSON.parse(readFileSync(new URL('./deal-sheet-legacy.json', import.meta.url), 'utf8')).skip, undefined).failed, 0);
+});
+
+test('the deploy check also needs the page to report signing to HQ', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'deals-'));
+  const sheet = { ...good(), client: { ...good().client, slug: 'quiet-co' }, options: [{ key: 'ad_budget', label: 'Starting ad budget', field: 'budget' }] };
+  mkdirSync(join(dir, 'quiet-co'));
+  writeFileSync(join(dir, 'quiet-co', 'index.html'), `<html><script type="application/json" id="surge-deal">${JSON.stringify(sheet)}</script></html>`);
+  const r = checkAll(dir, {}, undefined);
+  const text = r.lines.join('\n');
+  assert.equal(r.failed, 1);
+  assert.match(text, /does not load \/brand\/deal-sign\.js/);
+  assert.match(text, /does not call window\.surgeDealSigned/);
+  assert.match(text, /field named signer_name/);
+  assert.match(text, /no form field named "budget"/);
+});
+
+test('a signed deal is built from the published page, never from what the browser sent', () => {
+  const sheet = { ...good(), options: [{ key: 'ad_budget', label: 'Starting ad budget', field: 'spend' }] };
+  const body = {
+    slug: 'acme-roofing', signed_by: ' Pat Lee ', signed_title: 'Owner', signed_on: '2026-11-23',
+    fields: { spend: '$50 a day', signer_name: 'Pat Lee', hacked: 'yes' },
+    sheet: { price: { monthly: 1 } }, // a visitor trying to change the price: ignored
+  };
+  const r = buildSignedDeal(body, page(sheet), 'https://proposals.thesurgeagency.com/acme-roofing');
+  assert.equal(r.ok, true);
+  assert.equal(r.payload.sheet.price.monthly, 6500);
+  assert.deepEqual(r.payload.options, { ad_budget: '$50 a day' });
+  assert.equal(r.payload.signed_by, 'Pat Lee');
+  assert.equal(r.payload.proposal_url, 'https://proposals.thesurgeagency.com/acme-roofing');
+  assert.equal(r.lines[0], 'Signed by Pat Lee (Owner) on 2026-11-23');
+  assert.ok(r.lines.includes('Starting ad budget: $50 a day'));
+});
+
+test('a signing is refused when it does not match a real, complete proposal', () => {
+  const base = { slug: 'acme-roofing', signed_by: 'Pat Lee' };
+  assert.equal(buildSignedDeal({ ...base, slug: '../etc' }, page(good())).error, 'bad_slug');
+  assert.equal(buildSignedDeal({ ...base, signed_by: ' ' }, page(good())).error, 'missing_signer');
+  assert.equal(buildSignedDeal(base, '<html></html>').error, 'no_deal_sheet');
+  assert.equal(buildSignedDeal(base, page({ ...good(), services: [] })).error, 'deal_sheet_incomplete');
+  assert.equal(buildSignedDeal({ ...base, slug: 'other-co' }, page(good())).error, 'slug_mismatch');
+  assert.equal(pageUrl('https://proposals.thesurgeagency.com/', 'acme-roofing'), 'https://proposals.thesurgeagency.com/clients/acme-roofing/index.html');
 });

@@ -3,7 +3,7 @@
 **Status:** Accepted
 **Date:** 2026-11-23
 **Decider:** Sam Delgado
-**Implementation status:** Format, deploy check and the first sheet (RC All Exteriors) are in. Sending the signed sheet to HQ, and HQ using it, are the next two steps.
+**Implementation status:** Format, deploy check, the first sheet (RC All Exteriors) and sending the signed deal to HQ are in. HQ using it on payment is the last step.
 **Scope:** All proposals
 
 ## Context
@@ -52,3 +52,11 @@ Rules:
 - The deal sheet is in the page source. It holds nothing the client is not already shown, plus their own contact details. Do not put internal notes, margins or other clients in it.
 - HQ can act on a deal without anyone retyping it.
 - Until the next two steps are built, the sheet is on the page but nothing reads it yet.
+
+## Update, 2026-11-23: signing reports to HQ
+
+- Every proposal page loads `/brand/deal-sign.js` and its signature handler calls `window.surgeDealSigned(e.target)`. The deploy check now requires both, the `signer_name` field, and a form field for every option the sheet declares.
+- The browser sends only the client slug, who signed, and the form fields. `POST /api/signed` reads the deal sheet from the published page (`/clients/<slug>/index.html`), so a visitor cannot change the services or the price by editing the request.
+- The endpoint sends the sheet, the chosen options and the signer to Surge HQ (`public.hq_intake_deal`, table `hq.signed_deals`). HQ accepts a client it has not seen, because clients sign before they pay.
+- Vercel needs `HQ_SUPABASE_URL`, `HQ_SUPABASE_ANON_KEY` and `HQ_INTAKE_SECRET` on this project. The secret is this site's own (HQ key name `proposals`), not the onboarding site's.
+- If HQ cannot be reached, Sam and Mario get the deal by email with a line saying it did not save. The existing "Proposal Approved" email is unchanged.
