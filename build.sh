@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# No proposal goes out without its deal sheet (the key facts Surge HQ reads). See adr/ADR-002.
+node scripts/check-deal-sheets.mjs
+
 OUT=".vercel/output"
 STATIC="$OUT/static"
 

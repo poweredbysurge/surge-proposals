@@ -1,0 +1,14 @@
+{
+  "_what": "Proposals sent before deal sheets were required (Nov 23, 2026). The deploy check skips these. Never add a new proposal here: give it a deal sheet instead.",
+  "skip": {
+    "PDI": "Signed before the rule.",
+    "accuenviro": "Signed before the rule.",
+    "bath-fitter": "Sent before the rule.",
+    "home-source": "Signed before the rule.",
+    "rush-delivery": "Sent before the rule.",
+    "senor-tequilas": "Signed before the rule.",
+    "sunrise": "Signed before the rule.",
+    "sunrise-july": "Signed before the rule.",
+    "nonitos-roofing": "Signed Nov 14, 2026, before the rule. Add its deal sheet once Sam confirms the service area and contact phone."
+  }
+}

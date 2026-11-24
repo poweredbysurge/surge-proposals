@@ -32,5 +32,34 @@
   <footer>
     <p>&copy; Surge</p>
   </footer>
+<!--
+  DEAL SHEET. Required on every proposal. Hidden from the client, read by Surge HQ.
+  It must say the same thing as the page above: same services, same prices, same first payment.
+  The deploy stops if this is missing or incomplete (node scripts/check-deal-sheets.mjs <folder>).
+  Allowed values and what each item is for: scripts/deal-sheet.mjs and adr/ADR-002.
+-->
+<script type="application/json" id="surge-deal">
+{
+  "version": 1,
+  "client": {
+    "slug": "REPLACE-with-the-folder-name",
+    "name": "REPLACE Business Name",
+    "contact_name": "REPLACE",
+    "contact_email": "REPLACE",
+    "contact_phone": "REPLACE",
+    "website": null
+  },
+  "brand": "REPLACE: the-surge-agency or powered-by-surge",
+  "services": ["REPLACE: keys from scripts/deal-sheet.mjs, for example custom-website, local-seo-aeo"],
+  "options": [],
+  "price": { "one_time": 0, "monthly": 0, "monthly_starts": "at signing", "tier": null, "term_months": null },
+  "first_payment": { "amount": 0, "due": "at signing" },
+  "website_path": "REPLACE: new, rebuild, keep or none",
+  "trade": "REPLACE",
+  "offerings": ["REPLACE: what the client sells"],
+  "service_areas": ["REPLACE: where they work"],
+  "proposal_title": "REPLACE"
+}
+</script>
 </body>
 </html>

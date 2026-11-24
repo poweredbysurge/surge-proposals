@@ -41,3 +41,4 @@ Decisions that belong elsewhere:
 | # | Title | Status | Implementation | Date |
 |---|---|---|---|---|
 | 001 | [Stripe Payment Links, not hosted invoices, as the default payment mechanism on proposals](ADR-001-stripe-payment-links-for-proposals.md) | Accepted | Wired and live | 2026-09-16 |
+| 002 | [Every proposal carries a deal sheet that Surge HQ reads](ADR-002-deal-sheet-on-every-proposal.md) | Accepted | In progress | 2026-11-23 |
