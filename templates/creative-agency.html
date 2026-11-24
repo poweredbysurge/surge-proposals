@@ -38,6 +38,10 @@
   The deploy stops if this is missing or incomplete (node scripts/check-deal-sheets.mjs <folder>).
   Allowed values and what each item is for: scripts/deal-sheet.mjs and adr/ADR-002.
 -->
+<!-- Also required: load this helper, and call it in the signature handler:
+     if (window.surgeDealSigned) window.surgeDealSigned(e.target);
+     The signature form's fields must be named signer_name, signer_title and date. -->
+<script src="/brand/deal-sign.js"></script>
 <script type="application/json" id="surge-deal">
 {
   "version": 1,

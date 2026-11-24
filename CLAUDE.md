@@ -42,6 +42,7 @@ It holds the key facts Surge HQ needs to set the client up the moment they pay: 
 
 - Copy the block from `templates/creative-agency.html` and fill in every item. It must match the visible page exactly.
 - `client.slug` is the folder name. The Stripe payment link must carry the same slug as `client_reference_id` or `metadata.client_slug`.
+- The page loads `/brand/deal-sign.js`, and the signature handler calls `if (window.surgeDealSigned) window.surgeDealSigned(e.target);`. The signature form's fields are named `signer_name`, `signer_title` and `date`. That is what tells Surge HQ the deal was signed.
 - Run `node scripts/check-deal-sheets.mjs [name]` before pushing. `build.sh` runs it, and the deploy stops if a sheet is missing or incomplete.
 - If the price or scope on the page changes, change the deal sheet in the same edit.
 - Never add a new proposal to `scripts/deal-sheet-legacy.json`. That list is only for proposals sent before Nov 23, 2026.
@@ -81,6 +82,7 @@ Also add the route to `vercel.json` for consistency, but `build.sh` is what actu
 ## Environment variables (set in Vercel dashboard + .env locally)
 - STRIPE_API_KEY — Stripe secret key (sk_live_...)
 - RESEND_API_KEY — Resend API key for proposal approval emails
+- HQ_SUPABASE_URL, HQ_SUPABASE_ANON_KEY, HQ_INTAKE_SECRET: let `/api/signed` report a signed deal to Surge HQ
 
 ## Proposal approval notifications
 When a client signs the proposal, the form POSTs to /api/notify (api/notify.js).
