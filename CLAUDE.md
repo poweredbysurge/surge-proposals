@@ -35,6 +35,18 @@ Every proposal HTML file must include these sections in order:
 6. Why Surge — 3 proof points, no fluff
 7. Signature + next steps — typed name field, date, "Let's go" CTA → Stripe payment link
 
+## Deal sheet: required on every proposal
+Every `clients/[name]/index.html` ends with a hidden deal sheet: `<script type="application/json" id="surge-deal">`.
+It holds the key facts Surge HQ needs to set the client up the moment they pay: who they are, the services sold
+(keys from `scripts/deal-sheet.mjs`), the price and first payment, the website path, and what the client sells and where.
+
+- Copy the block from `templates/creative-agency.html` and fill in every item. It must match the visible page exactly.
+- `client.slug` is the folder name. The Stripe payment link must carry the same slug as `client_reference_id` or `metadata.client_slug`.
+- Run `node scripts/check-deal-sheets.mjs [name]` before pushing. `build.sh` runs it, and the deploy stops if a sheet is missing or incomplete.
+- If the price or scope on the page changes, change the deal sheet in the same edit.
+- Never add a new proposal to `scripts/deal-sheet-legacy.json`. That list is only for proposals sent before Nov 23, 2026.
+- Why and how: `adr/ADR-002-deal-sheet-on-every-proposal.md`.
+
 ## Output rules
 - Single self-contained HTML file. Tailwind CDN via jsDelivr. No build step.
 - Mobile-first. Test at 390px width mentally before finalizing.
@@ -83,4 +95,5 @@ RESEND_API_KEY must be set in Vercel environment variables or emails will silent
 3. Ask for any missing critical info: budget range, timeline, key pain points
 4. Generate proposal.html using the creative-agency template as base
 5. Confirm scope and pricing with Sam before finalizing
-6. Output the file path and remind Sam to add the Stripe payment link
+6. Fill in the deal sheet at the bottom of the page and run `node scripts/check-deal-sheets.mjs [name]`
+7. Output the file path and remind Sam to add the Stripe payment link (with the client slug on it)
