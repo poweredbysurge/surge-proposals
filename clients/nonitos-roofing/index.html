@@ -946,6 +946,9 @@
       }),
     }).catch(() => {});
 
+    // Tell Surge HQ what was signed (the deal sheet at the bottom of this page). See adr/ADR-002.
+    if (window.surgeDealSigned) window.surgeDealSigned(e.target);
+
     const form = document.getElementById('proposal-form');
     form.style.opacity   = '0';
     form.style.transform = 'translateY(-12px)';
@@ -1105,5 +1108,59 @@
 })();
 </script>
 
+<script src="/brand/deal-sign.js"></script>
+<!-- Deal sheet: the key facts of this proposal for Surge HQ. Must match the page. See adr/ADR-002. -->
+<script type="application/json" id="surge-deal">
+{
+  "version": 1,
+  "client": {
+    "slug": "nonitos-roofing",
+    "name": "Nonitos Roofing",
+    "contact_name": "Noel Hernandez",
+    "contact_email": "nonitosroofing@gmail.com",
+    "contact_phone": "",
+    "website": null
+  },
+  "brand": "the-surge-agency",
+  "services": [
+    "brand-kit-logo",
+    "custom-website",
+    "google-business-profile",
+    "local-seo-aeo",
+    "google-ads-lsa",
+    "meta-ads"
+  ],
+  "options": [
+    {
+      "key": "ads_month_one",
+      "label": "Ads in month one",
+      "field": "spend"
+    }
+  ],
+  "price": {
+    "one_time": 5000,
+    "monthly": 3000,
+    "monthly_starts": "2026-12-16",
+    "tier": null,
+    "term_months": null
+  },
+  "first_payment": {
+    "amount": 5000,
+    "due": "at signing"
+  },
+  "website_path": "new",
+  "trade": "roofing",
+  "offerings": [
+    "Roof replacement",
+    "Roof repair",
+    "Storm damage"
+  ],
+  "service_areas": [
+    "Prince William County, VA",
+    "Northern Virginia"
+  ],
+  "proposal_title": "Nonitos Roofing Website and Growth System"
+}
+</script>
 </body>
 </html>
